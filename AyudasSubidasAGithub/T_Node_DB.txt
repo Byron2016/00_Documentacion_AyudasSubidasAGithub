@@ -1,0 +1,29 @@
+- Desarrollo Útil: 🗄️ BASES DE DATOS 🗃️ Implementación con MONGOOSE 🟢 Curso de Node.JS desde cero #12
+	- https://www.youtube.com/watch?v=shxlkhJBhSc&list=PL3aEngjGbYhnrRfZKMxzn79qdgPxL7OWM&index=12
+
+    - Tipos de DB
+      - Transaccionales
+      - Relacionales
+      - Documentales
+      - SQL
+        - ACID
+          - Atomicidad
+          - Consistencia
+          - Aislamiento
+          - Durabilidad
+      - NoSql 
+        - BASE
+          - Basicamente disponible
+          - Soft state
+          - Eventual consistency
+
+    - Librerías
+      - Driver: Nos permite conectar con el SGBD
+      - Query builder: Construir mensajes en el lenguaje del SGBD
+      - ORM / ODM: Mapear la forma de los datos de la BD a la forma que utilizamos en JS.
+
+    - Conceptos
+      - Esquema
+        - Es la forma que toman los datos en la BD  y lo utilizamos para definir el tipo de colección de datos que vamos a tener.
+      - Modelo
+        - Es el "esquema" compilado, y este modelo lo podemos utilizar en JS para hacer el CRUD
