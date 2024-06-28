@@ -1,4 +1,4 @@
-- VALIDACIONES y DATA TRANSFER OBJECTS ✅ Con AJV y JSON Schema 🟢 Curso de Node.JS desde cero #11
+- Desarrollo Útil: VALIDACIONES y DATA TRANSFER OBJECTS ✅ Con AJV y JSON Schema 🟢 Curso de Node.JS desde cero #11
 	- https://www.youtube.com/watch?v=4sifh-mNVYk&list=PL3aEngjGbYhnrRfZKMxzn79qdgPxL7OWM&index=11
 
     - Alternativa 1
