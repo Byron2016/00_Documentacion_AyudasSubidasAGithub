@@ -1,0 +1,115 @@
+- VALIDACIONES y DATA TRANSFER OBJECTS ✅ Con AJV y JSON Schema 🟢 Curso de Node.JS desde cero #11
+	- https://www.youtube.com/watch?v=4sifh-mNVYk&list=PL3aEngjGbYhnrRfZKMxzn79qdgPxL7OWM&index=11
+
+    - Alternativa 1
+      - Crear archivo "./dto/validate_login_dto.js"
+        ```js 
+          const DTO_PROPERTY_NAMES = ["email","password"];
+
+          const validateLoginDTO = (req, res, next) => {
+            const loginDto = req.body;
+
+            if(typeof loginDto !== "object")
+              return res.status(400).send("El body tiene que vener en formato JSON);
+
+            const bodyPropertyNames = Object.keys(loginDto);
+
+            const checkProperties = bodyPropertyNames.length === DTO_PROPERTY_NAMES.length && bodyPropertyNames.every((bodyPropertyName) => DTO_PROPERTY_NAMES.includes(bodyPropertyName))
+
+            if(!checkProperties)
+              return res.status(400).send(`El body debe contener únicamente los campos ${DTO_PROPERTY_NAMES.email}` y ${DTO_PROPERTY_NAMES.password}`);
+
+            next();
+          }
+
+          export default validateLoginDTO;
+        ```
+
+      - En el archivo "./routes/auth_token.js" llamaremos al mmiddleware "validateLoginDTO"
+        ```js 
+          authTokenRouter.post("/login", validateLoginDTO, (req, res) => {
+            ...
+          })
+        ```
+
+    - Alternativa 2
+      - Usando la librería 
+        - "ajv"
+          - npm i ajv
+        - "ajv-formats"
+          - npm i ajv-formats
+        - "ajv-i18n" para internalización.
+          - npm i ajv-i18n
+        - "ajv-errors" para personalizar los errores.
+          - npm i ajv-errors
+        - "@sincliar/typebox"
+          - npm i @sincliar/typebox
+
+      - Crear archivo "./dto/validate_login_dto.js"
+        ```js 
+          import { Type } from "@sincliar/typebox";
+          import addFormats from "ajv-formats";
+          import addErrors from "ajv-errors";
+          import Ajv from "ajv";
+
+          // const loginDTOSchema = {
+          //   type: "object",
+          //   properties: {
+          //     email: {type: "string", format: "email"},
+          //     password: {type: "string"}
+          //   },
+          //   requiered: ["email","password"];
+          //   additionalProperties: false
+          // }
+
+          // Usando "@sincliar/typebox" generaremos el mismo "loginDTOSchema" que teníamos arriba.
+
+          const loginDTOSchema = Type.Object(
+            {
+              email: Type.String({
+                format: "email",
+                errorMessage: {
+                  type: "El tipo de email debe ser un string",
+                  format: "email debe contener un correo eletrónico válido."
+                }
+              }),
+              password: Type.String({
+                errorMessage: {
+                  type: "El tipo de password debe ser un string"
+                }
+              })
+            },
+            {
+              additionalProperties: false,
+              errorMessage: {
+                additionalProperties: "El formato del objeto no es válido"
+              }
+            }
+          );
+
+          const ajv = new Ajv({ allErros: true}).addKeyword("kind").addKeyword("nodifier");
+          addFormats(ajv, ["email"]);
+          addErrors(ajv);
+
+          const validate = ajv.compile(loginDTOSchema);
+
+          const validateLoginDTO = (req, res, next) => {
+            const isDTOValid = validate(req.body)
+
+            if(!isDTOValid)
+              return res
+                .status(400)
+                .send(ajv.arrorText(validate.errors, { separator: "\n" }));
+
+            next();
+          }
+
+          export default validateLoginDTO;
+        ```
+
+      - En el archivo "./routes/auth_token.js" llamaremos al mmiddleware "validateLoginDTO"
+        ```js 
+          authTokenRouter.post("/login", validateLoginDTO, (req, res) => {
+            ...
+          })
+        ```
