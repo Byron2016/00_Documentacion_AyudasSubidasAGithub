@@ -1,0 +1,128 @@
+- Desarrollo Útil:REQUIRE vs IMPORT ⚡ COMMON JS vs ES MODULES 🤔 CJS vs ESM 🟢 Curso de Node.JS desde cero #3
+	- https://www.youtube.com/watch?v=29iYdru2KUg&list=PL3aEngjGbYhnrRfZKMxzn79qdgPxL7OWM&index=3
+
+		- Enlaces:
+			- Documentación Common.JS (CJS): https://nodejs.org/docs/latest/api/modules.html
+			- Documentación ECMAScript Modules (ESM): https://nodejs.org/docs/latest/api/esm.html
+			- CJS con ESM: https://nodejs.org/docs/latest/api/esm.html#interoperability-with-commonjs
+		
+		- Operando con ESM y CJS (28.44)
+			- ESM 
+				- No existe 
+					- module.export
+					- require
+					- __dirname
+					- __filename
+					- Import directo de JSON
+
+				- Usar en su lugar
+					- console.log(import.meta.url)  --> __dirname
+
+		
+				- Operar con Commonjs en ESM 
+					- Para la gran mayoría de casos:
+						- Preparación 
+							- En "package.json"
+								- "main": "index.js"
+								- "type": "module"
+								
+							- Crear archivo "operaciones.cjs" 
+								```javascript
+									const suma = (numA, numB) => 	{
+										return numA + numB;
+									}
+									const resta = (numA, numB) 	=> {
+										return numA - numB;
+									}
+									module.exports = {suma , resta};
+								```
+								
+							- Crear archivo "index.js"
+								- Importar "operaciones.cjs"
+								```javascript
+									import {suma, resta} from "./operaciones.cjs"
+									
+									console.log(suma(4,5));
+								```
+
+							- Provar 
+								node index.js
+								
+					- Para importar un JSON:
+						- Preparación 
+							- En "package.json"
+								- "main": "index.js"
+								- "type": "module"
+								
+							- Crear archivo "users.json" 
+								```json
+									[
+										{
+											"name":"pepito",
+											"edad": 30
+										},
+										{
+											"name":"juanito",
+											"edad": 30
+										}
+									]
+								```
+								
+							- Crear archivo "index.js"
+								- Importar "user.json"
+								```javascript
+									import {createRequire} from "node:module"
+									const require = createRequire(import.meta.url);
+
+									const users = require("./users.json");
+									console.log(users);
+								```
+
+							- Provar 
+								node index.js
+
+			- CJS 
+				- Operar con ESM en Commonjs
+					- Notas
+						- Se lo hace a través de "imports dinámicos"
+						- Diferencia 
+							- ESM funciona de forma asíncrona
+								- En ESM puedo importarme las cosas síncronas, ya que como funciona asíncronamente me da igual.
+							- CJM funciona de forma síncrona
+							
+					- Para la gran mayoría de casos:
+						- Preparación 
+							- En "package.json"
+								- "main": "index.js"
+								- "type": "commonjs"
+									- O sin nada, x default es commonjs
+								
+							- Crear archivo "operaciones.mjs" 
+								```javascript
+									const suma = (numA, numB) => 	{
+										return numA + numB;
+									}
+									const resta = (numA, numB) 	=> {
+										return numA - numB;
+									}
+									exports = {suma , resta};
+								```
+								
+							- Crear archivo "index.js"
+								- Importar "operaciones.mjs"
+								```javascript
+									import("./operaciones.mjs")
+										.then((operaciones) => {
+											console.log(operaciones);
+										}); //ESM --> async   commonjs --> sync
+								```
+								
+								```javascript
+									import("./operaciones.mjs")
+										.then((suma) => {
+											console.log(suma(4,9));
+										}); //ESM --> async   commonjs --> sync
+								```
+
+							- Provar 
+								node index.js
