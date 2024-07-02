@@ -1,0 +1,38 @@
+- Nodejs Debug 
+	- Fazt Code: Nodejs Visual Studio Code Debugger para Iniciantes
+		- https://www.youtube.com/watch?v=4Z8CM-E-HRE
+		
+			- Ir en VSC (Visual Studio Code / VisualStudioCode) a "Run and Debug (Crtl + Shift + D)"
+			- Seleccionar "create a launch.json file"
+				- seleleccionar el "Select debugger" para este caso "Node.js"
+					- Esto creará un "launch.json" en "./.vscode"
+						```json
+							{
+								// Use IntelliSense to learn about possible attributes.
+								// Hover to view descriptions of existing attributes.
+								// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+								"version": "0.2.0",
+								"configurations": [
+									{
+										"type": "node",
+										"request": "launch",
+										"name": "Launch Program",
+										"skipFiles": [
+											"<node_internals>/**"
+										],
+										"program": "${workspaceFolder}\\callbacks_vs_promesas\\index.js"
+									}
+								]
+							}
+						```
+						
+					- Tomar en cuenta la línea en la que se indica en que programa iniciará "index.js"
+						- "${workspaceFolder}\\callbacks_vs_promesas\\index.js"
+						
+					
+			- Ejecutar el debug 
+				- ERROR: Can´t find Node.js binary "node": path does not exist. Make sure Node.js is installed and in your PATH, or set the "runtimeExecutable" in your launch.json 
+				
+					- Abrir VSC en el directorio del proyecto
+					- Crear el "launch.json" en este directorio 
+					- Ejecutar. 
