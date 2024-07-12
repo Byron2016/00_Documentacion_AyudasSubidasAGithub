@@ -12,6 +12,8 @@
 
 # Table of contents
 
-- T_Node_ESM_CJS.txt
+-   T_Debug.txt
+-   T_Node_ESM_CJS.txt
+-   T_Node_env-vars.txt
 
 [⏪(Back to top)](#table-of-contents)

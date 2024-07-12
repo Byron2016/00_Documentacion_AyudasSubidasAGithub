@@ -105,7 +105,7 @@
 									const resta = (numA, numB) 	=> {
 										return numA - numB;
 									}
-									exports = {suma , resta};
+									export {suma , resta};
 								```
 								
 							- Crear archivo "index.js"
