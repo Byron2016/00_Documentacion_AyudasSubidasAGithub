@@ -79,8 +79,11 @@
 
 
         - Convict
-            - instalación
-                - pnpm i Convict
+            - Tutorial Node.js | Como usar variables de entorno | Convict
+                - https://www.youtube.com/watch?v=gbxVxYAOVv4
 
-            - uso
-                - PENDIENTE HASTA QUE LO USE.
+                - instalación
+                    - pnpm i Convict
+
+                - uso
+                    - PENDIENTE HASTA QUE LO USE.
