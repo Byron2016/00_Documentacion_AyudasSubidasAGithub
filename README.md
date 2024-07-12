@@ -12,6 +12,7 @@
 
 # Table of contents
 
+-   .editorconfig
 -   T_Debug.txt
 -   T_Node_ESM_CJS.txt
 -   T_Node_env-vars.txt
