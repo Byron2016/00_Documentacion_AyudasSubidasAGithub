@@ -1,0 +1,221 @@
+- TypeScript_CMJ
+    - Funcional 1
+        - package.json
+            {
+                "scripts": {
+                    "dev": "rimraf ./dist && tsc && tsc-watch -p tsconfig.json --onSuccess \"pnpm run start:server\"",
+                    "start:server": "node dist/main.js"
+                },
+                "devDependencies": {
+                    "rimraf": "^6.0.1",
+                    "tsc-watch": "^6.2.0",
+                    "typescript": "^5.5.3"
+                }
+            }
+        - tsconfig.json
+            {
+                "compilerOptions": {
+                    "target": "es2016",
+                    "module": "commonjs",
+                    "outDir": "./dist",
+                    "esModuleInterop": true,
+                    "forceConsistentCasingInFileNames": true,
+                    "strict": true,
+                    "skipLibCheck": true,
+                    "rootDir": "src"
+                }
+            }
+
+        - src
+            - a.ts
+                export const var_a = "Esta es la var_a";
+
+
+            - main.ts
+                import { var_a } from "./a";
+
+                console.log("Hola mundo -->" + var_a);
+
+        - ejecutar
+            - pnpm run dev
+
+    - Funcional 2
+        - package.json
+            {
+                "scripts": {
+                    "dev": "rimraf ./dist && tsc && tsc-watch -p tsconfig.json --onSuccess \"pnpm run start:server\"",
+                    "start:server": "node dist/main.js",
+                    "dev-f2": "tsnd --respawn --clear src/main.ts",
+                    "build-f2": "rimraf ./dist && tsc",
+                    "start-f2": "npm run build && node dist/main.js"
+                },
+                "devDependencies": {
+                    "rimraf": "^6.0.1",
+                    "ts-node-dev": "^2.0.0",
+                    "tsc-watch": "^6.2.0",
+                    "typescript": "^5.5.3"
+                }
+            }
+
+        - ejecutar
+            - pnpm run dev-f2
+
+- TypeScript_ESM
+    - https://www.youtube.com/watch?v=I3DrifH-rJE
+
+		- No existe
+			- module.export
+			- require
+			- __dirname
+			- __filename
+			- Import directo de
+
+        - Con diferentes scripts en package.json
+
+            - tsx
+                "scripts": {
+                    "dev-tsx": "tsx src/main.ts",
+                    "dev-tsx_watch": "tsx watch --ignore ./ignore-me.js --ignore ./ignore-me-too.js src/main.ts",
+                },
+
+            - nodemon
+                "scripts": {
+                    "dev_new_nodemon": "nodemon --exec \"node --loader ts-node/esm\" src/main.ts",
+                },
+
+            - watchexec
+                "scripts": {
+                    "server:build:dev": "tsc -w",
+                    "server:watch": "watchexec --postpone --restart --debounce 250 --no-vcs-ignore --filter \"dist/**/*\" \"node dist/main.js\"",
+                    "server:dev": "npm-run-all --parallel server:build:dev server:watch",
+                },
+
+            - tsc
+                "scripts": {
+                    "dev": "rimraf ./dist && tsc && tsc-watch -p tsconfig.json --onSuccess \"pnpm run start:server\"",
+                    "start:server": "node dist/main.js",
+                },
+
+        - ts-node-dev (NO FUNCIONA)
+                "scripts": {
+                    "dev-f2": "tsnd --respawn --clear src/main.ts",
+                    "build-f2": "rimraf ./dist && tsc",
+                    "start-f2": "npm run build && node dist/main.js",
+                },
+            - https://www.reddit.com/r/typescript/comments/17vvlt7/tsnodedev_not_work_with_esm/
+                - De acuerdo a "TheBazlow" NO FUNCIONA en esm.
+                - Usar "tsx" en su lugar.
+                - TheBazlow
+                    As others have said and I'll just add to the choir here, don't use ts-node on an ESM project, if you follow the ts-node docs, you'll just end up angry and frustrated, instead use tsx and you'll be up and running without any edits to your tsconfig or any loader verbose package.json scripts. "tsx index.ts" and your done.
+
+                    As an aside, tsx has a watch mode so you don't need nodemon and node js even has a watch mode now too so even more reason the drop that dependency.
+
+                - tsx
+                    - https://tsx.is/getting-started
+                        - Instalación
+                            - pnpm install -D tsx
+
+                        - script
+                            - normal
+                                - "dev": "tsx ./file.ts"
+
+                            - watch mode (https://tsx.is/watch-mode)
+                                - "dev:watch": "tsx watch --ignore ./ignore-me.js --ignore ./ignore-me-too.js ./file.ts"
+
+            - https://github.com/wclr/ts-node-dev/issues/265
+                - spiffytech commented on Feb 8, 2022
+                    - If your compile time is quick you can instruct nodemon to restart your app using the ts-node ESM loader:
+                        - nodemon --exec 'node --loader ts-node/esm' src/index.ts
+                            - En package.json
+                                - "dev_new_nodemon": "nodemon --exec \"node --loader ts-node/esm\" src/main.ts"
+
+                    - Otherwise, you can use tsc --watch and have something watch the compiled output. My preferred way to do this is to combine npm-run-all with watchexec (you can do this with nodemon, you'll just have to do a full build before you start nodemon)
+
+                        - OJO: NO PUDE CON watchexec, problemas al instalar, en msys2 no encuentra node.
+
+                        - "scripts": {
+                                "server:build:dev": "tsc -w",
+                                "server:watch": "watchexec --postpone --restart --debounce 250 --no-vcs-ignore --filter 'dist/**/*' 'node dist/index.js'",
+                                "server:dev": "npm-run-all --parallel server:build:dev server:watch",
+                            }
+                            OJO: hay que corregir los caracteres de escape, ver la sección scoop .
+
+                            - scoop  <----------------------
+                                -
+                                    - Instalar scoop (https://scoop.sh/)
+                                        - abrir power shell v>5 y ejecutar
+                                            - Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+                                            Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+                                    - Resultado
+                                        - Instaló bien en powerShell
+                                        - watchexec --version
+                                            - funciona en powerShell y gitBash.
+                                        - Funcionó BIEN. CON CARACTERES DE ESCAPE.
+
+                                    - Replicar:
+                                        - Paquetes:
+                                            - pnpm i -D typescript nodemon npm-run-all
+
+                                        - package.json
+
+                                            "scripts": {
+                                                "server:build:dev": "tsc -w",
+                                                "server:watch": "watchexec --postpone --restart --debounce 250 --no-vcs-ignore --filter \"dist/**/*\" \"node dist/main.js\"",
+                                                "server:dev": "npm-run-all --parallel server:build:dev server:watch",
+                                            },
+
+                                        - ejecutar
+                                            - pnpm run server:dev
+
+                            - watchexec
+                                - https://github.com/watchexec/watchexec
+
+                                    - Instalación.
+                                        - https://github.com/watchexec/watchexec/blob/main/doc/packages.md
+
+                                        - con Baulk (NO ME FUNCINÓ)
+
+                                            - Bajar Baulk
+                                                - https://github.com/baulk/baulk/releases/tag/v5.0.0
+
+                                            - Ejecutar baulk
+                                                - doble click sobre exe del zip
+                                                - abre un power shell
+                                                -
+
+
+                                        - con MSYS2 mingw (NO ME FUNCINÓ, NO ENCUENTRA NODE)
+                                            - https://www.msys2.org/
+                                                - Bajar el instalador e instalarlo.
+                                                - pacman -S mingw-w64-x86_64-watchexec
+
+
+
+
+
+        - Cambios
+            - package.json
+                - "type":"module"
+
+            - tsconfig.json
+                - "target": "ES2022",
+                - "module": "ES2022",
+
+            - exportaciones
+                - Cambiar de "module.export" a "export"
+                    - module.exports = {suma , resta};
+                        - exports {suma , resta};
+
+            - importaciones
+                - Deben llevar EXTENSIÓN del archivo
+                    - main.ts
+                        import { var_a } from "./a";
+
+                        console.log("Hola mundo -->" + var_a);
+
+                - Cambiar de "require" a "import"
+            - "__dirname" a "url"
+
+                import url from "url";
+                const __dirname = url.fileURLToPath(new URL(".", import.meta.url));

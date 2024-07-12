@@ -15,5 +15,6 @@
 -   T_Debug.txt
 -   T_Node_ESM_CJS.txt
 -   T_Node_env-vars.txt
+-   T_TypeScript_ESM_CJS.txt
 
 [⏪(Back to top)](#table-of-contents)
