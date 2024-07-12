@@ -1,0 +1,334 @@
+- Eslint 
+	- (V >= 9)
+		- Instalar
+			- npm init @eslint/config@latest
+			- yarn create @eslint/config@latest
+			- pnpm create @eslint/config@latest
+			
+				- How would you like to use ESLint?
+					To check syntax only
+					To check syntax and find problems
+					
+				- What type of modules does your project use?
+					JavaScript modules (import/export)
+					CommonJS (require/exports)
+					None of these
+				
+				- Which framework does your project use?
+					React
+					Vue.js
+					None of these
+					
+				- Does your project use TypeScript?
+					No
+					Yes 
+				
+				- Where does your code run?
+					Browser
+					Node 
+					
+				- Would you like to install them now? No / Yes 
+					
+				
+				- Which package manager do you want to use?
+					npm
+					yarn
+					pnpm
+					bun
+					
+			
+			- eslint.config.mjs
+				- JavaScript modules/No framework/No TypeScript/browser
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						export default [
+							{ 
+								languageOptions: { 
+									globals: globals.browser 
+								} 
+							},
+							pluginJs.configs.recommended,
+						];
+						
+				- JavaScript modules/No framework/No TypeScript/Node
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						
+						export default [
+							{
+								languageOptions: { 
+									globals: {  
+										globals.node
+									}
+								} 
+							},
+							pluginJs.configs.recommended,
+						];
+						
+				- JavaScript modules/No framework/No TypeScript/Node y Browser
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						
+						export default [
+							{ 
+								languageOptions: { 
+									globals: { 
+										...globals.browser, 
+										...globals.node
+									}
+								} 
+							},
+							pluginJs.configs.recommended,
+						];
+						
+				- JavaScript modules/No framework/SI TypeScript/browser
+					- Package.json
+						- eslint@9.x, globals, @eslint/js, typescript-eslint
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								languageOptions: { 
+									globals: globals.browser
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];
+						
+				- JavaScript modules/No framework/SI TypeScript/node
+					- Package.json
+						- eslint@9.x, globals, @eslint/js, typescript-eslint
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								languageOptions: { 
+									globals: globals.node
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];
+						
+				- JavaScript modules/No framework/SI TypeScript/Node y Browser
+					- Package.json
+						- eslint@9.x, globals, @eslint/js, typescript-eslint
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								languageOptions: { 
+									globals: { 
+										...globals.browser, 
+										...globals.node
+									}
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];
+						
+						
+				- CommonJS (require/exports)/No framework/No TypeScript/Browser
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						
+						export default [
+							{
+								files: ["**/*.js"], 
+								languageOptions: {
+									sourceType: "commonjs"
+								}
+							},
+							{
+								languageOptions: { 
+									globals: globals.browser 
+								}
+							},
+							pluginJs.configs.recommended,
+						];
+						
+						
+				- CommonJS (require/exports)/No framework/No TypeScript/Node
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						export default [
+							{
+								files: ["**/*.js"], 
+								languageOptions: {
+									sourceType: "commonjs"
+								}
+							},
+							{
+								languageOptions: { 
+									globals: globals.node 
+								}
+							},
+							pluginJs.configs.recommended,
+						];
+						
+				- CommonJS (require/exports)/No framework/No TypeScript/Node y Browser
+					- Package.json
+						- @eslint/js, eslint, globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						
+						export default [
+							{
+								files: ["**/*.js"], 
+								languageOptions: {
+									sourceType: "commonjs"
+								}
+							},
+							{
+								languageOptions: { 
+									globals: { 
+										...globals.browser, 
+										...globals.node
+									}
+								}
+							},
+							pluginJs.configs.recommended,
+						];
+						
+						
+				- CommonJS (require/exports)/No framework/Si TypeScript/Browser
+					- Package.json
+						- @eslint/js, eslint, globals, typescript-eslint
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								{
+									files: ["**/*.js"], 
+									languageOptions: {
+										sourceType: "commonjs"
+									}
+								}, 
+								languageOptions: { 
+									globals: globals.browser
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];
+						
+				- CommonJS (require/exports)/No framework/Si TypeScript/Node
+					- Package.json
+						- @eslint/js, eslint, globals, typescript-eslint
+						- pnpm i -D @eslint/js eslint globals typescript-eslint
+						- "typescript-eslint": "8.0.0-alpha.35"
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								{
+									files: ["**/*.js"], 
+									languageOptions: {
+										sourceType: "commonjs"
+									}
+								}, 
+								languageOptions: { 
+									globals: globals.node
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];
+						
+						
+				- CommonJS (require/exports)/No framework/Si TypeScript/Node y Browser
+					- Package.json
+						- @eslint/js, eslint, globals
+						- pnpm i -D @eslint/js eslint globals
+					- Original:
+						import globals from "globals";
+						import pluginJs from "@eslint/js";
+						import tseslint from "typescript-eslint";
+						
+						export default [
+							{ 
+								{files: ["**/*.{js,mjs,cjs,ts}"]},
+								{
+									files: ["**/*.js"], 
+									languageOptions: {
+										sourceType: "commonjs"
+									}
+								}, 
+								languageOptions: { 
+									globals: { 
+										...globals.browser, 
+										...globals.node
+									}
+								} 
+							},
+							pluginJs.configs.recommended,
+							...tseslint.configs.recommended,
+						];				
+
+			
+- eslint-config-prettier
+	- https://github.com/prettier/eslint-config-prettier#readme
+		- pnpm i eslint-config-prettier -D
+		
+		
+- PROBLEMAS 
+	- JavaScript modules/No framework/SI TypeScript/Node y Browser
+
+ WARN  Issues with peer dependencies found
+.
+├─┬ @typescript-eslint/parser 7.14.1
+│ └── ✕ unmet peer eslint@^8.56.0: found 9.6.0
+└─┬ typescript-eslint 7.14.1
+  ├── ✕ unmet peer eslint@^8.56.0: found 9.6.0
+  ├─┬ @typescript-eslint/utils 7.14.1
+  │ └── ✕ unmet peer eslint@^8.56.0: found 9.6.0
+  └─┬ @typescript-eslint/eslint-plugin 7.14.1
+    ├── ✕ unmet peer eslint@^8.56.0: found 9.6.0
+    └─┬ @typescript-eslint/type-utils 7.14.1
+      └── ✕ unmet peer eslint@^8.56.0: found 9.6.0
