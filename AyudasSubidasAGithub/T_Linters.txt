@@ -730,62 +730,12 @@
 
         			- VERIFICAR ESLINT Y PRETTIER SE CUMPLEN (54.30)
         				- Verificar antes de commitear que esté pasando el linter y el prettier.
-        				hay un montón de estrategias y casi todas utilizando husky (incluso hay gente que lo hace a mano)
+        				hay un montón de estrategias y casi todas utilizando "Husky" (Ver T_Test_Husky_Lint_Staged.txt) (incluso hay gente que lo hace a mano)
         				"lint-staged"
         					- solo hace lint y prettier de los archivos tocados
         					- es bastante rápida
         					- Configuración cero.
         					- También utiliza Husky
-
-
-        				- Sitio oficial [lint-staged](https://github.com/okonet/lint-staged).
-        				- La función de este utilitario es el verificar q se cumple prettier y eslint antes de subir a github.
-
-        				OJO: PRIMERO PRITTIER LUEGO ESLINT
-
-        				- Ejecutar: npx mrm@2 lint-staged que realizará los siguientes pasos:
-        					- lint-staged
-        						- npm install --save-dev lint-staged
-        					- Husky
-        						- Install
-        							- npm install husky -D
-        						- Crear script
-        							- npm pkg set scripts.prepare="husky install"
-        						- Ejecutar script
-        							- npm run prepare
-        								- Crea:
-        									.husky
-        										.gitignore
-        										husky.sh
-
-        										pre-commit
-
-        						- Agregar un hook
-        							- npx husky add .husky/pre-commit "npm test"
-        								- Crea archivo pre-commit en este path y contenido:
-        									.husky
-        										pre-commit
-
-        										```
-        										#!/usr/bin/env sh
-        										. "$(dirname -- "$0")/_/husky.sh"
-
-        										npx lint-staged
-        										```
-        					- Actualiza package.json
-        						,,,
-        						"lint-staged": {
-        							"*.js": "eslint --cache --fix",
-        							"*.{js,css,md}": "prettier --write"
-        						}
-
-
-        						,,,
-
-        						- ORDEN
-        							- Primero PRETTIER
-        							- Segundo ESLINT
-
 
         			- PARA HACER PRUEBAS
         				- Archivo Button.js
@@ -861,23 +811,6 @@
         					- copiar en eslintrc.js sección extends:
         					['eslint-config-prettier']
 
-        				- Husky (53.50) (https://github.com/okonet/lint-staged)
-        					- npx mrm lint-staged
-        					- en package.json agregar
-
-        						"lint-staged": {
-        							"*.{js,css,md}": [
-        							"prettier --write",
-        							"eslint --cache --fix"
-        							]
-        						}
-
-        					- Testear
-        						- Agregar en page.js const a = 1;
-        						- gaa && gcmsg "test commit con husky y error"
-
-
-
         - Estandariza el #CÓDIGO de tu equipo de desarrollo usando: #ESLINT #PRETTIER y #HUSKY 😎
         	- Programacion en español: https://www.youtube.com/watch?v=sKT4YvXc1SY
         		- Instalar devDependencies
@@ -937,10 +870,7 @@
         				}
         				,,,
         		- Hooks de git
-        			- git init
-        			- npx husky-init && npm install
-        			- En el archivo pre-commit que se crea dentro dir .husky
-        				- poner npm run lint.
+        			- Ver T_Test_Husky_Lint_Staged.txt
 
         		- Convensional Commits 17.18
         			- https://www.conventionalcommits.org/en/v1.0.0/
@@ -956,7 +886,7 @@
         				}
         				,,,
         			- Agregar el hook (https://typicode.github.io/husky/#/)
-        				- npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+        				- [Husky add YA NO FUNCIONA PENDIENTE ARREGLAR.] npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 
         			- probar
         				- ok:
