@@ -5,10 +5,10 @@
 			- Documentación Common.JS (CJS): https://nodejs.org/docs/latest/api/modules.html
 			- Documentación ECMAScript Modules (ESM): https://nodejs.org/docs/latest/api/esm.html
 			- CJS con ESM: https://nodejs.org/docs/latest/api/esm.html#interoperability-with-commonjs
-		
+
 		- Operando con ESM y CJS (28.44)
-			- ESM 
-				- No existe 
+			- ESM
+				- No existe
 					- module.export
 					- require
 					- __dirname
@@ -18,15 +18,15 @@
 				- Usar en su lugar
 					- console.log(import.meta.url)  --> __dirname
 
-		
-				- Operar con Commonjs en ESM 
+
+				- Operar con Commonjs en ESM
 					- Para la gran mayoría de casos:
-						- Preparación 
+						- Preparación
 							- En "package.json"
 								- "main": "index.js"
 								- "type": "module"
-								
-							- Crear archivo "operaciones.cjs" 
+
+							- Crear archivo "operaciones.cjs"
 								```javascript
 									const suma = (numA, numB) => 	{
 										return numA + numB;
@@ -36,25 +36,25 @@
 									}
 									module.exports = {suma , resta};
 								```
-								
+
 							- Crear archivo "index.js"
 								- Importar "operaciones.cjs"
 								```javascript
 									import {suma, resta} from "./operaciones.cjs"
-									
+
 									console.log(suma(4,5));
 								```
 
-							- Provar 
+							- Provar
 								node index.js
-								
+
 					- Para importar un JSON:
-						- Preparación 
+						- Preparación
 							- En "package.json"
 								- "main": "index.js"
 								- "type": "module"
-								
-							- Crear archivo "users.json" 
+
+							- Crear archivo "users.json"
 								```json
 									[
 										{
@@ -67,7 +67,7 @@
 										}
 									]
 								```
-								
+
 							- Crear archivo "index.js"
 								- Importar "user.json"
 								```javascript
@@ -78,26 +78,26 @@
 									console.log(users);
 								```
 
-							- Provar 
+							- Provar
 								node index.js
 
-			- CJS 
+			- CJS
 				- Operar con ESM en Commonjs
 					- Notas
 						- Se lo hace a través de "imports dinámicos"
-						- Diferencia 
+						- Diferencia
 							- ESM funciona de forma asíncrona
 								- En ESM puedo importarme las cosas síncronas, ya que como funciona asíncronamente me da igual.
 							- CJM funciona de forma síncrona
-							
+
 					- Para la gran mayoría de casos:
-						- Preparación 
+						- Preparación
 							- En "package.json"
 								- "main": "index.js"
 								- "type": "commonjs"
 									- O sin nada, x default es commonjs
-								
-							- Crear archivo "operaciones.mjs" 
+
+							- Crear archivo "operaciones.mjs"
 								```javascript
 									const suma = (numA, numB) => 	{
 										return numA + numB;
@@ -107,7 +107,7 @@
 									}
 									export {suma , resta};
 								```
-								
+
 							- Crear archivo "index.js"
 								- Importar "operaciones.mjs"
 								```javascript
@@ -116,7 +116,7 @@
 											console.log(operaciones);
 										}); //ESM --> async   commonjs --> sync
 								```
-								
+
 								```javascript
 									import("./operaciones.mjs")
 										.then((suma) => {
@@ -124,5 +124,5 @@
 										}); //ESM --> async   commonjs --> sync
 								```
 
-							- Provar 
+							- Provar
 								node index.js
