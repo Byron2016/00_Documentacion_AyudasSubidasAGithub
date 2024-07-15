@@ -1,0 +1,159 @@
+- Husky y lint-staged
+    - [1]-Albert Hernandez: Acelera los tests de tus aplicaciones NodeJS ejecutando solo lo que ha cambiado
+        - https://www.youtube.com/watch?v=D3Wi080Pkhs&t
+
+            - Husky ([1]-2.00.00)
+                - https://typicode.github.io/husky/
+                - github.com/typicode/husky
+
+                - Instalación
+                    - A
+                        - pnpm add -D husky
+                        - npm i -D husky
+                        - bun add --dev husky
+
+                    - B
+                        - pnpm exec husky init
+                        - npx husky init
+                        - bunx husky init
+
+                            - Lo que hará es:
+                                - Crear un script en package.json
+                                    - "prepare": "husky"
+
+                                - Agregar carpeta ".husky"
+                                    - Es donde irán todos los git hooks que luego se estarán ejecutando.
+
+                                - Me parece hizo estas cosas:
+                                    - Edit package.json > prepare script and run it once
+                                        - npm pkg set scripts.prepare="husky"
+                                        - npm run prepare
+                                    - Add a hook
+                                        - npx husky add .husky/pre-commit "npm test"
+                                        - (DEPRECADO) git add .husky/pre-commit
+                                    - Make a commit
+                                        - git commit -m "Keep calm and commit"
+
+                - Uso
+                    - Hacer algún cambio
+                    - Hacer el commit
+                        - git commit -m "Keep calm and commit"
+                    - Verificará en el archivo ".husky/pre-commit" los hooks existentes
+                        - En este caso: pnpm test
+                        - Tratará de ejecutar los hooks
+                            - En caso de no existir, falla y no hace commit
+                            - En caso de fallar el hooks, tampoco hace commit.
+
+                    - De las indicaciones del manual de Prettier
+                        - https://prettier.io/docs/en/install.html
+                            - pnpm add -D -E prettier husky lint-staged
+                            - node --eval "fs.writeFileSync('.prettierrc','{\n\"semi\": false,\n\"singleQuote\": true\n}\n')"
+                            - node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+                            - npx prettier . --check
+
+                            - npx husky init
+                            - node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
+
+                            - node --eval "fs.writeFileSync('a.ts','console.log(\"Hello via Bun!!!!\");\n')"
+
+            - lint-staged ([1]-0.3.39)
+                - https://github.com/okonet/lint-staged
+
+                - Instalación
+                    - pnpm install -D lint-staged # requires further setup
+
+                    - Crear fichero de configuración (https://github.com/lint-staged/lint-staged#configuration)
+                        - Puede ser configurado
+                            - Package.json
+                            - .lintstagedrc <.json|yaml|yml>
+                            - ESM format
+                                - .lintstagedrc.mjs
+                                - lint-staged.config.mjs
+                            - CommonJS format
+                                - .lintstagedrc.cjs
+                                - lint-staged.config.cjs
+                            - ESM o CommonJS format (depende del type pk.json)
+                                - .lintstagedrc.js
+                                - lint-staged.config.js
+                            - Pasando un archivo de configuración --config o -c
+
+                    - Con Package.json
+                        - Agregar a "package.json"
+                            ```javaScript
+                                {
+                                    "lint-staged": {
+                                      "*.{js, ts}": "prettier --check"
+                                    }
+                                }
+                            ```
+                        - Cuando son varios.
+                            ,,,
+        			            "lint-staged": {
+        			            	"*.js": "eslint --cache --fix",
+        			            	"*.{js,css,md}": "prettier --write"
+        			            }
+                            ,,,
+
+        			            - ORDEN
+        			            	- Primero PRETTIER
+        			            	- Segundo ESLINT
+
+
+                    - Con ".lintstagedrc.js"
+                        - Type "Commonjs"
+                            ```javaScript
+                                module.exports = {
+                                  '**/*': 'prettier --write  --ignore-unknown',
+                                }
+                            ```
+                        - Type "module"
+                            ```javaScript
+                                exports = {
+                                  '*.{js, ts}': 'prettier --write  --ignore-unknown',
+                                }
+                            ```
+
+                    - Agregar a ".husky/pre-commit"
+                        ```javaScript
+                            npx lint-staged
+                        ```
+                        - OJO: para hacer debug
+                            ```javaScript
+                                npx lint-staged --debug
+                            ```
+
+
+                    - Crear el ".lintstagedrc.js"
+                        - Crear un obj con la configuración.
+                        ```
+                            {
+                              "*": "prettier --write",
+                              "*.ts": "eslint --fix"
+                            }
+                        ```
+                        - Del tutorial
+                            ```
+                                module.exports = {
+                                  "*.{js, ts}": "jest --findRelatedtests --passWithNoTests",
+                                }
+                            ```
+                            - --findRelatedtests: Lanzar test sobre listado de ficheros.
+                            - --passWithNoTests: Si algún archivo no tiene test, que pase sin error.
+
+
+    - [2]-MIDUDEV: https://www.youtube.com/watch?v=EEDRcolSHms&list=PLV8x_i1fqBw1VR86y4C72xMGJ8ifjBwJ6&index=4
+
+        - Husky (53.50) (https://github.com/okonet/lint-staged)
+        	- [ya no funciona] npx mrm lint-staged
+        	- en package.json agregar
+
+        		"lint-staged": {
+        			"*.{js,css,md}": [
+        			"prettier --write",
+        			"eslint --cache --fix"
+        			]
+        		}
+
+            - Testear
+            	- Agregar en page.js const a = 1;
+            	- gaa && gcmsg "test commit con husky y error"
