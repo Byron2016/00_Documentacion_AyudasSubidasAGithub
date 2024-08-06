@@ -1,0 +1,26 @@
+- Guía para entrevistas tecnicas como Ingeniero de software
+    - https://github.com/DevCaress/guia-entrevistas-de-programacion
+        - Buenas práticas
+            - Principios SOLID
+            - Principios DRY, KISS, YAGNI, GRASP y LoD
+            - Cleand Code
+            - Buenas prácticas en...
+        - Algoritmos y Estucturas de Datos
+            - Complejidad algoritmica
+            - Estructuras de datos
+            - Algoritmos
+            - Visualizar algoritmos
+            - Practicar algoritmos y estructuras de datos
+        - Patrones de diseño
+        - Bases de datos
+            - ORM's
+        - Arquitectura de Software
+            - Frontend
+            - Backend
+        - Preguntas más frecuentes
+        - Ejercicios más comunes en entrevistas
+        - Control de Versiones
+            - Workflows
+        - CI/CD
+        - Contenedores y Orquestación
+
