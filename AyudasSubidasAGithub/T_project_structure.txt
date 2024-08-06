@@ -1,0 +1,130 @@
+- Folder Structures in React Projects
+    - https://dev.to/itswillt/folder-structures-in-react-projects-3dp8
+
+    - Midudev
+        ¿Cómo organizar las carpetas de tu proyecto?
+        No importa si usas React, Vue, TypeScript o JavaScript…
+
+        ¡Te explico las estrategias que debes conocer! ↓
+
+        - 1. Por Tipo de Archivo 📂
+            Esta es la forma más sencilla y común. Funciona bien en proyectos pequeños.
+
+            Creas una carpeta para cada tipo de archivo: componentes, páginas,  servicios,       estados, utilidades…
+
+            ¿El problema? Puedes acabar con carpetas llenas de archivos, lo que puede   ser       difícil de manejar.
+
+            └── src/
+                ├── assets/
+                ├── api/
+                ├── configs/
+                ├── components/
+                │   ├── SignUpForm.tsx
+                │   ├── Employees.tsx
+                │   ├── PaymentForm.tsx
+                │   └── Button.tsx
+                ├── hooks/
+                │   ├── usePayment.ts
+                │   ├── useUpdateEmployee.ts
+                │   ├── useEmployees.ts
+                │   └── useAuth.tsx
+                ├── lib/
+                ├── services/
+                ├── states/
+                └── utils/
+
+        - 2. Por Tipo y Funcionalidad 📚
+
+            Aquí reflejamos la lógica del negocio en las carpetas.
+
+            Dentro de cada una, indicamos a qué parte de nuestra aplicación se refiere.
+
+            Lo bueno es que es más fácil de navegar, pero repetimos las mismas          “funcionalidades” en cada carpeta.
+
+            └── src/
+                ├── assets/
+                ├── api/
+                ├── configs/
+                ├── components/
+                │   ├── auth/
+                │   │   └── SignUpForm.tsx
+                │   ├── payment/
+                │   │   └── PaymentForm.tsx
+                │   ├── common/
+                │   │   └── Button.tsx
+                │   └── employees/
+                │       ├── EmployeeList.tsx
+                │       └── EmployeeSummary.tsx
+                ├── hooks/
+                │   ├── auth/
+                │   │   └── useAuth.ts
+                │   ├── payment/
+                │   │   └── usePayment.ts
+                │   └── employees/
+                │       ├── useEmployees.ts
+                │       └── useUpdateEmployee.ts
+                ├── lib/
+                ├── services/
+                ├── states/
+                └── utils/
+
+        - 3. Screaming Architecture 😱
+
+            Aquí cambiamos el enfoque. En lugar de indicar qué usamos, nuestras     carpetas        indican qué hacemos.
+
+            Seguramente muchas veces has entrado a un proyecto y rápidamente te has     dado cuenta         de que usa React, pero no tenías idea de qué hacía  realmente.
+
+            La idea de esta estructura es simplificar el desarrollo del proyecto y  hacer que,       independientemente de la tecnología, las carpetas nos   guíen a lo que nos interesa.
+
+            ¿Cuál es la mejor?
+            Depende. Tamaño del proyecto, duración del proyecto…
+            Además, siempre puedes empezar por la primera y luego ir migrando poco a    poco a         otra.
+
+            └── src/
+                ├── assets/
+                ├── modules/
+                |   ├── core/
+                │   │   ├── components/
+                │   │   ├── design-system/
+                │   │   │   └── Button.tsx
+                │   │   ├── hooks/
+                │   │   ├── lib/
+                │   │   └── utils/
+                │   ├── payment/
+                │   │   ├── components/
+                │   │   │   └── PaymentForm.tsx
+                │   │   ├── hooks/
+                │   │   │   └── usePayment.ts
+                │   │   ├── lib/
+                │   │   ├── services/
+                │   │   ├── states/
+                │   │   └── utils/
+                │   ├── auth/
+                │   │   ├── components/
+                │   │   │   └── SignUpForm.tsx
+                │   │   ├── hooks/
+                │   │   │   └── useAuth.ts
+                │   │   ├── lib/
+                │   │   ├── services/
+                │   │   ├── states/
+                │   │   └── utils/
+                │   └── employees/
+                │       ├── components/
+                │       │   ├── EmployeeList.tsx
+                │       │   └── EmployeeSummary.tsx
+                │       ├── hooks/
+                │       │   ├── useEmployees.ts
+                │       │   └── useUpdateEmployee.ts
+                │       ├── services/
+                │       ├── states/
+                │       └── utils/
+                └── ...
+
+            También pueden existir opciones intermedias que mezclen algunos conceptos.
+
+            Me he basado en este artículo de @HuyTaQuoc1 donde tienes más información   sobre         ventajas y desventajas:
+            https://dev.to/itswillt/folder-structures-in-react-projects-3dp8
+
+            Al final, lo importante es que no existe una única forma correcta de    hacerlo.
+
+            Toma estas ideas y decide tú y tu equipo cuál se adapta mejor a sus     necesidades         actuales.
