@@ -1,0 +1,30 @@
+- Versionado semántico / semantic
+    - https://blog.bytebytego.com/p/ep120-what-do-version-numbers-mean
+        - Version x.y.z
+            - x - Mayor
+                -  MAYOR: Cambios a gran escala a nivel de  API, frameworks o diseño, incompatibles con la   versión mayor previa.
+            - y - Minor
+                - MENOR: Nuevas funcionalidades compatibles.
+            - z - Patch
+                - PARCHE: Bug fix de la versión menor.
+
+        - Version 1.0,0-alpha.1b+123ab
+            - alpha.1b
+                - Pre-Release Label (optional)
+            - 123ab
+                - Build (optional)
+
+        - Version 3.0.0-rc.2
+            - rc.2
+                - Pre-Release Label (optional)
+
+        - Work flow
+            - Alpha
+            - Beta
+            - RC1
+            - RC2
+            - Release
+
+- Package Signing
+    - Para complementar, semver va de la mano del concepto de "Package signing" que tiene como objetivo 2 cosas: Package Integrity and Package Authenticity. El equipo de NuGet de forma muy clara aca:
+        - https://devblogs.microsoft.com/nuget/NuGet-Package-Signing/
