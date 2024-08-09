@@ -1,3 +1,58 @@
+- Prettier
+    - Instalar dependencia
+        ```bash
+            pnpm add -D -E prettier
+        ```
+
+    - Agregar "prettierrc"
+        ```bash
+            node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+
+            {
+              "semi": false,
+              "singleQuote": true
+            }
+        ```
+
+    - Agregar "prettierrc"
+        ```bash
+            node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+
+            # Ignore artifacts:
+            build
+            coverage
+
+            dist
+            pnpm-lock.yaml
+            package.json
+            .prettierrc
+        ```
+
+- eslint-config-prettier
+    - https://github.com/prettier/eslint-config-prettier#readme
+
+    - Esto hacer luego de ESLint
+
+    - Instalar dependencia
+        ```bash
+            pnpm add -D -E eslint-config-prettier
+        ```
+
+    - Actualizar al "eslint.config.xx"
+        ```js
+            export default tseslint.config({
+              extends: [
+                js.configs.recommended,
+                ...tseslint.configs.recommended,
+                eslintConfigPrettier,
+              ],
+              ....
+        ```
+
+
+
+
+      ```
 - Eslint
     - para V.8.57.0 trabajar con eslint.config.mjs
         ```js
@@ -21,77 +76,113 @@
 
 	- (V >= 9)
 		- Instalar
-			- npm init @eslint/config@latest
-			- yarn create @eslint/config@latest
-			- pnpm create @eslint/config@latest
+            - Ejecutar según el empaquetador que usemos:
+			    - npm init @eslint/config@latest
+			    - yarn create @eslint/config@latest
+			    - pnpm create @eslint/config@latest
 
 				- How would you like to use ESLint?
-					To check syntax only
-					To check syntax and find problems
+					- To check syntax only
+					- To check syntax and find problems
 
 				- What type of modules does your project use?
-					JavaScript modules (import/export)
-					CommonJS (require/exports)
-					None of these
+					- --> JavaScript modules (import/export)
+					- CommonJS (require/exports)
+					- None of these
 
 				- Which framework does your project use?
-					React
-					Vue.js
-					None of these
+					- --> React
+					- Vue.js
+					- None of these
 
 				- Does your project use TypeScript?
-					No
-					Yes
+					- No
+					- --> Yes
 
 				- Where does your code run?
-					Browser
-					Node
+					- --> Browser
+					- Node
 
-				- Would you like to install them now? No / Yes
-
+				- Would you like to install them now?
+                    - No
+                    - --> Yes
 
 				- Which package manager do you want to use?
-					npm
-					yarn
-					pnpm
-					bun
+					- npm
+					- yarn
+					- --> pnpm
+					- bun
+
+            - Dependencias
+                - Con @eslint/config@latest
+                     "devDependencies": {
+                       "@eslint/js": "^9.8.0",
+                       "eslint": "9.x",
+                       "eslint-plugin-react": "^7.35.0",
+                       "globals": "^15.9.0",
+                       "typescript-eslint": "^8.0.1"
+                     }
+                     Nota: Vitest instala "eslint-plugin-react-hooks" y "eslint-plugin-react-refresh" y eslint instala "eslint-plugin-react"
 
 
-			- eslint.config.mjs
-				- JavaScript modules/No framework/No TypeScript/browser
-					- Package.json
-						- @eslint/js, eslint, globals
-					- Original:
-						import globals from "globals";
-						import pluginJs from "@eslint/js";
-
-						export default [
-							{
-								languageOptions: {
-									globals: globals.browser
-								}
-							},
-							pluginJs.configs.recommended,
-						];
-
-				- JavaScript modules/No framework/No TypeScript/Node
-					- Package.json
-						- @eslint/js, eslint, globals
-					- Original:
-						import globals from "globals";
-						import pluginJs from "@eslint/js";
+                - Con vite
+                     "devDependencies": {
+                       "@eslint/js": "^9.8.0",
+                    	"eslint": "^9.8.0",
+                    	"eslint-plugin-react-hooks": "^5.1.0-rc.0",
+                       "eslint-plugin-react-refresh": "^0.4.9",
+                    	"globals": "^15.9.0",
+                    	"typescript-eslint": "^8.0.1",
 
 
-						export default [
-							{
-								languageOptions: {
-									globals: {
-										globals.node
-									}
-								}
-							},
-							pluginJs.configs.recommended,
-						];
+                       "@types/react": "^18.3.3",
+                       "@types/react-dom": "^18.3.0",
+                       "@vitejs/plugin-react-swc": "^3.7.0",
+                       "typescript": "^5.5.4",
+
+                       "vite": "^5.4.0"
+                     }
+
+            - eslint.config.xx
+                - Si el "package.json" NO tiene "type" creará un "eslint.config.mjs"
+                - Si el "package.json" SI tiene "type" creará un "eslint.config.js"
+
+
+			    - eslint.config.mjs
+			    	- JavaScript modules/No framework/No TypeScript/browser
+			    		- Package.json
+			    			- @eslint/js, eslint, globals
+			    		- Original:
+			    			import globals from "globals";
+			    			import pluginJs from "@eslint/js";
+
+			    			export default [
+			    				{
+			    					languageOptions: {
+			    						globals: globals.browser
+			    					}
+			    				},
+			    				pluginJs.configs.recommended,
+			    			];
+
+			    	- JavaScript modules/No framework/No TypeScript/Node
+			    		- Package.json
+			    			- @eslint/js, eslint, globals
+			    		- Original:
+			    			import globals from "globals";
+			    			import pluginJs from "@eslint/js";
+
+
+			    			export default [
+			    				{
+			    					languageOptions: {
+			    						globals: {
+			    							globals.node
+			    						}
+			    					}
+			    				},
+			    				pluginJs.configs.recommended,
+			    			];
 
 				- JavaScript modules/No framework/No TypeScript/Node y Browser
 					- Package.json
@@ -332,10 +423,8 @@
 						];
 
 
-        - eslint-config-prettier
-        	- https://github.com/prettier/eslint-config-prettier#readme
-        		- pnpm i eslint-config-prettier -D
-
+        - Agregar "eslint-config-prettier"
+            - Mirar el apartado específico para esto.
 
         - PROBLEMAS
         	- JavaScript modules/No framework/SI TypeScript/Node y Browser
@@ -743,7 +832,7 @@
         					import { colors } from "./theme";
 
         					export default function Button ({ children, onClick }) {
-        					//  let a = "hola";
+        					let a = "hola";
         					return (
         						<>
         						<button onClick={onClick}>
@@ -776,7 +865,7 @@
         					)
         					}
         					,,,
-        				- Archivo Theme.js
+        				- Archivo theme.js
         					,,,
         					export const breakpoints = {
         						mobile: '520px'
