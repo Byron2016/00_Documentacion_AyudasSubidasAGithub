@@ -7,12 +7,18 @@
                 - github.com/typicode/husky
 
                 - Instalación
+                    - Se lo instala en:
+                        - Debe existir .git
+                        - Debe existir package.json
+
                     - A
-                        - pnpm add -D husky
+                        - pnpm add -D -E husky
                         - npm i -D husky
                         - bun add --dev husky
 
-                    - B
+                    - B (RECOMENDADA SEGUN MANUAL)
+                        - Ejecutar A
+
                         - pnpm exec husky init
                         - npx husky init
                         - bunx husky init
@@ -60,7 +66,7 @@
                 - https://github.com/okonet/lint-staged
 
                 - Instalación
-                    - pnpm install -D lint-staged # requires further setup
+                    - pnpm install -D -E lint-staged  # requires further setup
 
                     - Crear fichero de configuración (https://github.com/lint-staged/lint-staged#configuration)
                         - Puede ser configurado
@@ -82,7 +88,8 @@
                             ```javaScript
                                 {
                                     "lint-staged": {
-                                      "*.{js, ts}": "prettier --check"
+                                      'src/**/*.{ts,js}': 'prettier --write  --ignore-unknown',
+                                      // "*.{js, ts}": "prettier --check"
                                     }
                                 }
                             ```
@@ -104,12 +111,14 @@
                             ```javaScript
                                 module.exports = {
                                   '**/*': 'prettier --write  --ignore-unknown',
+                                  // 'src/**/*.{ts,js}': 'prettier --write  --ignore-unknown',
                                 }
                             ```
                         - Type "module"
                             ```javaScript
-                                exports = {
+                                export default {
                                   '*.{js, ts}': 'prettier --write  --ignore-unknown',
+                                  // 'src/**/*.{ts,js}': 'prettier --write  --ignore-unknown',
                                 }
                             ```
 
