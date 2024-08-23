@@ -62,6 +62,10 @@
 			},
 		}
 
+    - Ejecución scripts en paralelo y secuencial
+        - Usar && (double ampersand) para ejecución secuencial.
+        - Usar & (single ampersand) para ejecución paralelo.
+
 	- PLUGINS
 		- PostCSS
 			- https://postcss.org/
