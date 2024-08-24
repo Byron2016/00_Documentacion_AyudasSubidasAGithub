@@ -1,0 +1,50 @@
+- Bearer Token
+    - Dominando Token Bearer: Una guía para desarrolladores
+        - https://keepcoding.io/blog/token-bearer-guia-para-desarrolladores/#:~:text=Un%20token%20bearer%20es%20una,a%20APIs%20de%20manera%20segura.
+
+    - Que es
+        - Credencial de seguridad esencial para acceder a APIs de manera segura.
+        - El término «bearer» se traduce como «portador», lo que significa que cualquier entidad que posea el token tiene el derecho de acceso, sin necesidad de comprobar la identidad en cada solicitud
+        - cualquier parte que lo obtenga puede actuar en nombre del portador original
+        - Tiene una duración limitada por razones de seguridad.
+
+    - Funcionamiento
+        - Inicio de sesión: Usuario envía credenciales (usuario / password)
+        - Obtención de token: Si la autenticación es exitosa, servidor devuelve un token bearer en su respuesta.
+        - Uso de Token: El token es incluído en el encabezado Autherization de la petición,
+            - Cabecera authorization bearer: https://keepcoding.io/blog/cabecera-authorization-bearer/
+                - await fetch (url, {
+                    method: "Delete",
+                    headers: {
+                        "Authorization": "Bearer" + JWT
+                    }
+                })
+
+    - Configuración en Postman
+        - Lo primero que debes hacer es crear un Environment haciendo clic en New.
+        - Después, añade el nombre que desees para el entorno y crea una variable llamada «TOKEN«.
+        - En la opción «current value«, pega el token bearer obtenido en el login.
+        - Finalmente, guarda y selecciona el entorno en el selector de la parte superior derecha.
+
+    - JWT y Token Bearer
+        - Es el más común JWT
+        - JWT es un string codificado que tiene
+            - Payload: una carga de información
+            - Signarute: Sello de seguridad
+        - Bearer: quien lo posea podrá realizar acciones dentro del sistema, siempre bajo la autorización del servidor.
+
+    - Diferencia con Authorization Basic
+        - utiliza las credenciales de usuario y contraseña
+        - Se codifican en base 64
+        - Se envían en el encabezado de la solicitud.
+        - es fundamental enviar estas peticiones sobre HTTPS para asegurar la confidencialidad y la integridad de las credenciales.
+
+    - Mejores prácticas con Token Bearer
+        - HTTPS siempre: Nunca envíes un token bearer sobre una conexión no segura.
+        - Gestión de expiración: Implementa lógica para manejar la renovación automática de tokens expirados
+        - Almacenamiento seguro: Guarda los token bearer de manera segura para evitar exposiciones.
+        - Minimiza el alcance: Acuérdate de usar tokens con el mínimo permiso necesario para realizar la tarea requerida
+
+    - Understanding Bearer Tokens: Usage, Examples, and Differences from API Keys
+        - https://medium.com/@mottammal1993/understanding-bearer-tokens-usage-examples-and-differences-from-api-keys-496f9bfb6038
+
