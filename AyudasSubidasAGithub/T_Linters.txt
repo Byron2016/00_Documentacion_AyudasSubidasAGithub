@@ -454,6 +454,8 @@
                     - Mantenimiento (Maintenance): recibe correcciones de errores críticos, incluidos problemas de seguridad, y correcciones de compatibilidad para garantizar la interoperabilidad entre las principales líneas de lanzamiento. No se implementan otras correcciones o características de la línea de lanzamiento actual.
                     - Fin de vida útil (EOL) (End of Life (EOL)): cuando una línea de lanzamiento deja de estar en modo de mantenimiento, no recibe más actualizaciones del equipo de ESLint.
 
+            - https://github.com/eslint/eslint#user-content-semantic-versioning-policy
+
         - Agregar "eslint-config-prettier"
             - Mirar el apartado específico para esto.
 
