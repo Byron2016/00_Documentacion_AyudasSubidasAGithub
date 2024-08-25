@@ -23,6 +23,14 @@
 			-
 			-
 
+    - Entendiendo versionado (Current, Active, Maintenance )
+        - https://nodejs.org/en/about/previous-releases
+            - Las principales versiones (Major) de Node.js ingresan al estado de lanzamiento actual (Current release status) durante seis meses,
+                - lo que les da tiempo a los autores de bibliotecas para agregarles soporte.
+            - Después de seis meses,
+                - las versiones impares (9, 11, etc.) dejan de recibir soporte (unsupported) y
+                - las versiones pares (10, 12, etc.) pasan al estado de LTS activa (Active LTS status) y están listas para su uso general.
+            - El estado de lanzamiento LTS es "soporte a largo plazo", que generalmente garantiza que los errores críticos se solucionarán durante un total de 30 meses. Las aplicaciones de producción solo deben utilizar versiones LTS activas (Active LTS releases) o LTS de mantenimiento (Maintenance LTS releases).
 
 	- Errores
 		- "NODE_ENV" no se reconoce como un comando interno o externo, programa o archivo por lotes ejecutable.
