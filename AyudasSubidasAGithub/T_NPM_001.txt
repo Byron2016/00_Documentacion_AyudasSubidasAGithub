@@ -7,6 +7,10 @@
 		- bash shell
 			- ~/Local Settings/npm-cache/_npx/
 - npm
+    - Versionado en el package.json
+        - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+            - tilde, carret
+
 	- Globales que tengo instalados:
 		- npm install -g pnpm
 		-
@@ -65,6 +69,8 @@
     - Ejecución scripts en paralelo y secuencial
         - Usar && (double ampersand) para ejecución secuencial.
         - Usar & (single ampersand) para ejecución paralelo.
+
+        - https://stackoverflow.com/questions/47957124/how-can-i-run-multiple-npm-scripts-at-the-same-time/59585721#answer-56712735
 
 	- PLUGINS
 		- PostCSS
