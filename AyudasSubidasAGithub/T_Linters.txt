@@ -1,20 +1,31 @@
+- MonoRepo
+    - Tips para automatizar
+        - https://dev.to/vinomanick/create-a-monorepo-using-pnpm-workspace-1ebn
+    - enolcasielles
+        - https://github.com/enolcasielles/monorepo
+        - https://dev.to/enolcasielles/construyendo-un-monorepo-en-typescript-utilizando-pnpm-2144
+
+    - Basem Emara
+        - https://medium.com/hike-medical/ditching-yarn-creating-a-monorepo-with-pnpm-workspaces-6fa7e3bfe19c
+            - (muy bueno paso por paso pero eslintrc)
+
 - Prettier
     - Instalar dependencia
         ```bash
             pnpm add -D -E prettier
         ```
 
-    - Agregar "prettierrc"
+    - Agregar ".prettierrc"
         ```bash
             node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 
-            {
-              "semi": false,
-              "singleQuote": true
-            }
+            echo "{
+              \"semi\": false,
+              \"singleQuote\": true
+            }" > .prettierrc
         ```
 
-    - Agregar "prettierrc"
+    - Agregar ".prettierignore"
         ```bash
             node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
 
@@ -24,8 +35,20 @@
 
             dist
             pnpm-lock.yaml
+            pnpm-workspace.yaml
             package.json
             .prettierrc
+            vite.config.ts
+            tsconfig.json
+            eslint.config.mjs
+            eslint.config.cjs
+            eslint.config.js
+        ```
+
+    - Agregar scripts a  "package.json"
+        ```bash
+            npm pkg set scripts.format:check="prettier . --check"
+            npm pkg set scripts.format:fix="prettier . --write"
         ```
 
 - eslint-config-prettier
@@ -40,6 +63,10 @@
 
     - Actualizar al "eslint.config.xx"
         ```js
+            ....
+            import eslintConfigPrettier from 'eslint-config-prettier'
+            ....
+
             export default tseslint.config({
               extends: [
                 js.configs.recommended,
@@ -49,10 +76,6 @@
               ....
         ```
 
-
-
-
-      ```
 - Eslint
     - para V.8.57.0 trabajar con eslint.config.mjs
         ```js
@@ -422,6 +445,14 @@
 							...tseslint.configs.recommended,
 						];
 
+        - Entendiendo versionado (Current, Active, Maintenance )
+            - https://eslint.org/version-support/
+
+                - Las principales líneas de lanzamiento de ESLint se designan según el nivel de soporte que reciben del equipo de ESLint. Los estados de lanzamiento son:
+
+                    - Actual (Current): recibe mantenimiento y desarrollo activos del equipo de ESLint.
+                    - Mantenimiento (Maintenance): recibe correcciones de errores críticos, incluidos problemas de seguridad, y correcciones de compatibilidad para garantizar la interoperabilidad entre las principales líneas de lanzamiento. No se implementan otras correcciones o características de la línea de lanzamiento actual.
+                    - Fin de vida útil (EOL) (End of Life (EOL)): cuando una línea de lanzamiento deja de estar en modo de mantenimiento, no recibe más actualizaciones del equipo de ESLint.
 
         - Agregar "eslint-config-prettier"
             - Mirar el apartado específico para esto.
