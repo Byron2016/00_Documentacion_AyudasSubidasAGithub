@@ -18,5 +18,6 @@
 -   T_Node_ESM_CJS.txt
 -   T_Node_env-vars.txt
 -   T_TypeScript_ESM_CJS.txt
+-   T_Releases_Versioning.md
 
 [⏪(Back to top)](#table-of-contents)

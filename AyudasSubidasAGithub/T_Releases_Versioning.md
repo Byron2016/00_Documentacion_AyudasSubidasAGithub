@@ -1,0 +1,6 @@
+-   TypeScript
+    -   [release process is essentially](https://github.com/eslint/eslint/discussions/18830#discussioncomment-10515220)
+        -   vX.Y released,
+        -   ~1 month later vX.Y+1-beta released,
+        -   ~1 month later vX.Y+1-rc released,
+        -   ~1 month later vX.Y+1 released.
