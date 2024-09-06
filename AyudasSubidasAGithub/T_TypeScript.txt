@@ -1,0 +1,256 @@
+- ERROR:
+	- error TS2349: This expression is not callable. const app = express();
+		- https://itecnote.com/tecnote/typescript-with-express-type-typeof-importexpress-has-no-call-signatures/
+
+			- En el "tsconfig.json" está definido: "esModuleInterop": true,
+				- Qué hace: "esModuleInterop": true,
+					- https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file
+
+						- Lo que hace es decirle a nodejs que se pueda importar commonjs con sintaxis de ES6.
+						  import * as express from "express"; cambia a: import express from "express";
+
+	- Error: File '..../node_modules/@types/express/index.d.ts' is not a module.ts(2306)
+
+	- Error
+		- npm i -D @types/node
+		- Add "types": ["node"] in your tsconfig.app.json
+
+	- Autocompletado de variables de entorno en VSC
+		- https://javascript.plainenglish.io/using-env-variables-and-autocomplete-with-node-js-and-typescript-46b5b4a769d8
+			- Crear archivo "environment.d.ts"
+
+				declare global {
+				namespace NodeJS {
+					interface ProcessEnv {
+					NODE_ENV: "development" | "production";
+					PORT?: string;
+					PWD: string;
+					}
+				}
+				}
+
+				// If this file has no import/export statements (i.e. is a script)
+				// convert it into a module by adding an empty export statement.
+				export {};
+
+			- Exiten dos alternativas para la creación del archivo, debe estar en el scope definido en el "tsconfig.json" : "include": ["src/**/*.ts"]
+				- Entonces habría q ponerlo dentro del directorio src.
+				- En caso de no estar dentro de ese directorio habría que poner otra entrada en el include anterior para que exista.
+					- "include": ["src/**/*.ts", "path/*.d.ts"]
+
+			- npm i -D @types/node
+			- "types": ["node"] in your tsconfig.app.json (https://stackoverflow.com/questions/53529521/typescript-error-cannot-find-name-process/53529594#53529594)
+			-
+
+			- You probably have to restart typescript language server if it still uses previous version of the tsconfig.
+				- Ctrl+Shift+P and Reload Window or TypeScript: Restart TS server if available.
+
+
+		- https://www.youtube.com/watch?v=FBZidnvNSUg
+
+	- Error: Module '"..../dominicode/login_roles/node_modules/@types/express/index"' can only be default-imported using the 'esModuleInterop' flagts(1259)
+		- Only reload.
+
+	- En VERCEL:
+		- This Serverless Function has crashed.
+		- Your connection is working correctly.
+		- Vercel is working correctly.
+
+			500: INTERNAL_SERVER_ERROR
+			Code: FUNCTION_INVOCATION_FAILED
+			ID: iad1::d2hpw-1681929512459-b0c09c68721f
+
+			If you are a visitor, contact the website owner or try again later.
+			If you are the owner, learn how to fix the error (https://vercel.com/docs/error/application/FUNCTION_INVOCATION_FAILED) and check the logs.
+
+
+- TypeScript tips
+	- Referencias
+		- 001: Midudev 35.33: ([Tutorial TypeScript con Node.js y Express. ¡Crea tu API REST con tipos estáticos DESDE CERO!](https://www.youtube.com/watch?v=ZpY5KdGQvwI&list=PLV8x_i1fqBw0Kn_fBIZTa3wS_VZAqddX7&index=53))
+
+		- 002: Midudev 1.35.49: ([Aprende Astro 3 desde cero: Curso para principiantes + aplicacion con Astro](https://www.youtube.com/watch?v=RB5tR_nqUEw&t=2223s))
+
+	- Tipar de manera automática
+		- 002: Midudev 1.35.49
+			- Quick type
+				- https://quicktype.io/
+
+					- Open Quick Type
+					- Convertir el javascript a json
+						- Invocar con un fetch
+							- const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+							  method: "POST",
+							  headers: {
+							    "Content-Type": "application/json",
+							  },
+							  body: JSON.stringify({
+							    query: {},
+								options: {
+								  sort: {
+								    date_unix: "asc",
+								  },
+								  limit: 12,
+								},
+							  }),
+							})
+							- const data = JSON.stringify(await res.json)
+							- console.log(data)
+					- Se copia el data y se lo pega.
+					- Quitamos las comillas.
+					- hacemos el cambio
+					- ponemos: "ApiSpaceXResponse" y botón JSON
+
+	- Trabajar con tipos
+		- 002: Midudev 1.35.49
+			- Crear archivo types.d.ts
+			- export type Doc = {
+				a: string;
+				b: string;
+			  }
+			- import {type Doc} from "../types/types.d.ts"
+			- const data = await res.json() as Doc
+
+    - ts-node / Nodemon
+
+        - It is the same: "ts": "ts-node-esm" and "ts": "ts-node --esm"
+        - To call "ts-node-esm" generates a error, solve it with
+
+          - "tsOKa": "node --inspect --experimental-loader ts-node/esm",
+
+            - [solve experimental-loader](https://github.com/TypeStrong/ts-node/issues/2100#issuecomment-2039564225)
+
+              - Create a ./apps/backend/ts-node.register.mjs file
+
+                ```javascript
+                import { pathToFileURL } from 'node:url';
+                import { register } from 'node:module';
+                register('ts-node/esm', pathToFileURL('./'));
+                ```
+
+              - Update ./apps/backend/nodemon.json file
+
+                ```json
+                {
+                  "verbose": true,
+                  "execMap": {
+                    "ts": "node --trace-deprecation --import ./ts-node.register.mjs"
+                  }
+                }
+                ```
+
+              - Warning message
+                - (node:22724) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+                  - [NodeJS Warning: DeprecationWarning: fs.Stats constructor is deprecated](https://stackoverflow.com/questions/78591135/nodejs-warning-deprecationwarning-fs-stats-constructor-is-deprecated#answer-78591144)
+
+	- Node
+		- 001: Midudev 00.33
+			- Dependencias
+				- typescript -D -E
+				- express -E
+				- @types/express -D -E (Es de la librería DefinitelyTyped)
+				- ts-node-dev -D -E (en lular de nodemon) 15:35
+
+
+			- Inicializar proyecto.
+				- npm run tsc -- --init
+
+			- tsconfig.json
+				- "target": "es2015"
+				- "module": "commonjs"
+				- "outDir": "./build"
+				- "strict": true
+				- "noUnusedLocals": true
+				- "noUnusedParameters": true
+				- "noImplicitReturns": true
+				- "noFallthroughCasesInSwithc": true
+				- "esModuleInterop": true
+				- "skipLibCheck": true
+				- "forceConsistentCasingInFileNames": true
+
+				- "resolveJsonModule": true  (23.00)
+
+			- Parámetros opcionales
+				- _
+				- _req
+
+		- Extender interfases y typos.
+			- 001: Midudev 27.50
+				- interfases
+					- interface xxxx extends yyyy {}
+
+				- types
+					- type xxxx = yyyy & {}
+
+		- Orden en que invoca a los archivos
+			- 001: Midudev 35.33
+				- ".tsx", ".ts", ".node", ".js", ".json"
+
+		- Agregar linter (D:\dev\HTML_CS_JS\012_EslintPrettier\conf_eslint_prettier)
+			- 001: Midudev 37.00
+				- npm install ts-standard -D -E
+				- en package.json
+					- "eslintConfig": {
+						"parseOptions": {
+							"project": "./tsconfig.json"
+						}
+						"extends": ["./node_modules/ts-standard/eslintrc.json"]
+					  }
+
+		- Considerar o omitir elementos interfaz
+			- 001: Midudev 44.33
+				- export type nombreTipo = Pick<nombreInterfaz, 'id' | 'par2' | 'par3'>
+				- export type nombreTipo = Omit<nombreInterfaz, 'par4'>
+
+		- TypeScript NO FILTRA DATOS EN TIEMPO EJECUCIÓN.
+			- 001: Midudev 47.00
+				- Debemos hacer un map x q aún cuando tengamos definidos los datos esto no se filtra en tiempo de ejecución.
+					return diaries.map(({id, date, weather}) => { return {id, date})
+
+		- Tratamiento de "undefined"
+			- 001: Midudev 49.09
+				- res.send(diary?.weather)
+				- return (diary != null) ? res.send(diary) : res.sendStatus(404)
+
+		- Transformar "string" a "number"
+			- +NombreVariable
+			- Number(NombreVariable)
+
+		- Validaciones
+			- 001: Midudev 1.14.00
+				- es un string es un string
+					- if (typeof variable === 'string' || variable instanceof String)
+				- es una fecha
+					- Boolean(Date.parse(date)) (esto va en funcion isDate)
+
+					- if(!isString(variable) || !isDate(variable))
+
+				- es un conjunto opciones
+					- Fun isWeather (1.20.00)
+						- Se usará tipo de dato de TypeScript "enum"
+							- export enum Weather {
+								Sunny = 'sunny',
+								Rainy = 'rainy',
+								Cloudy = 'cloudy',
+								Windy = 'windy',
+								Stormy = 'stormy'
+							}
+
+						- const isWeather = (param : any) : boolean => {
+							return Object.values(Weather).includes(param)
+						}
+
+
+					- if(!isString(variable) || !isWeather(variable))
+
+			- Alternativa express-validator.
+
+- typescript commonjs and esm
+    - Building TypeScript libraries to ESM and CommonJS
+        - https://thesametech.com/how-to-build-typescript-project/
+
+    - https://github.com/tsconfig/bases
+        - Indica los paquetes para cada caso.
+
+    - https://www.youtube.com/watch?v=I3DrifH-rJE
+        - https://github.com/covalence-io/express-template-esm
+

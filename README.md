@@ -17,7 +17,8 @@
 -   T_Linters.txt
 -   T_Node_ESM_CJS.txt
 -   T_Node_env-vars.txt
--   T_TypeScript_ESM_CJS.txt
 -   T_Releases_Versioning.md
+-   T_TypeScript_ESM_CJS.txt
+-   T_TypeScript.txt
 
 [⏪(Back to top)](#table-of-contents)
