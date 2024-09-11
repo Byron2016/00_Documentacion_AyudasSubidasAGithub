@@ -12,14 +12,15 @@
 
 # Table of contents
 
--   .editorconfig
--   T_Debug.txt
--   T_Fuentes_001.md
--   T_Linters.txt
--   T_Node_ESM_CJS.txt
--   T_Node_env-vars.txt
--   T_Releases_Versioning.md
--   T_TypeScript_ESM_CJS.txt
--   T_TypeScript.txt
+- .editorconfig
+- T_Debug.txt
+- T_EditorConfig.md
+- T_Fuentes_001.md
+- T_Linters.txt
+- T_Node_ESM_CJS.txt
+- T_Node_env-vars.txt
+- T_Releases_Versioning.md
+- T_TypeScript_ESM_CJS.txt
+- T_TypeScript.txt
 
 [⏪(Back to top)](#table-of-contents)
