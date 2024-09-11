@@ -22,5 +22,6 @@
 - T_Releases_Versioning.md
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
+- T_VSC_Config.md
 
 [⏪(Back to top)](#table-of-contents)
