@@ -13,6 +13,7 @@
 # Table of contents
 
 - .editorconfig
+- T_Authentication.txt
 - T_Debug.txt
 - T_EditorConfig.md
 - T_Fuentes_001.md
@@ -23,5 +24,8 @@
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_VSC_Config.md
+
+- Diferentes
+  - T_Ortografia.md
 
 [⏪(Back to top)](#table-of-contents)

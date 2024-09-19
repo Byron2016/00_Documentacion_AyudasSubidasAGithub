@@ -1,0 +1,104 @@
+- Acentuación
+
+  - Vocales (Susi Profe: https://www.youtube.com/watch?v=mvmYv3iYsq4)
+    - Abiertas
+      - a e o
+    - Cerradas
+      - i u
+  - Diptongos, Triptongos y Hiatos (Susi Profe: https://www.youtube.com/watch?v=mvmYv3iYsq4)
+    - Diptongo: Se pronuncian en un solo golpe de voz
+      - abierta + cerrada: aula (au-la) rey / ahijado
+      - cerrada + abierta: cielo (cie-lo)
+      - cerrada + cerrada: ciudad (ciu-dad)
+    - Triptongo:
+      - cerrada + abierta + cerrada: apreciáis / confiéis (a-pre-ciáis / con-fiés)
+      - OJO: buey (es triptongo)
+    - Hiato: Se pronuncian en diferentes sílabas.
+      - abierta + abierta: caer (ca-er) león
+      - cerrada tildada + abierta: río (rí-o)
+      - abierta + cerrada tildada: país (pa-ís) a-hín-co / pro-hí-be
+      - OJO:
+        - Tilde en vocal abierta NO rompe diptongo. canción (can-ción) Miércoles,
+  - Acentuación Diptongos y Hiatos
+    - Diptongo
+      - Hacer caso a las reglas básicas de acentuación.
+      - Caso 1:
+        - Está formada por abierta + cerrada o viceversa
+        - SIEMPRE LLEVARÁ LA ABIERTA si la regla acentuación lo solicita.
+      - Caso 2:
+        - Está formada por cerrada + cerrada o viceversa
+        - SIEMPRE LLEVARÁ LA SEGUNDA CERRADA, si la regla acentuación lo solicita. Si la palabra no necesita acento según las reglas pues no la pondremos.
+    - Hiatos
+      - Hacer caso a las reglas de acentuación SOLO EN ALGUNOS CASOS.
+      - Caso 1:
+        - Vocales iguales (créeme), acento en la primera de las vocales. (En este caso es esdrújula, siempre se acentúa)
+        - Vocales Abiertas (héroe / aéreo a-e-re-o), esdrújula.
+        - abierta + cerrada tildada / cerrada tildada + abierta:
+          - reír
+            - Si siguiéramos reglas de acentuación no le pondríamos x q es aguda terminada en r. Pero este es una excepción en que no nos fijamos reglas acentuación y ponemos acento según pronunciación.
+          - actúe:
+            - Grave, terminada en vocal no se acentúa, pero como es un hiato hay que acentuarlo.
+          - Rehúyo
+            - Grave, terminada en vocal no debería acentuarse pero x el hiato lo debemos hacer.
+    - Triptongos (https://www.youtube.com/watch?v=_F4aUQek-a4&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=6)
+      - Débil + fuerte + débil
+      - Siempre llevará en la fuerte.
+      - Casi todas son agudas.
+      - Seguir reglas básicas de acentuación.
+        - Excepciones
+          - Paraguay
+  - Agudas - Gravés - Esdrújulas
+    - Agudas (unProfesor: https://www.youtube.com/watch?v=9O5KcjToaQo&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf)
+      - Termina en vocal, n o s
+      - Excepciones:
+        - Monosílabas (salvo para diferenciar de otra): son
+        - terminada en n o s precedidas por consonante: robots
+        - terminadas en y: hoy / rey
+    - Graves (unProfesor: https://www.youtube.com/watch?v=cF72NPmGots&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=2)
+      - Contrario de las agudas
+      - NO termina en vocal, n o s
+        - OJO: para s hay excepcion mirar más abajo.
+      - Si terminan en consonante que NO sea n o s
+        - cárcel / lápiz / ángel /
+      - Excepción
+        - Terminan en S pero antes hay otra consonante SI se acentúan.
+          - bíceps /
+    - Esdrújulas (unProfesor: https://www.youtube.com/watch?v=FnN-ZNhn79U&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=3)
+      - Todas se acentúan
+    - Sobreesdrújulas (https://www.youtube.com/watch?v=B89T7Ti9nqM&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=4)
+      - Siempre
+      - Excepción
+        - Advervios terminados en MENTE formados por un ADJETIVO NO ACENTUADO.
+          - elejante + mente: elejantemente.
+          - abierta + mente: abiertamente
+
+- Porqué - Por qué - Porque - Por que (Susi Profe: https://www.youtube.com/watch?v=M73CFFUQNwQ)
+
+  - Se las conoce como palabras homófonas
+
+  - ¿¡Por qué!?
+
+    - Preguntas o exclamasiones directas o indirectas
+      - ¿Por qué vas tan rápido?
+      - Dime por qué lo hiciste (pregunta indirecta)
+
+  - Porque
+
+    - Causa o fin
+      - Llegué tarde porque había atasco
+      - Hice lo que pude porque no se rompiera.
+    - Se puede sustituír por "ya que" / "puesto que" / "para que"
+
+  - Porqué
+
+    - Es un sustantivo, se lo puede sustituír por "el MOTIVO".
+      - Necesitaba saber el porqué de su castigo
+    - Va precesido por un artículo / un determinante; en el ejemplo anterior "el"
+    - Se lo puede poner en plural
+      - Necesitaba saber los porqués de su castigo
+
+  - Por que
+    - Normalmente aparece entre "por" y "que" "el/la"
+      - Esta es la razón por que no te contesté.
+      - Luchó por que reconocieran sus derechos
+    - Por es una prepocisión y el "que" un pronombre relativo / conjunción.
