@@ -1,3 +1,73 @@
+- Pasar variables
+  - nodejs
+    - https://nodejs.org/docs/latest/api/process.html#process_process_argv
+      - index.js
+        ```javascript
+          import { argv } from 'node:process';
+          console.log({ myVar: process.env.npm_config_myVar });
+          argv.forEach((val, index) => {
+            console.log(`${index}: ${val}`);
+          });
+            console.log({ myVar: process.env.npm_config_myVar });
+            process.argv.forEach(function (val, index, array) {
+              console.log(index + ": " + val);
+            });
+        ```
+      - Ejecutar
+        - node src/index_pr_01.js one --myVar=hola
+          - Salida:
+            - { myVar: undefined }
+              0: C:\Users\bgva\AppData\Local\fnm_multishells\13156_1727005395840\node.exe
+              1: C:\Users\bgva\Downloads\borrar\borrar_08\a_crear\src\index_pr_01.js
+              2: one
+              3: --myVar=hola
+
+  - npm
+    - index.js
+      - Misma que en nodejs index.js
+    - Ejecutar
+      - npm run dev:pr_01 one --myVar=hola / npm --myVar=hola run dev:pr_01 one
+        - Salida:
+          - { myVar: 'hola' }
+            0: C:\Users\bgva\AppData\Local\fnm_multishells\13156_1727005395840\node.exe
+            1: C:\Users\bgva\Downloads\borrar\borrar_08\a_crear\src\index_pr_01.js
+            2: one
+
+    - Deducción:
+      - Se accesa con "process.env.npm_config_<Nombre>" Ejem: process.env.npm_config_myVar
+        - https://docs.npmjs.com/cli/v9/using-npm/config#environment-variables
+
+  - pnpm
+    -  https://pnpm.io/es/pnpm-cli#diferencias-con-npm
+      - npm_config_myVar=hola pnpm run dev:pr_01 one
+        - OJO: Se debe definir explícitamente "npm_config_myVar=hola"
+
+      - index.js
+        - Misma que en nodejs index.js
+      - Ejecutar
+        - pnpm run dev:pr_01 one --myVar=hola
+          - Salida:
+            - { myVar: undefined }
+              0: C:\Users\bgva\AppData\Local\fnm_multishells\13156_1727005395840\node.exe
+              1: C:\Users\bgva\Downloads\borrar\borrar_08\a_crear\src\index_pr_01.js
+              2: one
+              3: --myVar=hola
+
+        - npm_config_myVar=hola pnpm run dev:pr_01 one
+          - Salida:
+            - { myVar: 'hola' }
+              0: C:\Users\bgva\AppData\Local\fnm_multishells\13156_1727005395840\node.exe
+              1: C:\Users\bgva\Downloads\borrar\borrar_08\a_crear\src\index_pr_01.js
+              2: one
+
+        - pnpm run dev:pr_01 one npm_config_myVar=hola
+          - Salida:
+            - { myVar: undefined }
+              0: C:\Users\bgva\AppData\Local\fnm_multishells\13156_1727005395840\node.exe
+              1: C:\Users\bgva\Downloads\borrar\borrar_08\a_crear\src\index_pr_01.js
+              2: one
+              3: npm_config_myVar=hola
+
 - JavaScript package managers compared: npm, Yarn, or pnpm?
 	- https://blog.logrocket.com/javascript-package-managers-compared/
 - npx
