@@ -49,37 +49,68 @@
 								node index.js
 
 					- Para importar un JSON:
-						- Preparación
-							- En "package.json"
-								- "main": "index.js"
-								- "type": "module"
+            - ALTERNATIVA 1
+						  - Preparación
+						  	- En "package.json"
+						  		- "main": "index.js"
+						  		- "type": "module"
 
-							- Crear archivo "users.json"
-								```json
-									[
-										{
-											"name":"pepito",
-											"edad": 30
-										},
-										{
-											"name":"juanito",
-											"edad": 30
-										}
-									]
-								```
+						  	- Crear archivo "users.json"
+						  		```json
+						  			[
+						  				{
+						  					"name":"pepito",
+						  					"edad": 30
+						  				},
+						  				{
+						  					"name":"juanito",
+						  					"edad": 30
+						  				}
+						  			]
+						  		```
 
-							- Crear archivo "index.js"
-								- Importar "user.json"
-								```javascript
-									import {createRequire} from "node:module"
-									const require = createRequire(import.meta.url);
+						  	- Crear archivo "index.js"
+						  		- Importar "user.json"
+						  		```javascript
+						  			import {createRequire} from "node:module"
+						  			const require = createRequire(import.meta.url);
 
-									const users = require("./users.json");
-									console.log(users);
-								```
+						  			const users = require("./users.json");
+						  			console.log(users);
+						  		```
 
-							- Provar
-								node index.js
+						  	- Provar
+						  		node index.js
+
+            - ALTERNATIVA 2 (midulive (19.45): https://www.youtube.com/watch?v=ev3Yxva4wI4&list=PLUofhDIg_38qm2oPOV-IRTTEKyrVBBaU7&index=4)
+						  - Preparación
+						  	- En "package.json"
+						  		- "main": "index.js"
+						  		- "type": "module"
+
+						  	- Crear archivo "users.json"
+						  		```json
+						  			[
+						  				{
+						  					"name":"pepito",
+						  					"edad": 30
+						  				},
+						  				{
+						  					"name":"juanito",
+						  					"edad": 30
+						  				}
+						  			]
+						  		```
+
+						  	- Crear archivo "index.js"
+						  		- Importar "user.json"
+						  		```javascript
+                    import users from "./users.json" assert { type: "json" }
+						  			console.log(users);
+						  		```
+
+						  	- Provar
+						  		node index.js
 
 			- CJS
 				- Operar con ESM en Commonjs
