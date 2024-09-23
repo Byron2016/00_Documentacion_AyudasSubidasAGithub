@@ -82,7 +82,10 @@
 						  	- Provar
 						  		node index.js
 
-            - ALTERNATIVA 2 (midulive (19.45): https://www.youtube.com/watch?v=ev3Yxva4wI4&list=PLUofhDIg_38qm2oPOV-IRTTEKyrVBBaU7&index=4)
+            - (DEPRECADO) ALTERNATIVA 2 (midulive (19.45): https://www.youtube.com/watch?v=ev3Yxva4wI4&list=PLUofhDIg_38qm2oPOV-IRTTEKyrVBBaU7&index=4)
+              - En browser compatibility indica que está DEPRECADO.
+                - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+
 						  - Preparación
 						  	- En "package.json"
 						  		- "main": "index.js"
@@ -105,13 +108,50 @@
 						  	- Crear archivo "index.js"
 						  		- Importar "user.json"
 						  		```javascript
-                    import users from "./users.json" assert { type: "json" }
+                    import users from "./users.json" assert { type: "json" } //DEPRECADO
+                    import users from "./users.json" with { type: "json" } //Status: Stage 3 https://github.com/tc39/proposal-import-attributes
+
 						  			console.log(users);
 						  		```
+                  - Nota:
+                    - Al 20240923 ES EXPRIMENTAL.
+                      - https://v8.dev/features/import-assertions
+                      -
 
 						  	- Provar
 						  		node index.js
 
+            - ALTERNATIVA 3
+              - midulive (21.50): https://www.youtube.com/watch?v=ev3Yxva4wI4&list=PLUofhDIg_38qm2oPOV-IRTTEKyrVBBaU7&index=4
+
+                - Forma 1
+						  		```javascript
+                    import fs from "node:fs"
+                    const users = JSON.parse(fs.readFileSync("./users.json", "utf-8"))
+
+						  			console.log(users);
+						  		```
+                - Forma 2 (Ya explicado anteriormente)
+						  		```javascript
+						  			import {createRequire} from "node:module"
+						  			const require = createRequire(import.meta.url);
+
+						  			const users = require("./users.json");
+						  			console.log(users);
+						  			console.log(users);
+						  		```
+                  - Crear un utils.js para invocarlo.
+						  		  ```javascript
+                      import { createRequire } from 'node:module'
+                      const require = createRequire(import.meta.url)
+
+                      export const readJSON = (path) => require(path)
+						  		  ```
+
+						  		  ```javascript
+                      import { readJSON } from './utils.js'
+                      const users = readJSON("./users.json")
+						  		  ```
 			- CJS
 				- Operar con ESM en Commonjs
 					- Notas
