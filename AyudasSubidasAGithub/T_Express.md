@@ -33,3 +33,47 @@
   - [Flatz](https://www.youtube.com/watch?v=qJ5R9WTW0_E)
     - En minuto 1.58.00
     - En minuto 3.22.45
+
+- Seguridad
+
+  - Express desabilitar header
+    - Cuando se usa <code>app.use(cors())</code> este agrega de manera automática un header 'x-powered-by' por lo que por seguridad para no informar que usamos express hay que dabilitarlo con <code>app.disable('x-powered-by')</code>
+
+- cors
+
+  - https://github.com/midudev/curso-node-js/blob/main/clase-4/middlewares/cors.js
+
+    - Crear un archivo **middlewares/cors.js**
+
+      ```javascript
+      import cors from "cors";
+      const ACCEPTED_ORIGINS = [
+        "http://localhost:8080",
+        "http://localhost:1234",
+        "https://movies.com",
+        "https://midu.dev",
+      ];
+      export const corsMiddleware = ({
+        acceptedOrigins = ACCEPTED_ORIGINS,
+      } = {}) =>
+        cors({
+          origin: (origin, callback) => {
+            if (acceptedOrigins.includes(origin)) {
+              return callback(null, true);
+            }
+            if (!origin) {
+              return callback(null, true);
+            }
+            return callback(new Error("Not allowed by     CORS"));
+          },
+        });
+      ```
+
+    - Agregar **middlewares/cors.js** en **index.js**
+
+      ```javascript
+      import { corsMiddleware } from "./middlewares/cors.js";
+
+      app.use(corsMiddleware())``;
+      app.disable("x-powered-by"); // deshabilitar el header X-Powered-By: Express
+      ```
