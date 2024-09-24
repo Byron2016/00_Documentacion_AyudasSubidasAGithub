@@ -77,3 +77,9 @@
       app.use(corsMiddleware())``;
       app.disable("x-powered-by"); // deshabilitar el header X-Powered-By: Express
       ```
+
+  - csurf (cors) **deprecado**
+    - (A_TODO) Alternativa y recomendación de usar **Bearer**
+      - [Secure alternative to csurf npm package](https://security.stackexchange.com/questions/271190/secure-alternative-to-csurf-npm-package#answers-header)
+    - (A_TODO) tried to implement manually with two simple examples by using Synchronizer Token Pattern and Double Submit Cookie techniques.
+      - [CSRF Prevention on Node.js Express without csurf](https://medium.com/@brakdemir/csrf-prevention-on-node-js-express-without-csurf-da5d9e6272ad)
