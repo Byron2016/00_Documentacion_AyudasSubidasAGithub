@@ -14,6 +14,7 @@
 
 - .editorconfig
 - T_Authentication.txt
+- T_CSS_Tips.md
 - T_Debug.txt
 - T_EditorConfig.md
 - T_Express.md
