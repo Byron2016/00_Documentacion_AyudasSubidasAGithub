@@ -1,0 +1,16 @@
+- Habilitar aplicaciones Oauth
+  - Twitch
+    - ir a https://dev.twitch.tv
+    - Requisito:
+      - user must have **two factor auth** enabled to perform this action (ver archivo T_Two_Factors_Auth.md)
+    - Presionar botón "Your Console" junto a la foto.
+    - Presionar botón "Registra tu aplicación"
+      - Nombre: La_Velada
+      - URL de redireccionamiento de OAuth: http://localhost:4321/api/auth/callback/twitch
+        http://localhost:4321/api/auth/callback/twitch
+      - Categoria: Webside integration
+      - Tipo de cliente: confidencial
+      - Presionar el botón "Administrar"
+        - Id de cliente: <xxxx>
+      - Presionar "Nuevo secreto"
+        - <xxxx>
