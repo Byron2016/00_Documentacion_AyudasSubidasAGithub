@@ -13,6 +13,7 @@
 # Table of contents
 
 - .editorconfig
+- T_Astro_Auth.md
 - T_Authentication.txt
 - T_CSS_Tips.md
 - T_Debug.txt
