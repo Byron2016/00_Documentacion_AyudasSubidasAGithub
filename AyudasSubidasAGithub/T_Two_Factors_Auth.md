@@ -1,0 +1,13 @@
+- Autentificación en dos pasos (two factors auth)
+  - Twitch
+    - Two factor auth enable
+      - Ir a https://dev.twitch.tv
+      - En la foto botón derecho, "Ajustes de la cuenta"
+      - Iniciar sessión
+      - Poner el código enviado al email
+      - Ir a "Seguridad y privacidad"
+        - Autenticación de dos pasos presionar "Configurar autenticación de dos pasos"
+        - Presionar "Habilitar autenticación de dos pasos"
+        - Poner el num celular
+        - Validar el # enviado al celu
+        - Escanear el QR con un autentificador (authenticator)
