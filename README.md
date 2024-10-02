@@ -27,6 +27,7 @@
 - T_NPM_001.txt
 - T_ReactCurso_001.md
 - T_Releases_Versioning.md
+- T_SEO.md
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_VSC_Config.md

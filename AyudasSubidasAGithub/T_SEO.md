@@ -1,0 +1,76 @@
+- SEO
+
+  - [seo-starter-guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?visit_id=638634661386443776-976413996&rd=1&hl=es)
+  - [Directrices básicas de la Búsqueda de Google](https://developers.google.com/search/docs/essentials?hl=es)
+
+    - [Requisitos técnicos](https://developers.google.com/search/docs/essentials/technical?hl=es)
+
+      - El robot de Google no está bloqueado.
+        - Que no requiera inicio de sesión para verla.
+        - Ayuda de **Search Console**
+          - "Indexación de páginas" y el informe
+          - "Estadísticas de rastreo"
+        - Testear
+          - [herramienta de inspección de URLs](https://support.google.com/webmasters/answer/9012289?hl=es)
+      - La página funciona; es decir, Google recibe un código de estado HTTP 200 (success).
+        - Testear
+          - [herramienta de inspección de URLs](https://support.google.com/webmasters/answer/9012289?hl=es)
+      - La página tiene contenido indexable. Contenido indexable significa que cumple estos requisitos:
+        - El contenido textual está en un [tipo de archivo](https://developers.google.com/search/docs/crawling-indexing/indexable-file-types?hl=es) compatible con la Búsqueda de Google.
+          - Buscar por tipo de archivo
+            - filetype:rtf galway buscará archivos RTF y URLs que terminen en .rtf cuyo contenido incluya el término "galway"
+        - El contenido no infringe nuestras [políticas de spam](https://developers.google.com/search/docs/essentials/spam-policies?hl=es).
+          - Cloaking / Encubrimiento
+            - Anuncia una cosa pero muestra otra al usuario.
+            - Insertar texto o palabras claves solo cuando el user-agent es un buscador.
+          - Doorway abuse / páginas puerta
+            - Dirigen al usuario a páginas intermedias agenas al interés inicial del usuario.
+              - Tener varios sitios web con ligeras variaciones en la URL y en la página principal para maximizar la cobertura de cualquier consulta concreta
+              - Tener varias páginas o nombres de dominio orientados a regiones o ciudades específicas que canalizan usuarios a una página
+              - Páginas generadas para canalizar visitantes a la parte realmente útil o relevante del sitio
+              - Páginas considerablemente similares que obedecen más a resultados de búsqueda que a una jerarquía claramente definida en la que se pueda buscar
+            - Expired domain abuse / Abuso de domineo caducado.
+            - Hacked content / Contenido pirateado
+              - Inyección de código / Code injection
+              - Inyección de páginas / Page injection
+              - Inyección de contenido / Content injection
+              - Redirecciones / Redirects
+            - Texto y enlaces ocultos
+              - Hay muchos elementos de diseño web que muestran y ocultan contenido de forma dinámica para mejorar la experiencia de usuario. Estos elementos no infringen las políticas
+            - Exceso de palabras clave / Keyword stuffing
+            - Spam de enlaces
+              - Hay que colocarlos con:
+                - un valor de atributo rel="nofollow" o rel="sponsored" en la etiqueta <a>
+            - Tráfico generado automáticamente
+            - Malware y comportamientos maliciosos / Malware and malicious practices
+            - Funciones engañosas / Misleading functionality
+            - Abuso de contenido a gran escala / Scaled content abuse
+            - Contenido copiado
+            - Redirecciones engañosas
+              - Estos son algunos ejemplos de redirecciones legítimas
+                - Trasladar tu sitio a otra dirección
+                - Combinar varias páginas en una
+                - Redirigir a los usuarios a una página interna cuando inician sesión
+            - Abuso de reputación del sitio
+            - Páginas de enlaces afiliados sin valor
+            - Spam generado por usuarios
+            - Otros comportamientos que pueden provocar una disminución de las posiciones o una retirada
+              - Retiradas de contenido por motivos legales
+              - Retiradas de información personal
+              - Elusión de políticas
+                - Crear o usar varios sitios con la intención de seguir infringiendo nuestras políticas
+                - Usar otros métodos para seguir distribuyendo contenido o participando en un comportamiento que infrinja nuestras políticas
+              - Estafa y fraude
+              -
+
+    - Políticas de spam
+    - Prácticas recomendadas clave
+
+    - Términos
+      - crawlers / rastreadores
+
+  - [Cómo funciona la búsqueda de google](https://developers.google.com/search/docs/fundamentals/how-search-works?hl=es)
+    - Tiene 3 etapas
+      - Rastreo / crawling
+      - Indexación
+      - Publicación de resultados de búsqueda.
