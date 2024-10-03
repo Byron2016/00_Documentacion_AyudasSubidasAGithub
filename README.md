@@ -21,7 +21,7 @@
 - T_Enable_Application_Outh.md
 - T_Express.md
 - T_Fuentes_001.md
-- T_Linters.txt
+- T_Linters.md
 - T_Node_env-vars.txt
 - T_Node_ESM_CJS.md
 - T_NPM_001.txt
