@@ -246,7 +246,22 @@
 
       - https://github.com/eslint/eslint#user-content-semantic-versioning-policy
 
-    - Instalar - Ejecutar según el empaquetador que usemos: -
+    - [Introducing ESLint Config Inspector](https://eslint.org/blog/2024/04/eslint-config-inspector/#:~:text=Visit%20http%3A%2F%2Flocalhost%3A7777,that%20are%20enabled%20or%20disabled.)
+
+      - [Enterder](https://eslint.org/docs/latest/use/command-line-interface#--inspect-config)
+
+        - Flat Config Mode Only. This option runs npx @eslint/config-inspector@latest to start the config inspector. You can use the config inspector to better understand what your configuration is doing and which files it applies to. When you use this flag, the CLI does not perform linting.
+
+      - Ejecutarlo
+
+        - eslint --inspect-config
+        - npx @eslint/config-inspector
+
+      - Usarlo
+        - Una vez esté ejecutado visitar [inspector](http://localhost:7777/)
+        - Nota: cuando se ejecuta el comando de ejecutarlo, el browser se abre solo.
+
+    - Instalar - Ejecutar según el empaquetador que usemos:
 
       - Ejecutar **@eslint/config@latest**
 
