@@ -1,5 +1,56 @@
 - D:\dev_20220602\00_Documentacion\T_Node_001.txt
 
+- Versiones
+
+  - [Node 22.10](https://nodejs.org/en/blog/release/v22.10.0)
+
+    - .env
+      - ya no se requiere dotenv.
+      - crear un .env
+        ```javascript
+        API_PORT = 3000;
+        ```
+      - index.js
+        ```javascript
+        process.loadEnvFile();
+        console.log(process.env.API_PORT);
+        ```
+    - Watch
+      - ya no se requiere instalar nodemon
+        ```bash
+        node --watch index.js
+        ```
+    - Ejecutar scripts
+
+      - ya no es necesario <code>npm run lint</code>
+      - Con esto ya no dependemos del administrador de paquetes.
+
+      - Ahora
+        ```bash
+        node --run lint
+        ```
+
+    - Require en esm
+
+      - Ya se puede hacer require de esm
+        - require(esm)
+
+    - glob
+      - ya no se requiere instalar nodemon
+        ```javascript
+          const {glob} = requiere{"fs"}
+          glob("./node_modules/**/README.md", (err, files) => {
+          // Dentro de node_modules quiero que me devuelvas todos los archivos que se llamen README.md.
+          // Al hacerlo nativo tengo una gran mejora de rendimiento.
+          // reemplazaría a : fast-glob, globby, node-glob, glob
+            console.log(files)
+          })
+        ```
+      - saber si versión de node es vulnerable
+        ```bash
+        npx is-my-node-vulnerable
+        ```
+
 - Node
 
   - Import dinámico
