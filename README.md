@@ -34,6 +34,7 @@
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_VSC_Config.md
+- T_VSC_Plugins.md
 - T_Two_Factors_Auth.md
 
 - Diferentes
