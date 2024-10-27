@@ -1,0 +1,37 @@
+- mailchimp.com
+	- Program: 022_wd_react_lp_000
+	- Form
+		- Logearse
+		- Ir a Audience/Signup forms/Form builder
+		- Copiar el Signup form URL
+			- http://eepurl.com/ina4cg
+		- Abrir inspección y mirar etiqueta form y copiar
+			- FORM action: URL
+				- action="https://gmail.us21.list-manage.com/subscribe/post"
+			- INPUT name="u"
+				- value="18812e3116e61e0bfada76ddb"
+			- INPUT name="id"
+				- value="c575e6810d"
+				
+	- Ejemplo código
+		- https://www.npmjs.com/package/react-mailchimp-subscribe
+		
+		
+	- Confirm Subscription
+		- How to Edit the 'Confirm Subscription' Email in MailChimp
+			- https://www.youtube.com/watch?v=-xP4fAbgrUM
+			
+			- Audience dashboard
+				- Manage Audience
+				
+			- Ir a Audience/Signup forms/Form builder/Settings/Audience name and defaults
+				- En Form Settings seleccionar "Enable double opt-in"
+				- Save
+				
+	Account Security / Application password / Create application password and used it.
+	
+	- Sign in with App Passwords
+		- https://support.google.com/accounts/answer/185833?hl=en
+		
+	- https://www.getmailbird.com/gmail-app-password/
+	- https://www.youtube.com/watch?v=eDELkdvqSz8

@@ -1,0 +1,43 @@
+- Windows Defender
+	- How to test a local website on your phone
+		- https://www.youtube.com/watch?v=uRYHX4EwYYA
+			- ir a firewall de Windows Defender
+			- Configuración avanzada
+			- En ventana Windows Defender Firewall con seguridad avanzada en Equipo Local
+				- Seleccionar en menú de la izquierda Reglas de entrada 
+				- Nueva regla
+				- Puerto
+				- TCP
+				- Puertos locales específicos: 5500
+				- Permitir la conexión
+				- En cuando se aplica esta regla selecionar solo Privado
+				- Dar un nombre y guardar.
+				
+			- ver la ip de la máquina
+			- levantar el sitio con Visual Studio code y live server y ejecutar.
+			- conectarse desde teléfono a la ip del equipo con puerto 5500.
+			
+		
+- Ngrok
+	- Probando Ngrok en Windows para conectar con servicios locales desde Internet
+		- https://www.youtube.com/watch?v=4Ze8mteRSZY
+			- Entrar a ngrok web page y bajar el agente.
+				- En grupo Getting Started
+				- Setup & Installation
+				- Download for windows
+				- Ejecutar el ngrok.exe bajado, se despliega ventana de consola.
+				- Configurar token de autentificación
+					- En la misma página más abajo copiar y ejecutar
+						- ngrok config add-authtoken 5vkQUjQm4TFyGP1C3pq2f_yxUpVk8Bytcab6sz26px
+						NOTA: validar en "Your Authtoken" sea el mismo que se copio, si no reemplazarlo.
+						5vkQUjQm4TFyGP1C3pq2f_yxUpVk8Bytcab6sz26px
+					- Al ejecutar el comando se crea un archivo .yml en
+						- C:\Users\bgva\AppData\Local/ngrok/ngrok.yml
+						
+				- Bajar un servidor web com XAMPP y verificar ejecutando localhost.
+				- Ver desde internet.
+					- ejecutar ngrok http 80
+					- Sidesaparece pantalla de consola, mirar en procesos q se está ejecutando en segundo plano.
+					- Si se va en la página web de ngrok a Tunnels/Agents se podrá ver q se ha creado el tunel con un domineo aleatorio.
+					
+					

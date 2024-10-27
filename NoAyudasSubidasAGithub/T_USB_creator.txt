@@ -1,0 +1,14 @@
+- RUFUS
+
+- BalenaEtcher
+	- Bajarse el programa "https://etcher.balena.io/"
+	
+	- Flash from file
+	- Seleccionar el ISO
+	- Presionar botón "Flash"
+	- 
+	
+	
+- LINUX FROM SCRATCH 
+	- Github 
+		- https://github.com/lfs-book

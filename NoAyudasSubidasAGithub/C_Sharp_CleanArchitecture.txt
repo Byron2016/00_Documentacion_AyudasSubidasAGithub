@@ -1,0 +1,98 @@
+- Clean Architecture
+	- C#, Arquitectura limpia ONION, ASP. NET Core 6, Blazor, Mudblazor, Doxygen, swagger, UnitTest, Mapper, Serilog, MediaTR
+		- Sesión No 1 - Introducción al curso
+			- https://www.youtube.com/watch?v=OOhm4UhcfIo&list=PLzlnI5zLA8VYAvBMlGAyOw1Xs0vo0wilD&index=1
+			
+			- TEMPLATE
+				- https://github.com/jasontaylordev/CleanArchitecture
+				
+				- TUTORIAL
+					- https://jasontaylor.dev/clean-architecture-getting-started/
+					
+		- Curso .NET Core - Onion Architecture : Creando RESTful API
+			- Curso .NET Core RESTful API - 01 - ¿Que es RESTful API?
+				- https://www.youtube.com/watch?v=NbxRLpdbRbE&list=PLOnQtvVd3KITZzHS8Va1UuhNU85qSWNmn&index=1
+				
+				- Pasos
+					- Crear Solución en Blanco: 
+						- dotnet new sln --name BancoCursoRESTFull --output BancoCursoRESTFull
+					- Crear Class library en un solution folder específico.
+					
+						- dotnet new classlib --output BancoCursoRESTFull/Application
+						- dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Core BancoCursoRESTFull/Application
+					
+						- dotnet new classlib --output BancoCursoRESTFull/Domain
+						- dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Core BancoCursoRESTFull/Domain
+					
+						- dotnet new classlib --output BancoCursoRESTFull/Persistence
+						- dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Infrastructure BancoCursoRESTFull/Persistence
+					
+						- dotnet new classlib --output BancoCursoRESTFull/Shared
+						- dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Infrastructure BancoCursoRESTFull/Shared
+					
+						- dotnet new webapi --output BancoCursoRESTFull/WebAPI
+						- dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Presentation BancoCursoRESTFull/WebAPI
+						
+						
+						dotnet new sln --name BancoCursoRESTFull --output BancoCursoRESTFull && dotnet new classlib --output BancoCursoRESTFull/Application && dotnet new classlib --output BancoCursoRESTFull/Domain && dotnet new classlib --output BancoCursoRESTFull/Persistence && dotnet new classlib --output BancoCursoRESTFull/Shared && dotnet new webapi --output BancoCursoRESTFull/WebAPI && dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Core BancoCursoRESTFull/Application BancoCursoRESTFull/Domain && dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Infrastructure BancoCursoRESTFull/Persistence BancoCursoRESTFull/Shared && dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Presentation BancoCursoRESTFull/WebAPI 
+						
+						
+						
+						dotnet run --project BancoCursoRESTFull/WebAPI/WebAPI.csproj
+						
+						ERROR: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+						       Failed to determine the https port for redirect.
+							   
+							   
+						
+						dotnet sln add src/Core/Application
+						
+						dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add BancoCursoRESTFull/src/Core/Application BancoCursoRESTFull/src/Core/Domain BancoCursoRESTFull/src/Infrastructure/Persistence BancoCursoRESTFull/src/Infrastructure/Shared
+						
+						dotnet sln BancoCursoRESTFull add src/Core/Application src/Core/Domain src/Infrastructure/Persistence src/Infrastructure/Shared
+dotnet sln add [-h|--help]
+						
+						
+						
+						
+						-o StringLibrary
+						
+						
+						
+						
+						
+						dotnet new --search "Class library" --author "Microsoft" --language "C#"
+    [--package <PACKAGE>] [--tag <TAG>] [--type <TYPE>]
+    [--columns <COLUMNS>] [--columns-all]
+	
+	dotnet new --search "Class library" --tag "classlib" --language "C#"
+	
+	dotnet new --list  --language "C#" --author "Microsoft" --tag "library" --type "project" --columns-all
+	dotnet new library --search   --language "C#"   --author "Microsoft" --type "project" --columns-all
+	dotnet new --list  --language "C#"   --author Microsoft --type project --columns-all
+	
+	dotnet new [<TEMPLATE_NAME>] --search [--author <AUTHOR>] [-lang|--language {"C#"|"F#"|VB}]
+    [--package <PACKAGE>] [--tag <TAG>] [--type <TYPE>]
+    [--columns <COLUMNS>] [--columns-all]
+	
+	dotnet new class --search --language "C#" --author "Microsoft" --type "project" --columns-all
+	
+dotnet new sln --name BancoCursoRESTFull --output BancoCursoRESTFull;
+dotnet new classlib --output BancoCursoRESTFull/Application; 
+dotnet new classlib --output BancoCursoRESTFull/Domain; 
+dotnet new classlib --output BancoCursoRESTFull/Persistence; 
+dotnet new classlib --output BancoCursoRESTFull/Shared; 
+dotnet new webapi --output BancoCursoRESTFull/WebAPI; 
+dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Core BancoCursoRESTFull/Application BancoCursoRESTFull/Domain; 
+dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Infrastructure BancoCursoRESTFull/Persistence BancoCursoRESTFull/Shared; 
+dotnet sln BancoCursoRESTFull/BancoCursoRESTFull.sln add --solution-folder src/Presentation BancoCursoRESTFull/WebAPI; 
+						
+					
+					
+				
+				
+				- PATRON SPECIFICATION
+					- El Patrón Especificación en .NET bajo proyectos DDD
+						- https://rublenx.wordpress.com/2019/06/07/el-patron-especificacion-en-net-bajo-proyectos-ddd/
+						
+						

@@ -1,0 +1,119 @@
+- Roll Based Authentication	
+	- Authorization in ASP.NET Core
+		- Net5.0
+			- Permission-Based Authorization in ASP.NET Core – Complete User Management Guide in .NET 5
+				- https://codewithmukesh.com/blog/permission-based-authorization-in-aspnet-core/
+				
+					- Role-Based Authorization: [Authorize(Roles = "Administrator,SuperAdmin")]
+					- Permission-Based Authorization in ASP.NET Core: 	
+						- Crear una ASP.NET Core Web App
+							- .NET 5.0
+							- Authentication Type: Individual Accounts
+							- Configure for HTPS
+							- In Package Manager Console run: "Update-Database"
+							
+							
+							Update-Database
+							dotnet ef database update
+							
+	- Tutorial de Identity
+		- https://code-maze.com/asp-net-core-identity-series/
+			- Este es una serie de tutoriales muy bueno.
+			- Tabla de contenido:
+				- Introducing Identity to the ASP.NET Core Project
+					- https://code-maze.com/identity-asp-net-core-project/
+					- Código base
+						- https://github.com/CodeMazeBlog/identity-aspnetcore
+						
+					- Steps
+						- Instalacion de Microsoft.AspNetCore.Identity.EntityFrameworkCore para "ASP.NET Core 3.1 web application project"
+							- Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 6.0.8
+				- User Registration
+					- https://code-maze.com/user-registration-aspnet-core-identity/
+				- Authentication
+				- Password Reset
+				- Email Confirmation
+				- User Lockout
+				- Two-Step Verification
+				- External Identity Provider
+			
+			
+				select * from dbo.AspNetRoles;
+				select * from dbo.AspNetUsers;
+				select * from dbo.AspNetUserRoles;
+				select * from dbo.AspNetRoleClaims;
+				select * from dbo.AspNetUserClaims;
+				select * from dbo.AspNetUserLogins;
+				select * from dbo.AspNetUserTokens;
+				select * from dbo.Employees;
+				
+				delete from dbo.AspNetUsers;
+				Aa123456!
+				
+				superadmin@gmail.com 123Pa$$word!
+				
+				drop Table dbo.AspNetUserTokens;
+				drop Table dbo.AspNetUserRoles;
+				drop Table dbo.AspNetUserLogins;
+				drop Table dbo.AspNetUserClaims;
+				drop Table dbo.AspNetRoleClaims;
+				drop Table dbo.AspNetUsers;
+				drop Table dbo.AspNetRoles;
+				drop Table dbo.__EFMigrationsHistory;
+	
+
+
+- Permission-Based Authorization
+	- DevCreed: Permission Based Authorization In .Net 5 (Core) (# 061_PermisionBasedAuthorization_DevCreed) en Arabe - Arabic
+		- https://www.youtube.com/watch?v=slTben1Djz0&list=PL62tSREI9C-fGaDsCUvu5OaPWrv-mMzy-
+	
+	- OMAR MBEGBU
+		- https://www.youtube.com/watch?v=Fk64W-Q-6PA&list=PLWlWcpwzY4Vke2i3vMD319qdCR3r2sf7A&index=1
+			- ASP.NET Web Application(.NET Framework)
+				- https://github.com/odytrice/Addressbook
+				- Crear aplicación
+					- ASP.NET Web Application(.NET Framework)
+					- Nombre:
+						- Project: Addressbook.Web
+						- Solution: Addressbook
+					- Tipo:
+						- Empty
+						- MVC
+						- Also create a project for unit test con nombre Addressbook.Test
+						
+				- Configurar OWIN middleware
+					- https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
+					- Ir a archivo Global.asax.cs
+					- Ir a Nuget Packages
+						- Install-Package Microsoft.Owin.Host.SystemWeb.es -Version 4.2.0
+		
+		
+
+				
+		- Agregar OWIN StartUP Class
+			- Agregar a raíz del proyecto un nuevo elemento OWIN Startup class con nombre Startup.cs
+			- Hacer que funcione el tag @Styles en _Layout
+				- Tutor: ASP.Net Web Optimization Framework in Web Form
+					- https://www.c-sharpcorner.com/UploadFile/abhijmk/Asp-Net-web-optimization-framework-in-web-form/
+				- Agregar paquete Microsoft.AspNet.Web.Optimization
+				- Install-Package Microsoft.AspNet.Web.Optimization -Version 1.1.3
+				- Instalar los paquetes
+					
+					
+				- Crear carpeta Scripts
+					- Colocar archivos de 
+						- bootstrap (.js, .min.js)
+						- jquery-validate (.validate.js, .validate.min.js, .validate.unobtrusive.js, .validate.unobtrusive.min.js, .validate-vsdoc.js)
+						- jquery (.intellisense.js, .js, .min.js, min.map, .slim.js, slim.min.js, slim.min.map)
+						- modernizr (.js)
+				- Colocar en carpeta Content
+					- bootstrap (.css, .css.map, .min.css, .min.css.map)
+					- bootstrap-theme (.css, .css.map, .min.css, .min.css.map)
+				- Crear archivo: App_Start/BundleConfig.cs
+		
+		
+		
+		
+		
+		
+		

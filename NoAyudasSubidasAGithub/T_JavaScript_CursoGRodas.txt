@@ -1,0 +1,1581 @@
+https://undf.sh/en-diferido
+herramientas
+	- twich: https://undf.sh/en-vivo
+	- Discord: https://undf.sh/discord (https://discord.com/channels/753561944539004949/762640475572011008)
+		- Guia: https://undf.sh/usar-discord
+	- Notion: https://undf.sh/base
+	- https://undf.sh/base
+	- https://undefinedshell.notion.site/Base-de-conocimientos-bee4ebe13aa94006a6ad5e3b9d501720
+	- https://undf.sh/knowledgebase
+	- COMANDOS: https://discord.com/channels/753561944539004949/1081598170926170132
+	
+	- Curso de marca personal de Platzi
+		- http://platzi.com/cursos/marca-personal/
+	- Buscar resumen del libro "Atomic Habits" en YouTube
+	- COMANDOS
+		- https://nightbot.tv/t/guillermorodas/commands
+	
+- Pre-work (https://undefinedshell.notion.site/Pre-work-c5030a50ce2e46959a989d995d50de96)
+	- **Guía de instalación de WSL** (OJO SE INSTALA EN C:\Users\bgva\AppData\Local\Packages)
+		1. Haz clic en el **Menú** **Inicio**, escribe **PowerShell.**
+		2. Haz clic con el botón derecho en **Windows PowerShell.**
+		3. Haz clic en **Ejecutar como administrador.**
+		4. Escribe en la terminal el comando: `wsl --install`
+		5. Reinicia **Windows**.
+		6. Haz click en **Menú Inicio,** y abre **Ubuntu**
+		7. Te pedirá un **nombre de usuario** (username) y **contraseña**.
+			
+			<aside>
+			⚠️ El nombre de usuario y contraseña no tiene que ser necesariamente el mismo de Windows, es un usuario y contraseña nuevo para tu ambiente de Linux.
+			Solo asegúrate de recordar la contraseña, la tendrás que escribir a menudo.
+			
+			</aside>
+			
+			<aside>
+			ℹ️ Cuando copies la contraseña no se va a ver ningún carácter, pero si se está escribiendo.
+			
+			</aside>
+			
+		8. Luego escribe el siguiente comando `uname` y si todo salió bien deberías ver la palabra **Linux.**
+		
+			<aside>
+			ℹ️ La primera vez que inicias una distribución de Linux recién instalada, se abrirá una ventana de la consola y se te pedirá que esperes a que los archivos se descompriman y se almacenen.
+			
+			</aside>
+			
+			<aside>
+			🚨 A partir de acá como ya tienes WSL instalado, todo lo deberías hacer en tu terminal de Ubuntu, es decir que seguirás las mismas instrucciones para Linux.
+			
+			</aside>
+			
+			<aside>
+			🏆 Si instalas **[Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)**, siempre que hablemos de “**Abre Ubuntu**” usa **Windows Terminal** y selecciona **Ubuntu**.
+			
+			</aside>
+
+	- Instalar Git
+		- **🪟 Windows con WSL (Windows 10, 11)**
+				1. Abre la terminal de **Ubuntu.**
+				2. Ejecuta `sudo apt install git-all`
+				3. Asegurate que haya instalado ejecutando `git --version`
+				4. Actualiza tu nombre y correo ejecutando los siguientes comandos:
+				
+				```bash
+				git config --global user.name "Tú nombre"
+				git config --global user.email "tu_correo@ejemplo.com"
+				```
+			
+		- 🖼️ **Windows sin WSL (Windows 7, 8, 9)**
+				1. Ve a la pagina oficial de descarga: [https://git-scm.com/download/win](https://git-scm.com/download/win)
+				2. Haz clic en **Click here to download.**
+				3. Descargará el instalador de Git, abrelo.
+				4. Haz clic en **Inicio** y busca **“Git Bash”**
+					🚨 Siempre que hablemos de abrir la **Terminal**, abrirás **Git Bash.**
+					Esta será tu terminal de trabajo de ahora en adelante.
+					
+				5. Actualiza tu nombre y correo ejecutando los siguientes comandos:
+				
+				```bash
+				git config --global user.name "Tú nombre"
+				git config --global user.email "tu_correo@ejemplo.com"
+				```
+			
+		- 🐧 **Linux**
+				1. Abre la **Terminal**.
+				2. Ejecuta `sudo apt install git-all`
+				3. Asegurate que haya instalado ejecutando `git --version`
+				4. Actualiza tu nombre y correo ejecutando los siguientes comandos:
+				
+				```bash
+				git config --global user.name "Tú nombre"
+				git config --global user.email "tu_correo@ejemplo.com"
+				```
+				
+				ℹ️ En distribuciones RPM-based (RHEL, CentOS) ejecuta: `sudo dnf install git-all`
+
+		- 🍏 **macOS**
+			1. Abre la **Terminal.**
+			2. Ejecuta `git --version`, esto inicializará el proceso de instalación de git.
+			
+			ℹ️ Sí esto no funciona instala **Xcode Command Line Tools** primero:
+			`xcode-select --install`
+
+			
+			3. Actualiza tu nombre y correo ejecutando los siguientes comandos:
+			
+			```bash
+			git config --global user.name "Tú nombre"
+			git config --global user.email "tu_correo@ejemplo.com"
+			```
+			
+			5. Ejecuta `git --version` para verificar que instaló correctamente.
+			
+			💿 **Alternativas (Sólo si los pasos anteriores no sirven o quieres usar Homebrew)**
+			
+			- **Mediante el gestor de paquetes Homebrew**
+				1. Abre la **Terminal.**
+				2. Ejecuta `brew install git`
+				
+				ℹ️ Homebrew es un manejador de paquetes para macOS, cómo el manejador de paquetes de Linux o de Node (NPM); Se recomienda instalar: [https://brew.sh/](https://brew.sh/)
+				
+    
+	3. Crear tus llaves SSH
+		- **🪟 Windows con WSL (Windows 10, 11)**
+				1. Abre la terminal de **Ubuntu**
+				2. Ejecuta `ssh-keygen -t ed25519 -C "tu_email@example.com"` 
+					
+					<aside>
+					🚨 No olvides remplazar `tu_email@example.com` por **tu email.**
+					
+					</aside>
+					
+					<aside>
+					ℹ️ Sí no funciona, usa la version con el algoritmo RSA:
+					`ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"`
+					
+					</aside>
+					
+				3. Presiona la **Enter** 3 veces, para aceptar el path por defecto y una contraseña vacia.
+				4. Copia tu llave publica usando el comando `cat ~/.ssh/id_ed25519.pub`
+					
+					<aside>
+					ℹ️ Si usaste el algoritmo RSA, usa: `cat ~/.ssh/id_rsa.pub`
+					
+					</aside>
+					
+				5. Se debe ver algo así:
+					
+					<aside>
+					👀 `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIntms7wQyewb7XCnRUiomsUW2uXz+7LGKGzLQVUw9xS tu_email@example.com`
+					
+					</aside>
+					
+					<aside>
+					👀 Si usaste el algoritmo RSA,se vería así:
+					`ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvCwNcWI/TBPgS6p8xefmT2wANSNxAJAZAwZO6jOR27BBGzKw7ejicq8G3Yy7N5/scn0qcnq+zQvBHIy5+f+o3uHYZb4onEDKUV4QKEPJ2ob0DDDqWoLO18yQ1wzQ56O4f9ifcI3u9J7Ptw1oCDyL2E83/7MHJxsaY5WG+F/h26VeD+7l1+3H18645cHrpHi82wcmBBS3VyiCUOlBE3bgpvCM1kiwqjIp4HY5vMSLP5f9PU4UJU5KNrSwUVgPYUbsD1ylbo4ad40hlFQZ4o0qEoYMikP3cMz6Daw+9HVtO5aLsR3OGbuqo0Tg3BQgkECaU0lO6D/EQzFdGJYnYlKRh+DU3+Dz9JwN/a2Dadh+CZtMrK69tlah5iqvpWDfG2MgaMErm7yyTyHkBEeZ6a2Ekvhi4pZ041hqycARBoqjoUV941AEUgmDsHkd+gNJGx1A3X9F+Pi1zj+So1H2eAEgrWIsiYG4tkUp8OWMwD3xNwi95NKA6T+gI7HWWpnjCySak56i7nBiuzqSB4AWNdARcnG829FTRQeYW0RBR44/9na3zyB1Zd+8PG1kLMuuwTF8KgxKaJlsHODyWzd6fBJGMrA+gpFGM1KQkFpFjQXi9zY7a0ZhHCv7TGJAP+DjfJwcpV6WXNOa3ZyZEjSb5Yov7m7BK34fv4+luiCzunXdnCw== tu_email@example.com`
+					
+					</aside>
+					
+					La mia fue: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN/tzo4zxOLGyDVfna0vVMfWzghqm4Pd7//fGOnEkqup bgva2005@yahoo.com
+				
+		- 🖼️ **Windows sin WSL (Windows 7, 8, 9)**
+				1. Abre la terminal de **Git Bash.**
+				2. Ejecuta `ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"`
+					
+					<aside>
+					🚨 No olvides remplazar `tu_email@example.com` por **tu email.**
+					
+					</aside>
+					
+				3. Presiona la tecla **Enter** **3 veces** para aceptar el path por defecto y una contraseña vacia.
+				4. Copia tu llave publica usando el comando:
+				`cat /c/Users/<TU_USUARIO>/.ssh/id_rsa.pub`
+					
+					<aside>
+					🚨 No olvides remplazar `<TU_USUARIO>` por **tu usuario de Windows**.
+					
+					</aside>
+					
+				5. Se debe ver algo así:
+					
+					<aside>
+					👀 `ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvCwNcWI/TBPgS6p8xefmT2wANSNxAJAZAwZO6jOR27BBGzKw7ejicq8G3Yy7N5/scn0qcnq+zQvBHIy5+f+o3uHYZb4onEDKUV4QKEPJ2ob0DDDqWoLO18yQ1wzQ56O4f9ifcI3u9J7Ptw1oCDyL2E83/7MHJxsaY5WG+F/h26VeD+7l1+3H18645cHrpHi82wcmBBS3VyiCUOlBE3bgpvCM1kiwqjIp4HY5vMSLP5f9PU4UJU5KNrSwUVgPYUbsD1ylbo4ad40hlFQZ4o0qEoYMikP3cMz6Daw+9HVtO5aLsR3OGbuqo0Tg3BQgkECaU0lO6D/EQzFdGJYnYlKRh+DU3+Dz9JwN/a2Dadh+CZtMrK69tlah5iqvpWDfG2MgaMErm7yyTyHkBEeZ6a2Ekvhi4pZ041hqycARBoqjoUV941AEUgmDsHkd+gNJGx1A3X9F+Pi1zj+So1H2eAEgrWIsiYG4tkUp8OWMwD3xNwi95NKA6T+gI7HWWpnjCySak56i7nBiuzqSB4AWNdARcnG829FTRQeYW0RBR44/9na3zyB1Zd+8PG1kLMuuwTF8KgxKaJlsHODyWzd6fBJGMrA+gpFGM1KQkFpFjQXi9zY7a0ZhHCv7TGJAP+DjfJwcpV6WXNOa3ZyZEjSb5Yov7m7BK34fv4+luiCzunXdnCw== tu_email@example.com`
+					
+					</aside>
+				
+		- 🐧 **Linux**
+				1. Abre la **Terminal**.
+				2. Ejecuta `ssh-keygen -t ed25519 -C "tu_email@example.com"` 
+					
+					<aside>
+					🚨 No olvides remplazar `tu_email@example.com` por **tu email.**
+					
+					</aside>
+					
+					<aside>
+					ℹ️ Sí no funciona, usa la version con el algoritmo RSA:
+					`ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"`
+					
+					</aside>
+					
+				3. Presiona la **Enter** 3 veces, para aceptar el path por defecto y una contraseña vacia.
+				4. Copia tu llave publica usando el comando `cat ~/.ssh/id_ed25519.pub`
+					
+					<aside>
+					ℹ️ Si usaste el algoritmo RSA, usa: `cat ~/.ssh/id_rsa.pub`
+					
+					</aside>
+					
+				5. Se debe ver algo así:
+					
+					<aside>
+					👀 `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIntms7wQyewb7XCnRUiomsUW2uXz+7LGKGzLQVUw9xS tu_email@example.com`
+					
+					</aside>
+					
+					<aside>
+					👀 Si usaste el algoritmo RSA,se vería así:
+					`ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvCwNcWI/TBPgS6p8xefmT2wANSNxAJAZAwZO6jOR27BBGzKw7ejicq8G3Yy7N5/scn0qcnq+zQvBHIy5+f+o3uHYZb4onEDKUV4QKEPJ2ob0DDDqWoLO18yQ1wzQ56O4f9ifcI3u9J7Ptw1oCDyL2E83/7MHJxsaY5WG+F/h26VeD+7l1+3H18645cHrpHi82wcmBBS3VyiCUOlBE3bgpvCM1kiwqjIp4HY5vMSLP5f9PU4UJU5KNrSwUVgPYUbsD1ylbo4ad40hlFQZ4o0qEoYMikP3cMz6Daw+9HVtO5aLsR3OGbuqo0Tg3BQgkECaU0lO6D/EQzFdGJYnYlKRh+DU3+Dz9JwN/a2Dadh+CZtMrK69tlah5iqvpWDfG2MgaMErm7yyTyHkBEeZ6a2Ekvhi4pZ041hqycARBoqjoUV941AEUgmDsHkd+gNJGx1A3X9F+Pi1zj+So1H2eAEgrWIsiYG4tkUp8OWMwD3xNwi95NKA6T+gI7HWWpnjCySak56i7nBiuzqSB4AWNdARcnG829FTRQeYW0RBR44/9na3zyB1Zd+8PG1kLMuuwTF8KgxKaJlsHODyWzd6fBJGMrA+gpFGM1KQkFpFjQXi9zY7a0ZhHCv7TGJAP+DjfJwcpV6WXNOa3ZyZEjSb5Yov7m7BK34fv4+luiCzunXdnCw== tu_email@example.com`
+					
+					</aside>
+				
+		- 🍏 **macOS**
+				1. Abre la **Terminal**.
+				2. Ejecuta `ssh-keygen -t ed25519 -C "tu_email@example.com"` 
+					
+					<aside>
+					🚨 No olvides remplazar `tu_email@example.com` por **tu email.**
+					
+					</aside>
+					
+					<aside>
+					ℹ️ Sí no funciona, usa la version con el algoritmo RSA:
+					`ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"`
+					
+					</aside>
+					
+				3. Presiona la **Enter** 3 veces, para aceptar el path por defecto y una contraseña vacia.
+				4. Copia tu llave publica usando el comando `cat ~/.ssh/id_ed25519.pub`
+					
+					<aside>
+					ℹ️ Si usaste el algoritmo RSA, usa: `cat ~/.ssh/id_rsa.pub`
+					
+					</aside>
+					
+				5. Se debe ver algo así:
+					
+					<aside>
+					👀 `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIntms7wQyewb7XCnRUiomsUW2uXz+7LGKGzLQVUw9xS tu_email@example.com`
+					
+					</aside>
+					
+					<aside>
+					👀 Si usaste el algoritmo RSA,se vería así:
+					`ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvCwNcWI/TBPgS6p8xefmT2wANSNxAJAZAwZO6jOR27BBGzKw7ejicq8G3Yy7N5/scn0qcnq+zQvBHIy5+f+o3uHYZb4onEDKUV4QKEPJ2ob0DDDqWoLO18yQ1wzQ56O4f9ifcI3u9J7Ptw1oCDyL2E83/7MHJxsaY5WG+F/h26VeD+7l1+3H18645cHrpHi82wcmBBS3VyiCUOlBE3bgpvCM1kiwqjIp4HY5vMSLP5f9PU4UJU5KNrSwUVgPYUbsD1ylbo4ad40hlFQZ4o0qEoYMikP3cMz6Daw+9HVtO5aLsR3OGbuqo0Tg3BQgkECaU0lO6D/EQzFdGJYnYlKRh+DU3+Dz9JwN/a2Dadh+CZtMrK69tlah5iqvpWDfG2MgaMErm7yyTyHkBEeZ6a2Ekvhi4pZ041hqycARBoqjoUV941AEUgmDsHkd+gNJGx1A3X9F+Pi1zj+So1H2eAEgrWIsiYG4tkUp8OWMwD3xNwi95NKA6T+gI7HWWpnjCySak56i7nBiuzqSB4AWNdARcnG829FTRQeYW0RBR44/9na3zyB1Zd+8PG1kLMuuwTF8KgxKaJlsHODyWzd6fBJGMrA+gpFGM1KQkFpFjQXi9zY7a0ZhHCv7TGJAP+DjfJwcpV6WXNOa3ZyZEjSb5Yov7m7BK34fv4+luiCzunXdnCw== tu_email@example.com`
+					
+					</aside>
+					
+	4. Crea una cuenta en GitHub
+
+		1. Crea una cuenta en **GitHub** en [https://github.com/signup](https://github.com/signup)
+		2. Te pedirá email, contraseña (2 veces), nombre de usuario y si quieres aceptar el correo informativo, escribe `n` para no.
+		3. Luego haces click en **Start puzzle** para verificar que eres humano, te pedira que seleciones el cuadro que tenga las figuras iguales.
+		4. Finalmente haces clic en **Create account**.
+			- **👀**👇 **Ver imagen de ejemplo**
+				
+				![SCR-20230219-nkh.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8e6a3bcc-a782-4133-ad80-5c9373688fda/SCR-20230219-nkh.png)
+				
+		5. Dentro de **GitHub** te vas a la esquina superior derecha, dónde esta tu foto de perfil haces click allí, y luego en **Settings.**
+			- **👀**👇 **Ver imagen de ejemplo**
+				
+				![SCR-20230219-nep.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f4e0c19-a0cf-43db-9c62-a470ee71e4f3/SCR-20230219-nep.png)
+				
+		6. En **Settings**, en el menu de la izquierda vas a **SSH and GCP Keys** y allí arriba a la derecha en el botón **New SSH Key**.
+		7. Le pones un titulo en **Title**, y en **Key** pegas la llave que [copiaste al final del paso anterior](https://www.notion.so/2-Instalar-Git-2a65a86fc7d648cb83aaeb7ef2743d8c).
+			
+			<aside>
+			🚨 Asegurate que estes copiando y pegando la llave publica, es decir la que termina en **.pub**, la llave privada no la debes compartir con nadie.
+			
+			</aside>
+			
+			- **👀**👇 **Ver imagen de ejemplo**
+				
+				![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc35dc71-14b8-414c-ae7e-f4aea9df5fcc/Untitled.png)
+				
+		8. Finalmente le das en **Add SSH Key.**	
+		
+	4.1 Verificación de que funcionan tus conexión SSH
+- **🪟 Windows con WSL (Windows 10, 11)**
+    1. Abre la terminal de **Ubuntu**
+    2. Crear una carpeta que se llame **Code** (con la “C” mayuscula) con el siguiente comando:
+        
+        `mkdir Code`
+        
+    3. Ingresa a la carpeta con `cd Code`
+    4. Clona el repositorio del Bootcamp con el comando:
+        
+        `git clone git@github.com:glrodasz/undefined-academy.git`
+        
+        <aside>
+        ℹ️ La primera vez que clones un repo desde GitHub verás un mensaje de advertencia sobre su auntenticidad, es completamente normal.
+        
+        </aside>
+        
+        <aside>
+        👀 El mensaje se verá algo así, escribes “**yes**” y **Enter**.
+        
+        ```powershell
+        The authenticity of host 'example.com (198.51.100.0)' can't be established.
+        ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyz.
+        Are you sure you want to continue connecting (yes/no)?
+        ```
+        
+        </aside>
+        
+    5. Entra a la carpeta del repositorio clonado con:
+        
+        `cd undefined-academy`
+        
+    6. Ejecuta el siguiente comando:
+        
+        `cat TEST.md`
+        
+    7. Si ves el mensaje: `Hola mundo 🌎` quiere decir que todo esta OK.
+		- 🖼️ **Windows sin WSL (Windows 7, 8, 9)**
+			1. Abre la terminal de **Git Bash.**
+			2. Crear una carpeta que se llame **Code** (con la “C” mayuscula) con el siguiente comando:
+				
+				`mkdir Code`
+				
+			3. Ingresa a la carpeta con `cd Code`
+			4. Clona el repositorio del Bootcamp con el comando:
+				
+				`git clone [git@github.com](mailto:git@github.com):glrodasz/undefined-academy.git`
+				
+				<aside>
+				ℹ️ La primera vez que clones un repo desde GitHub verás un mensaje de advertencia sobre su auntenticidad, es completamente normal.
+				
+				</aside>
+				
+				<aside>
+				👀 El mensaje se verá algo así, escribes “**yes**” y **Enter**.
+				
+				```powershell
+				The authenticity of host 'example.com (198.51.100.0)' can't be established.
+				ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyz.
+				Are you sure you want to continue connecting (yes/no)?
+				```
+				
+				</aside>
+				
+			5. Entra a la carpeta del repositorio clonado con:
+				
+				`cd undefined-academy`
+				
+			6. Ejecuta el siguiente comando:
+				
+				`cat TEST.md`
+				
+			7. Si ves el mensaje: `Hola mundo 🌎` quiere decir que todo esta OK.
+		- 🐧 **Linux**
+			1. Abre la **Terminal**.
+			2. Crear una carpeta que se llame **Code** (con la “C” mayuscula) con el siguiente comando:
+				
+				`mkdir Code`
+				
+			3. Ingresa a la carpeta con `cd Code`
+			4. Clona el repositorio del Bootcamp con el comando:
+				
+				`git clone [git@github.com](mailto:git@github.com):glrodasz/undefined-academy.git`
+				
+				<aside>
+				ℹ️ La primera vez que clones un repo desde GitHub verás un mensaje de advertencia sobre su auntenticidad, es completamente normal.
+				
+				</aside>
+				
+				<aside>
+				👀 El mensaje se verá algo así, escribes “**yes**” y **Enter**.
+				
+				```bash
+				The authenticity of host 'example.com (198.51.100.0)' can't be established.
+				ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyz.
+				Are you sure you want to continue connecting (yes/no)?
+				```
+				
+				</aside>
+				
+			5. Entra a la carpeta del repositorio clonado con:
+				
+				`cd undefined-academy`
+				
+			6. Ejecuta el siguiente comando:
+				
+				`cat TEST.md`
+				
+			7. Si ves el mensaje: `Hola mundo 🌎` quiere decir que todo esta OK.
+		- 🍏 **macOS**
+			1. Abre la **Terminal**.
+			2. Crear una carpeta que se llame **Code** (con la “C” mayuscula) con el siguiente comando:
+				
+				`mkdir Code`
+				
+			3. Ingresa a la carpeta con `cd Code`
+			4. Clona el repositorio del Bootcamp con el comando:
+				
+				`git clone [git@github.com](mailto:git@github.com):glrodasz/undefined-academy.git`
+				
+				<aside>
+				ℹ️ La primera vez que clones un repo desde GitHub verás un mensaje de advertencia sobre su auntenticidad, es completamente normal.
+				
+				</aside>
+				
+				<aside>
+				👀 El mensaje se verá algo así, escribes “**yes**” y **Enter**.
+				
+				```bash
+				The authenticity of host 'example.com (198.51.100.0)' can't be established.
+				ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyz.
+				Are you sure you want to continue connecting (yes/no)?
+				```
+				
+				</aside>
+				
+			5. Entra a la carpeta del repositorio clonado con:
+				
+				`cd undefined-academy`
+				
+			6. Ejecuta el siguiente comando:
+				
+				`cat TEST.md`
+				
+			7. Si ves el mensaje: `Hola mundo 🌎` quiere decir que todo esta OK.
+					
+	5. Instalación de Node.js
+		- **Windows con WSL (Windows 10, 11)**
+			1. Abre la terminal de **Ubuntu.**
+			2. Ejecuta para instalar curl `sudo apt-get install curl`
+			3. Ejecuta para instalar NVM:
+				
+				`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash`
+				
+				Ojo, si sale ERROR DE CERTIFICADO, USAR -k antes de la dirección.
+				
+			4. Abre una nueva pestaña en la Terminal con `Ctrl + T` o `Cierra y abre` la Terminal de Ubuntu de nuevo, esto es para que tome la nueva configuración.
+			5. Ejecuta para instalar Node.js LTS `nvm install --lts`
+			6. Ejecuta `node --version` para verificar que instaló correctamente.
+		- 🖼️ **Windows sin WSL (Windows 7, 8, 9)**
+			1. Ve a [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+			2. Descarga Node.js haciendo click en “**Windows Installer**”.
+			3. Abrelo y sigue las instrucciones en pantalla.
+			4. Abre la terminal de “**Git Bash”** y ejecuta `node --version` para verificar que instaló correctamente.
+		- 🐧 **Linux**
+			1. Abre la **Terminal**.
+			2. Ejecuta para instalar curl `sudo apt-get install curl`
+			3. Ejecuta para instalar NVM:
+				
+				`curl -o- [https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh](https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh) | bash`
+				
+			4. Ejecuta para instalar Node.js LTS `nvm install --lts`
+			5. Ejecuta `node --version` para verificar que instaló correctamente.
+		- 🍏 **macOS**
+			1. Abre la **Terminal.**
+			2. Revisa que **Shell** estás ejecutando: `echo $SHELL`
+				
+				<aside>
+				⚠️ Sí tu resultado es `/bin/zsh` quiere decir que tienes “**Z shell”**
+				
+				</aside>
+				
+				<aside>
+				⚠️ Sí tu resultado es `/bin/bash` quiere decir que tienes “**Bash”**
+				
+				</aside>
+				
+			3. Revisa que tengas un archivo de configuración, si no existe lo crearemos.
+			Ejecuta el siguiente comando según tu **Shell** (Z shell / Bash):
+				
+				<aside>
+				ℹ️ Para “**Z shell”** ejecuta `ls ~/.zshrc`
+				
+				👉 **Si ves el error** `No such file or directory` ejecuta `touch ~/.zshrc`
+				
+				</aside>
+				
+				<aside>
+				ℹ️ Para “Bash**”** ejecuta `ls ~/.bashrc`
+				
+				👉 **Si ves el error** `No such file or directory` ejecuta `touch ~/.bashrc`
+				
+				</aside>
+				
+				<aside>
+				🚨 Si no ves el error, pero en cambio la ruta del archivo: estás OK y no debes hacer nada más, continua con el paso 4.
+				
+				</aside>
+				
+			4. Ejecuta para instalar NVM:
+				
+				`curl -o- [https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh](https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh) | bash`
+				
+			5. Ejecuta para instalar **Node.js LTS** `nvm install --lts`
+			6. Ejecuta `node --version` para verificar que instaló correctamente.
+			
+	6. ### Guía de Instalación de VS Code
+
+		1. Ve a [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+		2. Elige la descarga según tu **sistema operativo**.
+		
+		<aside>
+		🚨 Los usuarios de 🪟🖼️ **Windows con WSL y sin WSL** deben elegir la versión para Windows, inclusive si tienen instalado WSL.
+		
+		</aside>
+		
+		1. Abre el archivo descargado y sigue las instrucciones.
+		
+		<aside>
+		🚨 Los usuarios de 🪟**Windows** **con WSL** deben instalar el siguiente plugin para VS Code: [https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+		
+		</aside>
+
+	Notas:
+		- "wsl --install" este comando solo funciona si wsl no ha sido instalado previamente (https://learn.microsoft.com/en-us/windows/wsl/install) 
+			- (https://learn.microsoft.com/es-es/windows/wsl/install) Si ejecuta "wsl --install" y ve el texto de ayuda de WSL, intente ejecutar "wsl --list --online" para ver una lista de distribuciones disponibles y ejecute "wsl --install -d <DistroName>"
+			- "wsl" se instala en C:\Windows\System32
+				- Versión del archivo: 10.0.19041.2311
+				- Versión del producto: 10.0.19041.2311
+			
+			- Ver versiones INSTALADAS: "wsl --list --verbose"
+				Despliega pantalla en la que aparece: 
+				Nombre del distro	estado	versión
+				Ubuntu-22.04		Stopped	1 o 2
+				
+			- Pantalas para habilitar WSl: SUBSISTEMA LINUX EN WINDOWS 10: QUÉ ES, PARA QUÉ SIRVE Y CÓMO INSTALARLO
+				- https://rincondelatecnologia.com/subsistema-linux-en-windows-10-que-es-para-que-sirve-y-como-instalarlo/#:~:text=Deberemos%20ir%20a%20Inicio%3EConfiguraci%C3%B3n,Linux'%20y%20marcaremos%20la%20casilla.
+					- tener activado el «modo desarrollador» en el sistema operativo. Para ello, debemos acceder a Inicio>Configuración>Actualización y Seguridad>Para programadores y marcar la opción ‘Modo para Desarrolladores’.
+					
+					- Deberemos ir a Inicio>Configuración>Aplicaciones>Aplicaciones y características. Una vez allí pincharemos en el enlace Configuración relacionada: Programas y características
+					
+					- Activar o desactivar características de windows.
+					- Activar "Subsistema de Windows para LInux"
+					- Ir a Microsoft Store y seleccionar la distro que queremos
+						- O ejecuar en power shell como administrador: 
+							
+							
+					- Pasos de instalación manual para versiones anteriores de WSL
+						- https://learn.microsoft.com/es-es/windows/wsl/install-manual#step-3---enable-virtual-machine-feature
+							
+							dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestar
+							
+					Paso 1: Habilitación del Subsistema de Windows para Linux
+						- dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+							
+					- Paso 2: comprobación de los requisitos para ejecutar WSL 2
+						- Para sistemas x64: versión 1903 o posterior, con la compilación (Build number) 18362 o posterior.
+							- Versiones de windows: winver o cmd /c ver
+								- https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions
+								
+								- Mi version de windos: 22H2 Compilación SO: 19045.2673
+								
+					- Paso 3: Habilitación de la característica Máquina virtual
+						- dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+						
+					- Paso 4: Descarga del paquete de actualización del kernel de Linux
+					
+					- ERROR: Installing, this may take a few minutes...
+							WslRegisterDistribution failed with error: 0x80370102
+							Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.
+							For information please visit https://aka.ms/enablevirtualization
+							Press any key to continue...
+							(https://github.com/microsoft/WSL/issues/5363)
+
+						- ver
+						- systeminfo.exe
+						- bcdedit
+						
+						- DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+						- bcdedit /set hypervisorlaunchtype auto
+				
+			- Reportar problemas de wsl
+				- https://learn.microsoft.com/es-es/windows/wsl/troubleshooting
+					- Versión windows
+						- cmd.exe /c ver  
+						
+							Microsoft Windows [Versión 10.0.19045.2673]
+							
+					-  ver el número de compilación actual de WSL** (https://learn.microsoft.com/es-es/windows/wsl/troubleshooting)
+						- wsl.exe --status o cat /proc/version (https://discord.com/channels/753561944539004949/1079556579906555985)
+						
+							Versión predeterminada: 2
+							
+							El Subsistema de Windows para Linux se actualizó por última vez el 29/9/2022
+							Las actualizaciones automáticas de WSL están activadas.
+							
+							Versión de kernel: 5.10.102.1
+							
+					- ver número de versión de la distribución
+						- lsb_release -r
+						
+					- Antes de instalar WSL 2, debe habilitar la característica opcional Plataforma de máquina virtual (https://learn.microsoft.com/es-es/windows/wsl/install-manual#step-3---enable-virtual-machine-feature)
+						- dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+			
+			
+		- Desinstalar las versiones de wsl instaladas
+			- Ir a Agregar o Quitar programas buscar "Ubuntu" eliminarlas.
+			
+		- Volver a instalar 
+			- ver versiones: "wsl -l -o" 
+				- 
+			- Instalar la distro que requiera: "wsl --install -d Ubuntu-22.04"
+			
+			
+- 
+	- npm install trash
+
+- WSL
+	- ACCEDER A LOS FICHEROS DE WSL DES DEL EXPLORADOR DE ARCHIVOS DE WINDOWS
+		- https://geekland.eu/acceder-a-los-ficheros-linux-de-wsl-desde-windows-10/#:~:text=Lo%20primero%20que%20tenemos%20que,que%20tenemos%20dentro%20de%20WSL.
+			
+			- Desde Ubuntu:
+				- explorer.exe .
+					- Irá a: \\wsl.localhost\Ubuntu\home\byron\Code\test_vite
+					
+			- Desde Windows 10
+				- \\wsl$
+				
+			- ACCEDER A LOS FICHEROS DE WSL DESDE POWERSHELL
+				- Inicialmente tenemos que abrir el subsistema de Windows para Linux (WSL).
+				- Una vez esté abierto abrimos una Powershell con permisos de administrador .
+				- wsl --list --running
+				- cd \\wsl$\Ubuntu
+				
+	- Sharing your project folder with Windows and WSL
+		- https://dev.to/vetswhocode/sharing-your-project-folder-with-windows-and-wsl-cg
+		
+			- Ver el directorio windows desde Ubuntu:
+				- ls /mnt/d/dev_20220602/CodeW 
+			- Hacer alias al path in .bashrc or .zshrc dependiendo del shell que se esté usando. 
+				- nano .bashrc`
+					- Ir al final del archivo y crear un Alias
+						- alias proj="cd /mnt/d/dev_20220602/Projects"
+						- Ctrl + o guardar
+						- Ctrl + x salir
+					
+					- Salir y volver a ingresar a Ubuntu
+					- escribir proj y se irá al directorio.
+					
+				- differences between windows and linux files and how this works inside the WSL
+					- WSL File System Support
+						- https://learn.microsoft.com/es-es/archive/blogs/wsl/wsl-file-system-support
+						
+- CURSO
+	- Semana 1						
+		- https://undefinedshell.notion.site/Semana-1-1cd3b0f777a44b4894456521cc0e649c		
+		
+		- C L A S E  1: Markdown & Terminal
+			- Markdown 
+				- # .. ###### -> Títulos (h1 .. h6)
+				- > -> cita de bloque
+				
+				- RECURSOS
+					- https:\\daringfireball.net/projects/markdown/syntax
+					- https:\\commonmark.org/
+					- https:\\github.github.com/gfm/
+					- https:\\www.markdownguide.org/
+					- The markdown guide
+					
+				- Aplicaciones y extras
+					- Google keep (para tomar notas)
+					- Discord
+						- !discord
+							- **IMPORTANTE**: para ver el resto de canales de discord ve a #  y dale click al emoji
+							
+							- \run !discord
+							- \run !knowledgebase
+							
+					- Whatsapp
+						- *Hola*, _¿qué más?_ te ~extraño~ quería preguntar ya estás en #USA ?
+						
+					- Sintaxis saborizada en GitHub: 
+						- Tablas (https://github.github.com/gfm/)
+							- | xxxxxx | yyyyy |
+							| zzzzzz | zzzzz |
+						- Listas de tareas (https://github.github.com/gfm/#task-list-items-extension-)
+							- -[x] xxxxxx
+							- -[] xxxxxx
+							- -[] xxxxxx
+						- Strikethrough (Tachado)
+							- ~~The world is flat.~~ We now know that the world is round.
+						- Highlight (Subrayado)
+							- I need to highlight these ==very important words==.
+						- Footnotes (Notas al pie de página)
+							- 
+								Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+								
+								[^1]: This is the first footnote.
+								
+								[^bignote]: Here's one with multiple paragraphs and code.
+								
+									Indent paragraphs to include them in the footnote.
+								
+									`{ my code }`
+								
+									Add as many paragraphs as you like.
+						- Fenced Code blocks (Bloques de código)
+							- ```{ "firstName": "John",}```
+						- Emojis  :tent:
+							- Gone camping! :tent: Be back soon.
+						
+			- Terminal (0.57.00)
+				- Terminal: Consola o línea de comandas, permite interactuar con sistema operativo. Es un programa que proporciona una interfaz de línea de comandos (CLI)
+				- Shell: Interpreta comandos escritos en terminal y los entrega la SO
+				- Prompt: Mensaje inicial que aparece en la terminal. 
+				
+				- Clasificación x SO 
+					- 			Terminal		Shell		Prompt
+					  Windows	PowerShell		PowerShell	>
+								Windows Terminal
+								Hyper(todo SO)
+					  Linux		Gnome Terminal	Bash		$
+								Alacritty(emulador)
+					  macOS		Terminal		Z Shell		%
+								iTerm
+								Warp
+								Cool Retro Terminal (mac y linux)
+					  WindowsV	command prompt
+					  
+				- comandos
+					- pwd		-> Imprimir directorio de trabajo.
+					- date		-> fecha actual
+					- uptime	-> Tiempo transcurrido desde ultima apagada
+					- cal		-> muestra calendario (sudo apt install ncal)
+					- df		-> espacio disco duro.
+					- whoami	-> quien soy
+					- ls		-> lista directorios (list directory contents)
+					- cd		-> cambiar de directorio (change directory)
+					- pwd		-> Print current working directory.
+					- mkdir		-> crear directorio (make directory)
+					- cp -r		-> copiar de manera recursiva (copy)
+					- rm -r 	-> eliminar de manera recursiva (remove)
+					- touch		-> crear archivo
+					- cat		-> mostrar contenido de un archivo
+					- more		-> similar a cat pero permite navegar usando comandos tipo VIM
+					- mv		-> mover un archivo de un lugar a otro
+								   cambiar el nombre de un archivo.
+					- cd ~		-> Ir al home
+					- cd -		-> Directorio en el que estoy.
+					- Atajos de comandos en la terminal
+						- ctrl + c	-> cancela la ejecución de un proceso
+						- ctrl + u	-> borrar línea
+						- ctrl + w	-> eliminar última palabra de lo q escribimos. 
+						- ctrl + a	-> ir al inicio de la línea
+						- ctrl + e	-> ir al final de una línea
+						- ctrl + l	-> limpiar la pantalla
+						
+						- F arriba	-> comando anterior
+						- F abajo	-> comando siguiente
+						- alt + b	-> movernos entre palabras hacia atras
+						- alt + f	-> movernos entre palabras hacia delante
+						- ctrl + r	-> búsqueda recursiva
+						- echo $SHELL -> saber el shell q se tiene
+						
+					- Alias
+						- ls ~/ | grep 
+							- alias findd="ls ~/ | grep $1"
+						- Guardarlos
+							- .bashrc o .zshrc y pegar comando anterior.
+							
+							- alias findd="ls ~/ | grep $1"
+							- alias npmd="npm run dev"
+							- alias npms="npm start"
+							- alias rm="trash"
+							- alias cl="clear"
+							- alias cafe="cat /dev/urandom | hexdump | grep \"ca fe\""
+							- alias mostused='history | awk '\''{print $2} '\'' | sort | uniq -c | sort -nr | head -n 10'
+			
+			- Practica
+				- Crear CV en Dillinger (https://dillinger.io)
+					- https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme
+					- Pequeña descripción
+					- Tabla MarkDown con 5 comandos de la terminal con nombre del comando y descripción
+					- Sección con 2 comandos alias
+						- VSC
+							- crtl + k  v
+							- crtl + shift + ñ 
+							- Dotfiles (https://github.com/glrodasz/dotfiles)
+					- clonar repositorio y ejecutar 11ty
+						- npm install -g public-ip-cli internal-ip-cli trash-cli vercel serve
+				- Copiar el contenido y crear archivo en home
+				- Generar HTML con 11ty
+					- npx @11ty/eleventy --serve
+					- http://localhost:8080/README/index.html
+					
+					- Poner en vercel
+						- cd _site
+						- vercel
+							- Set up and deploy "~/Code/xxxxx/_site/"? Y
+							- Which scope do you want to deploy to?
+								- xxxxx
+							- Link to existing project? n
+							- What´s your project´s name? test-b-01
+							- In which directory is your code located? enter
+								- Local settings detected in vercel.json:
+								  No framework detected. Default Project Settings:
+								  - Build Command: `npm run vercel-build` or `npm run build`
+								  - Development command: None
+								  - Install Command: `yarn install`, `pnpm install` or `npm install`
+								  - Output Directory: `public` if it exists, or `.`
+							- Want to modify these settings? n
+							
+						- https://test-b-01-byron2016.vercel.app/README
+								  
+		- C L A S E  2 Bootcamp: Semana1, Clase 2: Git — !bootcamp !base !discord
+			- VSC
+				- Add cursors to the lines end Shift + alt + i
+				
+			- VIM
+				- ls /usr/share/vim/vim82/tutor/tutor.es* -al
+				- /usr/share/vim/vim82/tutor/tutor.C..utf-8
+				- cp /usr/share/vim/vim82/tutor/tutor.es.utf-8 /usr/share/vim/vim82/tutor/tutor.C..utf-8
+				
+			- ERROR
+				- systeminfo
+					- Microsoft Windows Version 22H2 (compilation SO 19045.2673)
+					
+			- EJERCICIO
+				- Hacer un fork de: https://github.com/undefined-academy/semana-1
+				- Clonarlo en carpeta Home.
+				- agregar archivo markdown de github dentro carpeta "github-profiles" y el nombre usuario de discord incluyendo el tag numérico.
+				- link al perfil de GitHub
+				-
+				
+			- SSH
+				- alias sshadd="ssh-add ~/.ssh/id_ed25519" 
+					- ERROR: Could not open a connection to your authentication agent.
+						- https://stackoverflow.com/questions/17846529/could-not-open-a-connection-to-your-authentication-agent
+							- eval `ssh-agent -s`
+							- ssh-add ~/.ssh/id_ed25519
+							
+							- alias sagent="eval `ssh-agent`"
+							- alias sshadd="ssh-add ~/.ssh/id_ed25519"
+							
+				- git config credential.helper store
+					
+			- install wsl --install
+			- check wsl
+				- wsl --status
+			- Instalar una versión específica de ubuntu.
+				- Ver disponibles
+					- wsl --list --online
+				- Instalar version Ubuntu-22.04
+					- wsl --install -d Ubuntu-22.04
+					
+				- https://askubuntu.com/questions/1457563/sed-cant-read-etc-update-manager-release-upgrades-no-such-file-or-directory
+				
+			- Sacar respaldo: (https://dev.to/equiman/upgrade-ubuntu-version-on-wsl-3h10)
+				- wslconfig.exe /list /all
+				- wsl --setdefault Ubuntu-22.04
+				- wsl --shutdown
+				- 
+				- mkdir D:\backup
+				- export (https://4sysops.com/archives/export-and-import-windows-subsystem-for-linux-wsl/)
+					- wsl --export Ubuntu D:\backup\ubuntu.tar
+					-  wsl --export Ubuntu-22.04 D:\Backup_20230303\wsl_20230303\ubuntu_2204_20230303.tar
+				
+				- Instalacion
+					- wsl --list --online  / wsl -l -o
+					- wsl --install -d Ubuntu-22.04
+					- Ingresar nombre administrador.
+						- En caso de crearlo manualmente
+							- adduser <name>
+							- ingresar clave
+							- usermod -aG sudo <name>
+							- su - <name>
+							- sudo ls -al /root
+							- 
+					- git	
+						- git config --global user.name Byron2016
+						- git config --global user.email bgva2005@yahoo.com
+					- ssh
+						- ssh-keygen -t ed25519 -C bgva2005@yahoo.com
+						- cat ~/.ssh/id_ed25519.pub
+						- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGkuTmZhiKv6Wwgx8PkS2BJEzcBLdM0pB9uiGQ5l/MjM bgva2005@yahoo.com
+					- github
+						- mkdir Code && cd Code && git clone git@github.com:glrodasz/undefined-academy.git && cd undefined-academy && cat TEST.md
+					- nvm
+						- sudo apt-get install curl
+						- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+						- abrir y cerrar Ubuntu
+						- nvm install --lts && node --version
+						
+						
+					- npm
+						- npm install -g public-ip-cli internal-ip-cli vercel serve
+					
+					
+				
+				- All next steps need to be done on PowerShell (Windows side).
+					- First, we need to unregister the Linux distribution: Beware that everything that was stored on the WSL drive will be lost, and the command won't ask for a confirmation, so make sure you backup everything you need first!
+						- wsl --unregister Ubuntu
+				- And then, import again on the desired path. I'll use D: disk as an example.
+					- mkdir D:\WSL
+					- wsl --import Ubuntu D:\WSL\ D:\backup\ubuntu.tar
+				- By default Ubuntu will use root as the default user, to switch to our user we need to run these commands.
+					- cd $env:USERPROFILE\AppData\Local\Microsoft\WindowsApps
+					- ubuntu config --default-user equiman (Ensure replacing equiman with yours.)
+				- Restart WSL running wsl command and it's done.
+				
+			- Tarea
+						
+				@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+				
+				- [x] Hacer un fork del repositorio [https://github.com/undefined-academy/semana-1](https://github.com/undefined-academy/semana-1)
+				- [x] Clonar tu repositorio "forked" en tu carpeta de **HOME**
+				- [x] Agregar allí un archivo markdown de tu perfil de GitHub, dentro de la carpeta [github-profiles](https://github.com/undefined-academy/semana-1/tree/main/github-profiles) y el nombre de archivo debe ser tu usuario de Discord incluyendo el tag numérico[^1].
+				- [x] Incluye dentro del archivo un link que nos lleve directamente a tu perfil de GitHub.
+				- [x] Haz commit de dicho archivo.
+				- [x] Ve al repositorio del paso 1 y crea tu primer Pull Request.
+				- [x] No dejes la descripción del Pull Request vacía, escribe cómo fue el proceso de resolver este ejercicio, usar Markdown.
+				
+				- [x] s1-c4: Revisar el tutorial de "Diseño Web en 4 Minutos"[^2]
+				- [x] Aplicar lo parendido a tu **index.html**
+				- [x] No tiene que ser literal, solo asegúrate que tu archivo **index.html** se visualice agradable
+				- [x] Hacer **commit** y **push**
+				
+				[^1]: No puedes poner un # como nombre de archivo, cámbialo por un guion (-).
+				[^2]: [https://jgthms.com/web-design-in-4-minutes/](https://jgthms.com/web-design-in-4-minutes/).
+				
+				@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+				
+				- [x] Cambiar etiquetas de html con etiquetas semánticas.
+					
+			@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+			
+			Hola, @Sheila_FG
+			
+			- [x] Archivo Sheila_FG-7067.md: **No** debería estar directamente en carpeta Github-profiles
+			- [x] Nombre de carpeta: Correcto
+			- [x] README.md: me pareció que  bien, no importante pero que algo dijo Guillermo es que para tema de legibilidad el raw deberían las tablas estar alineadas, pero no es algo necesario en realidad.
+			- [x] .png: podría estar en una carpeta img, pero sobre esto Guillermo no indicó nada.
+			- [x] En cuanto a los commits de pronto completar la idea, por ejemplo agregas extensión a archivo pero no pones aque
+			
+			@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+			
+			Hola, @sebasrico-3054
+			- [x] Archivo sebasrico-3054.md: **No** debería estar directamente en carpeta Github-profiles
+			- [x] Carpeta .vite: **No** debió haber sido subida. Debes hacer en tu repositorio un `git fetch` para traer los cambios de la carpeta principal y luego un `git pull origin main` para bajarlos a tu repositorio, con eso ya te va a ignorar el .vite. Sería bueno consultes como quitar el .vite de tu commit x q eso ya se subió, se me ocurre q antes de hacer los pasos del git fetch y pull, borres la carpeta, subas el commit, y luego si hagas lo indicado inicialmente.- [x] Nombre de carpeta: Correcto
+			- [x] README.md: me pareció que está chévere y se ve muy bien con las imágenes que has puesto.
+			- [x] En cuanto a los commits de pronto que sean más descriptivos.
+				
+				
+@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+				
+- [x] Cambiar las etiquetas de la hoja de vida para hacer uso de las etiquetas semánticas.
+- [x] Hacer fork del repositorio de la semana 2 [Semana 2](https://github.com/undefined-academy/semana-2)
+- [x] Hcer un pull request con dichos cambios desde tu repositorio forked
+- [x] La estructura debería ser la siguiente.
+
+
+  ```bash
+  ├── student-cvs/
+  │   ├── Byron-8971
+  │   │   ├── index.html
+  │   │   ├── styles.css
+  │   │
+  │   
+  
+  ```
+								  
+		- C L A S E  3 ⛺️ Bootcamp — Semana 1, Clase 3: HTML — !bootcamp !empezar !discord
+			- 
+				- Ejecutar servidor
+					- npx vite dev
+					
+			- Bat
+				- sudo apt install bat
+					- batcat <nombre archivo>
+					
+			- Mejorar el prompt
+				- https://starship.rs/guide/#%F0%9F%9A%80-installation
+				- curl -sS https://starship.rs/install.sh | sh
+				
+					Please follow the steps for your shell to complete the installation:
+					bash
+					Add the following to the end of ~/.bashrc:
+					
+							eval "$(starship init bash)"
+					
+					zsh
+					Add the following to the end of ~/.zshrc:
+					
+							eval "$(starship init zsh)"
+							
+				- instalar nertfont (https://www.youtube.com/watch?v=HkEPHU_jqjw)
+					- https://webinstall.dev/nerdfont/
+						- Instalar la letra
+						- windows
+							- Bajar la letra
+								- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+								- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip
+								
+							- Dar doble click sobre la letra WINDOWS COMPATIBLE que se quiera instalar.
+								
+								
+						- ir a Settings en terminal y abrir json file
+						- dentro de profiles / defaults 
+							"profiles": 
+							{
+								"defaults": {},
+								
+								
+							- agregar
+								"profiles": 
+								{
+									"defaults": 
+									{
+										"font": 
+										{
+											"face": "FiraCode NF"
+										}
+									},
+
+		- C L A S E  4 ⛺️ Bootcamp — Semana 1, Clase 4: CSS — !bootcamp !empezar !discord
+		
+			- Para ICONOS de https://shields.io/
+				- https://github.com/Ileriayo/markdown-badges
+					- https://ileriayo.github.io/markdown-badges/
+					
+					
+		- C L A S E  4 Bootcamp — Semana 2, Clase 3: HTML Semántico (https://www.youtube.com/watch?v=1iCmIqYhHEI&list=PLKBvDYynKmlW1GrqNnwjdgoGP6PlYkxrh&index=10)
+			- html5 Doctor
+				- http://html5doctor.com/
+				
+			- Internet Archive
+				- https://archive.org/
+				
+			- Nu Html Checker - The W3C Markup Validation Service
+				- https://validator.w3.org/nu/
+					- Activar: outline
+					- Check by: text input
+					
+			- Web Design in 4 minutes
+				- https://jgthms.com/web-design-in-4-minutes/
+				
+		- C L A S E  4 Bootcamp — Semana 3, Clase 1: CSS Flexbox y Grid — !bootcamp !empezar !discord
+			- https://www.youtube.com/watch?v=8Wy27LDY4eA&list=PLKBvDYynKmlW1GrqNnwjdgoGP6PlYkxrh&index=12
+		
+			html, body { height: 100%}
+			contenedor { height: 100%}
+			
+			- https://cssreference.io/
+			
+			- https://1linelayouts.glitch.me
+			
+			- Calentamiento
+				- https://flexboxfroggy.com/#es
+				- https://cssgridgarden.com/#es
+				
+			- Ejer 2.09.00
+				- https://codepen.io/glrodasz/pen/wvEXqLB
+		
+		
+
+		- C L A S E  4 Bootcamp — Semana 3, Clase 2: CSS Responsive
+			- https://www.youtube.com/watch?v=x2WiSut3dOc
+			
+			- Flat UI colors 2
+				- https://flatuicolors.com/
+				
+			- CSS container queries
+				- CSS container queries are finally here
+					- https://ishadeed.com/article/container-queries-are-finally-here/
+					
+			- Como hacer imágenes responsive
+				- svg
+					- width: 100%; max-width
+				- jpg, png
+					- 
+			
+		C L A S E: Bootcamp — Semana 2, Clase 4: Formularios HTML, JSON, DOM, CSSOM
+			- Customizing Colors
+				- https://tailwindcss.com/docs/customizing-colors
+				
+				git add . && git commit -m "feat: add contact section with a form" && git push -u origin main 
+				
+		C L A S E: Bootcamp — Semana 3, Clase 3: Estructura moderna de un proyecto
+			- https://www.youtube.com/watch?v=SiHPdwEYviw&list=PLKBvDYynKmlW1GrqNnwjdgoGP6PlYkxrh&index=14
+			
+			- Performance
+				- Browser diet performance
+					- https://rajtoral.com/browser-diet-performance-guide/
+					
+		C L A S E: ⛺️ Bootcamp — Semana 3, Clase 4: Frameworks de UI — !bootcamp !empezar
+			- Framewors
+				- Bootstrap
+					- https://getbootstrap.com/docs/5.3/getting-started/introduction/
+						- https://getbootstrap.com/docs/5.3/getting-started/vite/
+						- Setup
+							- mkdir my-project && cd my-project
+							- npm init -y
+							- npm i --save-dev vite
+							- npm i --save bootstrap @popperjs/core
+							- npm i --save-dev sass
+							- Agregar el .gitignore 
+						- Project structure
+							- mkdir {src,src/js,src/scss}
+							- touch src/index.html src/js/main.js src/scss/styles.scss vite.config.js
+						-  src/index.html
+							- <html lang="en">
+							- <meta name="viewport" content="width=device-width, initial-scale=1">
+							- <div class="container py-4 px-3 mx-auto">
+								- <button class="btn btn-primary">Primary button</button>
+							- <script type="module" src="./js/main.js"></script>
+						- Configure Vite  vite.config.js
+							- 
+								const path = require('path')
+								
+								export default {
+								root: path.resolve(__dirname, 'src'),
+								server: {
+									port: 8080,
+									hot: true
+								}
+								}
+						- package.json
+							-   "scripts": { "start": "vite" },
+							
+						- npm start
+						- Import Bootstrap
+							-  vite.config.js
+								export default {
+								....
+								resolve: {
+									alias: {
+									'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+									}
+								},
+								....
+								}
+								
+								- OJO: al cambiar el vite.config.js se debe mandar nuevament un npm start.
+								
+							- src/scss/styles.scss
+								- @import "~bootstrap/scss/bootstrap";
+							- src/js/main.js
+								- import '../scss/styles.scss'
+								- import * as bootstrap from 'bootstrap'
+								
+								O
+								
+								- import Alert from 'bootstrap/js/dist/alert';
+								- import { Tooltip, Toast, Popover } from 'bootstrap';
+				- Para React
+					- Ant Design 5
+						
+				- Tailwind
+					- https://tailwindcss.com/docs/installation
+						- Install Tailwind CSS
+							- npm install -D tailwindcss
+							- npx tailwindcss init
+						- Configure your template paths
+							/** @type {import('tailwindcss').Config} */
+							module.exports = {
+							content: ["./src/**/*.{html,js}"],
+							theme: {
+								extend: {},
+							},
+							plugins: [],
+							}
+							
+							
+
+						- Setup
+							- mkdir my-project && cd my-project
+							- npm init -y
+							- npm i --save-dev tailwindcss
+							- Run multiple commands concurrently. Like npm run watch-js & npm run watch-less but better
+								- npm i -D concurrently
+							- Agregar el .gitignore 
+						- Project structure
+							- mkdir {src,src/js,src/scss, src/css}
+							- touch src/index.html src/css/input.css src/js/main.js src/scss/styles.scss tailwind.config.js
+						-  src/index.html
+							- <html lang="en">
+							- <meta name="viewport" content="width=device-width, initial-scale=1">
+							- <link href="output.css" rel="stylesheet">
+							
+						- Configure tailwind  tailwind.config.js Configure your template paths
+							/** @type {import('tailwindcss').Config} */
+							module.exports = {
+							content: ["./src/**/*.{html,js}"],
+							theme: {
+								extend: {},
+							},
+							plugins: [],
+							}
+							
+						- Add the Tailwind directives to your CSS src/input.css
+							@tailwind base;
+							@tailwind components;
+							@tailwind utilities;
+							
+						- Si ERROR: How to Fix unknownAtRules Warnings From Tailwind CSS
+							- https://www.codeconcisely.com/posts/tailwind-css-unknown-at-rules/
+								- EN VSC
+									- Open the CSS file where you import Tailwind CSS
+									- Press Shift + P and search for “change language mode”
+									- Inside the search bar, type “tailwindcss” and select it.
+							
+						- Start the Tailwind CLI build process
+							- npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+							
+							"scripts": {
+								"dev:css": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
+								"dev:src": "vite dev src",
+								"dev": "concurrently \"npm run dev:css\" \"npm run dev:src\"",
+								"test": "echo \"Error: no test specified\" && exit 1"
+							},
+							
+							- ejecutar: npm run dev
+							
+						- package.json
+							- 
+							"scripts": {
+								"dev:css": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
+								"dev:src": "vite dev src",
+								"dev": "concurrently \"npm run dev:css\" \"npm run dev:src\"",
+								"test": "echo \"Error: no test specified\" && exit 1"
+							},
+							
+						- ejecutar: npm run dev
+			
+@undefined-academy :+1: This PR looks great - it's ready to merge! :shipit:
+				
+- [x] Hacer fork del repositorio de la semana 2 [Semana 3](https://github.com/undefined-academy/semana-3).
+- [x] Subir la maquetación de la portada de blog usando Flexbox y CSS Grid a la carpeta [student-blogs](https://github.com/undefined-academy/semana-3/tree/main/student-blogs)
+- [x] Subir la maquetación de la portada de blog usando Flexbox y CSS Grid a la carpeta [student-cv](https://github.com/undefined-academy/semana-3/tree/main/student-cv)
+- [] Elije entre [Bootstrap](https://getbootstrap.com/docs/5.3) y [TailwindCSS](https://tailwindcss.com) y maquetar el formulario con dicha tecnología en la carpeta [student-forms](https://github.com/undefined-academy/semana-3/tree/main/student-forms)
+- [] Estructura (Si usas ambos crea las carpetas dentro de student-forms/perfil personal / bootstrap | tailwind.
+  ```bash
+  ├── student-cvs/
+  │   ├── Byron-8971
+  │   │   ├── index.html
+  │   │   ├── form.css
+  │   │   ├── styles.css
+  │   │   ├── main.mjs
+  │   │
+  ├── student-blogs/
+  │   ├── Byron-8971
+  │   │   ├── index.html
+  │   │   ├── styles.css
+  │   │
+  ├── student-forms/
+  │   ├── Byron-8971
+  │   │   ├── src
+  │   │   ├── package.json
+  │   │
+  │   
+  
+  ```
+  
+		C L A S E S4-1: ⛺️ Bootcamp — Semana 4, Clase 1: Biblioteca de utilidades
+			- Lodash (COMO SE MANTIENE, YA NO LE MENTEN NUEVAS COAS , SOLO SEGURIDAD)
+				- https://lodash.com/
+				- Alternativas
+					- Underscore
+					- Ramda
+					- Métodos Nativos
+					
+			- Ejecutar	
+				- node index
+				
+				
+		C L A S E S4-2: ⛺️ Bootcamp — Semana 4, Clase 2: Fechas en JavaScript
+			- librerias
+				- Day.js
+				- Temporal API
+				- YA FINALIZADO MOMENT, YA NO USARLO.
+				
+			- Mockaroo_ allows you to quickly and easily to download large amounts of randomly generated test data based on your own specs which you can then load directly
+				- https://www.mockaroo.com/
+				
+			- Falso
+				- https://ngneat.github.io/falso/
+				
+				- Aaron swartz
+				
+			- Day.js (https://day.js.org/docs/en/installation/installation)
+				- Revisar min 28 seguir a mas dev
+				
+				- Siempre poner las fechas en UTC
+				
+				- Trabajar 
+					- En milisegundos
+					- En UTC 0
+					
+				- today.format("DD/MM/YYYY HH:mm:ss")
+				- 
+				
+			- Temporal API
+				- AÚN NO ESTÁ PARA PRODUCCION ESTÁ EN STAGE 3
+				
+			- SSH cambiados x GITHUB	
+				Sí estan viendo este error a la hora de hacer git pull, git fetch:
+				WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+				
+				Es porque GitHub actualizo sus llaves SSH (osea las de GitHub, no las de ustedes).
+				
+				Más info aquí
+				https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
+				
+				Para solucionarlo tienen que ejecutar:
+				ssh-keygen -R github.com
+				
+				La próxima que hagan git fetch, git pull etc, les va a preguntar que si quieren agregar la nueva "fingerprint" tienen que escribir yes y Enter.
+				
+			const today = new Date();
+			console.log(today);
+			
+			const birthDate = new Ate ("1990-05-10T08:30:00")  //ISO 8601
+			console.log(birthDate);
+				
+			Revisar contenido de mas dev. https://www.twitch.tv/manzdev
+			Revisar Shasha cosina codigo de youtube.
+			
+			- Time Zone
+				- Mostrarlo
+					- https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html#:~:text=Most%20of%20the%20Unixes%20(Ubuntu,variables%2C%20including%20all%20local%20variables.
+					
+				- Working with Dates and Times By Using the ISO 8601 Basic and Extended Notations
+					- https://documentation.sas.com/doc/en/vdmmlcdc/8.1/leforinforref/p1a0qt18rxydrkn1b0rtdfh2t8zs.htm#:~:text=UTC%20is%20a%20datetime%20value,ss%2B%7C%E2%80%93%20hh%3Amm.
+					
+					- 
+					
+			- Dayjs
+				- Características
+					- Liviana 
+					- soporta tree shaking
+					- API intuitiva
+					- Múltiples idiomas
+					- Permite manipular fechas y horas de manera sencilla.
+				
+				- Instalación
+					- npm i dayjs
+					
+			- Colores en consola.
+				https://en.wikipedia.org/wiki/ANSI_escape_code#Description
+				console.log("\x1b[32m 2.- Si la fecha es más de un mes, mostrar mes y día, por jemplo: Febrero 24, Enero 2 \x1b[0m")
+				
+		C L A S E S4-3: ⛺️ Bootcamp — Semana 4, Clase 3: Extendiendo CSS con SASS — !bootcamp !empezar
+				
+			
+		C L A S E S4-4: ⛺️ Bootcamp — Semana 4, Clase 4: Evolución de las Arquitecturas de CSS & Design Tokens
+			- Integrar Vite con SASS
+				- npm init -y 
+				- npm i sass vite -D
+				- crear script para vite start: vite
+				- agregar link /main.scss
+					- ojo esto NO es standard.
+					
+				- recordar que el @import de css es BLOQUEANTE.
+				
+			- Media Object
+				- Típico de la web 
+				- Es 
+					- Avatar
+					- Título 
+					- Descripción.
+				
+			- minireset.css
+			- Arquitecturas de CSS
+				- Metodología: conjunto de reglas
+				- Arquitectura: metodologia enfocada en la estructura de un proyecto.
+				- Listado
+					- OOCSS
+					- SMACSS
+					- SUITCSS
+					- ITCSS
+					- BEM
+				
+				- OOCSS
+					- Características
+						- Metodología enfocada en mejorar la estructura del CSS 
+						- Principios
+							- Separar estructura y apariencia
+							- Separar centenedor y contenido.
+							
+						- Usa clases independientes
+							- para estilos de apariencia
+							- y selectores concretos para contenido.
+				
+				- SMACSS (No pegó)
+					- Características
+						- Prometía solución problemas CSS pero aplicarlo es muy difícil.
+						- Categorización de clases par comportamiento de elementos en el layout
+						- Ejem: clase para determinar ancho fijo de elementos.
+						
+				- SUITCSS
+					- Características
+						- Evolución de OOCSS y SMACSS
+						- Basado en OOCSS con utilidades de SMACSS con clases para menejo de estados.
+						- Pionera en traer concepto de componentes a partir de elementos de HTML.
+							- Componentes: Conjunto de código consigue un elemento.
+						- Prefijo del nombre del componente en las clases de elemento.
+						
+				- ITCSS
+					- Creado x Harry Roberts (CSS Wizardry) a partir de OOCSS
+					- Mayor separación de categorías basadas en especificación de clases.
+					- Pensada para usarse con preprocesadores de CSS
+					- Capas de triángulo invertido (Arriba clases q más se usan, abajo las q menos se usan)
+						- Settings: Variables, métodos, mixings, funciones
+						- Tools: Variables, funciones
+						- Generic: resets
+						- Elements: Se empiezan a utilizar estilos aplicados a elementos  (inputs, p).
+						- Objects: Se empiezan a utilizar clases, aparecen las estructuras, Layout
+						- Components: Ya va a algo más específico, modales drowDown, modificar estados. 
+						- Trumps
+					- Trumps: Estilos más específicos que pueden sobrescribir cualquier estilo anterior sin usar !important. 
+					
+				- BEM (Bloque, Elemento, Modificador)
+					- Características
+						- Se enfoca en le nombramiento de clases para reflejar la estructura de los elementos.
+						- Solución simple para escalar CSS 
+						- Puede ser usada en conjunto con otras metodologias
+						- Variaciones permitidas sobre la convención original. 
+						- Es muy útil para evitar colisión de clases si no se cuenta con algún sistema que permita solucionar este problema. 
+						
+					- Elementos 
+						- Bloques: Son los que conocemos como componentes y establece el namespace del mismo.
+						- Elementos: Expresan el contenido de los componentes y tienen un doble guión bajo como prefijo.
+						- Modificadores: Son clases que expresan un estado del componente. Tienen un dot guión como prefijo.
+						
+				- ATOMIC DESIGN 
+					- Características
+						- No es una metodología de CSS, pero ayuda en la estructuración de componentes.
+						- Paradigma orientado a componentes que facilita la reutilización de estilos.
+						- Los estilos deben convivir con el componente definido para evitar problemas de abstracción.
+						- Evitar colisión de clases usando herramientas como CSS Modules, Scoped CSS o CSS-in-JS. 
+					- elementos
+						- Átomos: Indivisibles. Ïcono, Texto, imagen
+						- Moléculas: combinación de átomos. Botones compuesto por ícono + texto.
+						- Organismos. combinación de moléculas y átomos. xxx que tiene texto, imagen, botones.
+
+				- CUBE CSS (Está muy verde)
+					- Elementos
+						- Composition: reglas del layout y cómo los elementos se comportan entre sí.
+						- Utility: Clases como si fueran librerías de utilidades (TailWind CSS) basadas en nuestros Design Tokens.
+						- Block: Ique como BEM, va dirigidos a los componentes. Ojo: a este punto la mayoría de estilos deberían estar cubirtos x las capas de Composition y Utility.
+						- Exception: Comparte el mismo propósito que las clases de estados que visto en otras metodologías, solo que estas son específicas del Bloque. en CUBE se declarn mediante "data attributes".
+						
+			- DESIGN TOKENS
+				- Son una metodología que se encarga del manejo de variables en un sistema de diseño (Design System). Pero siguiendo una estructura y jerarquía específica. 
+				- Tipos
+					- Raw values (Ingredientes)
+						- Espaciados (Gran listado)
+					- Reference Tokens (Ingredientes decididos)
+						- Espaciados (Seleccionados)
+					- System Tokens (Ingredientes cocinados)
+						- 
+					- Component Tokens. (ya algo real/ entregado)
+						
+						
+						
+			- revisar Fig cli 42.25 
+				- para sacar ayudas en terminal.
+				
+			- Estrategia para archivos 57
+				- Uno para dependencias
+				- Otro para programa. 
+				
+			- Reset
+				- minireset.css 
+				
+		PRACTICA 1:⛺️ Bootcamp — Practica 1, Clase 1: HTML Semántico y SASS
+			- https://www.youtube.com/watch?v=T0KfCFzY800&list=PLKBvDYynKmlW1GrqNnwjdgoGP6PlYkxrh&index=20
+			
+				- Instalar aplicación
+					- Para que salgan ayudas en la terminal.
+						- https://fig.io/
+			
+				- npm init -y
+				- Archivos y carpetas iniciales
+					- touch index.html test.js
+					- mkdir src
+				
+				- Dependencias
+					- npm i -D vite sass 
+					
+					- Eslint y Prettier
+						- npm i -D  eslint prettier eslint-config-prettier
+						- npx eslint --init
+						- touch .gitignore 
+							- node_modules/
+							- .vite
+							- .eslintcache
+							- dist
+						
+						- copiar en eslintrc.js sección extends: ['eslint-config-prettier']
+						
+						- open User Settings.json
+							- CRTL + SHIP + p
+								- Preferences: Open User Settings (JSON)
+									"[javascript]": {
+										"editor.defaultFormatter": "esbenp.prettier-vscode",
+										"editor.formatOnSave": true
+									},
+						- touch .prettierrc.json .prettierignore
+							- Agregar en .prettierignore
+								- Agregar .next
+								
+								
+						- Husky (53.50) (https://github.com/okonet/lint-staged)
+							- npx mrm lint-staged
+							- en package.json agregar
+							
+								"lint-staged": {
+									"*.{js,css,md}": [
+									"prettier --write",
+									"eslint --cache --fix"
+									]
+								}
+								
+							
+						
+						- Testear
+							- npx eslint .
+							- npx prettier . --check
+						
+						- Scripts
+							- En package.json
+								"lint": "eslint .",
+								"lintfix": "eslint --fix"
+						
+ 
+				- Estructura de carpetas (Siguiendo ITCSS)
+					- src	
+						- styles	
+							- components
+								- avatar.scss
+								- card.scss
+								- heading.scss
+								- paragraph.scss
+								- picture.scss
+								- tag.scss
+							- components.scss
+							- elements.scss
+							- main.scss
+							- variables.scss
+			
+				- Como vamos a usar Vite podemos crear el Link:
+					- <link rel="stylesheet" href="src/styles/main.scss">
+					
+				- Agregar Reset
+					- minireset.css
+						- https://jgthms.com/minireset.css/
+						
+						- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css">
+						
+				- Agregar fuentes
+					- inter
+					
+				- ME QUEDE EN 2.11.33
+							
+							
+				
+		PRACTICA 2: ⛺️ Bootcamp — Aprende Notion con @alexcamachogz
+			- Alternativa
+				- Confluence: Confluence es un software de colaboración en equipo. Escrito en Java y utilizado principalmente en entornos corporativos, está desarrollado y comercializado por Atlassian.​ Confluence se vende tanto como software de uso local como en el modelo de Software como servicio.​
+				- Trello
+				- Asana
+				
+				
+			
+				- Revisar: Slack a Temas
+				
+			- Notions:
+				- Un words
+				- Tomar notas
+				
+				- Tiene capa gratuita
+				- Crear página
+					- / xxxxx
+					

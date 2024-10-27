@@ -1,0 +1,164 @@
+- .NET 8
+	- AUTH
+		- Nick Chapsas: The .NET 8 Auth Changes You Must Know About!
+			- https://www.youtube.com/watch?v=sZnu-TyaGNk
+	
+- Crear un proyecto .net 8
+	NewAuth (1 project)
+		NewAuth
+			Dependencies
+			Properties
+			appsettings.json
+			appsettings.Development.json
+			Program.cs
+				var builder = WebApplicaiton.CreateBuilder(args);
+				var app = builder.Build();
+				app.Run();
+				
+				
+			
+	Scratches and Consoles
+		
+- En Program.cs 
+	- Identity necesita un usuario
+		- using Microsoft.AspNetCore.Identity //se pondrá automáticamente con la siguiente linea.
+		- class MyUser : IdentityUser{}
+	- Agregar servicios
+		- Autenticación, en donde se puede usar cookies pero usaremos Bearer 
+			- builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+		- Autorización
+			- builder.Services.AddAuthorizationBuilder();
+			
+			
+using Microsoft.AspNetCore.Identity
+
+var builder = WebApplicaiton.CreateBuilder(args);
+
+builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddAuthorizationBuilder();
+
+var app = builder.Build();
+
+app.Run();
+
+class MyUser : IdentityUser{}
+
+	- Agregar Nugets Packages
+		- Botón derecho sobre Dependencies, Manage Nuget Packages
+			- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+			- Microsoft.EntityFrameworkCore.Sqlite
+			- Microsoft.EntityFrameworkCore.Design
+			
+	
+	- DbContext		
+		- builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlite("DataSource=app.db"));
+		class AppDbContext: IdentityDbContext<MyUser>
+		{
+			public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
+		}
+		
+	- Add Identity
+		- builder.Services.AddIdentityCore<MyUser>()
+			.AddEntityFrameworkStores<AppDbContext>()
+			.AddApiEndpoints();
+
+
+			
+using Microsoft.AspNetCore.Identity
+
+var builder = WebApplicaiton.CreateBuilder(args);
+
+builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
+builder.Services.AddAuthorizationBuilder();
+
+builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlite("DataSource=app.db"));
+
+builder.Services.AddIdentityCore<MyUser>()
+			.AddEntityFrameworkStores<AppDbContext>()
+			.AddApiEndpoints();
+
+var app = builder.Build();
+
+app.Run();
+
+class MyUser : IdentityUser{}
+
+class AppDbContext: IdentityDbContext<MyUser>
+{
+	public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
+}
+
+- Crear las migraciones
+	- dotnet ef migrations add InitialCreate
+	- dotnet ef database update
+	
+- Postman 6.28
+	- GET
+		- https://localhost:5001
+			- Desplegará 401 Unauthorized
+			
+	- POST 	
+		- https://localhost:5001/register
+		- Body
+			{
+				"username": "nickchapass",
+				"password": "Password1!",
+				"email": "test.yahoo.com"
+			}		
+	- POST 	
+		- https://localhost:5001/login
+		- Body
+			{
+				"username": "nickchapass",
+				"password": "Password1!"
+			}
+			
+		- En respuesta Body tengo:
+			{
+				"tokenType":"Bearer",
+				"accessToken":"Un codigo de accceso",
+				"expiresIn":"3600",
+				"refreshToken":"Un token de refresh"
+			}
+			
+	- GET
+		- https://localhost:5001
+			- Authorization
+				- Type Bearer Token
+				- Token
+					- Colocar el accessToken dado antes.
+			- Desplegará 200 ok
+			
+	- NetMentor: JSON Web Tokens | Qué es JWT? Explicación en 15 minutos sobre como tener un backend seguro
+		- https://www.youtube.com/watch?v=Lm7WYw3SRz8
+		
+		- 2.45: Con un token tipo bearer evitamos csrf el problema de pedir peticiones de un sitio
+        		a otro y que no te deja.
+				
+		- 3.09: Tipos	
+			- SWT (sam)
+			- JWT
+			- 
+		- 8.04: proceso
+			- CLIENTE cliente/usuario envía las credenciales -->
+				- Comprueba credenciales y genera el token JWT
+			- SERVIDOR devuelve el token JWT <--
+			- CLIENTE Envía la consulta/actualización con el token en el header -->
+				- Valida el token y realiza las acciones de la request
+			- SERVIDOR Envía la respuesta <--
+			
+		- 10.25 OAUTH - OAUTH2
+			- CLIENTE cliente/usuario envía las credenciales -->
+				- 3RD PARTY SERVICE Comprueba credenciales y genera el token JWT
+			- CLIENTE Envía la consulta/actualización con el token en el header -->
+				- SERVIDOR Valida el token y realiza las acciones de la request
+			- SERVIDOR Envía la respuesta <--
+			
+		- 11.26 DIFERENCIA ENTRE JWT Y OAUTH
+			- JWT: formato token de seguridad
+			- OAUTH: Protocolo stándar para la autorización que utiliza jwt de modo que 
+			         un caso real no debemos preocuparnos de como el usuario ha conseguido
+					 ese toquen 
+		  
+			
+			

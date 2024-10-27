@@ -1,0 +1,160 @@
+- SQL Server
+	- Descargar e Instalar SQL Server 2022 (Paso a Paso)
+		- https://www.youtube.com/watch?v=OV4qorEOkJc
+	
+			- Ir a la página de Microsoft
+				- Español
+					- https://www.microsoft.com/es-es/sql-server/sql-server-downloads
+				- Inglés
+					- https://www.microsoft.com/en/sql-server/sql-server-downloads?rtc=1
+				- Ir a donde dice "Or, download a free specialized edition" / "O bien, descarga una edición especializada gratuita."
+				- Presionar "Developer"
+				- Dar doble click sobre el programa bajado "SQL2022-SSEI-Dev.exe"
+				- Seleccionar tipo de instalación
+					- Básica (Basic)
+					- Personalizada (Custom)
+						- Instalar SQL Server 2022 gratis desde cero (y bien) [TUTORIAL] (sql express)
+							- ** https://www.youtube.com/watch?v=_fFz-_O2yvI
+					- Descargar medios (Download media)
+						- Seleccionar el idioma
+						- Qué paquete quiere descargar
+							- ISO 1109MB
+						- Ejecutar "SQLServer2022-x64-ENU-Dev.iso"
+						
+					- Cómo descargar e instalar SQL Server 2022 paso a paso
+						- https://www.youtube.com/watch?v=_z7yQEI6ZcM
+							- Explica una buena distribución de discos.
+							- (6.31) Definir cuentas de servicio
+								- En "Local Users and Groups"
+									- Users
+										- SQLAgent 
+											- Cuenta para el agente de SQL
+										- sqlservices
+											- Cuenta para el servicios de SQL
+							- (7.35) Instalar
+								- Click derecho sobre ISO, montar el medios
+								- Correr como administrador
+								- Seleccionar "Installation"
+								- Seleccionar "New SQL Server standalone installation or add features to an existing installation"
+								- Edition (8.59)
+									- Specify a free edition:
+										- Developer 
+								- License Terms
+									- Aceptar el contrato 
+								- Global Rules
+									- 
+								- Microsoft Update
+									- Mejor dejar sin escoger y luego hacer cualquier update. 
+								- Install Rules
+									- Advertencia del firewall 
+										- Es advertencia para indicar q no estás poniendo lo necesario para que accedan desde afuera.
+										- 
+								- Azure Estensions fro SQL Server 
+									- Quitamos el check de "Azure Extension for SQL Server" ya que no queremos nada contra azure.
+								- Feature Selections (11.17)
+									- Database Engine Service
+										- SQL Server Replication
+										- Full-Text and Semantic Extractions for Search
+										- PolyBase Query Service for External Data 
+											- Esto sirve para integrar aws.
+											
+									- Sobre los binarios
+										- Dejar en el "C:\Program Files\Microsoft SQL Server"
+										
+									
+								- Instance Configuration (12.26)
+									- Default
+										- Nombre del servidor nombre de la instancia.
+										- Named instance: MSSQLSERVER_2022
+										- Instance ID: MSSQLSERVER_2022
+										
+								- PolyBase Configuration 
+									- Default 
+								- Server Configuration (13.45)
+									- Acá seleccionaríamos las cuentas creadas, para este caso dejamos x default. 
+										- Service Accounts
+											- SQL Server Agent: NT Service\SQLAgent$MSSQLSERVER_2022
+											- SQL Server Database Engine: NT Service\MSSQL$MSSQLSERVER_2022
+											- SQL Server Analysis Services: NT Service\MSOLAP$MSSQLSERVER_2022
+											- SQL Server PolyBase Engine: NT AUTHORITY\NETWORK SERVICE
+											- SQL Server PolyBase Data Movement: NT AUTHORITY\NETWORK SERVICE
+											- SQL Full-text Filter Daemon Launc...: NT Service\MSSQLFDLauncher$MSSQLSERVER_2022
+											- SQL Server Browser: NT AUTHORITY\LOCALSERVICE
+											
+											Activar: Grant Perfom Volume Maintenance Task privilege to SQL Server Database Engine Service 
+											
+										- Collation (17.20)
+											- 
+								- Database Engine Configuration (18.02)
+									- Server Configuration
+										- Poner Mixed
+										- Poner clave sa 123456
+										- Agregarme mi usario para q sea administrador. 
+									- Data Directories (18.54)
+										- Data root directory: D:\DataBase_20220608\SQLServer\Data
+										C:\Program Files\Microsoft SQL Server\
+										- System database directory: D:\DataBase_20220608\SQLServer\Data
+										- User database directory:
+										- User database log directory: D:\DataBase_20220608\SQLServer\Data
+										- Backup directory: D:\DataBase_20220608\SQLServer\Backup
+									- TempDB
+									- MaxDOP (Grado de paralelismo)
+										- 
+									- Memory
+									- FILESTREAM
+										- Imágenes dentro de la base de datos pero guardadas afuera. 
+										
+										
+								- Complete (21.48)
+								- Configurar que se pueda acceder desde afuera (22.10)
+									- Ir a inicio
+									- SQL Server 2022 Configuration Manager
+									- Ir a SQL Server services 
+										- Verificar que esten todos los servicios levantados 
+										- SQL Server Network Configuration
+											- Protocols for MSSQL$MSSQLSERVER_2022 
+												- Verificar que esten activos. 
+													- Poner TCP/IP Enable 
+													- Ir a servicios y reiniciar el servicio SQL Server (mss..)
+													- Luego ir a configuración del firewall para activar los puertos 1433 para que se pueda acceder desde remoto
+								- Configurar firewall (23.54)
+									- Windows defender firewall
+									- Advance settings
+									- Inbound Rules 
+										- New Rule 
+										- Port
+										- 1433, 1435
+										- Name: sql server 
+										
+										
+						- Ahora para instalar el SSMS versión 19.1
+							- https://www.youtube.com/watch?v=OV4qorEOkJc&t=8s
+								- Abrir SQL Server Instalation Center
+								- Seleccionar "Install SQL Server Management Tools"
+								- Se abrirá la página "https://learn.microsoft.com/es-es/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16"
+									- Seleccionar "Descarga gratuita de SQL Server Management Studio (SSMS) 19.1"
+								- 
+										
+						
+		- Cómo instalar y configurar SQL SERVER paso a paso
+			- https://www.youtube.com/watch?v=mA1qoWdNCOE
+				- Al momento de bajar la versión
+					- Developer es solo para desarrollo
+					- Express permite incluso entregarse al cliente es para bases pequeñas (3.22)
+					
+							
+	- Actualizar / Update
+		- Actualizando el SQL Server Management Studio
+			- https://www.youtube.com/watch?v=CP9vbWD38Hw
+				- Poner en google "sql server managemente studio"
+				- Seleccionar "Download SQL Server Management Studio (SSMS)"
+					- https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+				- 
+				
+		- Actualizar	
+			- Abrir MSS
+			- Ir a Tools/Cheks for updates
+			
+			
+	- SSMS Versiones
+		- https://sqlserverbuilds.blogspot.com/2018/01/sql-server-management-studio-ssms.html

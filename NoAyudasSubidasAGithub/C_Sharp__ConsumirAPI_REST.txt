@@ -1,0 +1,222 @@
+- Cómo consumir un API Rest como clientes con C#
+	- https://www.luisllamas.es/como-consumir-un-api-rest-como-clientes-con-c/
+		
+		Afortunadamente, comunicarnos con un API Rest desde una aplicación en .Net es sencillo con la clase HttpWebRequest, incluida por defecto.
+		
+		Para esta entrada emplearemos nuestro API Rest de ejemplo en NodeJS que vimos en esta entrada, y hemos usado frecuentemente en el blog como base de un API Rest “bien” estructurado.
+		
+		Para consumir nuestro API Rest de ejemplo desde .Net vamos a crear una aplicación de ejemplo. Una aplicación de consola, por ejemplo, será suficiente.
+		
+		Dentro sustituimos el método main por nuestra prueba del API Rest, con las funciones que prueban las distintas funcionalidades.
+		
+		
+		static void Main(string[] args)
+		{
+		GetItem(10);
+		GetItems();
+		GetItems("ABC");
+		PostItem("NewItem");
+		PutItem(4, "ReplaceItem");
+		DeleteItem(5);
+		}
+		Ahora, la definición de estas funciones podría ser la siguiente.
+		
+		
+		private static void GetItem(int id)
+		{
+		var url = $"http://localhost:8080/item/{id}";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		request.Method = "GET";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+		private static void GetItems()
+		{
+		var url = $"http://localhost:8080/items";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		request.Method = "GET";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+		private static void GetItems(string filter)
+		{
+		var url = $"http://localhost:8080/items?filter={filter}";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		request.Method = "GET";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+		private static void PostItem(string data)
+		{
+		var url = $"http://localhost:8080/items";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		string json = $"{{\"data\":\"{data}\"}}";
+		request.Method = "POST";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+		{
+			streamWriter.Write(json);
+			streamWriter.Flush();
+			streamWriter.Close();
+		}
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+		private static void PutItem(int id, string data)
+		{
+		var url = $"http://localhost:8080/items";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		string json = $"{{\"id\":\"{id}\",\"data\":\"{data}\"}}";
+		request.Method = "PUT";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+		{
+			streamWriter.Write(json);
+			streamWriter.Flush();
+			streamWriter.Close();
+		}
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+		private static void DeleteItem(int id)
+		{
+		var url = $"http://localhost:8080/items/{id}";
+		var request = (HttpWebRequest)WebRequest.Create(url);
+		request.Method = "DELETE";
+		request.ContentType = "application/json";
+		request.Accept = "application/json";
+		
+		try
+		{
+			using (WebResponse response = request.GetResponse())
+			{
+			using (Stream strReader = response.GetResponseStream())
+			{
+				if (strReader == null) return;
+				using (StreamReader objReader = new StreamReader(strReader))
+				{
+				string responseBody = objReader.ReadToEnd();
+				// Do something with responseBody
+				Console.WriteLine(responseBody);
+				}
+			}
+			}
+		}
+		catch (WebException ex)
+		{
+			// Handle error
+		}
+		}
+		
+- Cómo crear un cliente C# para un Web API de ASP.NET Core (III)
+	- https://www.rafaelacosta.net/Blog/2019/10/29/c%c3%b3mo-crear-un-cliente-c-para-un-web-api-de-aspnet-core-iii?AspxAutoDetectCookieSupport=1

@@ -1,0 +1,29 @@
+- BASH 
+	- Linux Tutorial: Instalar BASH 5 desde el codigo fuente super facil
+		- https://www.youtube.com/watch?v=1mFeJBLBsQE
+			- ejecutar
+				- w3m https://ftp.gnu.org/gnu/bash/?C=M;O=D
+				- Dar doble click en "Last modified" para q se ordene
+				- mkdir -p /tmp/bash5
+				- cd /tmp/bash5
+				- wget https://ftp.gnu.org/gnu/bash/bash-5.2.15.tar.gz 
+				- programas q se deben tener
+					- make --version 
+					- gcc --version 
+					- Red Hat: glibc-devel
+					- Devian: glib-dev 
+				- tar -xzvf bash-5.2.15.tar.gz 
+				- rm *.tar.gz
+				- cd bash-5.2.15
+				- ./configure; make; sudo make install 
+					- configure: Chequeo general y preparar todos los archivos para empezar el proceso de compilado (convertir todos los scritps a binarios)
+					- make: construcción del binario propiamente dicho 
+					- sudo make install: 
+				- ./bash --version 
+				- sudo mv bash /usr/bin 
+				- sudo chown root:root /usr/bin/bash
+				- Permisos
+					- sudo chmod a+x /usr/bin/bash
+						- a para todo el mundo
+						- x ejecutar. 
+				- rm -rf ../../bash5

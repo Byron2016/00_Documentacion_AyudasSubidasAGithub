@@ -1,0 +1,42 @@
+- CSS Weekly
+	- https://css-weekly.com/issue-537/
+	- Top 7 Visual Studio Code Extensions for CSS (2022)
+		- https://www.youtube.com/watch?v=f4Pv42003y4
+		
+			- Color Highlight (Sergii N)
+			- Scss IntelliSense (mrmlnc)
+			- HTLM to CSS (solnurkarim)
+			- HTLM CSS support (ecmel)
+			- CSS Peek (Pranay Prakash)
+			
+- RESET
+	- Eduardo Fierro: Reset CSS en 2022: Modo PRO 😏 | Eduardo Fierro Pro
+		- https://www.youtube.com/watch?v=Foieq2jTajE
+			- https://github.com/eduardofierropro/Reset-CSS
+			
+			
+- METODOLOGÍAS
+	- https://github.com/eduardofierropro/Metodologias-CSS
+	
+	- LISTA REPRODUCCIÓN
+		- Reset CSS: https://www.youtube.com/watch?v=bXqPNoYFK8w
+		- Reset PRO: https://www.youtube.com/watch?v=Foieq2jTajE
+		- Nomenclaturas CSS: https://www.youtube.com/watch?v=lhEJkeCJ3As
+		- Metodologías CSS: https://www.youtube.com/watch?v=f0LpZoyY1gE
+		- Arquitecturas CSS: https://www.youtube.com/watch?v=tUldrlfIGb4
+		- Cómo aplicar BEM en HTML y CSS: https://www.youtube.com/watch?v=NucZM0GMRi4
+		- Cómo aplicar SUITCSS en HTML y CSS: https://www.youtube.com/watch?v=NucZM0GMRi4
+		
+		
+- COLORES
+	- 7 PÁGINAS SOBRE DISEÑO WEB que DEBES CONOCER | Eduardo Fierro Pro
+		- https://www.youtube.com/watch?v=4qD4SZ1OZl0
+		
+			- Adobe COLOR 
+				- https://color.adobe.com/es/create
+			- https://colorsupplyyy.com
+			- https://neumorphism.io/#e0e0e0
+			- https://www.fontpair.co
+			- https://fontawesome.com
+			- https://icons.getbootstrap.com
+			- https://thenounproject.com

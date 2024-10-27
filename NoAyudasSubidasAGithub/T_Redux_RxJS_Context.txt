@@ -1,0 +1,530 @@
+- REDUX
+	- ¿Qué es Redux? - Redux en menos de 5 Minutos (Redux Toolkit)
+		- https://www.youtube.com/watch?v=j-jzI3wkkVk
+		
+		- Son Bibliotecas de manejo de estado como	
+			- XState, MobX, Recoil.js, ZusTand, Rematch, Redux
+			- Una lista enorme buscando State management.
+			
+		- REDUX
+			- Conceptos
+				- Store
+					- Objeto de js INMUTABLE que almacena todo el estado.
+					- Estado centralizado
+					{"counter":0}
+				- Actions
+					- Objeto de js que contiene información y le dice a redux que operación se va a ejecutar sobre el Store.
+					const myAction = {
+					  type: 'counter/increment',
+					  payload: 20
+					}
+					
+						- type: nombre acción a ejecutar
+						- payload: Dato que queremos darle al Store para que lo tome y actualice el estado.
+						
+					- Al ser objetos de js no se pueden ejecutar, por eso debemos utilizar una función llamada dispatch() que se encarga de realizar la ejecución.
+						- dispatch: órdenes escritas en código para el Store, pero no definen como ejecutar estar órdenes, por eso necesitamos otra pieza de código que si definen esta lógica y que permiten actualizar el estado.
+				- Reducers
+					- Son funciones que recibe dos parámetros, el estado actual y el action.
+					
+					const initialState = { value: 0}
+					
+					function counterReducer(state= initialState, action){
+					  if(action.type === 'counter/increment'){
+					    return {
+						  ...state,
+						  value: state.value + 1
+						}
+					  }
+					  return state
+					}	
+
+				- REDUX DEV TOOLS 
+					- Extensión de navegador que permite conocer el estado en el momento en que se disparó el action.
+					
+				- REDUX TOOL KIT
+					- forma recomendada actualmente para usar redux. 
+					
+					
+					
+	- Midudev 
+		- https://www.youtube.com/watch?v=bEEjuwujbbU&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=9
+			- Configuración inicial 
+				- pnpm install @reduxjs/toolkit react-redux -E
+				
+			- Crear el store 
+				- src/store/index.ts
+					import { configureStore } from "@reduxjs/toolkit"
+					
+					export const store = configureStore({
+						reducer: {},
+					})
+								
+			- Proveer el store 
+				- src/main.tsx
+					import { store } from "./store"
+					import { Provider } from "react-redux"
+					
+					ReactDOM.createRoot(document.getElementById("root")!).render(
+						<Provider store={store}>
+							<App />
+						</Provider>
+					)
+			- Usar 
+				- Sin useHooks 
+					- src/store/users/slice.ts
+						import { createSlice} from "@reduxjs/toolkit"
+						
+						export interface User {
+						name: string
+						email: string
+						github: string
+						}
+						
+						export interface UserWithId extends User {
+						id: string
+						}
+						
+						const initialState: UserWithId[] = [ {}, {}, {},]
+						
+						export const usersSlice = createSlice({
+							name: "users",
+							initialState,
+							reducers: {},
+						})
+						
+						export default usersSlice.reducer
+						
+						/* 
+						users 
+						components
+						hooks 
+						store 
+						
+						*/
+					
+					- src/store/index.ts
+						import { configureStore } from "@reduxjs/toolkit"
+						import usersReducer from "./users/slice"
+						
+						export const store = configureStore({
+							reducer: {
+								usersPepito: usersReducer,
+							},
+						})	
+
+						export type RootState = ReturnType<typeof store.getState>
+						export type AppDispatch = typeof store.dispatch
+				
+					- src/components/ListOfUsers.tsx
+						import { useSelector } from "react-redux"
+						
+						export const ListOfUsers = () => {
+							const users = useSelector((state) => state.usersPepito)
+							
+							return ({users.map((item) => ())
+						}
+				
+				
+				- Con UseHooks 
+					- src/hooks/store.ts
+						import type { AppDispatch, RootState } from "../store"
+						import { useDispatch, useSelector } from "react-redux"
+						import type { TypedUseSelectorHook } from "react-redux"
+						
+						export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+						export const useAppDispatch: () => AppDispatch = useDispatch
+					
+					
+					- src/components/ListOfUsers.tsx
+						//import { useSelector } from "react-redux"
+						import { useAppSelector } from "../hooks/store"
+						
+						export const ListOfUsers = () => {
+							//const users = useSelector((state) => state.usersPepito)
+							const users = useAppSelector((state) => state.usersPepito)
+							
+							return ({users.map((item) => ())
+						}
+						
+			- Agregar una acción 
+			
+				- src/store/users/slice.ts
+					import { createSlice} from "@reduxjs/toolkit"
+					
+					export type UserId = string
+					
+					export interface User {
+						name: string
+						email: string
+						github: string
+					}
+					
+					export interface UserWithId extends User {
+						id: UserId
+					}
+					
+					const initialState: UserWithId[] = [ {}, {}, {},]
+					
+					export const usersSlice = createSlice({
+						name: "users",
+						initialState,
+						reducers: {
+							deleteUserById: (state, action: PayloadAction<UserId>) => {
+								const id = action.payload
+								return state.filter((user) => user.id !== id)
+							}
+						},
+					})
+					
+					export default usersSlice.reducer
+					export const { deleteUserById } = usersSlice.actions			
+			
+				- Sin useHooks 
+					- src/components/ListOfUsers.tsx 
+						import { useAppDispatch, useAppSelector } from "../hooks/store"
+						import { UserId, deleteUserById } from "../store/users/slice"
+						
+						export const ListOfUsers = () => {
+							const users = useSelector((state) => state.usersPepito)
+							const dispatch = useAppDispatch()
+							
+							const handleRemoveUser = (id: UserId) => {
+								dispatch(deleteUserById(id))
+							}
+							
+							return (
+								....
+								<button onClick={() => handleRemoveUser(item.id)} type="button" >....</button>
+						
+						}
+						
+				- Con useHooks 
+					- src/hooks/useUserActions.ts
+						import { UserId, deleteUserById } from "../store/users/slice"
+						import { useAppDispatch } from "../hooks/store"
+						
+						export const useUserActions = () => {
+							const dispatch = useAppDispatch()
+						
+							const removeUser = (id: UserId) => {
+								dispatch(deleteUserById(id))
+							}
+							
+							return { removeUser }
+						}
+					
+					- src/components/ListOfUsers.tsx 
+						import { useAppSelector } from "../hooks/store"
+						import { UserId } from "../store/users/slice"
+						import { useUserActions } from "../hooks/useUserActions"
+						
+						export const ListOfUsers = () => {
+							// const users = useSelector((state) => state.usersPepito)
+							// const dispatch = useAppDispatch()
+							
+							// const handleRemoveUser = (id: UserId) => {
+							// 	dispatch(deleteUserById(id))
+							// }
+							
+							const users = useAppSelector((state) => state.usersPepito)
+							const { removeUser } = useUserActions()
+							const handleRemoveUser = (id: UserId) => {
+								removeUser(id)
+							}
+							
+							return (
+								....
+								<button onClick={() => handleRemoveUser(item.id)} type="button" >....</button>
+						
+						}		
+						
+			- Agregar middleware
+				- Un middleware es una función que 
+					- Una función que recupera la store 
+					- Que tiene que devolver una función 
+						- Quer recupera un método next
+							- Que tiene que devolver una función 
+								- que recupera un método acction 
+								
+								const persistanceMiddleware = (store) => (next) => (action) => {}
+								
+				- src/store/index.ts	
+								
+					....
+					
+					const persistanceLocalStorageMiddleware = (store) => (next) => (action) => {
+						// Podemos ver lo que tenemos
+						console.log(store.getState())
+						// Podemos ver lo que queremos hacer
+						console.log(action)
+						next(action)
+						// Podemos ver el resultado final luego de hacerlo.
+						console.log(store.getState())
+						localStorage.setItem("__redux_state__", JSON.stringify(store.getState()))
+					}
+					
+					export const store = configureStore({
+						reducer: {
+							usersPepito: usersReducer,
+						},
+						middleware: (getDefaultMiddleware) => {
+							return getDefaultMiddleware().concat(persistanceLocalStorageMiddleware) //https://redux-toolkit.js.org/usage/migrating-rtk-2
+						},
+					})
+					....
+					
+					
+- REDUX - CONTEXT - RxJS
+	-Gentleman Programing: Cúando y cómo usar Redux, Context o Rxjs? Con esto tu app no tendrá problemas de comunicación
+		- https://www.youtube.com/watch?v=USm-uiVyTuQ
+		
+		- REDUX 
+			- Manejador de Estado: se basa en concepto: único lugar de la verdad (single source of truth) que contiene la información veráz y la más actualizada posible. Cada vez que necesitemos consultar información dentro de la aplicación no vamos a consultar al backEnd sino al State. 
+		
+		- CONTEXT
+			- Nos permite compartir información, y puede llegar al nivel de un Stage Manager, pero no es la idea. La idea principal de Context es compartir información dentro de la aplicación y evitar el prop drilling (pasar informaicón entre componentes en cascada), esto genera una gran dependencia, evita la reutilización de las cosas. 
+		- RxJS 
+			- Es una librería que se encarga de hacer el manejo de observables (canales de comunicación, es propio de js y otros lenguajes, y se basa en la programación reactiva ejemplo: tenemos un tubito hueco con agujeros y en cada agujero tenemos a una persona mirando por el mismo, vamos a pasar un objeto a través de ese tubo. Esto produce que cada persona notará cosas diferentes de este objeto pasando por el tubo (velocidad, color, forma, etc, etc) cada uno ve cosas diferentes pero la información es la misma, eso es la programación reactiva, las cosas reaccionan ante la información que le llega. 
+				- Pasándolo a lenguaje de programación:
+					- Canal de comunicación: es nuestro observable, es el tubito.
+					- A través de ese observable tenemos suscriptores: personas mirando, COMPONENTES POR EJEMPLO, 
+					- Información: Objeto que va pasando. user logueado, evento, true, false, boolean.
+					
+			- Es una librería mágica que nos da todas las HERRAMIENTAS para MANEJAR LOS OBSERVABLES. Un observable dentro del día a día es lo que llamamos UNICAST practicamente solamente emite datos, no vamos a tener un componente que emite y otro componente que recibe RxJS crea otros tipos de observables que son muy útiles y vamos a trabajar sobre los dos más importantes que son: subset y behaivor subset. Los dos tipos van a ser multi cast esto quiere decir que un componente puede tanto recibir como emitir informaicón a través de ese observable.
+			- Si los dos hacen exactamente lo mismo por que hay dos? La principal diferencia es que el subset si nosotros enviamos información por nuestro canal de información y yo llego tarde me lo pierdo, lo que si existirá es el siguiente que llegue, mientras que con el behaivor subset tiene un cache/buffer que guarda el último elemento enviado y puedo accederlo y acceder a lai nformación más actualizada la última.
+			 
+			- Patrón de diseño Observer.
+		
+	- Pasos
+		- Instation:
+			- npm create vite@latest
+				- 028_React_Redux_Context_RxJS_001
+				- Reactjs
+				- TypeScript
+				
+				
+				
+				
+				
+				
+
+  - D:\dev_20220602\00_Documentacion\T_Node_001.txt
+
+- Build project scafolding wiht **typeorm** este creará una estructura compleata para nuestro proyecto, para lo cual creará un directorio con el nombre que le indiquemos, además del cliente de base de datos que usaremos y el servidor.
+
+  ```bash
+    npx typeorm init --name login_roles --database mysql --express
+  cd login_roles
+  ```
+
+  This command is going to install typeorm
+
+  Files created:
+
+  - tsconfig.json: configuración de typeScript
+  - package.json: con dependencias que coloca inicialmente
+    - devDependencies
+      "ts-node": "10.7.0",
+      "@types/node": "^16.11.10",
+      "typescript": "4.5.2"
+    - dependencies":
+      "typeorm": "0.3.16",
+      "reflect-metadata": "^0.1.13",
+      "mysql": "^2.14.1",
+      "express": "^4.17.2",
+      "body-parser": "^1.19.1"
+  - Directorio src:
+
+- Update dependecies
+
+  - Delete from package.json
+
+    ```bash
+      rm -rf node_modules
+    ```
+
+    - ts-node, @types/node, typescript
+    - mysql, express, body-parser
+
+  - Delete node_modules dir.
+  - run
+
+    ```bash
+      npm i -D ts-node @types/node typescript
+    ```
+
+    ```bash
+      npm i mysql express
+    ```
+
+  Note: body-parser allow us to communicate with client, this can be doing directly with express, for that reason we will not to install it.
+
+- Add new dependencies
+
+  ```bash
+    npm i cors jsonwebtoken bcryptjs class-validator helmet
+  ```
+
+  Note:
+
+  - cors: Allow us to accept all request from a front end.
+  - jsonwebtoken: Allow us to generate a token for our user
+  - bcryptjs: Allow us to encrypt user´s password
+  - class-validator: Allow us to validate information of our database fields.
+  - helmet: Allow our API to be more secure (17.04)
+
+  ```bash
+    npm i -D ts-node-dev typescript @types/bcryptjs @types/cors @types/jsonwebtoken @types/express @types/node
+  ```
+
+  Note:
+
+  - ts-node-dev: Allow us to reload our server
+  - typescript:
+  - Some @types to work with typescript.
+    - /bcryptjs:
+    - /cors:
+    - /jsonwebtoken:
+    - /express:
+    - /node:
+
+- Modify tsconfig.json file
+
+  - change "outDir": from "./build" to "./dist",
+  - Add "rootDir": "./src",
+
+- Modify package.json file (11.00)
+
+  ```bash
+  	"scripts": {
+  	  ...
+  	  "tsc": "tsc",
+  	  "dev": "set debug=* && ts-node-dev --respawn --transpile-only ./	src/index.ts"
+  	}
+  ```
+
+- DataBase Configuration (11.55)
+
+  - Add file "./src/data-key.json
+
+        ```bash
+        {
+          "database": {
+            "username": "xxxxx",
+            "password": "yyyyy",
+            "database": "dbname"
+          }
+        }
+        ```
+
+  - Add data-key.json to .gitignore file.
+
+  - Modify file "data-source.ts"
+
+    ```bash
+    	...
+    	const dataKey:any = require("../data-key.json");
+
+    		export const AppDataSource = new DataSource({
+    		...
+    			username: dataKey.database.username,
+    			password: dataKey.database.password,
+    			database: "login_node",
+    		...
+          	subscribers: [],
+        ssl: {
+          rejectUnauthorized: false,
+        },
+    		})
+    ```
+
+    Note: ssl... is used to avoid error about ssl conection.
+
+  - PlanetScale
+
+    - Create a dataBase in [PlanetScale](https://planetscale.com/)
+
+      - Press button "Create your first database"
+      - Name: login_node
+      - Region: us-east-1(N.Virginia)
+      - copy username and password.
+      - Go to Settings tabs
+        - Select Passwords menu
+        - Press button "New Password"
+          - Name: write a user name ejam: admin
+          - Branch: main
+          - Role: Admin
+        - COPY PASSWORD
+
+    - Go to Console tab
+    - show databases;
+    - use dbname;
+    - show tables;
+    -
+
+  - Test
+  - run
+
+    ```bash
+        npm run dev
+    ```
+
+- Clean code generated by **typeorm**
+
+  - delete "/src/routes.ts" file
+  - Modify "/src/index.ts" file
+
+    ```bash
+      import * as express from "express";
+      import { Request, Response } from "express";
+      import { AppDataSource } from "./data-source";
+
+      AppDataSource.initialize()
+        .then(async () => {
+          // create express app
+          const app = express();
+          // start express server
+          app.listen(3000);
+
+          console.log(
+            "Express server has started on port 3000.       Open http://localhost:3000/users to see       results"
+          );
+        })
+        .catch((error) => console.log(error));
+    ```
+
+- Modify "/src/index.ts" file (16.36)
+
+  - import cors from "cors";
+    - Our API is going to be open to all clients that try to attack our API
+  - import helmet from "helmet"; //17.00
+    - Applications more secure with express, middleware...
+  - 
+
+    [⏪(Back to top)](#table-of-contents)
+
+# Errors:
+
+- Module '"xxxx/login_roles/node_modules/dotenv/lib/main"' has no default export.ts(1192)
+- File 'xxxx/login_roles/node_modules/@types/express/index.d.ts' is not a module.ts(2306)
+- DATABASE:
+
+  - trying to connect to DB:
+    - errno: 1105,
+      sqlMessage: 'unknown error: Code: UNAVAILABLE\n' + 'server does not allow insecure connections, client must use SSL/TLS\n',
+    - Solution: - Add into file "data-source.ts"
+
+  ```bash
+  	...
+  	subscribers: [],
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  ```
+
+[⏪(Back to top)](#table-of-contents)
+
+```
+
+```

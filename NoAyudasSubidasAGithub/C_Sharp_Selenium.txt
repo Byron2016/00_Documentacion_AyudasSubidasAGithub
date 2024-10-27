@@ -1,0 +1,7 @@
+- Web Scraping With C#
+	- https://www.scrapingbee.com/blog/web-scraping-csharp/
+		- Practical XPath For Web Scraping
+			- https://www.scrapingbee.com/blog/practical-xpath-for-web-scraping/
+	- https://stackoverflow.com/questions/68989877/why-cant-i-use-findelementbyxpath-on-this-table-from-a-website
+	- How to find element by XPath in Selenium with Example
+		- 

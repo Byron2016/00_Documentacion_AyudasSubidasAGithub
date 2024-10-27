@@ -1,0 +1,33 @@
+- Outh2.0
+	- JavaScript
+		- The Net Ninja
+			- OAuth Login (Passport.js) Tutorial #1 - What is OAuth?
+				- https://www.youtube.com/watch?v=sakQbeRjgwg&list=PL4cUxeGkcC9jdm7QX143aMLAqyM-jTZ2x&index=2
+			
+			
+- Nodejs
+	- The Net Ninja
+		- Node JS Tutorial for Beginners
+			- https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp
+		
+- MondoDB
+	- The Net Ninja
+		- MongoDB Tutorial for Beginners
+			- https://www.youtube.com/playlist?list=PL4cUxeGkcC9jpvoYriLI0bY8DOgWZfi6u
+			
+- OAuth2 Implimentation
+	- OAuth2 Implimentation
+		- https://github.com/rahulom/outh2-machinetest
+		
+		netsh wlan show profiles NETLIFE-uioxavaldiviesoa1 key=clear
+		
+- It's Time for OAuth 2.1
+	- https://aaronparecki.com/2019/12/12/21/its-time-for-oauth-2-dot-1
+		- Habla sobre las partes y evolución del Outh 2.0
+		
+- best practices for single-page apps
+	- https://oauth.net/2/browser-based-apps/
+	
+-  Security Best Current Practice (BCP)
+	- https://oauth.net/2/oauth-best-practice/
+	

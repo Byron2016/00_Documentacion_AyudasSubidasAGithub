@@ -1,0 +1,348 @@
+- Delegates
+	- IAmTimCorey: Delegates in C# - A practical demonstration, including Action and Func
+		- https://www.youtube.com/watch?v=R8Blt5c-Vi4
+			- Crear Projecto
+				- Console App
+					- A projecto for creating a command-line application that can run on .NET on Windows, Linux and macOS.
+				- Class Library
+					- A project for creating a class library that targets .NET or .NET Standard.
+					- C# Android Linux macOS Windows Library
+				- Windows Forms App
+					- A project template for creating a .NET Windows Forms (WinForms) App.
+					- C# Windows Desktop
+					
+				- Windows Forms App (.NET Framework)
+					- A project for creating an application with a Windows Forms (WinForms) user interface
+					- C# Windows Desktop
+					
+			- Crear Proyecto
+				- Console App (.NET Framework)
+					- A project for creating a command-line application
+					- C# Windows Console
+				- Class Library (.NET Framework)
+					- A project for creating a C# class library (.dll)
+					- C# Windows Library
+					
+					
+	- La Ruta Dev: Delegados en C# | ¿Cómo funcionan?
+		- https://www.youtube.com/watch?v=TWbFGoT-7Rc&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD
+			- Como Funcionan : 
+				- https://www.youtube.com/watch?v=TWbFGoT-7Rc&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD
+				
+			- Delegado Como Parámetro de Otro Método | Función Callback en C#.🤯💻: 
+				- https://www.youtube.com/watch?v=ADi2FNq6FI8&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD&index=2
+				
+			- Delegados de multidifusión en C# | Delegados en C#. 🤯💻
+				- https://www.youtube.com/watch?v=oW3lFehAJnI&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD&index=3
+				
+			- Covarianza y Contravarianza | Delegados en C#.🤯💻
+				- https://www.youtube.com/watch?v=Fp2820egHjY&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD&index=4
+				
+			- Action, Func y Predicate en C# | Delegados en C#. 🤯💻
+				- https://www.youtube.com/watch?v=fzyJ8b5uVXo&list=PLSmWs9lvUXbAVCjmc9mDvFuaVmkgUcHfD&index=5
+			
+			- Como Funcionan 
+				- Qué es un delegado 
+					- Otorga una responsabilidad a un método.
+					- Sirven para pasar métodos como argumentos en otro método
+					- Se pueden encadenar.
+				- Sintaxis de un Delegado 
+					- Debe tener la misma firma que el método al que hace referencia 
+						- Mismo tipo de retorno 
+						- Mismo número y tipo de parámetros.
+						
+					- Definición del delegado 
+					  public delegate void DelSaludo(string str)
+						
+					- Método que se invocará:
+					  public class Saludo (
+					      public static void Saludar(string str){
+					  	    console.WriteLine(str);
+					  	  }
+					  )
+					  
+					- Llamada del delegado / invocación 
+					  static void Main(string[] str)
+					  {
+					      //forma antigüa
+					      DelSaludo d0 = new DelSaludo(Saludo.Saludar);
+					      d0("Primera Forma");
+						  
+						  //Para C#2.0
+					      DelSaludo d1 = Saludo.Saludar;
+					      d1("Segunda Forma");
+						  
+						  //Con método anónimo
+					      DelSaludo d2 = delegate(string str){
+						    console.WriteLine(str);
+						  };
+					      d2("Tercera Forma");
+						  
+						  //Con lamda expression
+					      DelSaludo d3 = (str) => { console.WriteLine(str); };
+					      d3("Tercera Forma");
+					  }
+					  
+				- Cómo utilizarlos
+					- Método como argumento de otro método 
+					{
+					    public class program 
+						{
+						    public delegate void DelSaludo(string str)
+							
+							static void Main(string[] str)
+							{
+							    DelSaludo d1 = Saludo.Saludar;
+								D1Parametro(d1);
+							
+							}
+							
+							static void D1Parametro(DelSaludo d1){
+							    d1("Método como argumento de otro método");
+							}
+						}
+						
+						public class Saludo (
+					      public static void Saludar(string str){
+					  	    console.WriteLine(str);
+					  	  }
+						)
+						
+					}
+				- Delegados de multidifusión 
+					namespace Delegados
+					{
+					    public class program 
+						{
+						    public delegate void D1(List<Alumnos> lst)
+							
+							static void Main(string[] str)
+							{
+							    D1 allMethods;
+								allMethods = Notas.AddAlumno;
+								allMethods += Notas.Media;
+								
+								CallBack(allMethods);
+							
+							}
+							
+							static void CallBack(D1 delegado){
+							    console.WriteLine("ste es el callback function\n");
+								
+								List<Alumnos> lst = new List<Alumnos>();
+								
+								delegado(lst)
+							}
+						}
+						
+						public class Alumnos (
+						  public string Name {get; set;}
+						  public string Nota {get; set;}
+						)
+						
+						public class Notas (
+						  public static void AddAlumno(List<Alumnos> lst)
+						  {
+						      string respuesta = "si";
+							  while(respuesta == "si")
+							  {
+							    Console.WriteLine("Nombre del alumno: ");
+								string name = Console.ReadLine();
+								
+								Console.WriteLine("Nota del alumno: ");
+								double nota = double.Parse(Console.ReadLine());
+								
+								lst.add(new Alumnos(){Name = name, Nota = nota});
+								
+								Console.WriteLine("Agregar otro alumno? si/no ");
+								respuesta = Console.ReadLine();
+								Console.Clear();
+								
+							  }
+						  }
+						  
+						  
+						  public static void Media(List<Alumnos> list)
+						  {
+						      double suma = 0;
+							  foreach(Alumnos Item in list)
+							  {
+							    suma += item.Nota;
+								Console.WriteLine($"El alumno (item.Name) tiene (item.Nota) de calificación");
+								string name = Console.ReadLine();
+								
+								Console.WriteLine("Nota del alumno: ");
+								double nota = double.Parse(Console.ReadLine());
+								
+								lst.add(new Alumnos(){Name = name, Nota = nota});
+								
+								Console.WriteLine("Agregar otro alumno? si/no ");
+								respuesta = Console.ReadLine();
+								Console.Clear();
+								
+							  }
+							  
+							  Console.WriteLine($"La media es (suma/list.Count) ");
+						  }
+						)
+						
+					}
+					
+				- Varianza en delegados 
+					- Covarianza 
+						- Nos permite que un delegado de cierto tipo pueda hacer referencia a un método con un tipo más derivado del que está definido en el delegado.  
+					- Contravarianza
+						- Nos permite que un método tenga tipos menos derivados que los del tipo del delegado.
+						
+					namespace Delegados
+					{
+					    public delegate Vehiculo covariance()
+						public delegate void contravariance covariance(RollsRoyce rr)
+							
+					    public class program 
+						{
+							static void Main(string[] str)
+							{
+							    // 	covarianza
+							    covariance d1 = DCoVehiculo;
+								d1 += DCoAuto;
+								d1 += DCoRR;
+								
+								d1();
+								
+							    // 	contravarianza
+							    RollsRoyce r = new RollsRoyce();
+								contravariance d2 = DContraRR;
+								
+								d2(r);
+								
+							
+							}
+							
+							// 	covarianza
+							static Vehiculo DCoVehiculo(){
+							    return new Vehiculo();
+							}
+							
+							static Auto DCoAuto(){
+							    return new Auto();
+							}
+							
+							static RollsRoyce DCoRR(){
+							    return new RollsRoyce();
+							}
+							
+							// 	contravarianza
+							static void DContraRR(Vehiculo v){
+							    Console.WriteLine(v.ToString());
+							}
+							
+						}
+						
+						// 	covarianza
+						
+						public class Vehiculo (
+						
+						  public Vehiculo()
+						  {
+						      Console.WriteLine("Soy un vehículo ");
+						  }
+						  
+						  public override string ToString()
+						  {
+						      Console.WriteLine("Contravarianza vehículo ");
+						  }
+						)
+						
+						public class Auto : Vehiculo (
+						
+						  public Auto()
+						  {
+						      Console.WriteLine("Soy un automovil con 4 llantas ");
+						  }
+						  
+						)
+						
+						public class RollsRoyce : Auto (
+						
+						  public RollsRoyce()
+						  {
+						      Console.WriteLine("Soy un RollsRoyce ");
+						  }
+						  
+						)
+						
+						// 	contravarianza
+
+					}
+					
+				- Propios de en C#: Action, Func y Predicate  
+					namespace Delegados
+					{
+					    public delegate void Accion();
+						public delegate int Funcion(int n1, int n2);
+						public delegate bool Predicado(Funcion f);
+						
+					    public class program 
+						{
+						    
+							
+							static void Main(string[] str)
+							{
+							
+							    //Delegados propios 
+								
+							    Accion d1= Mensaje;
+								d1();
+								
+								Funion d2 = Suma;
+								console.WriteLine(d2(7,30));
+								
+								Predicado d3 = Callback;
+								console.WriteLine(d3(Suma));
+								
+								
+							    //Delegados Ation Func Predicate 
+								Console.WriteLine("\nFUNC -- ACTION -- PREDICATE\n");
+								Action dAct = Mensaje;
+								dAct();
+								
+								//los dos primeros parámetros el últim retorno.
+								Func<int, int, int> dFunc = Suma;
+								Console.WriteLine(dFunc(7,30));
+								
+								//siempre devuelve bool y siempre un parámetro. Generalmente filtrado en listas.
+								Predicate<Func<int, int, int>> dPredicate = Callback;
+								Console.WriteLine(Callback(Suma));
+								
+							
+							
+							}
+							
+							static void Mensaje(){
+							    console.WriteLine("Comparte este conocimiento\n");
+								
+								List<Alumnos> lst = new List<Alumnos>();
+								
+								delegado(lst)
+							}
+							
+							static void Suma(int n1, int n2){
+							    return n1 + n2;
+							}
+							
+							static bool Callback(Funcion f){
+							    return f(7,30) == 37 ? true : false;
+							}
+							
+							static bool Callback(Func<int, int, int> f){
+							    return f(7,30) == 37 ? true : false;
+							}
+						}
+						
+						
+					}
+					
+- MVVM					
+	- La Ruta Dev: Cómo Agregar Views En WPF | MVVM TUTORIAL #1
+		- https://www.youtube.com/watch?v=O7aP6wRco9w&list=PLSmWs9lvUXbBNyS744SkRa30Z8ttI94yt

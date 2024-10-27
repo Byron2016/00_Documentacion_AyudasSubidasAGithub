@@ -1,0 +1,127 @@
+- Dependency Injection in .NET Core
+	- Creating a console app with Dependency Injection in .NET Core
+		- https://siderite.dev/blog/creating-console-app-with-dependency-injection-in-/
+		
+		
+	- Dependency Injection in .NET Core (.NET 6)
+		- https://www.youtube.com/watch?v=Hhpq7oYcpGE
+		
+	- C# - .NET 6 - Console app with Generic Host vs without
+		- https://stackoverflow.com/questions/71156049/c-sharp-net-6-console-app-with-generic-host-vs-without
+		- https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host#default-builder-settings
+		
+		
+		- Instalar los paquetes:
+			- Microsoft.Extensions.Hosting" Version="6.0.1"
+			- Serilog.AspNetCore" Version="5.0.0"
+			- Serilog.Extensions.Hosting" Version="4.2.0"
+			- Serilog.Settings.Configuration" Version="3.3.0"
+			- Serilog.Sinks.Console" Version="4.0.1"
+			- Serilog.Sinks.File" Version="5.0.0"
+		
+		
+
+	- IAmTimCorey: .NET Core Console App with Dependency Injection, Logging, and Settings
+		- https://www.youtube.com/watch?v=GAOCe-2nXqc
+		- crear archivo json appsetting.json
+			- En propiedades colocar "Copy to output directory: Copy always"
+				{
+				"LoopTimes": 15,
+				"Serilog": {
+					"MinimumLevel": {
+					//"Default": "Information",
+					"Default": "Warning",
+					"Override": {
+						"Microsoft": "Information",
+						"System": "Warning"
+					}
+					}
+				}
+				}
+			
+		- En Program.cs
+			- Crear método
+				static void BuildConfig(IConfigurationBuilder builder)
+				{
+					builder.SetBasePath(Directory.GetCurrentDirectory())
+						.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+						.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIROMENT") ?? "Production"}.json", optional: true)
+						.AddEnvironmentVariables();
+				}
+				
+			- Crear Interfase 
+				public interface IGreetingService
+				{
+					void Run();
+				}
+				
+			- Crear clase
+				using Microsoft.Extensions.Configuration;
+				using Microsoft.Extensions.Logging;
+				
+				public class GreetingService : IGreetingService
+				{
+					private readonly ILogger<GreetingService> _log;
+					private readonly IConfiguration _config;
+				
+					public GreetingService(ILogger<GreetingService> log, IConfiguration config)
+					{
+						_log = log;
+						_config = config;
+					}
+				
+				
+					public void Run()
+					{
+						for (int i = 0; i < _config.GetValue<int>("LoopTimes"); i++)
+						{
+							_log.LogInformation("Run number { runNumber}", i);
+						}
+					}
+				}
+				
+			- Agregar al método main
+				using Microsoft.Extensions.Configuration;
+				using Microsoft.Extensions.DependencyInjection;
+				using Microsoft.Extensions.Hosting;
+				using Serilog;
+				
+				var builder = new ConfigurationBuilder();
+				BuildConfig(builder);
+				
+				Log.Logger = new LoggerConfiguration()
+					.ReadFrom.Configuration(builder.Build())
+					.Enrich.FromLogContext()
+					.WriteTo.Console()
+					.CreateLogger();
+				
+				Log.Logger.Information("Application Starting");
+				
+				// DI
+				
+				var host = Host.CreateDefaultBuilder()
+					.ConfigureServices((context, services) =>
+					{
+				// acá configuramos todos nuestros serviciios.
+						services.AddTransient<IGreetingService, GreetingService>();
+					})
+					.UseSerilog()
+					.Build();
+					
+				var svc = ActivatorUtilities.CreateInstance<GreetingService>(host.Services); //44:48
+				svc.Run();
+				
+				
+	- Setting up Serilog in .NET 6
+		- https://blog.datalust.co/using-serilog-in-net-6/
+		
+		
+	C:\Users\bgva\Downloads\InstaladorVSCommunity2022
+	
+	- How to Create Offline Installer Visual Studio 2022
+		- https://www.youtube.com/watch?v=WPvju-7QwBg
+		
+			- Ir a https://docs.microsoft.com/en-us/visualstudio/install/create-an-offline-installation-of-visual-studio?view=vs-2022
+			- bajar el bootstrapper de Visual Studio 2022 Community
+			- Step 2 - Create a local layout
+				- 

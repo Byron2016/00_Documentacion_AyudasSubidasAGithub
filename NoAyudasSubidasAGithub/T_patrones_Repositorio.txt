@@ -1,0 +1,169 @@
+- Patrón Repositorio
+	- NetMentor: La Magia 🧙‍♂️ del Patrón Repositorio en C#
+		- https://www.youtube.com/watch?v=FZAG_VLYwrc&list=PLesmOrW3mp4i2RdfsPI5R6o5EVacGuovz&index=7
+		
+			- Definición
+				- El patrón repositorio es una abstracción de la capa de datos. En esencia el repositorio es una black box que puede recibir y enviar datos a la base de datos. Lo bueno de este patrón es que desde la perspectiva del resto de tu aplicación no importa que base de datos estes utilizando o como este implementado, en otras palabras estas abstrayendo la implementación.
+				
+			- Porqué es util utilizarlo
+				- El hecho que está todo incluído en el repositorio hace q el código sea mucho más limpio y fácil de mantener, igualmente si se requiere cambiar de base de datos, tan solo se requiere cambiar la capa de abstracción. Igualmente permite hacer test de una forma muy sencilla, se hace un mock del repositorio como tal y utilizar los test. 
+			
+			- DBContext y DBSet
+				- Técnicamente son una implementación del patrón repositorio, DBSet es el patrón repositorio y DBContext es el patrón Unit of work, pero existen developers que no consideran que DBContext y DBSet x q a la final estas accediendo a la base de datos directamente es más complicado hacer mock así que digamos que utilizando repository y repository patron es mucho más limpio y claro
+
+			- Cuando utilizarlo
+				- Como cualquier otro patrón de diseño el repository patron no es obligatorio en todas las implementaciones (Si se tiene una aplicación que tiene solo un end point o solo se hace operaciones crud no justifica)
+				
+			- Implementación
+				- Código con DBContext y DBSet
+				
+					using CursoEFCore.Codefirst.API.Data;
+					using CursoEFCore.Codefirst.API.Data.Entities;
+					using CursoEFCore.Codefirst.API.Data.Repositories;
+					using Microsoft.AspNetCore.Mvc;
+					using Microsoft.EntityFrameworkCore;
+					
+					public class TestController: Controller
+					{
+						public readonly CursoEFContext _context
+						
+						public TestController(CursoEFContext context)
+						{
+							_context = context;
+						}
+						
+						[HttpPost("test")]
+						public async Task test()
+						{
+							user user1 = new User()
+							{
+								Email= $"{Guid.newGuid()}@mail.com",
+								UserName = "userName",
+								Workingexperience = new List<Workingexperience>()
+								{
+									new Workingexperience()
+									{
+										Name = "experience 1",
+										Details = "details1",
+										Enviroment = "enviroment"
+									},
+									new Workingexperience()
+									{
+										Name = "experience 2",
+										Details = "details2",
+										Enviroment = "enviroment"
+									}
+								}
+							}
+							
+							await _context.User.AddAsync(user1);
+							await _context.SaveChangesAsync();
+							
+						}	
+						
+						[HttpGet("{userId}")]
+						public async Task<User?> Get(int userId)
+						{
+							await _context.Users
+								.Include( a => a.WorkWorkingexperiences)
+								.FirstOrDefault(a => a.Id == userId);
+							
+						}
+					}
+
+
+				- Moverlo a repository patron 
+					- Crear Carpeta Repositories
+					- Crear Interfaces "IUserRepository"
+						public interface IUserRepository
+						{
+							Task<User> Insert(User user);
+							Task<User?> GetById(int id);
+						}
+					- Crear Clases "UserRepository"
+						public class UserRepository: IUserRepository
+						{
+							public readonly CursoEFContext _context
+							
+							public TestController(CursoEFContext context)
+							{
+								_context = context;
+							}
+							
+							public async Task Insert(User user)
+							{
+								EntityEntry<User> insertedUser = await _context.User.AddAsync(user);
+								await _context.SaveChangesAsync();
+								return insertedUser.Entity;
+								
+							}
+							
+							public async Task GetById(int id)
+							{
+								await _context.Users
+									.Include( a => a.WorkWorkingexperiences)
+									.FirstOrDefault(a => a.Id == userId);
+							}
+						}
+
+					- Añadir al contenedor de dependencias
+						- En Program.cs
+							....
+							builder.Services.AddScoped<IUserRepository, UserRepository>();
+							....
+							
+					- Modificaciones al controlador
+						- Quitar DBContext 
+						- Agregar el repositorio 
+
+						using CursoEFCore.Codefirst.API.Data.Entities;
+						using CursoEFCore.Codefirst.API.Data.Repositories;
+						using Microsoft.AspNetCore.Mvc;
+																
+						public class TestController: Controller
+						{
+							public readonly IUserRepository _userRepository
+							
+							public TestController(CursoEFContext userRepository)
+							{
+								_userRepository = userRepository;
+							}
+							
+							[HttpPost("test")]
+							public async Task test()
+							{
+								user user1 = new User()
+								{
+									Email= $"{Guid.newGuid()}@mail.com",
+									UserName = "userName",
+									Workingexperience = new List<Workingexperience>()
+									{
+										new Workingexperience()
+										{
+											Name = "experience 1",
+											Details = "details1",
+											Enviroment = "enviroment"
+										},
+										new Workingexperience()
+										{
+											Name = "experience 2",
+											Details = "details2",
+											Enviroment = "enviroment"
+										}
+									}
+								}
+								
+								await _userRepository.Insert(user1);
+								
+							}	
+							
+							[HttpGet("{userId}")]
+							public async Task<User?> Get(int userId)
+							{
+								await _userRepository.GetById(userId);
+								
+							}
+						}
+						
+			- Test 
+				- Es OBLIGATORIO hacer test para verificar que todas las queries están bien.

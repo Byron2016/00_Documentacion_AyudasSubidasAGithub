@@ -1,0 +1,53 @@
+- Visual Studio code
+	- DEBUG 
+		- How To Debug React Apps With VS Code
+			- https://profy.dev/article/debug-react-vscode
+			
+				- launch.json
+					- Ir en íconos a la izquiere "Run and Debug" o "Crtl + Shift + D"
+					- Presionar "Run and Debug"
+					- Seleccionar "Web app"
+						- Crea en .VScode un archivo "launch.json"
+						- Tiene la URL Y PUERTO para hacerlo.
+				- Ahora presionar el button > para iniciar el debug
+				
+		- How to debug 🐛 Astro or NextJS in VSCode
+			- https://medium.com/@d.ts/how-to-debug-astro-or-nextjs-in-vscode-69e914cdb0ae
+				- Me funcionó para Astro, pero no me debug en react.
+				- Next no prové. 
+				
+		- React 
+			- Debugging React with VS Code and Chrome
+				- https://webdevstudios.com/2023/07/06/debugging-react-with-vs-code-and-chrome/
+				
+					- Create and Configure a launch.json File in VS Code
+						- Click the Debug icon (1), 
+						- then create a launch.json file (2). 
+						- The launch.json file will be located in your workspace’s .vscode directory.
+							- Select the location:
+							- This will open the launch.json file in a tab. 
+								- (1) Set the port to whatever was specified by Vite earlier (5173 by default), and 
+								- (2) add the subdirectory your project is into the webRoot option if you have your project in a subdirectory like I do here (/vite-demo).
+								
+									- ${workspaceFolder}
+										- https://code.visualstudio.com/docs/editor/variables-reference
+											- ${workspaceFolder} - the path of the folder opened in VS Code
+								
+								
+						- ADD A BREAKPOINT TO THE CODE
+						- Start Debugging Your React Project!
+							- Now click the Start button to start debugging. This will launch our app in a new Chrome window.
+							
+							"webRoot": "${workspaceFolder}/projects/b_snake_weibenfalk_react_jhampier_001"
+							
+		- Debug: Open link 
+			- 
+			
+		- Vanilla 
+			- Con Workspaces 
+				- Ir al signo de debug y seleccionar "Add config para el workspace específico"
+				- Se crea un launch.json 
+					- Modificar el puerto de acuerdo al servidor.
+						- para live server es 5500
+				- Lanzar live server 
+				- lanzar el debug.

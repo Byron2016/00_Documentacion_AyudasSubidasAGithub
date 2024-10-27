@@ -1,0 +1,885 @@
+- Arch Linux
+	- Virtual Box
+		- Como instalar arch linux en virtual box
+			- https://www.youtube.com/watch?v=IYpQeqR-eb8
+			
+			- Bajar ISO
+				- Arch Linux para principiantes - Como instalarlo y usarlo sin dolor
+					- https://www.youtube.com/watch?v=9Dj0CSeosMI
+					
+					- Ir a "https://archlinux.org/download/"
+					- Bajar "Torrent for 2023.05.03"
+					- Bajar cliente de Torrent "qBittorrent" "qbittorrent_4.5.2_x64_setup.exe"
+						- Ir a "https://www.qbittorrent.org/download"
+							- Nota: En la página para bajarse existen diferentes alternativas, hay unas expresadas como "lt20 gt6) la explicación de lo que es esto se puede encontrar en: What is "(lt20)" in the links on the download page?
+								- https://www.reddit.com/r/qBittorrent/comments/z7g2uf/what_is_lt20_in_the_links_on_the_download_page/
+						- Abrir qBittorrent presionar el "+" elegir archivo "Torrent" empezará a bajar el iso de Arch Linux.
+					- 
+					
+	- ASÍ es el ENTORNO de un HACKER
+		- https://www.youtube.com/watch?v=fshLf6u8B-w
+		
+			- Usará una barra lateral que no es Eww sino AwesomeWM
+			- kitty is a scriptable OpenGL based terminal emulator with TrueColor, ligatures support, protocol extensions for keyboard input and image ...
+			
+			- 13.26 Descargar ISO
+				- https://archlinux.org/download/
+				- Bajarse la torrent
+			- Crear VM
+				- Crear nueva VM
+					- Caracteristicas
+						- Nombre: UB_Arch_20230503_64VM / AD_001_20230503_64VM
+						- Carpeta: D:\DelDownload_20221031\VirtualBoxVMs_20221031
+						- Imagen: D:\DelDownload_20221031\Iso_20221031\archlinux-2023.05.03-x86_64.iso
+						- Tipo: Linux
+						- Versión: Arch Linux (64-bit)
+						- Poner Omitir Instalación desantenida.
+						
+					- Hardware
+						- Memoria base: 4096 MB
+						- Procesadores: 2
+						
+					- Disco duro virtual
+						- Crear un disco duro virtual ahora: 20G
+						
+				- Configurar VM
+					- Sistema
+						- Quitar Disquete
+					- Red
+						- Adaptador puente
+						
+			- 15.00 Iniciar VM
+				- Dar botón Iniciar VM
+				- aparece pront
+					- root@archiso ~ #
+					- whoami
+					
+				- Teclado
+					- localectl status
+					- loadkeys es
+					- localectl list-keymaps | grep -i la-latin
+					- poner teclado en español	(https://dev.to/torswq/how-to-set-latin-american-keyboard-archlinux-34k8)
+						- loadkeys la-latin1
+					
+				- Validar que se tenga internet
+					- ping -c 1 google.es
+					
+			- 16.10 particiones
+				- cfdisk 
+					- Crear tabla de partición
+						- dos 
+					- Crear partición
+						- New
+							- 512M
+							- primary
+							- Partition type: Linux
+							
+						- New (restar 4.5 del swap a lo que se tenga)
+							- 15G
+							- primary
+							- Partition type: Linux
+							
+						- New (para swap)
+							- 4.5G
+							- primary
+							- Partition type: Linux
+							
+					- Definir tipo de partición
+						- /dev/sda3
+						- Type
+							- Linux swap / Solaris
+							
+					- Terminar
+						- Write
+						- yes
+						- Quit
+						
+					- Verificar 
+						- lsblk 
+						- fdisk -l 
+						
+			- 18.22 formatear particiones
+				- /dev/sda1 
+					- mkfs.vfat -F 32 /dev/sda1 
+				- /dev/sda2 
+					- mkfs.ext4 /dev/sda2
+				- /dev/sda3 
+					- mkswap /dev/sda3
+					- aplicar cambios
+						- swapon 
+						
+			- 19.26 Montar particiones
+				- mount /dev/sda2 /mnt
+				- mkdir /mnt/boot
+				- mount /dev/sda1 /mnt/boot
+				
+			- 19.40 Instalar paquetes (toma 15.59 - 
+				- pacstrap /mnt linux linux-firmware networkmanager grub wpa_supplicant base base-devel 
+					
+			- 20.20 Definir archivo fstab
+				- Información sobre montaje de las particiones del sistema
+				- genfstab - U /mnt
+				- genfstab - U /mnt > /mnt/etc/fstab
+				- cat !$
+				
+			- 20.58 definir usuarios del sistema.
+				- Meternos en nuestro sistema
+					- arch-chroot /mnt
+						- Esto cambia el pront de root@archiso a [root@archiso /]
+				- passwd
+				- ls /home
+				- useradd -m byron (con la m nos crea directorio personal de usuario)
+				- passwd byron 
+				- Meter al usuario en el grupo wheel
+					- pq al tener a un usuario en el grupo sudo, al hacer sudo su en un usuario te conviertes en root.
+					- usermod -aG wheel byron
+					- groups byron
+					- pacman -S sudo 
+					- pacman -S vim nano 
+					- sudo nano /etc/sudoers
+						- Descomentar para permitir a miembros del grupo wheel ejecutar cualquier comando.
+							%wheel ALL=(ALL:ALL) ALL
+						
+					- 23.15 cambiar a usuario nuevo 
+						- su byron
+						- id 
+						- sudo su
+						- exit
+						- exit 
+							- quedarse en "[root@archiso /]"
+					- 23.25 trabajar con las regiones 
+						- nano /etc/locale.gen
+						- crtl + w 
+						- en_US
+						- descomentar en_US.UTTF-8 UTF-8
+						- descomentar es_EC..UTTF-8 UTF-8
+						- Guardar 
+						- Generar los locales:
+							- locale-gen 
+						- Para no tener que hacer el "loadkeys la-latin1" crear archivo 
+							- nano /etc/vconsole.conf 
+							- KEYMAP=es 
+							- La próxima vez el teclado ya estará en español.
+						- 24:20 instalar el grub
+							- grub-install /dev/sda
+						- Crear archivo configuración para el grub 
+							- grub-mkconfig -o /boot/grub/grub.cfg 
+				
+				
+			- 24.50 crear archivo hostname
+				- cat /etc/hostname
+				- echo hack4u > /etc/hostname
+				- cat /etc/hostname
+				
+				- nano /etc/hosts
+				- Agregar 
+					- 127.0.0.1    localhost
+					- ::1          localhost
+					- 127.0.0.1    hack4u.localhost hack4u
+					
+				- ls
+			- 25.40 instalacion neofetch 
+				- pacman -S neofetch 
+				- neofetch 
+				
+			- exit (retornar al root del iso)
+			- reboot now 
+				- 26.13 debe salir la pantalla de selleccionar 
+					- Arch Linux 
+					- Advanced options for Arch Linux .
+					
+				- ingresar usuario byron
+				- contraseña 
+				
+			- 26.40 poner internet
+				- ping -c 1 google.es 
+				- sudo systemctl start NetworkManager.service 
+				- sudo su 
+				- systemctl enable NetworkManager (crea enlaces simbólicos para q la próxima vez q arranque el sistema ya arranque este servicio)
+				- ping -c 1 google.es 
+				- systemctl start wpa_supplicant.service 
+				- systemctl enable wpa_supplicant.service 
+				
+			- 27.40 AUR (manejador de paquetes)
+				- pacman -S git 
+				- git 
+				- hacer un exit (ya que estabamos como sudu su, regresamos al usuario)
+				- whoami
+				- ir a directorio personal de usuario.
+				- pwd -> /home/byron
+				- mkdir -p Desktop/byron/repos
+				- cd !$
+				- ls
+				- git clone https://aur.archlinux.org/paru-bin.git 
+				- ls -al
+				- cd paru-bin/
+				- makepkg -si 
+			- Instalar repositorios de aur en nuestro repositorio.
+				- cd /home/byron/Desktop/byron/repos
+				- mkdir blackarch
+				- cd blackarch
+				- curl -O https://blackarch.org/strap.sh 
+				- ls -l
+				- chmod +x strap.sh
+				- sudo su
+				- ./strap.sh
+				- pacman -Sy 
+					- podemos ver q ya contempla blackarch 
+				- pacman -Sgg | grep blackarch 
+				- pagman -S crackmapexec
+				- pacman -S impacket 
+				- desplegar las categorias:
+					- pacman -Sgg | grep blackarch | awk '{print $1}'
+				- En lo anterior quitar repeticiones 
+					- pacman -Sgg | grep blackarch | awk '{print $1}' | sort -u | less 
+				- pacman -S blackarch-bluetooth
+				
+				
+			- 31.40 Interfaz gráfica 
+				- pacman -S xorg xorg-server 
+				- pacman -S gnome 
+				- systemctl start gdm.service
+					- debe arrancar interfaz gráfica. 
+				- logearse
+				- buscar Terminal y vemos que NO ABRE
+					- crtl + alt + F2 o F3 
+					- volvemos a interfaz texto ingresamos como el usuario.
+					- sudo su 
+					- systemctl enable gdm.service
+					
+				- 33.40 Descargar la kitty
+					- pacman -S kitty 
+					- reboot now 
+						- debería arrancar la interfaz.
+						- crtl + alt + F3 (retornar interfaz texto)
+						- sudo su
+						- instalación de paquetes
+							- GTKMN: gtkmm es la interfaz oficial de C++ para la popular biblioteca GUI GTK. gtkmm es un software gratuito distribuido bajo la Licencia Pública General Menor de GNU. gtkmm permite la creación de interfaces de usuario ya sea en código o con Glade Interface Designer, utilizando la clase Gtk::Builder.
+								- pacman -S gtkmn 
+				- Instalación de Tools 
+					- 34.30 VMware Tools
+						- pacman -S open-vm-tools
+						- pacman -S xf86-video-vmware xf86-input-vmmouse   
+						           (xf86-video-virtualbox xf86-input-mouse xf86-input-keyboard
+							- X.org VirtualBox Mouse input driver
+							
+								- VMware vs. Virtual Box: Comprehensive Comparison
+									- https://www.nakivo.com/blog/vmware-vs-virtual-box-comprehensive-comparison/
+									
+								- Install VMware Tools / VirtualBox guest additions on KDE Neon/Kubuntu
+									- https://technixleo.com/vmware-tools-virtualbox-additions-kde-neon-kubuntu/
+						
+						- systemctl enable vmtoolsd
+						- reboot now
+							
+					- VBOX: Como Instalar Guest Additions En Archlinux
+						- https://www.youtube.com/watch?v=Es_L34N6TP4
+							- locate virtualbox-guest-iso
+							- sudo pacman -S virtualbox-guest-iso
+							- locate virtualbox
+							- cd /usr/lib/virtualbox/additions/
+							- ls -al
+							- sudo mount VBoxGuestAdditions.iso /mnt 
+							- sudo chmod 777 VBoxGuestAdditions.iso
+							- sudo mount VBoxGuestAdditions.iso /mnt
+							- cd /mnt 
+							- ls -al
+							- sudo chmod -x VBoxLinuxAdditions.run
+							- sudo su
+							- ./VBoxLinuxAdditions.run
+							
+							- 10 años [HOW TO][Arch] Installing VirtualBox Guest additions and Installing LXDE
+								- https://www.youtube.com/watch?v=Rj-gNK8TDWE
+									- sudo pacman -Syu virtualbox-guest-utils
+									- modprobe -a vboxguest vboxsf vboxvideo 
+									- nano /etc/modules-load.d/virtualbox.conf 
+										vboxguest
+										vboxsf
+										vboxvideo
+										
+									- LXDE
+										- pacman -S lxde 
+										- systemctl enable lxdm.service 
+										- reboot 
+										
+										- pacman -S firefox 
+										
+										
+							- 2 años Arch VirtualBox screen auto-resize + installing guest additions
+								- https://www.youtube.com/watch?v=hmku7eW8UFg
+										
+									- VirtualBox/Install Arch Linux as a guest
+										- https://wiki.archlinux.org/title/VirtualBox/Install_Arch_Linux_as_a_guest
+										
+									- Antes de empezar validar que el display como
+										- vmsvga 
+										
+									- Verificar que guest additions y versión de VB coincidan
+										- En caso de no coincider se puede hacer insertando el CD o mejor
+										- Instalando paquete virtualbox-guest-utils
+											- sudo pacman -Syu virtualbox-guest-utils
+											
+									- Launch the VirtualBox guest services
+										- systemctl enable vboxservice.service 
+								
+										
+								
+					
+					
+			- 
+				- En firefox: github.com/rxyhn/dotfiles
+				- Ir a SETUP
+					- 
+					- Ir al kitty y poner paru -S y lo copiado 
+					- poner la contraseña
+					- 
+				
+	*************************************
+	*************************************
+				
+	- ¿Será posible configurar GPT en un PC ANTIGUO? [Arch Linux con BIOS / GPT]
+		- https://www.youtube.com/watch?v=LRgUW8wFzMo
+		
+	*************************************
+	*************************************
+		
+			- Con Ventoy crear un USB de arranque con el ISO de Arch correspondiente
+			- Ingresar al SETUP del equipo y poner como arranque al USB
+			- Seleccionar el ISO de Arch Linux
+			- Seleccionar del menú que se despliega "Arch Linux Install medium (x86_64 , BIOS)"
+				- Arch Linux Install medium (x86_64 , BIOS)
+				- Arch Linux Install medium (x86_64 , BIOS) with speech
+				- Boot existing OS
+				- Run Memtest86+ (RAM test)
+				- Hardware Information (HDT)
+				- Reboot
+				- Power Off
+			- Revisar documentación en
+				- https://www.gnu.org/software/grub/manual/grub/html_node/BIOS-installation.html
+			- cambiar tamaño de la letras
+				- setfont ter-228b.psf.gz
+					- https://wiki.archlinux.org/title/Linux_console#Fonts
+						- setfont -h8 /usr/share/kbd/consolefonts/drdos8x8.psfu.gz
+			- cambiar configuración teclado a español
+				- loadkeys es
+			- Opcional cambiar la instalación a español, pero lo dejaremos en inglés.
+			- Verificar se tenga conexión a internet
+				- ip link
+				- ping www.google.com
+			- Actualizar relog del sistema
+				- timedatectl status
+					- Verificar que "System clock synchronized" diga "yes"
+					- Verificar que "NTP service" diga "active"
+				- En caso lo anterior no este bien ejecutar
+					- timedatectl set-ntp true
+			- Verificar si el sistema es UEFI o MBR
+				- ls /sys/firmware/efi
+					- al no existir la carpeta "efi" sabemos que no se trata de un UEFI
+			- Crear tabla de particiones
+				- Verificar como se identifica el disco duro.
+					- fdisk -l | more
+						- /dev/sda
+						- En la parte de arriba dice
+							- Disklabel type: dos
+						- 11.42 En la parte de abajo está el /dev/sdb que es la USB con la que se está haciendo la instalación.
+						
+					- Tomar en cuenta que en algunas ocaciones podría indicar que el USB está en el sda y el disco duro en el sda, esto hay que tener cuidado.
+					
+				- Particionar
+					- cfdisk /dev/sda
+						- En este caso, el disco ya tiene una tabla de particones DOS, como queremos cretar una GPT, debemos ELIMINAR esta tabla de particiones y crear la nueva GPT.
+						- con cfdisk no se puede hacer lo anterior, para lo cual se debe usar fdisk 
+					- Borrar tabla de particiones DOS
+						- fdisk /dev/sda
+						- m (para la ayuda)
+						- p (ver particiones)
+						- g (crear nueva tabla particiones)
+						- w (write and exit)
+						- verificar lo hecho
+							- fdisk -l | more
+							- Ya se indica que el disco /dev/sda tiene una tabla de particiones gpt (Disklabel type: gpt)
+							- q 
+					- cfdisk /dev/sda
+						- Crear partición mayor a 32Kb pero gpt lo mínimo es 1mb
+							- Nueva
+							- 8M
+							- Formatear
+								- Type
+								- BIOS boot
+							- se creó: /dev/sda1
+							
+						- Crear otras particones
+							- Nueva
+							- 30G
+							- Type Linux filesystem
+							- se creó: /dev/sda2
+							
+							- Nueva
+							- 80G
+							- Type Linux filesystem
+							- se creó: /dev/sda3
+							
+							- Siguiendo mismo método crear 4 particoines de 50G, 1 de 68G  y 1 de 80G en los 355G libres disponibles.
+							
+							- Crear particion SWAP
+								- Nueva
+								- 8G
+								- Type
+								- Linux swap
+								
+							- Guardar lo hecho
+								- /dev/sda10
+								- Write
+								- yes
+								
+							- Quit
+							
+					- 22.02 Formatear
+						- /dev/sda2 EXT4
+						- /dev/sda3 EXT4
+						- /dev/sda10 swap 
+						
+						- mkfs.ext4 /dev/sda2
+						- mkfs.ext4 /dev/sda3
+						- lsblk -f
+						- mkswap /dev/sda10
+						- lsblk -f
+						
+					- 23.52 Montar las particiones
+						- cd /
+						- ls
+						- Hay q montar a sda2 y sda3 en el directorio /mnt
+						- mount /dev/sda2 /mnt
+							- cd /mnt
+							- ls
+								- Despliega: lost+found
+						- Montar partición de Home
+							- cd / mnt
+							- mkdir /mnt/home
+							- mount /dev/sda3 /mnt/home
+						- Verificar particiones
+							- lsblk -f
+							
+						- Verificar si la swap está montada:
+							- free -h
+						- Montar la swap
+							- swapon /dev/sda10
+							
+			- 27.17 Instalar sistema base
+				- pacstrap /mnt base llinux linux-firmware base-devel
+				- lsblk -f
+					- sda2 ya aparece con ocupación del 6%
+				- df -h
+			- Crear archivo /etc/fstab
+				- Este archivo sirve para cuando se arranque el sistema se monten las particiones.
+				- genfstab -pU /mnt 
+				- df -h
+					- Ahora podemos ver que
+						- partición sda2 está montada en /mnt
+						- partición sda3 está montada en /mnt/home
+						
+					- Pero deberían ir a:
+						- sda2 /
+						- sda2 /home
+				- genfstab -pU /mnt >> /mnt/etc/fstab
+				- Verificar
+					- more /mnt/etc/fstab
+						- Ya está el archivo
+						- Salimos con q 
+						
+			- 33.00 Ingresar con chroot a este nuevo sistema
+				- arch-chroot /mnt
+				- Hace que el pront del sistema cambie de "root@archiso /" a "[root@archiso /]"
+				- df -h 
+					- Notar que ya no dice /mnt y /mnt/home sino ya se monta sobre / y /home 
+					
+			- 24.05 Instalar el grub 
+				- pacman -Syu neofetch 
+				- pacman -Syu grub os-prober 
+					Ojo: os-prober es para si tenemos sistema con windows u otras distribuciones 
+				- df -h 
+					- grub-install /dev/sda
+					- grub-mkconfig -o /boot/grub/grub.cfg 
+					
+			- 37.26 Sobre usr y passwords
+				- passwd
+					- Ingresar y confirmar
+			- 37.41 Paquetes para levantar la red
+				- pacman -Syu networkmanager dhcpcd netctl wpa_supplicant 
+					- para el wifi: netctl wpa_supplicant
+					- Dar enter cuando dice que hay dos proveedores 
+					
+				- neofetch 
+					- Salir del chroot
+						- exit 
+					- df -h
+						- Nuevamente están las particiones en /mnt y /mnt/home HAY QUE DESMONTARLAS.
+						- umount /mnt/home
+						- umount /mnt 
+						- swapoff /dev/sda10 
+					- Verificar 
+						- lsblk -f 
+							- ya las particiones montadas no están. 
+			- 40.00
+				- poweroff
+				- Quitar la USB 
+				- prender
+				- Tendríamos una instalación mínima de Arc Linux con sistema de arranque BIOS y particionado GPT 
+				- Ingresar con root y password
+				- cambiar tamaño de la letras
+					- setfont ter-228b.psf.gz
+				- cambiar configuración teclado a español
+					- loadkeys es
+					
+				- neofetch
+				- free -h 
+				- df -h 
+				- pacman -Syu htop 
+				- 42.39 Activar internet 
+					- ip a 
+						- Indica estado down 
+					- systemctl start NetwokManager.service 
+					- systemctl enable NetwokManager.service (esto hace que arranque desde el inicio del programa)
+					
+				- pacman -Syu htop 
+				- systemctl reboot (para verificar mi conexión internet funciona al reiniciar)
+			
+			- Pendientes
+				- Instalar
+					- Escritorio, sonido, tarjeta wi-fi 
+					
+					
+			- MIO poner internet
+				- ping -c 1 google.es 
+				- pacman -Syu sudo vim nano
+				- sudo systemctl start NetworkManager.service 
+				- sudo su 
+				- systemctl enable NetworkManager (crea enlaces simbólicos para q la próxima vez q arranque el sistema ya arranque este servicio)
+				- ping -c 1 google.es 
+				- systemctl start wpa_supplicant.service 
+				- systemctl enable wpa_supplicant.service 
+				
+				
+			- GRUB
+				- Classic SysAdmin: How to Rescue a Non-booting GRUB 2 on Linux
+					- https://www.linuxfoundation.org/blog/blog/classic-sysadmin-how-to-rescue-a-non-booting-grub-2-on-linux
+					
+						- Poner pager para comandos largos
+							- set pager=1
+						- Listar lo que existe 
+							- ls 
+						- Buscar boot 
+							- ls -al (hd0,2) 
+								- ir buscando hasta ver donde está el /boot 
+								
+						- Versión SO 
+							- cat (hd0,1)/etc/issue
+						- Booting from grub 
+							- Establecer partición en la que está el /boot 
+								- set root=(hd0,2)
+							- Indicar a grub la ubicación del kernel que queremos usar 
+								- linux /boot/vmlinuz-3.13.0-29-generic root=/dev/sda2
+							- Indicar el archivo "initrd", que debe tener la misma versión que el kernel.
+								- initrd /initrd.img
+							- Boot desde grub 
+								- boot 
+								
+						- Hacer reparación permanente 
+							- update-grub 
+							- grub-install /dev/sda
+					
+					
+				- Crear archivo "update-grub"
+					- sudo nano /usr/sbin/update-grub 
+						- Agregar:
+						
+							#!/bin/sh
+							set -e
+							exec grub-mkconfig -o /boot/grub/grub.cfg "$@"
+							
+				- Permisos 
+					- sudo chown root:root /usr/sbin/update-grub
+					- sudo chmod 755 /usr/sbin/update-grub
+					
+				- CAMBIAR EL TEMA 
+					- Bajar el tema de "https://www.gnome-look.org/p/1115202"
+						- https://www.gnome-look.org/p/1009236/
+					- https://www.gnome-look.org/theme/react/bundle/a7fc825834251a170bbd946d44e2188c.png
+					
+					- poner el tema en 
+						- /usr/share/grub/themes
+					- Modificar archivo /etc/default/grub
+						- GRUB_THEME="/usr/share/grub/themes/XXXX/Themes.txt"
+					- Actualizar el grub
+						- sudo update-grub 
+					- reboot
+					
+			- TECLADO LATINOAMERICANO 
+				- ls /etc/vc
+				- nano /etc/vconsole.conf 
+					- KEYMAP=es 
+					- NOTA: La próxima vez el teclado ya estará en español.
+					
+			- GUEST ADDITIONS 
+				- Instalar mlocate
+					- pacman -Syu mlocate
+					- sudo updatedb
+					- locate xxxxx
+					
+				- Instalar ISO guest additions (https://www.youtube.com/watch?v=Es_L34N6TP4)
+					- pacman -Syu virtualbox-guest-iso
+					- locate virtualbox
+					- cd /usr/lib/virtualbox/additons
+					- chmod 766 VBoxGuestAdditions.iso
+					- mount VBoxGuestAdditions.iso /mnt 
+					- cd /mnt && ls -al *.run
+					- ./VBoxLinuxAdditions.run 
+					- Reiniciar la MV (Al quedarse el comando anterior en negro hay q reiniciar la mv)
+					- 
+					
+				- Instalar virtualbox guest utils (https://unix.stackexchange.com/questions/72035/how-to-install-virtualbox-guest-addition-in-a-guest-machine-with-the-latest-arch)
+					- pacman -Syu virtualbox-guest-utils
+					- updatedb 
+					- locale virtualbox
+					
+			- INTERFAZ GRÁFICA 
+				- Instalación de la interfaz gráfica en ArchLinux
+					- https://www.youtube.com/watch?v=QcAJ502OmoU 
+						- 
+						- Instalar paquete de xor.server o nuestro driver de xor para nuestra tarjeta gráfica. 
+							- mirar en wiki sobre xor (https://wiki.archlinux.org/title/Xorg)
+							- sudo pacman -S xorg 
+							
+						- Instalar el Desktop enviroment (entrono de escritorio) (https://wiki.archlinux.org/title/desktop_environment) (https://wiki.archlinux.org/title/Comparison_of_desktop_environments_(Espa%C3%B1ol))
+							- Xfce 
+								- sudo pacman -S sfce4
+								
+								- Acceder 
+									- startxfce4
+								- Cerrar para volver a la consola.
+							
+						- Instalar el login manager (Es el software que nos permite ingresar a nuestro equipo)
+							- Buscar wiki arch Display manager (https://wiki.archlinux.org/title/Display_manager)
+							- SDDM 
+								- sudo pacman -S sddm 
+								- abilitar el servicio (para q al arrancar muestre el login)
+									- sudo systemctl enable sddm.service 
+								- reboot 
+								- SDDM does not display users 
+									- crtl + alt + f3
+									- 
+		
+						- Desabilitar el login manager
+							- sudo systemctl disable sddm.service	
+				
+			- AGREGAR USUARIO
+				- sudo useradd -m byron 
+				- passwd byron
+				- Meter al usuario en el grupo wheel (pq al tener a un usuario en el grupo sudo, al hacer sudo su en un usuario te conviertes en root.)
+					- usermod -aG wheel byron
+					- groups byron
+					- sudo nano /etc/sudoers
+						- Descomentar para permitir a miembros del grupo wheel ejecutar cualquier comando.
+							%wheel ALL=(ALL:ALL) ALL
+						
+					- cambiar a usuario nuevo 
+						- su byron
+						- id 
+						- sudo su
+						- exit
+						- exit
+						
+
+			- RECONFIGURAR GRUB PARA NO MOSTRAR MENSAJES DE CARGA 
+				- sudo nano /etc/default/grub 
+				- GRUB_TIMEOUT=0
+				- GRUB_CMDLINE_LINUX_DEFAULT="" en lugar de "Quiet"
+				- Generar archivo de grub 
+					- sudo grub-mkconfig -o /boot/grub/grub.cfg 
+					
+			- INSTALAR FIREFOX 	
+				- sudo pacman -Syu firefox 
+				- 
+		
+	*************************************
+	*************************************
+					
+- Top 19 aplicaciones en Linux
+	- https://www.youtube.com/watch?v=IsV_7mhQxT0
+		- Tilix
+			- Consola / Terminal 
+			- https://www.youtube.com/watch?v=VYp2-Pw2Hnw&feature=youtu.be
+			- Instalar
+				- sudo apt install tilix
+			- Para que conserve el path al abrir otra ventana
+				- 
+		- Midnight Commander
+			- Manejador visual de archivos
+				- https://adamtheautomator.com/midnight-commander/
+			- Instalar
+				- apt update -y
+				- apt install mc -yapt install mc -y
+				- mc --version
+				- mc  O  mc --nocolor
+				
+		- Neofetch
+			- Desplegar información del sistema
+				- https://www.youtube.com/watch?v=ZwE4qfOnN9Q
+			- Instalar
+				- apt install neofetch screenfetch
+		- asciiquarium
+			- Es para relajarse.
+				- https://www.drivemeca.com/asciiquarium-en-tu-terminal-linux/
+				- https://www.youtube.com/watch?v=1g04xmluveE&t=5s
+			- Instalar
+				- sudo apt install libcurses-perl git build-essential
+				- algunos módulos de Perl, En este paso elegiremos usar los defaults propuestos y presionaremos la tecla Enter cada vez que nos pregunte
+				- sudo cpan
+				- Al final llegaremos al cli (prompt cpan[1]>) y se deberán ejecutar cada uno de estos comandos individualmente
+					- install CPAN
+					- reload cpan
+					- install Term::ReadLine::Perl
+					- despliega exit dar enter
+					- exit (Esto ponerlo en el cpan[4]
+				- sudo cpan Term::Animation
+				- git clone https://github.com/cmatsuoka/asciiquarium.git
+				- sudo mv asciiquarium/asciiquarium /usr/local/bin
+			- ejecutar
+				- asciiquarium
+				- asciiquarium -c usara un modo clásico
+				- p para pausar o quitarla
+				- r redibujar
+				- q salir
+				
+		- btop
+			- Información uso disco, memoria, procesos
+			- https://www.drivemeca.com/btop-monitor-de-recursos-en-terminal/
+			- https://www.youtube.com/watch?v=0UjtO1CZE8g
+			- https://github.com/aristocratos/btop
+			- Instalar	
+				- Forma 1 - con ejecutable
+					- En "https://github.com/aristocratos/btop" dar click en Release
+					- En Release ir a "Assets" y bajar "btop-x86_64-linux-musl.tbz"
+					- Para pasarle a wsl, ir en wsl a carpeta que queremos escribir "explorer.ext ." y copiar el archivo en el explorador que se abra.
+					- Descromprimir el .tbz con "tar -xjf $(ls btop*.tbz)"
+					- Entrar al directorio q se crea / bin / y ejecutar "./btop" para ejecutar.
+				- Forma 2 - Compilation
+					- En "https://github.com/aristocratos/btop" ir a la sección Installation
+					- Bajar hasta "Compilation Linux" ejecutar los pasos indicados
+						- sudo apt install coreutils sed git build-essential gcc-11 g++-11
+						- git clone https://github.com/aristocratos/btop.git
+						- cd btop
+						
+						- Compilar
+							- make STATIC=true ADDFLAGS=-march=native 
+							
+						- Instal
+							- sudo make install
+						- sudo make setuid
+						
+				- Forma 3 - Installing the snap
+					- Requiere soporte para SNAP.
+					- sudo snap install btop
+					- 
+					
+		- keepassxc
+			- Gestor de contraseñas
+			- https://www.youtube.com/watch?v=i4ZzRAo4fDo&feature=youtu.be
+			- https://keepassxc.org/
+			- Instalar
+				- 
+				
+				
+- Tipos de letras
+	- listar letras	
+		- fc-list
+		
+	- para bajarlas: 
+		- https://www.fontsquirrel.com/
+			- Seleccionamos RETRO
+			- https://www.fontsquirrel.com/fonts/download/pacifico
+			- descomprimir
+				- file pacifico
+				- unzip pacifico
+			- mover
+				- mv Pacifico.ttf /usr/share/fonts/
+			- listar
+				- fc-list
+			- Cargar a cache
+				- fc-cache 
+				
+- Font Consola
+	- Using Powerline fonts in the Linux text console
+		- https://phoikoi.io/2016/11/09/powerline-console.html
+		
+- Copiar archivos
+	- cd /tmt
+	- mkdir test
+	- cd test
+	
+	- git clone https://github.com/powerline/fonts powerline-fonts
+	- cd powerline-fonts
+	- cp -r Terminus/PSF/*.psf.gz /usr/share/consolefonts
+	
+- Edit system files to activate the fonts
+	- sudo nano /etc/default/console-setup
+	
+		- FONT="ter-powerline-v32b.psf.gz"
+		
+		
+		
+- File Manager
+	- 8 Best Linux Console File Managers
+		- https://www.tecmint.com/linux-terminal-file-managers/
+		
+			- GNU Midnight Commander
+				- mc
+			- Ranger Console File Manager
+			- Cfiles Fast Terminal File Manager
+			- Vifm Console File Manager
+			- Nnn Terminal File Browser
+			- Lfm Last File Manager
+			- lf – List Files
+				- Instalar
+					- LF – A nifty terminal file manager for Linux systems
+						- https://www.2daygeek.com/linux-lf-terminal-file-manager/
+							- Bajar la última release, para eso ir al github y revisar cual es el r29 que corresponda y reemplazar en el siguiente comando:
+								- wget https://github.com/gokcehan/lf/releases/download/r29/lf-linux-amd64.tar.gz
+							- tar xvf lf-linux-amd64.tar.gz
+							- sudo mv lf /usr/local/bin
+				- LF: A Nerd's File Manager
+					- https://www.youtube.com/watch?v=OU1_8KTDiHo
+						- https://github.com/gokcehan/lf
+						
+					- How to Set Up and Configure LF (The Best Terminal File Manager)
+						- https://www.youtube.com/watch?v=2oWqD3JCXuI
+					
+			- WCM Commander
+				
+- CONCEPTOS
+	- SHELL
+		- sHELL es el intérprete de la línea de comandos (command-line interpreter CLI)  Pueden server	
+			- Interactivo: prompt más el campo de texto donde se ingresan los comandos.
+			- No Interactivo: un script inicializa un shell no interactivo 
+			interpreter.
+			
+		- Shell x defecto 
+			- echo $SHELL 
+		- Shell actual 
+			- echo $$
+			- cat /proc/xxx/comm (xxx es el id que salió del comando anterior)
+			
+			- cat /proc/$$/comm
+			
+	- TERMINAL 
+		- Es un EMULADOR de terminal. Que imita el comportamiento del hardware. Y dentro de este se puede ver el SHELL corriendo.
+		- Es la interfase al SHELL
+		- Abrir terminales:
+			- Crtl + Alt + F2 
+			
+			
+		- TABBY
+			- Bajar el .pacman 
+			- ir a Downloads 
+			- pacman -U tabby......pacman 
+			

@@ -1,0 +1,34 @@
+- JsDocAnnotations
+	- Documentación de código para JavaScript con JSDoc
+		- https://www.gradiweb.com/es/marketing-digital/documentacion-de-codigo-para-javascript-con-jsdoc/
+		
+			- Añadir la documentación JSDoc tiene un efecto secundario. El autocompletado mejorará en tu IDE y obtendrás sugerencias en tiempo real.
+		
+			- Lo primero es saber cuál es la anatomía de una anotación JSDoc. JSDoc es tan simple como añadir un comentario antes de la función:
+				- /**
+				  * comentario a poner.
+				  */
+				  
+			- Hagamos las cosas interesantes con anotaciones JSDoc para los parámetros de las funciones. Esta es la sintaxis:
+				- /**
+				  *
+				  * @param {param type} param name - description
+				  *
+				  */
+				  
+			- otras etiquetas
+				- /**
+				  *
+				  * @autor xxx xxx <xxx.gmail.com>
+				  * @param {param type} param name - description
+				  * @returns {Object} Product Recommendations
+				  *
+				  */
+				  
+			- Generación de código
+				- instalar
+					- pnpm i -D jsdoc
+				- Generar documentación 
+					- npx jsdoc *.js
+					
+					- Se generará una carpeta "out" con un "index.html"

@@ -1,0 +1,30 @@
+- CANAL: SOLUCIONES SATELITALES FTA
+	- Paginas Web para Apuntamiento Satelital - PortalEDS
+		- https://www.youtube.com/watch?v=SAKsW5QLC54&list=PLY7bpFvUTLxeHPEiqh5AgZlRF1bs_I0Xg&index=8
+			- Portal EDS
+				- Ya NO FUNCIONA.
+				- Paginas alternativas a portaleds | Mantente informado
+					- https://www.youtube.com/watch?v=6AcFB2DWcnM
+			
+			- BSD
+				- https://portalbsd.com.br/satelites.php
+				
+			- LyngSat
+				- https://www.lyngsat.com/
+				
+	- Pisadas El Tamaño del Plato y la Pisada del Satelite - Muy Importante antes del apuntamiento
+		- https://www.youtube.com/watch?v=e9yQ_5sJfWU&list=PLY7bpFvUTLxeHPEiqh5AgZlRF1bs_I0Xg&index=9
+			- https://www.satbeams.com/footprints
+			
+			- https://www.n2yo.com/satellites/
+			
+	- Paginas para apuntamiento Satelital - DISHPOINTER
+		- https://www.youtube.com/watch?v=jgOLlsGd0O8&list=PLY7bpFvUTLxeHPEiqh5AgZlRF1bs_I0Xg&index=11
+			- DISHPOINTER
+				- https://www.dishpointer.com/
+				
+	- Satelites en el cielo
+		- https://www.heavens-above.com/main.aspx?lat=-0.2289&lng=-78.5107&loc=Casa&alt=0&tz=UCT5
+				
+- Blog: ftapinamar
+	- https://ftapinamar.blogspot.com/2021/07/adios-eds.html

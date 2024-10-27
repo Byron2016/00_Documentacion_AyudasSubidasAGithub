@@ -1,0 +1,223 @@
+- Vagrant 
+	- Qué es (makigas: Vagrant – 1. ¿Qué es Vagrant? (https://www.youtube.com/watch?v=Ud7cmVCNACE) )
+		- Es un software que se interpone entre nuestro proveedor de máquinas virtuales y nosotros. En líneas genrales lo que nos permite es crear máquinas virtuales de forma "declarativa" y "portable"
+			- Declarativo: No vamos a perder tiempo creando máquinas virtuales y configurándolas. Vagrant permite automatizar todo eso por medio de una herramienta a la que de forma declarativa a través de un archivo de configuración le decimos como queremos que sea nuestra máquina virtual y además podemos hacer instalaciones, abrir puertos, ejecutar scripts.
+			- Portable: Los archivos de configuración pueden ser compartidos a fin que todo el equipo tenga la misma configuración de MV y entorno de desarrollo.
+			
+	- makigas: Vagrant – 2. Instalamos Vagrant
+		- https://www.youtube.com/watch?v=8hrNt46EVSo
+			- Instalar VirtualBox 
+			- Ir a https://developer.hashicorp.com/vagrant/install?product_intent=vagrant#windows
+				- Bajar el programa de acuerdo al sistema opertivo.
+				- Como saber si fue correctamente instalado.
+					- vagrant -h 
+					- vagrant version
+					- vagrant up --> Para levantar una MV
+					- vagrant box --> listar 		
+	- makigas: Vagrant – 3. ¿Qué es una box y cómo las obtenemos?
+		- https://www.youtube.com/watch?v=MAlRVnWaVus
+		
+	- makigas: Vagrant – 5. Shell scripts de aprovisionamiento
+		- https://www.youtube.com/watch?v=aLYMcwsIcwk&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=5
+		
+			- 
+		
+		
+		
+	- AtoM - Vagrant (https://www.accesstomemory.org/es/docs/2.8/dev-manual/env/vagrant/#dev-env-vagrant)
+		- Instalation	
+			- mkdir atom-vagrant && cd atom-vagrant
+			- Initialize the current directory to be a Vagrant environment.
+				- vagrant init artefactual/atom
+			- Run Vagrant (again, from the same directory where you saved the Vagrantfile).
+				- vagrant up
+		- Conectar a AtoM 
+			- Open http://10.10.10.10
+			- The default login details are:
+				- Username: demo@example.com
+				- Password: demo
+				
+		- Conectarse a la terminal 
+			- vagrant ssh
+				- Username: vagrant
+				- Password: vagrant
+				
+			- If you are using Windows, the preferred SSH client is PuTTY
+			
+			- If you are a developer who requires access to the MySQL database in AtoM’s Vagrant box, here are the credentials:
+				- Username: root
+				- Password: root
+				
+		- Apagar
+			- vagrant halt
+			
+		- Destruirla
+			- vagrant destroy (borra programas y box)
+			
+		- Volver a ejecutar script de aprovisionamiento.
+			- vagrant up (para levantar la máquina)
+			- vagrant provision 
+			
+			
+			- vagrant reload 
+			
+		- Connecting to Vagrant VM MySQL database from host
+			- https://gist.github.com/rmatil/8d21620c11039a442964
+			
+	- OJO Scripts interesante para vagrant 
+		- https://gist.github.com/dikkedimi/663e4db20137fe0cb5f94e1f7690aad5
+	- Jon Vadillo: Cómo instalar Vagrant y crear un entorno Apache y PHP.
+		- https://www.youtube.com/watch?v=DxA-YXbKfiY
+			- Crear carpeta
+				- mkdir proyecto-php
+			- Ingresar a la carpeta
+				- cd proyecto-php
+			- Crear VagrantFile
+				- vagrant init
+			- Respaldar el VagrantFile
+				- mv Vagrantfile _Vagrantfile
+			- Copiar VagrantFile y bootstrap.sh de "https://github.com/jvadillo/vagrant-phpstorm-xdebug"
+				- touch Vagrantfile && touch bootstrap.sh 
+			- Crear la máquina virtual 
+				- vagrant up
+			- Ver máquina portatil está corriendo 
+				- vagrant status
+			- conectarse 
+				- vagrant ssh 
+			- Ver dir 
+				- pwd 
+					- /home/vagrant
+			- Ver lo que hay en el equipo Host 
+				- cd /vagrant/
+				- ls -al
+			- sincroniza ficheros con los de la MV 
+			- Verificar funcionamiento php
+				- Crear index.php 
+					- touch index.php
+					- <?php 
+					  echo "Hola Mundo";
+				- ir por el browser 
+					- 127.0.0.1:8765  
+						- Nota: el puerto se esfecificó en el vagratfile
+						
+		- Ubuntu 
+			- How do I see what packages are installed on Ubuntu Linux?
+				- https://www.cyberciti.biz/faq/apt-get-list-packages-are-installed-on-ubuntu-linux/
+				- Listar 
+					- apt list --installed
+				- Listar los que son actualizables 
+					- apt list --upgradeable 
+		- Instalación utilitarios 
+			- PHP 8.3 en Ubuntu 22.04
+				- lsb_release -a
+				- apt list | grep php8
+				
+				
+				- https://www.linuxtuto.com/how-to-install-php-8-3-on-ubuntu-22-04/
+					- Update Operating System
+						- apt update && apt upgrade
+					- Add PHP Repository
+						- apt-get install ca-certificates apt-transport-https software-properties-common
+						- add-apt-repository ppa:ondrej/php
+					- apt-get update
+					- Install PHP 8.3
+						- apt-get install php8.3
+						- php8.3 --version
+					- Install PHP 8.3 for Apache
+						- apt install libapache2-mod-php8.3
+						- systemctl restart apache2
+					- Install PHP Extension
+						- sudo apt install php8.3-[extension]
+					- If you want to add multiple extensions then include them in braces:
+						- apt install php8.3-mysql php8.3-imap php8.3-ldap php8.3-xml php8.3-curl php8.3-mbstring php8.3-zip
+					- To check loaded PHP modules use the command:
+						- php8.3 -m
+						
+			- Xdebug 
+				- Ubuntu : https://xdebug.org/docs/install#linux
+					- sudo apt-get install php8.3-xdebug
+					
+			- Instalando Apache 
+				- https://extassisnetwork.com/tutoriales/como-instalar-apache-en-ubuntu/
+					- sudo apt update
+					- sudo apt install apache2
+					- sudo systemctl status apache2
+					
+			- mysql-server (https://www.youtube.com/watch?v=p4aXonUEeQ4)
+				- Step #1: Repository Update
+					- sudo apt update 
+					- sudo apt upgrade
+				- Step #2: Install MySQL
+					- sudo apt install mysql-server 
+				- Step #3: Verify MySQL Installation
+					- #mysql --version
+				- Step #4: Secure the MySQL Installation
+					- sudo mysql_secure_installation
+				- Step #5: Verify That the MySQL Service is Functional
+					- sudo systemctl status mysql 
+				- Step #6: Log in to MySQL Server
+					- sudo mysql -u root
+					
+				- https://www.redswitches.com/blog/install-mysql-on-ubuntu/#:~:text=You%20can%20set%20up%20a,check%20if%20MySQL%20is%20installed.
+				
+			- phpmyadmin (https://www.youtube.com/watch?v=p4aXonUEeQ4)
+				- ya: apache, sql-server, php 
+				- sudo apt update
+				- sudo apt install phpmyadmin 
+					- select apache 
+					- proveer clave
+				- habilitar el mbstring extension.
+					- sudo phpenmod mbstring
+				- Reiniciar apache aplicar cambios 
+					- sudo systemctl restart apache2
+				- Accesar 
+					- ifconfig 
+					- http://10.0.2.15/phpmyadmin
+					- http://10.0.2.15/phpmyadmin
+				- Crear usuario con privilegios (no recomendado)
+					- mysql -u root -p
+					- CREATE USAR 'walu'@'%' IDENTIFIED BY 'pass246';
+					- GRANT ALL PRIVILEGES ON *.* TO 'walu'@'%' WITH GRANT OPTION;
+					- FLUSH PRIVILEGES;
+					
+				- Desatendida:
+					- PHPMyAdmin install script for Debian/Ubuntu
+						- https://github.com/direc85/phpmyadmin-installer
+					
+			- Doctrine 
+				- How to install Doctrine in Linux (Ubuntu) through Terminal? (2 Solutions!!)
+					- https://www.youtube.com/watch?v=wdWZCO8_dUY
+						- Solution 1
+							- 
+						- Solution 2
+			
+		ubuntu version
+		lsb_release -a
+		Apache instalado:
+		dpkg --get-selections | grep apache 
+		systemctl status apache2
+		which apache2
+		sudo service apache2 status
+		
+		- Ver ip de mi vagrant 
+			- https://ostechnix.com/how-to-find-vagrant-machine-ip-address-from-host/
+				- vagrant global-status 
+				- vagrant ssh-config [xxxx el id]
+				
+				
+	- ERROR 
+		- Check your Homestead.yaml (or Homestead.json) file, the path to your private key does not exist.
+			- Esto pasó luego de hacer estos pasos 
+				- cd Homestead
+				- vagrant up 
+				
+			- solución: 
+				- stackoverflow.com :  https://stackoverflow.com/questions/44463987/homestead-installation
+				- Generate a ssh key 
+					- ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+				- Start ssh agent 
+					- eval "$(ssh-agent -s)"
+				- Add your SSH private key to the ssh-agent 
+					- ssh-add -k ~/.ssh/id_rsa
+				- Then run vagrant up
+					- vagrant up

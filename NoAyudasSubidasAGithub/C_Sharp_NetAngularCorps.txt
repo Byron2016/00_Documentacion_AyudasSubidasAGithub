@@ -1,0 +1,38 @@
+- Curso Angular y .NET Core en 2 horas
+	- https://www.youtube.com/watch?v=0pycASxSI_Y
+	
+	- Cors
+		- Min: 25:26
+			- En el program.cs
+			public void ConfigureServices(IServiceCollection services)
+			{
+				....
+			    // El corp permitirá todos los orígines
+				// cualquier cabecera
+				// cualquier método
+
+				services.AddCors(options => 
+					options.AddPolicy("AllowWebApp",
+						builder => builder.AllowOrigen()
+										.AllowAnyHeader()
+										.AllowAnyMethod()));
+			
+				....
+			}
+			
+			public void Configure(IApplicationBuilder app, IWebHostEnviroment env)
+			{
+				if(env.IsDevelopment())
+				{
+					app.UseDeveloperExceptionPage();
+				}
+				app.UseCors("AllowWebApp");
+				....
+			}
+			
+	- Deploy 
+		- Min: 1:40:00
+			- Publicar backEnd en Azure
+			
+		- Min 1.46.05
+			- Publicar frontEnd en Netlify

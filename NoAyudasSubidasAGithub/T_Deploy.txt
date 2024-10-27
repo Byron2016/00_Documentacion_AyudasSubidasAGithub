@@ -1,0 +1,36 @@
+- Deploy 
+	- C# 
+		- Rodolfo Borja: Cómo publicar una aplicación web .NET Core 5 en Ubuntu con Nginx + SSL
+			- https://www.youtube.com/watch?v=KZCZUhgRw4Q
+			
+		- NetMentor: Publicar aplicacion ASP.NET Core en servidor Linux CentOS paso a paso
+			- https://www.youtube.com/watch?v=AJjtzZaKw2A
+			
+		- Maxi Programa: Cómo Subir Web C# .NET a VPS y HOSTING
+			- https://www.youtube.com/watch?v=JqHWoCO7FyM
+			
+	- Nodejs 
+		- jonmircha: Desplegar aplicaciones Node.js en ULTAHOST - jonmircha
+			- https://www.youtube.com/watch?v=FGZKmqX8gEY
+			
+	- En Render 
+		- Martin Gesualdo: Desplegar backend Node JS a producción (paso a paso) (0.30.00)
+			- https://www.youtube.com/watch?v=Mg5GqHD6z-w&list=PLAmcNbGd0fkNl-CleT_XxwGKDk1j00uUp&index=6
+				- En render 
+					- Statico 
+						- HTML, CSS, javaScript
+					- Web Service <---
+						- Backend nuestro.
+						- Código que le dará instrucciones a un servidor, y por eso se le dice web service x q va a estar escuchando todo el tiempo.
+					- BD 
+					- Otros 
+					
+					- Create a new Service 
+						- Conectar cuenta de github 
+						- Dar permisos al que queramos.
+						
+					- Para indicar que solo inst. de prodcción.
+						- Caso 1 
+							- npm i --production 
+						- Caso 2 con variables de entorno.
+							- 

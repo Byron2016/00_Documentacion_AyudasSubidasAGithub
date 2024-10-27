@@ -1,0 +1,91 @@
+- SQL Server Localdb - mlsqllocaldb
+	- José María Alarcón: Qué es SQL Server Localdb, cómo instalarlo, usarlo y actualizarlo
+		- https://www.jasoft.org/Blog/post/que-es-sql-server-localdb-como-instalarlo-usarlo-y-actualizarlo
+			- SQL Server Express (https://www.campusmvp.es/recursos/post/SQL-Server-Express-la-base-de-datos-empresarial-gratuita-de-Microsoft.aspx)
+				- Dispones de motor de SQL Server SIN PAGAR 
+				- Desventaja
+					- Es un servidor de datos completo
+					- Se instala en tu equipo
+					- Está todo el tiempo operativo desde que inicias sesión, lo estés utilizando o no.
+					- Ocupa memoria, carga las bases de datos y consume ciclos del CPU, aunque no lo estés utilizando.
+				- Limitaciones 
+					- 
+					
+			
+			- SQL Server LocalDB
+				- Características de 
+					- Es una edición mínima de SQL Server 
+					- Se instala tan solo lo estrictamente necesario para funcionar cuando se requiera, quitándose cuando ya no.
+					- Se tiene toda la potencia del servidor de datos, pero sin la necesidad de tener un servicio consumiendo recursos constantemente.
+					- Utiliza una cadena de conexión especial que hace que, cuando te conectas a él porque necesitas usar una base de datos, crea y arranca automáticamente la infraestructura de SQL Server necesaria en un instante, descargándolo todo en cuanto se pierde la última conexión. 
+				- Verificar si está instalada
+					- sqllocaldb info 
+					
+				- Instalar 
+					- Descargar instalador de SQL Server Express 
+						- https://www.microsoft.com/es-es/sql-server/sql-server-downloads
+							- Ir a Express y presionar botón "Descargar ahora"
+								- Descarga un ejecutable pequeño de poco más de 6MB.
+					- Dar doble click sobre el ejecutable descargado. Mostrando tres opciones
+						- Básic (Básica)
+						- Custom (personalizada)
+						- --> Download Media (Descarga los archivo de instalación)
+							- Express Core (266 MB)
+							- Express Advanced (544 MB)
+							- --> LocalDB (60MB)
+								- Presionar "Descargar"
+					- Una vez descargado es hacer doble-clic sobre él, aceptar las condiciones y listo: tienes SQL Server LocalDB instalado y listo en unos pocos segundos.
+					
+				- Actualizar 
+					- Versión
+						- SqlLocalDB.exe info MSSQLLocalDB (si tu instancia se llama de otra manera, pon el nombre correcto al final y no MSSQLLocalDB, aunque lo normal es que sea este nombre).
+						
+							- ERROR
+								- The automatic instance "MSSQLLocalDB" is not created.
+									- La instancia no está en ejecución ya que no estás usando ninguna DB.
+									- Ponerlo en ejecución con: 
+										- SqlLocalDB.exe start MSSQLLocalDB
+									- Utilizar el comando para ver la versión.
+										Name:               MSSQLLocalDB
+										Version:            15.0.4153.1
+										Shared name:
+										Owner:              xxxxxxxxxxxx\xxxx
+										Auto-create:        Yes
+										State:              Running
+										Last start time:    18/6/2024 12:59:46
+										Instance pipe name: np:\\.\pipe\LOCALDB#A67B3D1C\tsql\query
+									- Parar la ejecución
+										- SqlLocalDB.exe stop MSSQLLocalDB
+										
+					- 
+						- Borrar instancia 
+							- SqlLocalDB.exe delete MSSQLLocalDB
+						- Crear instancia 
+							- SqlLocalDB.exe create MSSQLLocalDB
+						- Info 
+							- SqlLocalDB.exe start MSSQLLocalDB
+							- SqlLocalDB.exe info MSSQLLocalDB
+							
+							
+								Name:               MSSQLLocalDB
+								Version:            16.0.1000.6
+								Shared name:
+								Owner:              xxxxxxxxxxxx\xxxx
+								Auto-create:        Yes
+								State:              Running
+								Last start time:    18/6/2024 13:12:06
+								Instance pipe name: np:\\.\pipe\LOCALDB#B2C06F4D\tsql\query
+								
+							- SqlLocalDB.exe stop MSSQLLocalDB
+							
+				- Conectarse a SQL Server LocalDB
+					- Con MSSQL 
+						- Server name: (LocalDB)\<NombreInstancia>
+							- (LocalDB)\MSSQLLocalDB
+						- Authentication: Windows Authentication
+						
+						- No es necesario que esté levantada la instancia ya que la levantará automáticamente en cuanto haya un intento de conexión.
+						
+					- Con PROGRAMA 
+						- la cadena de conexión es como la de cualquier otro programa que trabaje con SQL Server, solo que en este caso usas el nombre de la instancia y puedes conectarte a un archivo de base de datos concreto, sin necesidad de tenerlo adjuntado al servidor (como, de hecho, se hace con SQL Server Express también), o sea, algo como esto:
+							- Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=E:\Datos\MiBDD.mdf

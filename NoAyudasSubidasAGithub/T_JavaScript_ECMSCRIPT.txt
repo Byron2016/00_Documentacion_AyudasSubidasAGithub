@@ -1,0 +1,88 @@
+- ES5 vs ES6 
+	- OpenWebinars: Diferencias entre ECMAScript 5 y 6
+		- https://www.youtube.com/watch?v=-ZfNjMzVrDU
+	
+		- Variables
+			- ES5 
+				- Aún se puede usar var.
+			- ES6	
+				- Introduce Const y Let.
+				
+		- Funciones
+			- ES5 
+				- 
+				const add = function(a,b) {
+					return a + b;
+				}
+			- ES6	
+				- Usa arrow functions.
+				const add = (a,b) => a + b;
+				
+			- Valores por defecto.
+				- ES5 
+					- 
+					function add(a,b) {
+						if(!a) a = 1;
+						if(!b) b = 1;
+						return a + b;
+					}
+				- ES6 
+					- 
+					function add(a =1,b=1) {
+						return a + b;
+					}
+					
+		- Strings (Template String)
+			- ES5 
+				- 
+				var name = 'Bob';
+				console.log('Hi ' + name + '!');
+			- ES6	
+				- 
+				const name = 'Bob';
+				console.log(`Hi ${name}!`);
+				
+- TypeScript
+	- Tipos
+		- Hay un pequeño conjunto de tipos primitivos disponibles en JS : boolean, bigint, null, number, string, symbol, and undefined, que puede usar en interfases. 
+		- TS agrega los tipos: any, never, void
+			- any: permite cualquier cosa.
+			- never: No es posible que el tipo sea ...
+			- void: una función que retorna undefined o no tiene valor de retorno.
+			
+			- Other important TypeScript types
+				- Type	          Explanation
+				- unknown	      the top type.
+				- never	          the bottom type.
+				- object literal  eg { property: Type }
+				- void	          for functions with no documented return value
+				- T[]	          mutable arrays, also written Array<T>
+				- [T, T]	      tuples, which are fixed-length but mutable
+				- (t: T) => U	  functions
+			
+	- Componiendo tipos	
+		- Uniones
+			- type MyBool = true | false;
+			- type WindowStates = "open" | "closed" | "minimized";
+			- type LockStates = "locked" | "unlocked";
+			- type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+		- Genéricos
+			- type StringArray = Array<string>;
+			- type NumberArray = Array<number>;
+			- type ObjectWithNameArray = Array<{ name: string }>;
+			
+			
+	- Verificaciones
+		- noImplicitAny
+			- No se permita tipos any.
+			- Evitamos que cuando no se especifica el tipo y TS no puede inferirlo por su contexto, el compilador por lo general le colocará el tipo a any. 
+		- strictNullChecks
+			- Que nos avise donde nos olvidamos de verificar null o undefined
+			
+	- Falsy
+		- 0
+		- NaN
+		- "" (the empty string)
+		- 0n (the bigint version of zero)
+		- null
+		- undefined

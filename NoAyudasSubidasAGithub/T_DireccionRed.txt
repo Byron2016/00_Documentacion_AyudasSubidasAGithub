@@ -1,0 +1,34 @@
+- Direccionamiento IPv4 y Subredes (Explicado)
+	- https://www.youtube.com/watch?v=SHbBso63X38
+		- Asimismo, podrás obtener la representación en binario de la dirección IP de 32 bits y de la máscara.
+			- https://labvirtual.webs.upv.es/ipcalc.html
+				Dirección IP
+				192.168.1.2     1100 0000.1010 1000.0000 0001.0000 0010
+				Máscara de subred
+				255.255.255.198 1111 1111.1111 1111.1111 1111.1100 0000
+				Dirección de subred
+								1100 0000.1010 1000.0000 0001.0000 0000
+				Dirección de subred: (En vídeo lo llama Dirección de Red)
+				192.168.1.0/26
+				Dirección de broadcast:
+				192.168.1.63
+				Primera dirección IP:
+				192.168.1.1
+				Última dirección IP:
+				192.168.1.62
+				Direcciones IP disponibles:
+				62
+				
+				
+			- Obtener dirección de red
+				1100 0000.1010 1000.0000 0001.0000 0010
+				1111 1111.1111 1111.1111 1111.1100 0000
+				---------------------------------------
+				1100 0000.1010 1000.0000 0001.0000 0000
+		
+		
+- CONFIGURAR MODEM CNT (REUTILIZAR MODEM CNT 2021) USAR PUERTOS LAN (SI FUNCIONA✅)
+	- https://www.youtube.com/watch?v=9XoY7tHXpt4
+	- https://www.youtube.com/watch?v=EfS6gfKNu6w
+	
+	- https://www.youtube.com/watch?v=dqjSYii0jHY

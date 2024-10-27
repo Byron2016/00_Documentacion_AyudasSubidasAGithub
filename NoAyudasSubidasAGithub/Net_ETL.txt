@@ -1,0 +1,222 @@
+- SSIS / ETL - etl
+	- Instalación
+		- SQL Server 101: How to install for FREE Visual Studio 2022 and the SQL Server SSRS extension (front-end)
+			- https://www.youtube.com/watch?v=kci5AgUqStQ
+			
+				- 7:14
+					- Ir a Continuar sin código
+					- Ir a Extensions/Manage Extensions
+					- Ir a Visual Studio MarketPlace
+						- Microsoft Reporting Services Projects 2022
+						- 
+						
+		- Should you install Visual Studio 2022, if you are using SSIS (November 2021)?
+			- https://www.youtube.com/watch?v=vE-i9pve4CE
+					
+	- Elena López: Introducción y Bienvenida
+		- https://www.youtube.com/watch?v=oWS50GWJg8A&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR
+			- Instalacion SQL Server developer edition (gratuito) + Integration Services
+				- https://www.youtube.com/watch?v=DEBjQWlShjc&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=2
+					- Requerimientos de Hardware y software
+						- No se recomienda instalar SQL Server en sistema de archivo FAT32
+						- Espacio mínimo requerido 6 GB
+						- Conexión a internet
+						- Mínimo 523 MG de RAM para edición Express y 1 GB para las demás versiones.
+						- Procesador preferiblemente x64
+						- SQL Server Managmenet Studio
+						- SQL Server Data tools
+						
+					- Instalación
+						- Buscar en Google download sql server developer edition.
+						- Ir a sección Developer / Downaload now
+						- Ejecutar el programa que se ha bajado
+						- Hay 3 opciones
+							- Basic
+							- Custom
+							- Donload Media
+						- Seleccionar Custom
+							- Indicar dónde bajar los archivos
+							- Ir a "Instalados"
+							- Seleccionar primera opción: New SQL Server ....
+								- Product Key: Developer
+								- Aceptar términos y condiciones
+								- Feature Selection
+									- Database Engine Services
+									- Integration Services
+										- Los dos subelementos que aparecen permiten distribuir carga de trabajo entre varias computadoras.
+									- Instance Configuration
+										- Default instance
+									- Server Configuration
+										- Este usurio es importante x q es el que debería tener los permisos suficientes cuando trabajemos fuera de este servidor.
+										- Collation: configuración de caracteres que manejará la BD.
+										
+									- Database Engine Configuration
+										- Server Configuration
+											- Seleccionar: Mixed Mode
+											- Add Current User
+										- Data Directories
+										- TempDB
+										- FILESTREAM (Servicio para almacenamiento de archivos dentro de DB)
+										
+			- SSIS Términos y definiciones
+				- https://www.youtube.com/watch?v=tDBU0duQOwA&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=3
+					- Extracción
+					- Transformación
+						- Correcciones, cambio tipo de dato, mayúscula/minúscula, pivot/unpivot, cálculos, split
+					- Carga
+					- Por qué necesitamos integrar datos?
+					- Para qué SSIS
+						- Carga de datos de un origen a un destino
+						- Estandarización y limpieza de datos
+						- DWH
+						- Automatización de tareas.
+
+			- Preparando el ambiente
+				- https://www.youtube.com/watch?v=HIWvKOTdBJ0&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=4
+					- Cargar script Script_inicial.sql
+					
+					
+			- SQL Server Data Tools
+				- https://www.youtube.com/watch?v=G1IbSu5QbqE&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=5
+				
+					- Instalación
+						- En google buscar: sql server data tools
+						- download sql server data tools (ssdt) microsoft docs
+						
+					- Uso SSDT
+						- En Visual Studio
+							- File/new/project/Analisys Services Multidimensional and Data Mining Project.
+								- An Analysis Services project for creating multidimensional and data mining models.
+								
+								- Analysis Services : para crear cubos
+								- Integration Services: para ETL
+								- Reporting Services: para reportes
+								
+							- File/new/project/Integration Services Project.
+								- This project may bbe used for building hihg performance data integration and workflow solutions that can be run on SSIS catalog, including extration, transformation, and loading (ETL) operations for data warehousing.
+								
+							- Agregar un paquete existente.
+								- Sobre carpeta SSIS Packages botón derecho Add Existing Packages
+									- File System: Si está en nuestros archivos.
+									- SQL Server: Si está dentro de Integration Services como servicio 
+									- SSIS Package Storage: En caso de tener package store.
+									
+			- Exportar e Importar Datos desde SQL Server Management Studio
+				- https://www.youtube.com/watch?v=X-BYypTga_4&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=6
+				
+					- En Management Studio
+						- En la BD botón derecho opción Tasks/Import Data
+							- Choose a Data Source
+								- Microsoft OLE DB Driver for SQL Server
+									- Properties
+										ServerName: DESKTOP-54TM21T
+										Login: sa
+										Password: 123456
+										
+										ERROR: Login failed for user 'sa'. (Microsoft OLE DB Driver for SQL Server)
+				
+				
+			- Contenido de un paquete o ETL
+				- https://www.youtube.com/watch?v=B27QYckN-XE&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=7
+				
+			- Primer ETL Usando SQL Server Data Tools
+				- https://www.youtube.com/watch?v=IZzhUUeCf2g&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=8
+				
+					- 
+			- Agregando ETL Existente a un proyecto
+				- https://www.youtube.com/watch?v=ihs6DyOHZkM&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=9
+					- CREAR UN CATALOGO.
+						- Abrir Management Studio
+						- Buscar Integration Services Catalogs (Justo debajo del nodo de base de datos)
+							- Click Derecha Agregar
+							- Habilitar Enable CLR Integration
+							- Asignar una contraseña password
+							- Se crea una base de datos que puede contener tanto proyectos como paquetes de IS que desarrollemos con integration tools.
+							- Ir a Visual Studio 2019 botón derecho add existing package
+							- 
+							
+			- Trabajando con Conexiones
+				- https://www.youtube.com/watch?v=sQKlwP_eaPY&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=10
+				
+					- Realizar conexions a DB Oracle - SAP
+					- Las conexiones se pueden trabajar tanto a nivel de 
+						- paquete
+							- Click derecho sobre sección Connection Manages
+							- Definir lo que se requiere.
+							
+						- proyecto.
+							- Conexion Manager
+							- click derecho new connection Manager
+								- FILE 
+								- Seleccioanr archivo y guardar.
+							- Para cambiar el tipo a paquete
+								- Click derecho cobre conexión
+								- Convert to Package Connection
+								- 
+			- Otras conexiones Archivos y FTP
+				- https://www.youtube.com/watch?v=0usO9DfhQ5w&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=11
+					- Archivos texto, planos, csv, excel
+					- Conexiones FTP
+					
+					- Para trabajar con conexiones sobre archivos en el disco duro.	
+						- El usuario con que esté ejecutándose el serviciio de sqlServer Integration Services dentro del sistema operativo debe contar con los permisos  necesarios para realizar las tareas q con IS deseamos hacer sobre dicho archivo.
+							- x ejemplo sobreescribir.
+					- New File Connection types.
+						- Create file
+						- Existing file
+						- Create folder
+						- Existing folder
+						
+			- Control Flow
+				- https://www.youtube.com/watch?v=I_UM3W6QHGA&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=12
+				
+					- Tipos de elementos	
+						- Contenedores: Crear elementos dentro de ellos iterarlos/ordenarlos
+						- Tareas: Proveer funcionalidad leer archivo, seleccionar datos, etc
+						- Restricciones de precedencia: permite conectar todos los conectores y tareas ya diseñadas. Estas nos permiten manejar el flujo del ETL.
+						
+					- Tareas básicas de preparación de datos
+					
+			- Control Flow: Execute Task y Execute T SQL Statement Task
+				- https://www.youtube.com/watch?v=tm8h4m8xJIA&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=13
+				
+					- Execute Task
+						- Definir o seleccionar una conexión.
+						- Definir SQLStatement
+						- ResultSet: Definir acciones sobre el resultado de la consulta.
+							- None: No va a tener ningún resultado de salida únicamente lo va a ejecutar.
+							- Single Row: Retorna una única fila
+							- Full result set: Retorna todo el resultado.
+							- XML: 
+						- Colocar en variable el resultado.
+							- Ir a pestaña ResultSet/Add
+							- Colocar de nombre el Alias de la Columna (obligatorio)
+					- Execute T SQL Statement Task
+						- SOLO sobre sql SERVER (código transac)
+						- Es menos complejo que el anterior, es decir no me permite realizar consultas parametrizadas ni guardar el resultado.
+						- usa menos recursos del equipo.
+						- Toma menos tiempo en ejecutar.
+						- 
+						
+			- Control Flow: Execute process task
+				- https://www.youtube.com/watch?v=L5eTK9HRl2I&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=14
+				
+					- Execute Process Task
+						- Permite ejecutar procesos, aplicaciones, archivos por lotes, abrir un documento, abrir una aplicación.
+						- Tomarlo del grupo common
+						- Dentro pestaña process
+							- Executable
+							
+			- Execute package task
+				- https://www.youtube.com/watch?v=f3AohT8Ie0o&list=PLK3umACGADUl8hWOR4eBlnJ99bCvIf7aR&index=15
+				
+					- Ejecutar un ETL dentro de otro ETL
+					- Descomponer en paquetes más pequeños paquetes q sean complejos.
+					- Capacidad de reutilización de paquetes ya funcionales.
+					- Temas de seguridad en donde usurios deben acceder y a otros no, entonces lo dividimos.
+					- Ejecución	
+						- En pestaña Package
+							- Reference Type: trabajar paquete dentro de nuestro proyecto o no.
+							- Seleeccionar el ETL
+							- Password: para q si en seguridad tiene contraseña el q voy a coupar.
+							- ExecuteOutOfProcess: si queremos ejecutar el paquete dentro del mismo proceso.

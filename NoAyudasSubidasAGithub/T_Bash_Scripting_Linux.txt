@@ -1,0 +1,661 @@
+- Bash - Scripting
+	- S4vitar: Scripting en Bash para principiantes #1
+		- https://www.youtube.com/watch?v=RUorAzaDftg
+		
+		- Ir a
+			- https://overthewire.org/wargames/bandit/
+			
+PARA                                              CLAVE
+- ssh bandit0@bandit.labs.overthewire.org -p 2220  bandit0 
+- ssh bandit0@bandit.labs.overthewire.org -p 2220  NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+- ssh bandit1@bandit.labs.overthewire.org -p 2220  rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi 
+- ssh bandit2@bandit.labs.overthewire.org -p 2220  aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+- ssh bandit3@bandit.labs.overthewire.org -p 2220  2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+- ssh bandit4@bandit.labs.overthewire.org -p 2220  lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+- ssh bandit5@bandit.labs.overthewire.org -p 2220  P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+- ssh bandit6@bandit.labs.overthewire.org -p 2220  z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+- ssh bandit7@bandit.labs.overthewire.org -p 2220  TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+- ssh bandit8@bandit.labs.overthewire.org -p 2220  EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+- ssh bandit9@bandit.labs.overthewire.org -p 2220  G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+- ssh bandit10@bandit.labs.overthewire.org -p 2220 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+- ssh bandit11@bandit.labs.overthewire.org -p 2220 JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+- ssh bandit12@bandit.labs.overthewire.org -p 2220 wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+- ssh bandit13@bandit.labs.overthewire.org -p 2220 
+- ssh bandit14@bandit.labs.overthewire.org -p 2220 
+- ssh bandit15@bandit.labs.overthewire.org -p 2220 
+- ssh bandit16@bandit.labs.overthewire.org -p 2220 
+- ssh bandit17@bandit.labs.overthewire.org -p 2220 
+- ssh bandit18@bandit.labs.overthewire.org -p 2220 
+- ssh bandit19@bandit.labs.overthewire.org -p 2220 
+- ssh bandit20@bandit.labs.overthewire.org -p 2220 
+			
+			
+			
+			
+			
+			- Level 0
+				- The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.
+				
+				ssh bandit0@bandit.labs.overthewire.org -p 2220
+				
+				hacer "cat readme" para copiar la clave: NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+				exit
+				y para siguiente nivel loguerse como bandit1
+				
+				Nota: no me dejaba conectarme renombre archivo C:\Users\bgva\.ssh\known_hosts a known_hosts.old y al volver a tratar de conectarse lo creó nuevamente.
+				
+				
+				NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+				
+				
+			- Level 0 - Level 1
+				- The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.
+				
+				
+				- ssh bandit0@bandit.labs.overthewire.org -p 2220
+					bandit0
+				
+				- ls -la /home
+				- cat /home/readme
+				- NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+				
+				
+			- Level 1 - Level 2
+				- The password for the next level is stored in a file called - located in the home directory
+				
+				- ssh bandit1@bandit.labs.overthewire.org -p 2220
+					NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+					
+				- pwd
+				- ls -al
+				- ls -1
+					- cat ./-
+					- rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+				- 2
+					ls -l -
+				- 3
+					- cat /home/bandit1/*
+					- cat /home/bandit1/-
+				- 3
+					- cat $(pwd)/-
+					
+				rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+					
+					
+			- Level 2 - Level 3
+				- The password for the next level is stored in a file called spaces in this filename located in the home directory
+				
+				- ssh bandit2@bandit.labs.overthewire.org -p 2220
+				- 1
+					- cat "spaces in this filename"
+					- aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+				- 2 
+					- cat sp "y presionar tab"
+				- 3 por algún texto en el nombre del archivo
+					- cat sp*
+					- cat *ame
+					- cat *this*
+					-
+				- 4
+					- cat /home/bandit2/*
+					- cat $(pwd)/s*
+					- cat $(pwd)/*
+					
+				-5 
+					- cat "$(ls)"
+					
+				aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+				
+			- Level 3 - Level 4 (13:56)
+				- The password for the next level is stored in a hidden file in the inhere directory.
+				
+				- ssh bandit3@bandit.labs.overthewire.org -p 2220
+				
+				- ls inhere/ -al
+				- ls -al ./inhere
+				- cat ./inhere/.hidden
+				- 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+				
+				- 2
+					- find . (buscame todo lo q haya del dir actual para adentro.)
+					- find . -type f 
+					- archivos,ruta abosula usuario, grupo asignado, modo (permiso)
+						- find . -type f -printf "%f\t%p\t%u\t%g\t%m\n" 
+						- ordenamiento visual.
+							- find . -type f -printf "%f\t%p\t%u\t%g\t%m\n" | column -t
+					
+				- 3
+					- find . -name .hidden | xargs cat  (ejecutar salida del comando anterior)
+					- find . -type f  | xargs cat
+					
+					- hacer búsqueda por palabra y pintar color.
+						- find . -type f  | xargs grep "prog" --color
+					
+				- PERMISOS (19:43)
+					- rwx rwx rwx
+						p   g   o
+					  r w x
+					  2 1 0
+					  4 2 1
+
+					  
+					- cambiar permisos
+						- sudo chmod o+rw file.txt
+							- sudo chmod o-rw
+							- chgrp s4vitar file.txt
+							
+					- Ni que root pueda eliminar.
+						- chattr +i -V file.txt
+						- ls -al
+						- intentar meter contenido al archivo y no lo permite.
+						- Para enumerar privilegios especiales
+							- lsattr 
+						
+						
+				2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+				
+			- Level 4 - Level 5
+				- The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+				
+				- ssh bandit4@bandit.labs.overthewire.org -p 2220
+				
+				- ls -al ./inhere
+				- find . -name -file*
+				- Uso de magic numbers
+					- which file
+					- find . -name -file* | xargs file
+						- time file inhere/*
+						- time find . -name -file* | xargs file
+					- find . -name -file07 | xargs cat
+					- lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+					
+					- cat $find . -name -file07)
+					
+					lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+					
+			- Level 5 - Level 6 (34:19)
+				- The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+					human-readable
+					1033 bytes in size
+					not executable
+				
+				- ssh bandit5@bandit.labs.overthewire.org -p 2220
+				
+				- find ./inhere/*
+				- find ./inhere -type f 
+				- find ./inhere -type f ! -executable
+				- find ./inhere -type f ! -executable -writable
+				- find ./inhere -type f ! -executable -readable -size 1033c
+				- find ./inhere -type f ! -executable -readable -size 1033c | xargs cat
+				- find ./inhere -type f ! -executable -readable -size 1033c | xargs cat | sed 's/^ *//g'
+					- con sed podemos borrar cosas.
+				
+					- dos primeras/ultimas lineas
+						- head -n 2
+						- tail -n 2
+					- una línea en particular mostrar solo línea dos.
+						- awk 'NR==2'
+					- Sustituciones
+						- sed 's/root/noroot/'
+						- sed 's/root/noroot/g'
+						
+				- (4429) find ./inhere -type f ! -executable -readable -size 1033c | xargs cat | sed 's/^ *//g' 
+				- P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+				
+				- Quita cualquier cosa empiece por espacio seguido de lo que sea y termine en vacío.
+					- find ./inhere -type f ! -executable -readable -size 1033c | xargs cat | sed '/^\s*$/d' 
+					
+					
+				- grep ver en que linea hay coincidencia
+					- cat .... 	| grep '^hola$' -n
+					
+				P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+				
+			- Level 6 - Level 7 (45:00)
+				- The password for the next level is stored somewhere on the server and has all of the following properties:
+
+					owned by user bandit7
+					owned by group bandit6
+					33 bytes in size
+				
+				- ssh bandit6@bandit.labs.overthewire.org -p 2220
+				
+				
+				- find / -user bandit7 -group bandit6 -size 33c
+					- despliega PERMISO DENEGADO.
+					
+				- ls -l /dev/null 
+					- Es una ruta para enviar ciertas operaciones, entonces le digo que los errores (número interno de bash, utilizamos el 2 se vayan a /dev/null) OJO ESTO NO USAR NUNCA: mv /* /dev/null
+				- find / -user bandit7 -group bandit6 -size 33c 2>/dev/null | xargs cat
+				- z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+				
+				- Para ver el error
+					- cat /etc/passwd 2>&1
+					
+				- 
+					- firefox
+					- despliega un montón de stdin
+					- firefox > /etc/null 2>&1
+					- segundo plano
+						- firefox > /etc/null 2>&1 &
+					- Independizar el segundo plano
+						- firefox > /etc/null 2>&1 &
+						- disown -a
+						- si da error solo disown
+						
+					- INVESTIGAR SOBRE EL wireshark
+						
+				z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+				
+			- Level 7 - Level 8 (51:57)
+				- The password for the next level is stored in the file data.txt next to the word millionth
+				
+				- ssh bandit7@bandit.labs.overthewire.org -p 2220
+					z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+				
+				- find . -name data.txt
+				- cat $(find . -name data.txt)
+					- cat data.txt | wc -l
+					- cat data.txt | wc -c
+					
+				- grep "millionth" data.txt
+				- millionth       TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+				
+				- otras formas
+					- cat data.txt | awk '/millionth/'
+					- awk '/millionth/' data.txt
+					
+				- awk
+					- x argumentos
+						- awk '/millionth/' data.txt | awk '{print $1}'
+						- awk '/millionth/' data.txt | awk '{print $2}'
+						
+						- awk '/millionth/' data.txt | awk  'NF{print $NF}'
+						
+						- echo "hola   que tal" | cut -d ' ' -f 1
+						- echo "hola   que tal" | cut -d ' ' -f 6
+						
+						- awk '/millionth/' data.txt | rev | awk '{print $1}' | rev
+						
+				TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+						
+			- Level 8 - Level 9
+				- The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+				
+				- ssh bandit8@bandit.labs.overthewire.org -p 2220
+				
+				- cat data.txt | wc -l
+				- ordenamiento alfabético
+					- cat data.txt | sort
+				- cat data.txt | sort | uniq -u
+				- EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+				
+				- sort data.txt | uniq -u
+				
+				EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+				
+			- Level 9 - Level 10
+				- The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+				
+				- ssh bandit9@bandit.labs.overthewire.org -p 2220
+				
+				- cat data.txt | wc -l
+				- Secuenciador
+					- seq 1 10
+				- listar cadena de caracteres impremibles en ficheros.
+					- strings data.txt
+					- strings data.txt | grep "===" | tail -n 1
+					- G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+					- Referenciar al último argumento de comando ejecutado
+						- touch buche.sh
+						- chmod +x !$
+						- ls !$
+						- nano !$
+							#!/bin/bash
+							
+							#en bash variables deben estar sin espacio.
+							contador=1
+							cat /etc/passwd | while read line; do
+							  echo "linea $contador: $line"
+							  let contador+=1 #contador=contador +1 
+							done
+							
+							while read line; do
+							  echo "estamos acá: $line"
+							done < cat /etc/passwd
+							
+							
+							
+						
+					- script en un one liner
+						- contador=0; strings data.txt | grep "===" | while read line; do echo $line; done
+						
+						- contador=0; strings data.txt | grep "===" | while read line; do echo "Linea $contador: $line"; let contador+=1; done
+						
+						- contador=0; strings data.txt | grep "===" | while read line; do echo "Linea $contador: $line"; let contador+=1; done | awk 'NR==4' | awk 'NF{print $NF}'
+						
+				G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+				
+			- Level 10 - Level 11
+				- The password for the next level is stored in the file data.txt, which contains base64 encoded data
+				
+				- ssh bandit10@bandit.labs.overthewire.org -p 2220
+				
+				- echo "hola q tal" | base64 | base64 -d
+				
+				-  cat data.txt |  base64 -d
+				- The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+				
+				- Comando tr 
+					- convertir espacios a saltos de línea.
+						- cat data.txt | base64 -d | tr ' ' '\n'
+						- cat data.txt | base64 -d | sed 's/ /\n/g'
+						
+				6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+						
+			- Level 11 - Level 12 (1.16.43)
+				- The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+				
+				- ssh bandit11@bandit.labs.overthewire.org -p 2220
+				
+				- abcdefghijklmnopqrstuvwxyz
+				- cat data.txt
+				- cat data.txt | tr '[G-ZA-Fg-za-f]' '[T-ZA-St-za-s]' | awk 'NF{print $NF}'
+				- 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+				
+			- Level 12 - Level 13 1.20.00
+				- The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+				
+				- grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir, cp, mv, file
+				
+				- ssh bandit12@bandit.labs.overthewire.org -p 2220
+				
+				- The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+				
+				- mkdir /tmp/byron1970
+				- cp /home/bandit12/data.txt /tmp/byron1970/
+				- cd /tmp/byron1970
+				- cat data.txt 
+				
+				- echo "hola que tal" | xxd
+				- echo "hola que tal" | xxd -ps
+				- echo "hola que tal" | xxd | xxd -r 
+				- cat data.txt | xxd -r 
+				- xxd -r data.txt > data
+				
+					- mkdir /tmp/byron1970 && cp /home/bandit12/data.txt /tmp/byron1970/ && cd /tmp/byron1970 && cp data.txt ndata.txt && xxd -r data.txt > data
+				
+				- Ver que tipo de archivo espacio
+					- file data
+				- renombrarlo
+					- mv data data.gzip
+				- 7z data.gzip
+				- decir el nombre q descomprimira
+					- 7z l data.gzip
+						- saca data2.bin
+				- extraer
+					- 7z x data.gzip
+				- file data2.bin
+					- es un bzip2
+					- 7z l data2.bin
+						- tiene un data2
+						
+				- 
+					- xxd -r data.txt > data
+					- file data
+					- cp data odata
+					- GZIP
+						- mv data data.gz
+						- gzip -l data.gz
+						- gzip -l -v data.gz
+						- gzip -c -d data.gz > data_n
+						- file data_n
+					
+					- BZIP2
+						- cp data_n odata_n
+						- mv data_n data_n.bz2
+						- file data_n.bz2
+						- Ver el contenido de los archivos comprimidos sin descomprimirlos
+							- bunzip2 -c data_n.bz2
+							- bzcat data_n.bz2
+						- bzip2 -d -c data_n.bz2 > data_o
+						- cp data_o odata_o
+						- file data_o
+					
+					- TAR (https://www.delftstack.com/es/howto/linux/how-to-extract-bzip2-files-using-terminal/)
+						- tar -xf compressed.tar.bz2
+						- Si queremos alguna información sobre la extracción, podemos usar la opción -v.
+							- tar -xvf compressed.tar.bz2
+							
+						- tar -xf compressed.tar.bz2 -C /home/Extracted_Files
+						- Listar el contenido de un archivo tar.bz2
+							- tar -tf compressed.tar.bz2
+						- extraer archivos específicos
+							- tar -xf compressed.tar.bz2 1.mp3 2.mp3
+							
+							
+					- 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+					
+					
+					- Curiso
+						- 7z data.gzip | grep "Name"
+						- Me despliegue dos lineas x debajo
+							- 7z data.gzip | grep "Name" -A 2
+						- Me despliegue dos lineas x encima
+							- 7z data.gzip | grep "Name" -B 2
+						- Me despliegue dos lineas x debajo y encima
+							- 7z data.gzip | grep "Name" -C 2
+							
+
+				- Solución
+					- Comandos 
+							
+						cd /tmp/byron
+						clear && rm test.sh && touch test.sh && chmod 777 test.sh && nano test.sh
+						clear && ./test.sh
+						
+						1	rm *.bin bz*
+						1	xxd -r ndata.txt > data001 
+						1	file data001
+						1	gunzip -c data001 > data2.bin
+						1	file data2.bin
+						2	bzip2 -d -c data2.bin > bz_data
+						2	file bz_data
+						3	gunzip -c bz_data > data4.bin
+						3	file data4.bin
+						4	tar -tvf data4.bin
+						4	tar -xvf data4.bin
+						4	file data5.bin
+						5	tar -tvf data5.bin
+						5	tar -xvf data5.bin
+						5	file data6.bin
+						6	bzip2 -d -c data6.bin > bz_data
+						6	file bz_data
+						7	tar -tvf bz_data
+						7	tar -xvf bz_data
+						7	file data8.bin
+						8	gunzip -c data8.bin > data9.bin
+						8	file data9.bin
+						9	cat data9.bin
+						
+					- script test.sh
+						#!/bin/bash
+						
+						# PARA COLORES
+						RED='\033[0;31m'
+						NC='\033[0m' # No Color
+						GREEN='\033[0;32m'
+						# Regular Colors
+						Black='\033[0;30m'        # Black
+						Red='\033[0;31m'          # Red
+						Green='\033[0;32m'        # Green
+						Yellow='\033[0;33m'       # Yellow
+						BLUE='\033[0;34m'         # Blue
+						Purple='\033[0;35m'       # Purple
+						Cyan='\033[0;36m'         # Cyan
+						White='\033[0;37m'        # White
+						
+						# VARS
+						let i=0;
+						name="data001";
+						contador=1;
+						termina=1000;
+						
+						function fn_print_action () {
+						if [ $# -ne 2 ]; then
+							echo "Error: Exactly 2 arguments required!"
+							return 1
+						fi
+						local stepNumber=$1
+						local commandDescription=$2
+						#echo "";
+						echo -e "${BLUE}command-${stepNumber}:${NC}  ${GREEN}${commandDescription}${NC}";
+						#echo "";
+						}
+						
+						a_ejecutar[i]=$(echo "rm *.bin bz*;");
+						rm *.bin bz* 2>/dev/null;
+						
+						fn_print_action $i "${a_ejecutar[$i]}";
+						
+						while [ $termina -ge $contador ]
+						do
+						if [ $contador == 1 ]; then
+							let "i++";
+							a_ejecutar[$i]=$(echo "xxd -r ndata.txt > $(echo $name);");
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							let "i++";
+							a_ejecutar[$i]=$(echo "file $name 2>/dev/null;");
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							type_name=$(xxd -r ndata.txt > $(echo $name) | file $name 2>/dev/null);
+						else 
+							let "i++";
+							a_ejecutar[i]=$(echo "file $name 2>/dev/null;");
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							type_name=$(file $name 2>/dev/null);
+						fi
+						
+						let "i++";
+						a_ejecutar[i]=$(echo "echo $type_name | cut -d ' ' -f 2;");
+						#fn_print_action $contador "${a_ejecutar[$i]}";
+						type=$(echo $type_name | cut -d ' ' -f 2);
+						
+						if [ $type == "gzip" ]; then
+							new_name=$(echo $type_name | cut -d ' ' -f 6);
+							new_name=$(echo $new_name | tr ',"' '  ');
+							new_name="$(echo -e "${new_name}" | tr -d '[:space:]')";
+							let "i++";
+							a_ejecutar[i]=$(echo "gunzip -c" $name "> $(echo "$new_name ")");
+						
+							fn_print_action $contador "${a_ejecutar[$i]}";
+						
+							gunzip -c $name > $(echo $new_name);
+						
+							if [ $contador == 1 ]; then
+							new_type_name=$(file $new_name 2>/dev/null);     
+							else 
+							new_type_name=$(file $name 2>/dev/null);
+							fi
+							name=$new_name;
+							old_type_name=$type_name;
+							type_name=$new_type_name;
+						fi
+						
+						if [ $type == "bzip2" ]; then
+							new_name="bz_data";
+							let "i++";
+							a_ejecutar[i]=$(echo "bzip2 -d -c" $name "> $(echo "$new_name ")");
+						
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							bzip2 -d -c $(echo $name) > $(echo $new_name);
+							name=$new_name;    
+							new_type_name=$(file $new_name 2>/dev/null);
+							old_type_name=$type_name;
+							type_name=$new_type_name;
+						fi
+						
+						if [ $type == "POSIX" ]; then
+							let "i++";
+							a_ejecutar[i]=$(echo "tar -tvf " $name " | awk  'NF{print $NF}'");
+							fn_print_action $contador "${a_ejecutar[$i]}";
+						
+							new_name=$(tar -tvf $name | awk  'NF{print $NF}');
+							let "i++";
+							a_ejecutar[i]=$(echo "tar -xvf " $name);
+							fn_print_action $contador "${a_ejecutar[$i]}";
+						
+							tar -xvf $name  2>/dev/null;
+							name=$new_name;
+							type_name=$(file $new_name 2>/dev/null);
+						fi
+						
+						if [ $type == "ASCII" ]; then
+							let "i++";
+							a_ejecutar[i]=$(echo "cat " $name);
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							a_ejecutar[i]=$(echo "rm *.bin bz*;");
+							fn_print_action $contador "${a_ejecutar[$i]}";
+							contador=$termina+1;
+							pass=$(cat $name);
+							echo "";
+							echo -e "${RED}$pass${NC}";
+							echo "";
+							rm *.bin bz* 2>/dev/null;
+						fi
+						
+						let contador=$contador+1
+						done 
+						
+				
+			- 1:38:30 Level 13 - Level 14
+				- 
+				
+				- ssh bandit13@bandit.labs.overthewire.org -p 2220
+				
+				
+				
+				
+- INTERESANTES 
+	- Piping
+		- Piping takes the standard output from one command and parses it as standard input for another process. Use echo and pipe the information to read for immediate parsing. For example:
+			- echo "Hello world!" | (read var1 var2; echo $var1; echo $var2)
+			
+	- Heredoc notation "<<<"
+		- read var1 var2 <<< "Hello world!"
+		
+	- READ command 
+		- https://phoenixnap.com/kb/bash-read#:~:text=Bash%20read%20Syntax,-The%20syntax%20for&text=The%20read%20command%20takes%20the,the%20argument%20names%20is%20optional.
+		
+	- echo -e "${b_CGSC}${@/-s/}${CDEF}";;  (https://stackoverflow.com/questions/76326218/what-does-at-sign-mean-inside-the-echo-command-of-a-shell-script-function?noredirect=1#comment134594034_76326218)
+		- Bash String Manipulation Examples – Length, Substring, Find and Replace
+			- https://www.thegeekstuff.com/2010/07/bash-string-manipulation/
+			
+	- $*, $@, $#, $$, $!, $?, $-, $_
+		- Bash Special Parameters Explained with 4 Example Shell Scripts
+			- https://www.thegeekstuff.com/2010/05/bash-shell-special-parameters/
+			
+	- [[ in Bash	
+		- 
+		
+		
+	- LC_ALL
+		- The locale environment variables tell the OS how to display or output certain kinds of text (https://www.baeldung.com/linux/locale-environment-variables)
+		- https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do
+		
+	- readlink
+		- El comando readlink en Linux se usa para imprimir enlaces simbólicos resueltos o nombres de archivos canónicos. En palabras sencillas siempre que tengamos un enlace simbólico y queramos saber qué camino representa. Luego, en ese caso, entra en juego el comando readlink para mostrar la ruta real del enlace simbólico.
+		- readlink () coloca el contenido de la ruta del enlace simbólico en el búfer buf, que tiene el tamaño bufsiz
+		
+	- Square Brackets in Bash
+		- https://stackoverflow.com/questions/8934012/when-are-square-brackets-required-in-a-bash-if-statement#:~:text=The%20square%20brackets%20are%20a,%2D%2Dit's%20just%20an%20expression.
+			- The square brackets are a synonym for the test command. An if statement checks the exit status of a command in order to decide which branch to take. grep -q "$text" is a command, but "$name" = 'Bob' is not--it's just an expression. test is a command, which takes an expression and evaluates it:
+				- if test "$name" = 'Bob'; then ...
+				- if [ "$name" = 'Bob' ]; then ...
+		- https://www.computerhope.com/unix/test.htm
+			- [ -h /usr/bin/yacc ]
+				- FILE exists and is a symbolic link (same as -L)
+			- [ -x /usr/bin/yacc ]
+				- FILE exists and execute (or search) permission is granted
+			- 
+				- 

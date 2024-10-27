@@ -1,0 +1,93 @@
+- Store Procedures
+	- Entity Framework Core - 3 Ejemplos con Procedimientos Almacenados
+		- https://www.youtube.com/watch?v=Fkuw2XZwA7g
+		
+			- Crear una migración vacía
+				- dotnet ef migrations add Crear_StoreProcedure
+				- En la migración crear script del sp.
+			
+					namespace PruebaInternalizacion_003.Data.Migrations
+					{
+						public partial class borrar_StoreProcedure_01 : Migration
+						{
+							protected override void Up(MigrationBuilder migrationBuilder)
+							{
+								migrationBuilder.Sql(@"
+									CREATE PROCEDURE dbo.StudentInsert
+										@nombre nvarchar(50),
+										@id int OUTPUT
+										AS
+										BEGIN
+											SET NOCOUNT ON;
+					
+											INSERT INTO STUDENTS(Name) VALUES(@nombre)
+					
+											SELECT @id = SCOPE_IDENTITY()
+										END
+								");
+							}
+					
+							protected override void Down(MigrationBuilder migrationBuilder)
+							{
+								migrationBuilder.Sql(@"DROP PROCEDURE dbo.StudentInsert");
+							}
+						}
+					}
+			
+			- Crear en el repositorio la función
+			
+				public IActionResult InsertPerson()
+				{
+					string name = "a";
+			
+					var parametroId = new SqlParameter("@id", System.Data.SqlDbType.Int);
+			
+					parametroId.Direction = System.Data.ParameterDirection.Output;
+			
+					_context.Database
+						.ExecuteSqlInterpolated($@"EXEC StudentInsert
+							@nombre={name}, @id={parametroId} OUTPUT");
+			
+					var id = (int)parametroId.Value;
+			
+			
+					return View("Index");
+				}
+				
+			- Invocar SP q devuelve una entidad	
+			
+				public IActionResult InsertPerson()
+				{
+					var personas = context.Personas
+								.FromSqlInterpolated($"EXEC SP @id={id}")
+								.AsAsyncEnumerable();
+								
+					await foreach (var persona in personas)
+					{
+						return persona;
+					}
+					
+					return not found.
+				}
+					
+			- Invocar SP q devuelve listado de IDs	
+			
+				- Crear entidad sin llave
+					- crear carpeta SinLlaves
+					- Crear clase
+						class PersonasObtenerIdsResultado
+						{
+							public int Id {get; set;}
+						}
+				-Ir a DBContes
+					- En OnModelCreating
+						modelBuilder.Entity<PersonasObtenerIdsResultado>
+							.ToSqlQuery("EXEC PersonasObtenerIds");
+							
+				- ejecutar desde función.
+			
+					public async Task<IEnumerable<PersonasObtenerIdsResultado>> GetIdsPersonas()
+					{
+						return await _context.Set<PersonasObtenerIdsResultado>().ToListAsync();
+					}		
+					

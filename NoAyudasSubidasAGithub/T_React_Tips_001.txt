@@ -1,0 +1,516 @@
+- Variables de entorno 
+	- Vida MRR: https://www.youtube.com/watch?v=oT-feDPuJmk (min 57.00)
+		- Crear .env 
+		- Definir nombres de la siguiente forma: 
+			- REACT_APP_xxx 
+			- REACT_APP_yyy 
+		- Llamar 
+			- process.env.REACT_APP_xxx 
+- Curso de React [2023]: De cero hasta crear tus primeros componentes con estado
+	- https://www.youtube.com/watch?v=7iobxzd_2wY&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29
+	
+	- Video 1
+	
+		- Iconos:
+			- System UI
+				- https://www.systemuicons.com/
+				
+				- Dar click sobre el ícono que nos interesa
+				- Pegar a la página.
+				
+				
+		- Props
+			- NO mutarlas, crear una constante NUEVA
+			
+		- Dibujar
+			- https://excalidraw.com/
+			
+		- Comentarios en JSX
+			- {/* xxxxx */}
+			- Pero es MEJOR NO USARLOS.
+			
+		- Seguir y Dejar de seguir con CSS
+			- Minuto 2.12.40
+			
+	- Modal con React (https://www.youtube.com/watch?v=Iaw9rFopXPY)
+		- App.jsx 
+		
+			import { useState } from 'react'
+			import './App.css'
+			import viteLogo from '/vite.svg'
+			
+			const board = Array(9).fill(null)
+			
+			
+			function App() {
+			
+			const [claseBloqueo, setclaseBloqueo] = useState("modal");
+			
+			const handleClickModal = () => {
+				//debugger
+				setclaseBloqueo('modal')
+			}
+			
+			const handleClickBloqueo = () => {
+				setclaseBloqueo('modal modal--show')
+			}
+			
+			return (
+				<main className='board'>
+			
+				<section><button onClick={handleClickBloqueo}>Press me</button></section>
+			
+				<section className={claseBloqueo}>
+					<div className="modal__container">
+					<img src={viteLogo} className="logo" alt="Vite logo" />
+					<h2 className='modal__title'>Bienvenido</h2>
+					<p className='modal__paragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti laboriosam assumenda, consequuntur nihil iure, ducimus quo impedit cumque voluptatem voluptatibus, a blanditiis dolorum. Doloribus, similique.</p>
+					<a href="#" className='modal__close' onClick={handleClickModal}>Cerrar Modal</a>
+					</div>
+				</section>
+				</main>
+			)
+			}
+			
+			export default App
+			
+		- App.css
+
+			.modal {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(165, 42, 42, 0.137);
+				display: flex;
+				
+				opacity: 0;
+				pointer-events: none;
+			}
+			
+			.modal--show {
+				opacity: 1;
+				pointer-events: unset;
+			}
+			
+			.modal__container {
+				width: 90%;
+				max-width: 600px;
+				max-height: 90%;
+				background-color: #19a08e;
+				border-radius: 6px;
+				padding: 3em 2.5em;
+				margin: auto;
+				display: grid;
+				gap: 1em;
+				place-items: center;
+				grid-auto-columns: 100%;
+			}
+			
+			.modal__title {
+				font-size: 2.5rem;
+			}
+			
+			.modal__paragraph {
+				margin-bottom: 10px;
+			}
+			
+			.modal__img {
+				width: 90%;
+				max-width: 300px;
+			}
+			
+			.modal__close {
+				text-decoration: none;
+				color: #fff;
+				background-color: #F26250;
+				padding: 1em 3em;
+				border: 1px solid;
+				border-radius: 6px;
+				display: inline-block;
+				font-weight: 500;
+				transition: background-color .3s;
+			}
+			
+			.modal__close:hover {
+				color:#F26250 ;
+				background-color: #fff;
+			}
+			
+	- UseState
+		- V2.2.06.00: Siempre deben estar en el CUERPO DEL COMPONENTE, no pueden estar en un if, switch, while etc. Esto es x q React guarda un array de los useState para saber como trabajar, si se los pone dentro perdería este control.
+		- Recuperar del localStorage
+			- const [a, setA] = useState(() =>{
+				const aFromLS = windows.localStorage.getItem('a')
+				// si tengo localStorage hacer un return del .. caso contrario construir el array.
+				return aFromLS ? JSON.parse(AFromLS): Array(9).fill(null)
+			})
+			- Al colocar lo anterior una función dentro del useState evitamos que con cada render lea del LS, ya q esto es lento.
+			
+	- Tic-Tac-ToC
+		- Minimo número de convinaciones para mirar un ganador.
+		
+	- Hooks
+		- useEffect
+			- Código q se ejecuta cada  vez que 
+				- Se monta un componentes se monta en el DOM
+				- Y cada vez que cambian las dependencais que nosotros les digamos.
+			- Dos parámetros, código a ejecutar y lista de dependencias.
+				- Si el segundo parámetro no se pasa, el código se ejecutará cada vez q se renderiza el componente.
+			- Como mínimo se ejecuta una vez.
+			- Para ejecutar una única vez al montar de lista de dependencias hay que pasarlo un array vacío. []
+			
+			- Mirar suscripciones en Consola (solo funciona en chromium)
+				- getEventListeners(window).
+				
+			- El return dentro del useEffect me permite desuscribirme de cualquier evento.
+				- El return se ejecuta cuando 
+					- se desmonta el componente o 
+					- cada vez que cambie la dependencia, antes de ejecutar el efecto de nuevo.
+				- return () => {windows.removeEventLister('pointermove), handleMove}
+				
+				
+	- V2.1.41.39 React.StrictMode
+		- Te pone x defecto cuando se crea el proyecto
+		- Te pone para asegurarse que está funcionando bien tu componente.
+			- Se pone dos veces el evento, pues ya me está avisando q hay algo mal con tu componente.
+			- Asegurarse que los efectos están haciendo la limpieza.
+			
+			
+	Hola Midudev, gracias por esta serie de vídeos, una pregunta rápida, configuraste en algún vídeo el Linter para React + Vite + TypeScript? he tenido problemas con el import absoluto y no he encontrado la forma de resolverlo, usando standard-with-typescript
+	
+	- V3
+		- Crear app.
+			- npm create vite@latest
+				- Vanilla
+				- JavaScript
+			- Plugin
+				- npm install @vitejs/plugin-react -E -D
+				
+			- npm i react react-dom
+				
+			- Crear y configurar vite.config.js
+			
+			- index.html
+			- main.jsx
+			- linter
+				- npm i -D standard
+				- En el package.json
+				"eslintConfig": {
+					"extends": ".node_modules/standard/eslintrc.json"
+				}
+				
+		- 58.00 Manejo errores
+			- fetch
+				fetch()
+				  .then(res => {
+					if(!res.ok) throw new Error("Error fetching fact")
+				  })
+				  .catch((err) =>{console.log(err)})
+				- devuelve errores en dos casos
+					- respuesta no OK
+					- 
+				- catch
+					- entra si hay error con respuesta o con petición
+					- Ojo, si no se hace el primer if err. solo entra con error petición.
+					
+	- V4
+export const getRandomFact = () => {
+  return fetch(CAT_ENPOINT_RANDOM_FACT)
+    .then((resp) => resp.json())
+    .then((data) => {
+      const { fact } = data
+      return fact
+    })
+}
+
+export const getRandomFact = async () => {
+  const resp = await fetch(CAT_ENPOINT_RANDOM_FACT)
+  const data = await resp.json()
+  const { fact } = data
+  return fact
+}
+
+- fetch
+	- promesa
+  useEffect(() => {
+    fetch(CAT_ENPOINT_RANDOM_FACT)
+      .then((resp) => resp.json())
+      .then((data) => setFirstWord(data.fact))
+  }, [])
+
+	- Async
+  useEffect(() => {
+    async function getRandomWords() {
+      const res = await fetch(CAT_ENPOINT_RANDOM_FACT)
+      const json = await res.json
+      setFirstWord(json.fact)
+    }
+			
+	
+	- V5. 
+		- 5.0 Frameworks class less
+			- https://github.com/dbohdan/classless-css
+				- water.css
+				- Bolt.css
+	
+		- 31.17 useRef 
+		- Es un Hook que te permite crear una REFERENCIA MUTABLE, que persiste durante todo el ciclo de vida de tu componente. Es útil para guardar cualquier valor que pueda mutar como un identificador, un elemento del DOM, un contador, y que cada vez que cambia NO VUELVE A RENDERIZAR EL COMPONENTE 
+		PERSISTE ENTRE RENDERIZADOS, y esa es la diferencia con el useState. 
+		
+		- 39.31
+			- Recuperar todos los fields de una forma
+				- <form className='form' onsubmit{handleSubmit}>
+					<input name='query' placeholder='')/>
+					<input name='otro' placeholder='')/>
+					<buton type='submit'>Consultar</buton>
+				</form>
+				
+				const handleSubmit = (e) => {
+					e.preventDefault()
+					const fields = Object.formEntries(new window.FormData(e.target))
+					console.log(fields)
+					//validaciones de campos, hacer algo o setear errores.
+				}
+		
+		- Forma NO CONTROLADA (se recomienda es más rápida)
+		40.13
+
+			const handleSubmit = (e) => {
+				e.preventDefault();
+				const fields = Object.fromEntries(new windows.FormData(e.target))
+				console.log(fields)
+			}
+			<form className="form" onSubmit={handleSubmit}>
+				<input name="query" placeholder="Avengers, Star Wars, ..."/>
+				<button>Buscar</button>
+			</form>
+			
+			- Forma CONTROLADA 	(no se recomienda, es más lento)	
+			42.54
+			const [query, setQuery] = useState("")
+	
+			const handleSubmit = (e) => {
+				e.preventDefault();
+				console.log(query)
+			}
+			
+			const handleChange = (e) => {
+				setQuery(e.Target.value)
+			}
+			
+			<form className="form" onSubmit={handleSubmit}>
+				<input onChange={handleChange} value={query} name="query" placeholder="Avengers, Star Wars, ..."/>
+				<button>Buscar</button>
+			</form>
+			
+		- 52.00 ejemplo useRef: hace q un valor persista. Una referencia que prsiste a un valor que puede cambiar. 
+			const counter = useRef(0)
+			counter.current++
+			
+		- 1.03 GRID típico al entregar resultados.
+			main {
+			  display:flex;
+			  justify-content: center
+			  width:100%
+			}
+			
+			.movies {
+			  display:grid;
+			  grid-template-columan:repeat(auto-fit, minmax(200px, 1fr))
+			  width:100%
+			  gap:16px;
+			}
+			
+		- 1.31.31 Modulos en JS
+			- Los módulos en js son instancias únicas son como singleton y por lo tanto esta variable se va a compartir allá donde importemos este custum hoock, ¿qué significa? que claro nosotros en este App.jsx estamos utilizando el hoock useMovie y aquí funcionariá pero imagínate que por lo sea dentro de Movies.jsx pues también queremos importarlo. 
+			
+		- 1.33.55 useMemo 
+			- Memorizar computaciones que hemos hecho que queremos evitar que se hagan a no ser que cambien las dependencias que nosotros les definimos. 
+				- función pepito.
+				- useMemo(función, [dependencias que ejecutarán la función cuando cambien.])
+				
+		- 1.52.00 useCallBack
+			- Lo mismo que useMemo pero pensado para función. En el useMemo podríamos hacer el return de una función, para evitar eso usamos el useCallBack. 
+			- useCallBack(función a renderizar, [ cosas q depend])
+			
+		- 1.57 debounce
+			- El usuario mientras escribe no hará nada, vamos a esperar un tiempo 300ms para q la última llamada que ha hecho el usuario sea la que produzca la llamada al fetch. Hay librerías como lodash.debounce o Just debounce, pero para entender vamos a la base. Incluso en just debouce se puede ver el código en Git y ver como funcina, tiene un time que rebisa si el tiempo ha pasado si ha pasado hace si no reinicia el timer (https://github.com/angus-c/just/tree/master/packages/function-debounce)
+				- npm install just-debounce-it -E
+				- import debounce from "just-debounce-it";
+				  const fn1 = debounce(() => console.log("Hello"), 500);
+				  
+				  const debounceGetMovies = debouce(search => {
+				    console.log("search", search)
+					getMovies({search})
+				  }, 500)
+				  
+				  //llamada
+				  const handleChange=(event) => {
+				    const newSearch = event.target.value
+					updateSearch(newSearch)
+					debounceGetMovies(newSearch)
+				  }
+				  
+				  //Aca en cada render se está ejecutando handleClick
+				  //está viendo q son funciones diferentes, no se está dando cuenta que son la misma función. Por eso hay que asegurar que el debouce siempre sea el mismo. LO CORRECTO ES:
+				  const debounceGetMovies = useCallback(
+				    debouce(search => {
+				      console.log("search", search)
+					  getMovies({search})
+				    }, 500)
+					, [getMovies]
+				  )
+				
+		
+	- Inmutabilidad
+		- Función Pura:
+			- Siempre regresa lo mismo para los mismos valores de ingreso.
+			- Inmutabilidad: Si recibimos un objeto de fuera y este se retorna, NO DEBE HABER CAMBIADO. En caso de cambiar debe devolver UN NUEVO OBJETO. 
+		- Formas
+			- const
+			- Objetos
+				- const a = {}
+					- me deja cambiar a.xxx = "" NO CUMPLE
+					- a = null; NO DEJA, SI CUMPLE.
+				- const a= OBJECT.FREEZE({})
+				- Biblitecas
+					- Inmutabeble.
+			- Objetos REFERENCIA
+				- const a = {name: "Pepito", Ape: "aaa"}
+				  console.log(a)
+				  const newA = a 
+				  newA.Ape = "bbb"
+				  console.log(a, newA)
+					- {name: "Pepito", Ape: "bbb"}
+					
+			- Clonar un objeto
+				- Spred
+					- const a = {name: "Pepito", Ape: "aaa"}
+					  console.log(a)
+					  const newA = {...a} 
+					  newA.Ape = "bbb"
+					  console.log(a, newA)
+						- {name: "Pepito", Ape: "aaa"}
+						- {name: "Pepito", Ape: "bbb"}
+						
+					- En objetos con más niveles este operador puede dar problemas. usar
+						- const newA = structuredClone(a)
+						
+			- Funciones
+				- Incorrecto
+					- function restaUno(cant){
+					    cant.quantity--
+						return cant
+					  }
+					  
+					  let b={quantity:10}
+					  
+					  console.log(restaUno(b)) //{quantity:9}
+					  console.log(b) //{quantity:9}
+					  
+				- Correcto (El método es inmutable)
+					- function restaUno(cant){
+					    let newCant = {...cant}
+						newCant.quantity--
+						return newCant
+					  }
+					  
+					  let b={quantity:10}
+					  
+					  console.log(restaUno(b)) //{quantity:9}
+					  console.log(b) //{quantity:10}
+					  
+			- Metodos mutables e inmutables
+				- mutables
+					- Arrays
+						- Push 
+				- inmutable
+					- Arrays 
+						- map 
+							- para verficiar, usar el método e imprimer la orinal antes y después del uso para comparar.
+							
+			- Ejemplo PATRON OBSERVER
+				- La INMUTABILIDAD en la PROGRAMACIÓN
+					- hdeleon.net: 13.21 https://www.youtube.com/watch?v=r_WCTHfLh6s
+					
+						- class BeerBarrel {
+							#observer = [];
+							beer;
+							
+							fill(nameBeer, quantity){
+							  this.beer = {
+							    name: nameBeer,
+								quantity: quantity
+							  }
+							  this.notify()
+							}
+							
+							drink(gulp){
+							  this.beer.quantity-=gulp;
+							  this.notify()
+							}
+							
+							subscribe(observer){
+							  this.#observer.push(observer);
+							}
+							
+							notify(data){
+							  this.#observer.forEach(e=> {e.refresh(this.beer.quantity)})
+							}
+						  }
+						  
+						  class Observer {
+						    construct(name){
+							  this.name = name;
+							}
+							#observer = [];
+							
+							refresh(quantity){
+							  console.log(`#{this.name} ve que queda ${quantity} en el barril`}
+							}
+						  }
+						  
+						  const beerBarrel = new BeerBarrel();
+						  
+						  //crear observadores
+						  const ob1 = new Observer("ob1")
+						  const ob2 = new Observer("ob2")
+						  
+						  //suscribir a los observadores
+						  beerBarrel.suscribe(ob1)
+						  beerBarrel.suscribe(ob2)
+						  
+						  //llenar
+						  beerBarrel.fill("pils", 100);
+						  
+						  beerBarrel.dring(10); // notifica a cada uno 90
+						  
+						  //reducir mágicamente
+						  let beer=beerBarrel.beer;
+						  beer.quantity = 0;
+						  
+						  beerBarrel.dring(10); // notifica a cada uno -10
+						  
+						  //pasos
+						  1.- cambiar beer a #beer 
+						  2.- En fill, drink, notify cambiar this.beer a this.#beer 
+						  3.- Agregar método
+						    getBeer(){ return this.#beer }
+							
+								OJO: esto devuelve referencia
+								lo que podríamos cambiar 
+								beer=null o beer.quantity = 0
+								
+							- Lo resolvemos creando un clon. 
+							getBeer(){ return {...this.#beer} }
+						  
+						  
+						  
+	- Componente puro	
+		- Una sola lógica
+		- Independiente
+		- A un input siempre tiene el mismo resultado. 
+		- NO efectos secundarios
+			- Algo que cambie elementos externos.

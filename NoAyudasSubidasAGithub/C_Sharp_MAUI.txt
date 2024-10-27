@@ -1,0 +1,48 @@
+- MAUI 
+	- TIPS 
+		- Colocar fuente
+			- Copiar la fuente a Resources/Fonts 
+			- Abrir archivo "MauiProgram.cs" para registrar la fuente.
+				- agregar  
+					- En 
+						- fonts.AddFont("xxxx","yyy");
+					- A 
+						- fonts.AddFont("nueva fuente.ttf","nueva fuente nombre clave");
+			- Definir la fuente para labels
+				- Abrir archivo: Resources/Styles/Styles.xaml
+				- Buscar sección donde el "TargetType" sea el que a usted le interesa, en este caso "Label"
+				- cambiar 
+					- De 
+						- <Setter Property="FontFamily" Value="...."/>
+					- A 
+						- <Setter Property="FontFamily" Value="Nueva Fuente clave"/>
+						
+		- Cambiar color del ícono en elemento SearchBarHandler 
+			- El Camino Dev (08.10): .NET MAUI Reto UI # 6 - App de Cuentos de Hadas
+				- https://www.youtube.com/watch?v=lR5V62MZvEA
+				
+				- private void ModifySearchBar()
+				{
+				  
+				  
+				  SearchBarHandler.Mapper.appendToMapping("CustomSearchIconColor", (handler, view) => 
+				  {
+				    #if ANDROID
+					
+				    var context = handler.PlatformView.Context;
+					var searchIconId = context.Resources.GetIdentifier("search_mag_icon", "id", context.PackageName);
+					if (searchIconId != 0 )
+					{
+					  var searchIcon = hander.PlatformView.FindViewById<Android.Widget.ImageView>(searchIconId);
+					  searchIcon.SetColorFilter(Android.Graphics.Color.Rgb(172, 157, 185), Android.Graphics.PorterDuff.xxx????)
+					}
+					
+					#endif
+					
+				  });
+				  
+				  
+				}
+				
+	- Luis Beltran: MVVM en .NET MAUI
+		- https://www.youtube.com/watch?v=DB-KMuiKkVU

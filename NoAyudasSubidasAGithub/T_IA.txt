@@ -1,0 +1,77 @@
+- Generación de imágenes
+	- Curso Intensivo de Midjourney desde 0 | Domina Midjourney en 2023
+		- https://www.youtube.com/watch?v=cphSqPEs-oo
+		
+			- Crear cuenta en Midjourney (- https://www.midjourney.com/explore)
+				- Utiliza discord: byronh0706 con hotmail.
+				- Presionar "Join the Beta"
+				- 
+				
+				- Si tienes pagada
+					- Ir a Midjourney
+					- en Usuarios seleccionar Midjourney bot 
+					- Añadir aplicación
+					- Seleccionar mi servidor creado.
+					
+				- Si tienes free
+					- Ir a los canales que dice newbies.
+					
+			- Escribir prompts
+				- /IMAGE + DESCRIPCIÓN DEL PERSONAJE O SITUACIÓN + ESTILO DE LA IMAGEN + ILUMINACIÓN + RESOLUCIÓN + ASPECT RATIO.
+					- Inglés 
+					- Cada instrucción separado x coma
+				- DESCRIPCIÓN DEL PERSONAJE O SITUACIÓN 
+					- /IMAGINE orange and white spotted cat, rolling on the grass, happy, playful, cinematic lighting, phorealistic --AR 4:3
+					
+				- ESTILO DE LA IMAGEN 
+					- Como un estilo 
+					- Como un artista 
+						- Andy Wrhot
+						- Da Vinci 
+						- Salvador Dali 
+						- Picasso 
+				- ILUMINACIÓN 
+					- volumetric lighting
+					- cinematic lighting
+					- octane render 
+					- softbox lighting
+					- glowing lights
+					- blue lighting
+					- long expusure
+					- fairy lights
+				- RESOLUCIÓN 
+					- 8k
+					- 4k
+					- phorealistic
+					- ultra photoreal
+					- ultra detailed
+					- intricate details 
+				- ASPECT RATIO.
+					- --AR 4:3 <-- + fotografía
+					- X:Y
+						- 3:2
+						- 1:1
+						- 1:3
+						- 5:1
+				- PESO DE LA IMAGEN 
+					- --iw2 --v5
+						- 0 toma base la original.
+						- 2 se va a apegar más a la imagen.
+						
+						
+/IMAGINE https://kaleidoscopic-donut-ec3edc.netlify.app/img/ByornMetro.jpg ,  add a big lion, running, across the tunnel, , cinematic lighting, phorealistic --AR 4:3
+
+- To add images to a prompt, type or paste the web address where the image is stored online. The address must end in an extension like .png, .gif, or .jpg. After adding image addresses, add any additional text and parameters to complete the prompt.
+
+/IMAGINE https://kaleidoscopic-donut-ec3edc.netlify.app/img/ByornMetro.jpg draw with a Da Vinci style
+
+- PROMPTS
+	- caravaggio style, chiaroscuro lighting, dark background, oil paint
+
+	- https://www.midjourney.com/jobs/35c18109-e9d1-4886-87be-169505759a72?index=0
+		- https://cdn.midjourney.com/a9a5e0e6-6bf4-415b-9e4a-3a54df650878/0_3.webp
+		- a hyper reallistic wider picture of leonardo da vinci of Florence when he was 25 years old
+		
+	- a man is talking on a phone and holding a phone, in the style of 1920s, meme art, internet culture, associated press photo, sharp/prickly, movie still, nouveau réalisme
+	
+	- a pirate with a red baird and a pirate hat, cinematic lighting, phorealistic url --iw0.5 --v5

@@ -1,0 +1,9 @@
+
+
+- Moviendo de .NET 5 a .NET 8
+	- Mirar "C_Sharp_MejorarNET8_Structura.txt"
+		- Cleaning Up The Program.cs File In .NET 6 Now That Startup.cs is Gone
+			- https://www.youtube.com/watch?v=rhydGmLxfjQ
+			
+- jondjones: MUST know Startup.cs To Program.cs REFACTORING tips in .NET 7
+	- https://www.youtube.com/watch?v=YHrhO_Zkgvk

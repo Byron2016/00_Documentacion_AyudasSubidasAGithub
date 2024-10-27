@@ -1,0 +1,154 @@
+- Modelo OSI
+	- Eliezer De León
+		- Entendiendo el modelo OSI | ¿Como funciona el Internet?
+			- https://www.youtube.com/watch?v=CnNRdJgeMo8
+			
+			- OSI
+				- 07 Aplicación
+				- 06 Presentación
+				- 05 Sesión
+				- 04 Transporte
+				- 03 Red
+				- 02 Conexión
+				- 01 Física
+				
+				- Forma de leer
+					- Cuando el mensaje va a salir 
+						- Superior a inferior
+					- Cuando el mensaje llega
+						- Inferior a superior
+						
+				- Capas descripción
+					- Aplicación: 
+						- Proporciona servicios de red a procesos de aplicación (mail, ftp...)
+						
+						- PROCESOS DE RED A APLICACIÓNES.
+						
+						- Descripción: Es lo que todo el mundo ve, por ejemplo puede ser youtube, puede ser whatsapp. Es la aplicación o el programa que realiza la comunicación entre las diferentes capas. Cuando usted le da click a un vídeo, cuando usted envía un mensaje por whatsapp o por cualquier otro programa, cuando usted envía un email, usted está interactuando con la capa de aplicación. 
+					
+					- Presentación
+						- Asegurar que el sistema recptor pueda leer los datos
+						- Formato de los datos
+						- Estructura de los datos
+						- Negociar la sintaxis de transferecnia de patos para la capa de aplicación.
+						
+						- REPRESENTACIÓN DE DATOS
+						
+						- Descripción: Es la capa que se encarga de traducir el formato al que usted está solicitando o usted desea ver, si usted desea descargar un archivo, o una foto o ver vídeo, esas extensiones de archivo, ese tipo de archivo es manejado por la capa presentación la cual se mostrará a usted en la capa de aplicación.
+						
+					- Sesión
+						- Comunicación entre hosts (equipos)
+						
+						- Descripción: Es la capa que maneja la conversación entre su dispositivo y el dispositivo remoto. Es decir cuando usted solicita un archivo que se encuentra en otro equipo/ en un equipo remoto, la capa de sesión es la que abre esa comunicación, es la que dice yo soy la computadora "A" y deseo descargar un archivo la computadora remota dice si he autorizado tu conversación, he autorizado tu entrada a este sistema adelante
+						
+					- Transporte	
+						- Comunicación de estremo a extremo.
+						
+						- Descripción: La capa transporte tiene dos elementos principales, en primer lugar la capa transporte es la que segmenta los datos, si usted va a descargar una canción y pesa 20 megas por ejemplo, la capa transporte es la que divide esos 20 megas en pequeños trozos (paquetes), le pone la etiqueta TCP o UDP, la TCP es la que permite que cuando se pierda un paquete la capa transporte lo detecte y solicite el reenvío de ese paquete, la UDP no, si está viendo un vídeo de live streaming, si se perdió un paquete del pixel que completa la capa de la derecha, simplemente se perdió ese paquete, no es necesario que ese paquete regrese porque estamos frente a un evento en vivo. 
+						
+					- Red 
+						- Direccionamiento y mejor ruta 
+						
+						- Descripción: La capa de Red es una de las capas más importantes, no sé si han escuchado decir que los routers son dispositivos de capa 3, se dice de capa 3 porque la capa de red es la que se encarga de determinar la mejor ruta para que el mensaje llegue por la mejor ruta, es decir la capa de red es la capa de direccionamiento.
+							
+					- Enlace de datos
+						- Acceso a los medios
+						
+						- Descripción: La capa de enlace de datos es la que toma esta información recopilada en las capas superiores y la traduce a información binaria, para entregársela a la capa física.
+						
+					- Física
+						- Transmisión binaria 
+						
+						- Descripción: Es la que envía la información en binario producida por la capa de enlace de datos. 
+						
+
+			- COMPARANDO MODELO OSI Y MODELO TCP/IP 
+				- TCP/IP 
+					- Surge del modelo OSI 
+					
+					- Capas	
+						- 04 Aplicación
+						- 03 Transporte 
+						- 02 Internet 
+						- 01 Acceso a la red 
+						
+					- Explicación 
+						- 04 Aplicación
+							- Fucionó las 3 capas superiores (Aplicación, Presentación y Sessión) del modelo OSI.
+						- 03 Transporte 
+							- Corresponde a Transporte del modelo OSI. 
+						- 02 Internet 
+							- Corresponde a Red del modelo OSI.
+						- 01 Acceso a la red 
+							- Fucionó las 2 capas inferiores (Enlace de datos y Física.) del modelo OSI.
+						
+				- Relación
+					OSI                 TCP/IP
+					- 07 Aplicación     - Capas de Aplicación
+					- 06 Presentación
+					- 05 Sesión
+					- 04 Transporte     - Capas de Flujos de datos
+					- 03 Red
+					- 02 Conexión
+					- 01 Física
+
+
+			- EJEMPLO FUNCIONAMIENTO DEL MODELO OSI (8.47) 
+				- ORIGEN (192.168.10.4)
+					- 07 Aplicación 
+						- En el preciso momento que usted le escribe a algún amigo "Hola como estás" la capa de aplicación que es donde usted escribe el mensaje le envía esa información a la capa de presentación.
+					- 06 Presentación
+						- Recibe la información enviada por la capa de aplicación y la formatea en formato texto y se lo envía a la capa sesión.
+					- 05 Sesión
+						- Recibe el mensaje de la capa presentación la cual inicia la conversación con el servidor de whatsapp y le dice tal usuario desea enviar un mensaje, el servidor le responde con la autorización abriendo la sesión para enviar el mensaje, entonces pasa el mensaje a la capa de transporte.
+					- 04 Transporte 
+						- Recibe el mensaje de la capa de sesión, y segmenta el mensaje en paquetes para tomar una pequeña porción y lo envía a la capa de red 
+					- 03 Red
+						- Recibe el paquete de la capa de transporte, etiqueta el trozo enviado y lo etiqueta con la ip de origen y la ip de destino (Servidor) convirtiéndolo en un paquete que es enviado a la capa de enlace de datos. 
+					- 02 Conexión (Enlace de datos)
+						- Recibe el paquete de la capa de red, y convierte toda esa información lógica en información binaria, para ser entregada a la capa física.
+					- 01 Física
+						- Recibe de la capa de enlace de datos, esta es la que usted conoce cable de red, etc, la capa física es el medio por el cual se trasmite el mensaje. Como ya todo está en 1 y 0 es más fácil para la capa física trasmitirlo en 1 y 0s. 
+					
+				- INTERNET 
+					- ROUTER 1 (En la red 192.168.10.4 de ORIGEN) (conectado a router 2)
+						- Son de capa 3 y el orden es del 1 al 3.
+							- 3 Red
+								- Recibe de la capa enlace de datos el paquete enviado y dice he recibido un mensaje pero no es para mi por que la IP destino no es mi IP.
+							- 2 Enlace de datos 
+								- Recibe la trama enviada por la capa física, lo analiza, lo convierte a datos lógicos entendible para el modelo OSI y lo sube a la capa de red.
+							- 1 Física 
+								- La capa física recibe el paquete desde el origen, lo lee y dice, estoy recibiendo un mensaje, envía esa trama a la capa enlace de datos.
+								
+								
+							- 3 Red
+								- Al darse cuenta que no es para él encapsula el mensaje lo etiqueta con esa información de IP destino y le pasa la información a la capa enlace de datos.
+							- 2 Enlace de datos 
+								- Recibe la trama enviada por la capa de red , etiqueta la MAC del próximo salto lo transforma a binario y envía a la capa física.
+							- 1 Física 
+								- La capa física recibe el paquete desde capa enlace de datos y sigue trasmitiendo el mensaje hasta el servidor destino.
+								
+					- ROUTER 2 (conectado a router 2)
+					- ROUTER 3 (conectado a router 3 y 4)
+					- ROUTER 4 (conectado a SERVIDOR Y  router 3 y 5)
+					- SERVIDOR (conectado a router 4)
+						- Lo mismo que pasó en recibir la información en los routers va a pasar en las 3 primeras capas, la capa de red determina que ahora SI es la IP correcta y transfiere el paquete a la capa de transporte, los paquete llegan desordenados y la capa de transporte se encarga de ordenarlos y va subiendo ya todo el paquete ordenado por la capa de transporte hasta la capa de aplicación en donde el software cliente servidor que tengan instalado determina a que usuario debe ser reenviado el mensaje, luego se repite el ciclo ya explicado en ORIGEN. 
+					- ROUTER 5 (conectado a router 3 y 4)
+					- ROUTER 6 (En la red 10.0.0.1 de DESTINO) (conectado a router 2)
+						- Recibe el mensaje y determina que no es para él sino para la IP 10.0.0.23 por lo que reenvía a destino.
+					
+				- DESTINO (10.0.0.23) (es del 1 al 7.)
+					- 01 Física
+						- Recibe los bits y lo envía a la capa enlace de datos
+					- 02 Conexión
+						- Determina que el mensaje es para mi, convierte los datos a la parte lógica y lo envía a la capa de red.
+					- 03 Red
+						- tengo un paquete es para nosotros ya que tiene esta IP destino, lo desencapsula para descubrir el segmento y lo envía a la capa de transporte
+					- 04 Transporte 
+						- En transporte va determinando que los paquetes son para este destino pero no están en orden, luego de recibir todo lo ordena y lo sube a la capa de sesión.
+					- 05 Sesión
+						- Este ya tenía la sesión abierta previamente cuando el servidor entabló comunicación, 
+					- 06 Presentación
+						- Este mensaje sé cual es estuvimos esperándolo lo formatea a mensaje de texto y lo envía a la capa de aplicación.
+					- 07 Aplicación 
+						- Al momento de recibir en la capa de aplicación se muestra en el destino el mensaje enviado.

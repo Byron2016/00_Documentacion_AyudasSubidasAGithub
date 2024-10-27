@@ -1,0 +1,39 @@
+- Nextjs 13 BETA (https://beta.nextjs.org/docs)
+	- Curso de Next.js 13 desde cero
+		- https://www.youtube.com/watch?v=tA-_vAz9y78
+			- INSTALACIÓN
+				- Para usar App (directorio) nodesjs 16.8+
+				- npx create-next-app@latest --experimental-app
+				
+					- Solicita lo siguiente
+						√ What is your project named? ... next-13-beta
+						√ Would you like to use TypeScript with this project? ... No / Yes
+						√ Would you like to use ESLint with this project? ... No / Yes
+						√ Would you like to use `src/` directory with this project? ... No / Yes
+						√ What import alias would you like configured? ... @/*
+					- Instala
+						- react
+						- react-dom
+						- next
+						- eslint
+						- eslint-config-next
+				
+				- Eliminar carpeta pages
+				- Eliminar archivo styles/Home.module.css
+				- Agregar carpeta App (nueva forma BETA)
+				- Para usar la carpeta App en "next.config.js" hay que aumentar
+					const nextConfig = {
+					  experimenta: {
+					    appDir:true
+					  },
+					  ....
+					}
+				
+			- AGREGAR ESLINT 
+				- npm i -D standard
+				- Agregar en .eslintrc.json
+				  {
+					"extends": ["./node_modules/standard/eslintrc.json","next/core-web-vitals"]
+				  }
+					
+			

@@ -1,0 +1,217 @@
+- 20.04
+	- VirtualBox 7.0.2
+		- Ubuntu 22.10 installation on VirtualBox 7.0 (Latest One)
+			- https://www.youtube.com/watch?v=k_J8_OLgtAo
+			
+			- Bajar VirtualBox
+			- Bajar Ubuntu
+				- https://ubuntu.com/
+				- Download
+				- Get Ubuntu Server
+				
+			- Crear m芍quina virtual
+				- M芍quina/Nueva
+					- Nombre: xxxx
+					- Folder: D:\DelDownload_20221031\VirtualBoxVMs_20221031
+					- Iso Image: xxxxx.iso
+					- Tipo: Linux
+					- Versi車n: Ubuntu(64-bit)
+					- Skyp Unattended Installation (SI SELECCIONADO)
+					
+				- Tama?o de memoria
+					- Requerimientos m赤nimos (Virtualizado)
+						- 2 GHz single core processor
+						- 2 GB Ram (system memory)
+						- 10 GB de espacio de disco.
+				- Disco Duro
+					- Crear un disco duro virtual ahora
+					
+			- Configurar m芍quina
+				- Pantalla
+					- VBoxVGA
+				- General/Advance
+					- Colocar Bidireccionar el copiado y el arrasstre
+					
+			- C車mo instalar VirtualBox Guest Additions en Ubuntu (https://noviello.it/es/como-instalar-virtualbox-guest-additions-en-ubuntu-20-04-lts/)
+				- Prerequisitos
+					- sudo apt update
+					- sudo apt install build-essential dkms linux-headers-$(uname -r) (Referencia: https://salmorejogeek.com/2019/08/23/kernel-headers-y-build-essential-en-debian-ubuntu-y-basadas/)
+				-sudo add-apt-repository multiverse
+				- sudo apt install virtualbox-guest-dkms virtualbox-guest-x11  (x once)
+							
+				- Retoques
+					- Apariencias
+						- Arc-Dark
+						- Iconodos_ Papirus-Dark
+						- Gnome-Shell: Arc-Dark
+					
+			- Pasos posteriores					
+				- Karla's Project: Haz que GNOME sea M芍S BONITO (https://www.youtube.com/watch?v=Uo_QMCP09mk)
+					- Paquetes:
+						- sudo apt install chrome-gnome-shell gnome-tweaks gnome-shell-extensions gir1.2-gtkclutter-1.0 arc-theme papirus-icon-theme
+							- chrome-gnome-shell: Para poder instalar exteniones.
+							- gnome-tweaks: para hacer modificaciones/ajustes con la apariencia
+							- gnome-shell-extensions: para poder gestionar las extensiones
+							- gir1.2-gtkclutter-1.0: lo usa internamente el ubuntu para q todo funcione bien
+							- Para lo visual:
+								- arc-theme: Para cambiar aspecto visual de las ventanas.
+								- papirus-icon-theme: ?conos.
+						-sudo apt install gnome-browser-connector (https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration/Installation?action=show&redirect=Projects%2FGnomeShellIntegrationForChrome%2FInstallation)
+					-Extensiones
+						- Ir al navedaor: https://extensions.gnome.org
+							- Presionar Click hero to install browser estension
+							- User Themes
+							- Blur my Shell : para aplicar efecto difuminado
+							- Windows Blur Effects
+							- Dash to Dock: mover la barra lateral.
+							
+					- Configuraci車n:
+						- En parrilla aplicaciones 
+							- Ir en la parrilla a Extensiones
+								- Blur my Shell 
+									- Brightness
+									- Sigma.
+									
+								- Dash to Dock	
+									- Desactivar el de Ubunto Dock
+									- Tama?o 赤conos
+									- apariencia: Opacidad.
+									
+								- User Themes
+									- No tocar
+									
+								- Windows blur effects
+									- Disminuir intensidad de color.
+									
+								- Descktop icons.
+									- Desactivar 赤cones de escritorio.
+									
+				
+						
+						
+						
+		- Rodolfo Borja: C車mo instalar Ubuntu Server 22.04 LTS
+			- https://www.youtube.com/watch?v=eUmk-dhFik0
+			
+			- Configuraci車n/Red
+				- hacer que la m芍quina virtual tenga una ip de la misma red.
+					- Conectado a: Adaptador puente
+					- Nombre: Seleccionar la interfaz de red que queremos que utilice nuestra VM
+					- Aceptar.
+					
+			- Instalar
+				- ifconfig
+					- sudo apt-get install net-tools
+					
+				- IP st芍tica
+					- https://www.youtube.com/watch?v=f3V_oLw7KdI
+					
+					- Ver ip del servidor: ifconfig
+					- Ver ip del router/gateway route -n
+					- Ir a la configuraci車n de red
+						- cd /etc/netplan
+						- Ver si se tiene el archivo 00-installer-config.yaml
+							- ls
+							- si no se tiene se lo puede crear
+							- sudo nado 00-installer-config.yaml
+								- Cambiar de
+									network:
+										ethernets:
+											enp0s3:
+												dhcp4: true
+										version: 2
+										
+								- A (Ojo idntaci車n es IMPORTANTE, no usar tab)
+									network:
+										ethernets:
+											enp0s3:
+												addresses:
+												- 192.168.0.78/24
+												dhcp4: false
+												routes:
+												- to: default
+												  via: 192.168.0.1
+												nameservers:
+													addresses:
+													- 192.168.0.1
+													- 8.8.8.8
+										version: 2
+										
+						- aplicar los cambios
+							- sudo netplan apply
+							
+			- Acciones
+				- Ver paquetes instalados 
+					- grep " install " /var/log/dpkg.log
+			
+			
+	- VirtualBox 6....
+		- INSTALAR Ubuntu 20.04 en VirtualBox  2021
+			- https://www.youtube.com/watch?v=GEx046EHphI
+			
+			- Bajar VirtualBox
+			- Bajar Ubuntu
+				- https://ubuntu.com/
+				- Download
+				- Get Ubuntu Server
+				
+			- Crear m芍quina virtual
+				- M芍quina/Nueva
+					- Nombre: xxxx
+					- Carpeta de m芍quina: D:\DelDownload_20221031\VirtualBoxVMs_20221031
+					- Tipo: Linux
+					- Versi車n: Ubuntu (64-bit)
+					
+				- Tama?o de memoria
+					- Requerimientos m赤nimos (Virtualizado)
+						- 2 GHz single core processor
+						- 2 GB Ram (system memory)
+						- 10 GB de espacio de disco.
+				- Disco Duro
+					- Crear un disco duro virtual ahora
+					
+				- Tipo de archivo de disco duro
+					- VDI (Virtualbox Disk Image)
+					
+				- Almacenamiento en unidad de disco duro f赤sica
+					- Reservado din芍micamente.
+					
+				- Ubicaci車n del archivo y tama?o
+					- 20 GB
+					
+			- Configurar VirtualBox
+				- Configuraci車n/Pantalla
+					- VBoxSVGA (Para q pantalla se ajuste a todo el ancho)
+					
+			- Instalaci車n
+				- Doble click sobre la m芍quina virtual
+				- Seleccione disco de inicio
+					- ERROR: 
+	
+					The virtual machine 'borrar' has terminated unexpectedly during startup with exit code 1 (0x1).  More details may be available in 'D:\DelDownload_20221031\VirtualBoxVMs_20221031\borrar\Logs\VBoxHardening.log'.
+					
+					C車digo resultado: E_FAIL (0x80004005)
+					Componente: MachineWrap
+					Interfaz: IMachine {85632c68-b5bb-4316-a900-5eb28d3413df}
+					
+					- https://www.youtube.com/watch?v=yH7gmdCYHJY
+					bcdedit /set hypervisorlaunchtype off
+	
+Fallo al abrir una sesi車n para la m芍quina virtual ubuntu_borrar.
+
+The virtual machine 'ubuntu_borrar' has terminated unexpectedly during startup with exit code 1 (0x1).  More details may be available in 'D:\DelDownload_20221031\VirtualBoxVMs_20221031\ubuntu_borrar\Logs\VBoxHardening.log'.
+
+C車digo resultado: E_FAIL (0x80004005)
+Componente: MachineWrap
+Interfaz: IMachine {85632c68-b5bb-4316-a900-5eb28d3413df}
+
+Interfaz Gr芍fica de Usuario de VirtualBox
+Versi車n 6.1.40 r154048 (Qt5.6.2)
+Copyright ? 2022 Oracle Corporation and/or its affiliates. All rights reserved
+
+The version of VirtualBox you are using, what version of the Extension Pack in Virtualbox on the host you have installed (if any), and Guest Additions (in the guest).
+Host & Guest make and version including 32 or 64 bit, and the amount of memory available to both.
+VM log file (as an attachment) See your VirtualBox users guide for how to locate this if using command line or right click the guest in the VirtualBox main manager and select show log. Then choose save.
+*Note: Windows as host users with version newer than 4.3.12 need to post the VBoxStartup.log or VBoxHardening.log
+
+

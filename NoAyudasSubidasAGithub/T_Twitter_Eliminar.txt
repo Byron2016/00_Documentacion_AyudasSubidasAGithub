@@ -1,0 +1,268 @@
+- Twitter Eliminar
+	- Me gusta
+		- Ir al perfil
+		- Ir a Me Gusta
+		- Ejecutar el comando
+			setInterval(() => {
+			for (const d of document.querySelectorAll('div[data-testid="unlike"]')) {
+				d.click()
+			}
+			window.scrollTo(0, document.body.scrollHeight)
+			}, 1000)
+			
+	- BORRAR COMENTARIOS. 
+		- Ir a https://twitter.com/YoSoloYoYmiPers/with_replies
+		
+		- 
+			(async () => {
+				function sleep(ms) {
+					return new Promise((resolve) => setTimeout(resolve, ms));
+				}
+				let found;
+				let i = 0;
+				let j = 0;
+				
+				while (i < 50) {
+					for (const d of document.querySelectorAll('[data-testid="User-Name"]')) {
+					console.log(`d : : ${d}`);
+					d.style.backgroundColor = "red";
+					if (d.querySelector("a")) {
+						if (d.querySelector("a").href) {
+						console.log(d.querySelector("a").href);
+						let et_a = d.querySelector("a").href;
+						if (et_a === "https://twitter.com/YoSoloYoYmiPers") {
+							console.log(`valor de i: ${i} valor de j: ${j}`);
+				
+							d.style.backgroundColor = "green";
+							let et_tta = d.parentNode.parentNode.parentNode;
+							et_tta.style.backgroundColor = "yellow";
+				
+							let et_caret = et_tta.querySelectorAll('[data-testid="caret"]')[0];
+							et_caret.style.backgroundColor = "blue";
+				
+							et_caret.click();
+							await sleep(1000);
+							document.querySelectorAll('[role="menuitem"]')[0].click();
+							await sleep(1000);
+							document
+							.querySelectorAll('[data-testid="confirmationSheetConfirm"]')[0]
+							.click();
+						}
+						}
+					}
+				
+					j++;
+					}
+					i++;
+				}
+			
+				if (!found) console.log("No more tweets found");
+			})();
+			
+			(async (ahref = "YoSoloYoYmiPers") => {
+				function sleep(ms) {
+					return new Promise((resolve) => setTimeout(resolve, ms));
+				}
+				let found;
+				let i = 0;
+				let j = 0;
+				while (i < 50) {
+					for (const d of document.querySelectorAll('[data-testid="User-Name"]')) {
+					console.log(`d : : ${d}`);
+					d.style.backgroundColor = "red";
+					if (d.querySelector("a")) {
+						if (d.querySelector("a").href) {
+						console.log(d.querySelector("a").href);
+						const ahref_link = "https://twitter.com/" + ahref;
+						let et_a = d.querySelector("a").href;
+						if (et_a === ahref_link) {
+							console.log(`valor de i: ${i} valor de j: ${j}`);
+				
+							d.style.backgroundColor = "green";
+							let et_tta = d.parentNode.parentNode.parentNode;
+							et_tta.style.backgroundColor = "yellow";
+				
+							let et_caret = et_tta.querySelectorAll('[data-testid="caret"]')[0];
+							et_caret.style.backgroundColor = "blue";
+				
+							et_caret.click();
+							await sleep(1000);
+							document.querySelectorAll('[role="menuitem"]')[0].click();
+							await sleep(1000);
+							document
+							.querySelectorAll('[data-testid="confirmationSheetConfirm"]')[0]
+							.click();
+						}
+						}
+					}
+				
+					j++;
+					window.scrollTo(0, document.body.scrollHeight);
+					}
+					i++;
+				}
+			
+				if (!found) console.log("No more tweets found");
+			})();
+			
+			//* **************************** */
+			async function prueba(ahref = "YoSoloYoYmiPers") {
+				function sleep(ms) {
+					return new Promise((resolve) => setTimeout(resolve, ms));
+			}
+				let found;
+				let i = 0;
+				let j = 0;
+				while (i < 50) {
+					for (const d of document.querySelectorAll('[data-testid="User-Name"]')) {
+					console.log(`d : : ${d}`);
+					d.style.backgroundColor = "red";
+					if (d.querySelector("a")) {
+						if (d.querySelector("a").href) {
+						console.log(d.querySelector("a").href);
+						const ahref_link = "https://twitter.com/" + ahref;
+						let et_a = d.querySelector("a").href;
+						if (et_a === ahref_link) {
+							console.log(`valor de i: ${i} valor de j: ${j}`);
+				
+							d.style.backgroundColor = "green";
+							let et_tta = d.parentNode.parentNode.parentNode;
+							et_tta.style.backgroundColor = "yellow";
+				
+							let et_caret = et_tta.querySelectorAll('[data-testid="caret"]')[0];
+							et_caret.style.backgroundColor = "blue";
+				
+							et_caret.click();
+							await sleep(1000);
+							document.querySelectorAll('[role="menuitem"]')[0].click();
+							await sleep(1000);
+							document
+							.querySelectorAll('[data-testid="confirmationSheetConfirm"]')[0]
+							.click();
+						}
+						}
+					}
+				
+					j++;
+					}
+					i++;
+				}
+			
+				if (!found) console.log("No more tweets found");
+			}
+	
+	- BORRAR fotos y videos
+		- ir a 
+		- Ejecutar 
+			async function prueba(ahref = "YoSoloYoYmiPers") {
+			function sleep(ms) {
+				return new Promise((resolve) => setTimeout(resolve, ms));
+			}
+			let found;
+			let i = 0;
+			let j = 0;
+			console.clear();
+			while (i < 150) {
+				console.log(`valor de i: ${i} valor de j: ${j}`);
+				for (const d of document.querySelectorAll('[data-testid="User-Name"]')) {
+				//console.log(`d : : ${d}`);
+				d.style.backgroundColor = "red";
+				if (d.querySelector("a")) {
+					if (d.querySelector("a").href) {
+					//console.log(d.querySelector("a").href);
+					const ahref_link = "https://twitter.com/" + ahref;
+					let et_a = d.querySelector("a").href;
+					if (et_a === ahref_link) {
+						//console.log(`valor de i: ${i} valor de j: ${j}`);
+						console.log(`******`);
+			
+						d.style.backgroundColor = "green";
+						let et_tta = d.parentNode.parentNode.parentNode;
+						et_tta.style.backgroundColor = "yellow";
+			
+						let et_caret = et_tta.querySelectorAll('[data-testid="caret"]')[0];
+						et_caret.style.backgroundColor = "blue";
+			
+						et_caret.click();
+						await sleep(1000);
+						document.querySelectorAll('[role="menuitem"]')[0].click();
+						await sleep(1000);
+						document
+						.querySelectorAll('[data-testid="confirmationSheetConfirm"]')[0]
+						.click();
+						
+					}
+					}
+				}
+			
+				j++;
+				}
+				i++;
+				if(i == 150){
+					window.scrollTo(0, document.body.scrollHeight)
+				}
+				
+			}
+			
+			if (!found) console.log("No more tweets found");
+			}
+			
+	- BORRAR Retweets
+		- ir a https://twitter.com/YoSoloYoYmiPers
+		- Ejecutar	
+			async function quitaRetweet(ahref = "YoSoloYoYmiPers") {
+				function sleep(ms) {
+					return new Promise((resolve) => setTimeout(resolve, ms));
+				}
+				let found;
+				let i = 0;
+				console.clear();
+				while (i < 50) {
+					let tweet = document.querySelectorAll('[data-testid="tweet"]')[0];
+					tweet.style.backgroundColor = "LightPink";
+					
+					// if it is a retweet, undo it
+					if (tweet.querySelectorAll('[data-testid="unretweet"]').length) {
+						let unretweet = tweet.querySelectorAll('[data-testid="unretweet"]')[0];
+						unretweet.style.backgroundColor = "red";
+						unretweet.click();
+						await sleep(1000)
+						document.querySelectorAll('[data-testid="unretweetConfirm"]')[0].click();
+						await sleep(1000)
+					}
+					else {
+						console.log(`NO encontrado Retweet`);
+					}
+					console.log(`valor de i: ${i} `);
+					i++;
+				}
+				
+				if (!found)
+					console.log('No more tweets found');
+			};
+			
+	- BORRAR RETWEETS QUE NO ESTÁN ABILITADOS. 
+		- Ir a https://twitter.com/YoSoloYoYmiPers/with_replies
+		
+		
+			(async () => {
+				function sleep(ms) {
+					return new Promise((resolve) => setTimeout(resolve, ms));
+				}
+				let found;
+				let i = 0;
+				console.clear();
+				while (i < 300) {
+					let tweet = document.querySelectorAll('[data-testid="retweet"]')[0];
+					tweet.style.backgroundColor = "LightPink";
+					tweet.click();
+					await sleep(1000)
+					document.querySelectorAll('[data-testid="retweetConfirm"]')[0].click();
+					await sleep(1000)
+					console.log(`valor de i: ${i} `);
+					i++;
+				}
+				
+				if (!found)
+					console.log('No more tweets found');
+			})();

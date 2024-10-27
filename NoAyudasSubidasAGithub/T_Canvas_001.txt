@@ -1,0 +1,146 @@
+- Canvas
+	- How to Create Draggable Canvas Element in React 18
+		- https://www.positronx.io/how-to-create-draggable-canvas-element-in-react/
+		
+	- Drawing interactive shapes with the Canvas API in a React application
+		- https://code.pieces.app/blog/draw-interactive-shapes-react-canvas-api
+		
+			- Definir Tipos interesante. (useState tipo useState-Type)
+				- const useMousePosition = (global: boolean = false): [{ x: number; y: number }, (event: MouseEvent) => void] =>  {
+				const [mouseCoords, setMouseCoords] = useState<{}>});
+				
+			- Tipo para useRef 
+				- const canvasRef = useRef<HTMLCanvasElement | null>(null);
+				
+	- Create a Rotate/Zoom Image Component with React and Canvas
+		- https://www.youtube.com/watch?v=HSMxXZnPL88
+				
+	- Use Canvas in react
+		- https://www.youtube.com/watch?v=tev71VzEJos
+		
+			- Crear un "canvas default"
+				- const Canvas = props => <canvas {...props}>
+				  export default Canvas 
+				  
+			- La creación del canvas y context deben estar dentro del useEffect, x que caso contrario sale el error que está tratando de referirse a algo a lo cual no se ha referenciado.
+				- useEffec sin referencias
+					- En el minuto 9.43 pone como dependencia la función "draw" que es inyectada en el canvas. 
+				- useEffect llama a una función que dibuja y recibe de parámetro el contexto.
+					- Función antes empezar a dibujar limpia el canvas 
+						- contex.clearRect(0,0, contex.canvas.width, contex.canvas.height)
+						
+			- Animaciones 
+				- Se crea un useEffec sin dependencias.
+				- dentro se crea función render 
+					- función llama a requestAnimationFrame
+					- a requestAnimationFrame entra como parámetro la función render 
+					- devuelve un id.
+				- llamar a función render. 
+				- En el return del useEffec cancelar las animaciones 
+					- cancelAnimationFrame(id)
+					
+			- 8.44 Mandar función al canvas 
+				- En el componente que invoca al componente "Canvas" 
+					- Crear la función draw 
+					- return <Canvas draw={draw} width="100" height="100" />
+					
+			- 10.12 crar useCanvas hook 
+				- import {useRef, useEffect} from "react"
+				  function useCanvas(draw){
+				    const ref = useRef();
+					
+					useEffect(()=>{
+						const canvas = ref.current;
+						const context = canvas.getContext("2d")
+						
+						let count = 0;
+						let animationID
+						
+						const render = () => {
+						  count ++
+						  draw(context, count);
+						  animationID = window.requestAnimationFrame(render)
+						}
+						render();
+						
+						return () => windows.cancelAnimationFrame(animationID)
+					
+					},[draw])
+					
+					return ref
+				  }
+				  
+				- llamar al useCanvas 
+					- 
+					
+			- ERROR 	
+				- The left-hand side of an assignment expression may not be an optional property access.ts(2779)
+					- Es x q al momento de llamar al fillStyle del contexto lo invoque con ?
+						- ctx?.fillStyle="red"
+						- lo correcto: ctx.fillStyle="red"
+						
+				- Type '{ draw: (ctx: CanvasRenderingContext2D, count: number) => void; widht: number; height: number; }' 
+				  is not assignable to type 'IntrinsicAttributes & Props'. 
+				  Property 'widht' does not exist on type 'IntrinsicAttributes & Props'. Did you mean 'width'?ts(2322)
+				  
+				- Invalid value for props "draw" in canvas 
+					- se dio x que paso al canvas una función además de las propiedades de width y height 
+					- lo que se hace es que se destructuran propiedades 
+						- const {funcion, ...rest} = props
+						- Se envíen ahora si las rest al canvas 
+							- <canvas {...rest}/>
+							
+				- Parameter 'evt' implicitly has an 'any' type.ts(7006)
+					- const handlekeyUP = (evt)
+					- XMALL const handlekeyUP = (evt: React.KeyboardEvent)
+						- Igual da siguiente error:
+							- No overload matches this call.
+								Overload 1 of 2, '(type: "keydown", listener: (this: Document, ev: KeyboardEvent) => any, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+								  Argument of type '(evt: React.KeyboardEvent) => void' is not assignable to parameter of type '(this: Document, ev: KeyboardEvent) => any'.
+								    Types of parameters 'evt' and 'ev' are incompatible.
+									  Type 'KeyboardEvent' is missing the following properties from type 'KeyboardEvent<Element>': locale, nativeEvent, isDefaultPrevented, isPropagationStopped, persist
+								Overload 2 of 2, '(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+								
+						- LO QUE FUNCIONÓ ES:
+							- const handlekeyUP = (evt: KeyboardEvent)
+							
+							
+				- Definido el count en el useSnake antes de funcion render(){}
+				- Dentro de render count++
+				- 
+				
+	- Weibenfalk: React JS | Snake Game with just 100 lines of code!
+		- https://www.youtube.com/watch?v=OrpJdVP-hO4
+				
+- Juegos 
+	- Pokémon JavaScript Game Tutorial with HTML Canvas
+		- https://www.youtube.com/watch?v=yP5DKzriqXA
+			- Herramientas 
+				- Tiled para hacer gráficos 
+				- Gráficos 
+					- https://itch.io/game-assets
+					
+					
+					
+					
+- [] Create board
+	- [] Matrix representation 
+- [] Create snake 
+	- [] Singly linked list representation
+	- [] Handle snake growth
+	- [] Handle snake direction reversal
+- [] Styles
+	- [] Snake cells
+	- [] Food cells
+- [] Handle Keypresses
+- [] Handle food consuption
+- [] Handle death
+- [] Handle score
+- [] Handle game start and game reset
+
+https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889
+https://usehooks-ts.com/react-hook/use-interval
+
+- Hooks por Adam Abramov
+	- https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889

@@ -1,0 +1,151 @@
+- Obtener nombre del proceso.
+	- Net5.0
+		- app.Run(async (context) =>
+		  {
+			await context.Response
+			.WriteAsync(System.Disgnostics.Process.GetCurrentProcess().ProcessName) 
+		  }
+		  
+	- NET 6.0
+		- var builder = WebApplication.CreateBuilder(args);
+          var app = builder.Build();
+		  
+		  app.MapGet("/", () => System.Disgnostics.Process.GetCurrentProcess().ProcessName);
+		  app.Run()
+		  
+- Obtener key del appsettings.json.
+	- Net5.0
+		- Crear en clase StartUp un constructor
+		- En el constructor inyectar IConfiguration y generar variable privada.
+		- En método Configure de la clase StartUp
+		- app.Run(async (context) =>
+		  {
+			await context.Response			.WriteAsync(System.Disgnostics.Process.GetCurrentProcess().ProcessName) 
+		  }
+		  
+	- NET 6.0
+		- var builder = WebApplication.CreateBuilder(args);
+          var app = builder.Build();
+          var clave = app.Configuration["MyKey"];
+		  
+		  app.MapGet("/", () => clave);
+		  app.Run()
+		  
+- Orden en que se leen las variables en los diferentes orígenes.
+	- Files
+		- appsettings.json
+		- appsettings.development.json
+		- appsettings.{Enviroment}.json
+	- User secrets
+	- Enviroment variables
+		- Esto va en el launchsettings.json 
+	- Command-line arguments.
+		- directorio del proyecto>dotnet run MyKey="Value from command line"
+		
+- Middleware
+	- Microsoft
+		- https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0
+	- Net5.0
+		- Crear en clase StartUp un constructor
+		- En el constructor inyectar IConfiguration y generar variable privada.
+		- En método Configure de la clase StartUp
+		- app.Run(async (context) =>
+		  {
+			await context.Response			.WriteAsync(System.Disgnostics.Process.GetCurrentProcess().ProcessName) 
+		  }
+		  
+		- generate delegate
+		  Microsoft.AspNetCore.Builder
+		  Microsoft.AspNetCore.Http
+		  
+		  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe
+		  
+		  2022
+		  "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
+		  
+		  
+		  
+	- NET 6.0
+		- 
+		
+			public static void Main(string[] args)
+			{
+				var builder = WebApplication.CreateBuilder(args);
+				var app = builder.Build();
+	
+				app.MapGet("/", () => "Hello World!");
+				
+				// AGREGAMOS UN LOGGER A PROGRAM.CS. Manual de Microsoft logging.
+				var logger = LoggerFactory.Create(config =>
+				{
+					config.AddDebug();
+				}).CreateLogger("Program");
+	
+				app.Use(async (context, next) => {
+					logger.LogInformation("MW1: Incoming Request");
+					await next();
+					logger.LogInformation("MW1: Outgoing Response");
+				});
+	
+				app.Use(async (context, next) => {
+					logger.LogInformation("MW2: Incoming Request");
+					await next();
+					logger.LogInformation("MW2: Outgoing Response");
+				});
+	
+				app.Run(async (context) =>
+				{
+					await context.Response.WriteAsync("MW3: Hellow from 3sd. Middleware");
+					logger.LogInformation("MW3: Request handle and Response produced");
+				});
+	
+				app.Run(async context =>
+				{
+					await context.Response.WriteAsync("Hello from non-Map delegate. <p>");
+				});
+	
+				app.Run();
+			}
+		
+- Usar StaticFiles
+	- Net5.0
+		- 
+		  
+	- NET 6.0
+		- app.UseStaticFiles();
+		
+		
+- Logger
+	- Quitar los mensajes para limpiar
+		- Ir a Tools/Options/Debugging/Output Windows
+		- Poner en Off lo que está debajo de Geral Output Settings.
+			- Exception Messages
+			- Module Load Messages
+			- Module Symbol search Messages
+			- Module Unload Messages
+			- Natvis diagnostic messages
+			- Process Exit Messages
+			- Step Filtering Messages
+			- thread Exit Messages.
+		
+	- Logger in program.cs
+		- Net5.0
+			- 
+			
+		- NET 6.0
+			public static void Main(string[] args)
+			{
+				var builder = WebApplication.CreateBuilder(args);
+				var app = builder.Build();
+	
+				var logger = LoggerFactory.Create(config =>
+				{
+					config.AddDebug();
+				}).CreateLogger("Program");
+				
+				logger.LogInformation("MW1: Incoming Request");
+	
+				app.MapGet("/", () => "Hello World!");
+	
+				app.Run();
+			}

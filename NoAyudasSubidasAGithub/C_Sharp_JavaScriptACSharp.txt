@@ -1,0 +1,37 @@
+- Llamar una función de c# desde JavaScript.
+	- Se crea la función en javaScript
+	- utilizant $.get o $.post
+		- Parámetro 1: Ruta a la cual quiero llamar
+		- Parámetro 2: 
+			- Opcional
+			- Creando un objeto abstracto key/value llamar los parámetros a pasarse
+		- Parámetro 3: función que recibe la respuesta desde c#.
+		
+		<script>
+			function GetMessage() {
+				$.get("/Factory/BGetMessage",
+					{
+						name: "Donald Duck",
+						city: "Duckburg",
+						sample01: ""
+					}, function (data) {
+					var myValue = $("#retornado").val();
+					var resultado = JSON.stringify(data);
+					//$.each(data, function (key, value) {
+					//    $("#retornado").text(JSON.stringify(value));
+					//});
+					$("#retornado").text(data.data);
+				});
+			}
+		</script>
+		
+		public class FactoryController : Controller
+		{
+			....
+	
+			public JsonResult BGetMessage(string sample01)
+			{
+				var result = sample01;
+				return new JsonResult(new { Data = result });
+			}
+		}

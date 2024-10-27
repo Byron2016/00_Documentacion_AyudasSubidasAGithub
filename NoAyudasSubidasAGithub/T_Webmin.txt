@@ -1,0 +1,47 @@
+- Webmin
+	- Webmin, instala esta herramienta en Ubuntu 20.04
+		- https://ubunlog.com/webmin-instalacion-ubuntu-20-04/
+		
+			- Instalación de Webmin en Ubuntu 20.04
+				- Actualizar paquetes y repositorios 
+					- sudo apt update && sudo apt upgrade
+				- A continuación tendremos que instalar las dependencias necesarias utilizando el comando:
+					- sudo apt install software-properties-common apt-transport-https
+				- Habilitar el repositorio de Webmin
+					- agregar la clave GPG de Webmin
+						- sudo wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+					- agregar manualmente el repositorio de Webmin
+						- Arq amd:
+							- sudo add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
+						- Arq I386
+							- sudo add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
+							
+					- Instalar Webmin
+						- sudo apt install webmin
+					- verificar el estado del servicio
+						- sudo systemctl status webmin
+					- verificar la versión instalada
+						- dpkg -l | grep webmin
+			
+				- Configurar el firewall
+					- sudo ufw allow 10000/tcp
+					- sudo ufw reload
+					- sudo ufw status
+					
+				- Iniciar sesión
+					- abrir el navegador y dirigirnos a la IP de nuestro servidor
+						- https://IP-del-servidor:10000/
+					- Webmin genera su propio certificado SSL autoasignado que el navegador no considera seguro
+						- Para sortear este obstáculo, simplemente haremos clic en la pestaña ‘Avanzado‘ y luego en ‘Aceptar el riesgo y continuar‘.
+					- Si no tienes la cuenta de root activada, quizás necesites cambiar la clave del usuario root de Webmin
+						- sudo /usr/share/webmin/changepass.pl /etc/webmin root nueva-clave
+					
+				- Para actualizar nuestra instalación
+					- sudo apt update && sudo apt upgrade
+				
+			- Desinstalar
+				- Eliminar repositorio	
+					- sudo add-apt-repository --remove "deb https://download.webmin.com/download/repository sarge contrib"
+					
+				- Eliminar la herramienta
+					- sudo apt remove webmin; sudo apt autoremove

@@ -1,3 +1,7 @@
+- Importar npm modules a javascript sin frameworks
+	- Import NPM modules into JavaScript applications without frameworks using TypeScript & Browserify
+		- https://mirzaleka.medium.com/import-npm-modules-into-web-applications-without-frameworks-using-typescript-browserify-303515cb0885
+
 - Pasar variables
   - nodejs
     - https://nodejs.org/docs/latest/api/process.html#process_process_argv

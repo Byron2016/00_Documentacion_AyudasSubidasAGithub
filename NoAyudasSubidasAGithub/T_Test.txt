@@ -1,0 +1,129 @@
+- TDD
+	- Midulive: Curso de Test Driven Development desde Cero con JavaScript, React y Vitest
+		- https://www.youtube.com/watch?v=_t9l2TwGioc
+		
+			- devDependencies
+				- @testing-library/react 
+				- @vitejs/plugin-react 
+				- vitest 
+				- happy-dom 
+				- standard 
+				
+			- Dependencies 
+				- mathjs 
+				- react 
+				- react-dom 
+				
+			- react.test.jsx 
+				import {render, screen, cleanup, fireEvent} from '@testing-library/react'
+				import {afterEach, describe, it, expect} from 'vitest'
+				
+				describe('Calculator', () => {
+					afterEach(cleanup)
+					
+					it('', () => {
+						render(<Calculator />
+						
+						const one = scren.getByText('1')
+						const plus = scren.getByText('+')
+						
+						fireEvent.click(plus)
+					}
+				})
+				
+				- OJO: mejor usar "userEvent" en lugar de "fireEvent" 
+					- userEvent.click(plus)
+					
+					
+			- Coverage
+				- npm run coverage 
+					- vitest run --coverage 
+					
+- 
+	- Gentleman Programing: Habemus testing ! con de tuti y como se debe con Jest y Testing Library ! tips y trucos (Desde 0)
+		- https://www.youtube.com/watch?v=oUn1J1WHo74
+			
+			- devDependencies
+				- test 
+					- vitest
+					
+					- @testing-library/jest-dom
+					- @testing-library/react
+					- @testing-library/user-event
+					
+				- jest
+				- jest-environment-jsdom
+				- jsdom
+				
+				- Si usa typeScript 
+					- @types/jest
+					- @types/react
+					- @types/react-dom
+					
+					
+				- Funcionamiento Vite 
+					- vite 
+					- @vitejs/plugin-react
+					
+				- babel 
+					- babel-jest 
+					- bebel-loader 
+					
+					- @babel/core
+					- @babel/preset-env 
+					- @babel/preset-react 
+					
+					
+			- dependencies
+				- axios 
+				- react
+				- react-dom
+				- react-hook-form     <-- para hacer formularios. (17.00)
+				- yup                 <-- para hacer validaciones.
+				- @emotion/react
+				- @emotion/styled
+				- @hookform/resolvers
+				- @mui/material 
+				
+			- scripts 
+				- "test": "jest --watchall" 
+				
+			- Configurar jest 9.28 
+				- En la raíz "jest.config.js" 
+                    export default {
+                      testEnvironment: 'jsdom',
+                      testMatch: [
+                        '**/__tests__/**/*.[jt]s?(x)',
+                        '**/?(*.)+(spec|test|tests).[tj]s?(x)',
+                      ],
+                      setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+                    };
+					
+				- Crear carpeta "src/__tests__"
+				
+				- En la raíz crear "jest.setup.js"
+					import '@testing-library/jest-dom/extend-expect';
+					
+			- Estructura carpetas 
+				- src 
+					- __tests__
+						- loginForm.test.jsx 
+					- components 
+					- pages
+						- login
+							- schemas
+								- login-form-schema.js
+							- loginForm.jsx 
+							
+					- services 
+					- App.css 
+					- App.jsx 
+					- index.css 
+					- main.jsx 
+					
+					
+			- Crear componente 
+				- rfc
+				
+				
+					

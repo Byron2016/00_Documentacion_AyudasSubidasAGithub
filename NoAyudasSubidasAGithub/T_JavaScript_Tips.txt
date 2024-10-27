@@ -1,0 +1,212 @@
+- Videos
+	- 🛒Programa con REACT un eCommerce con pasarela de pago 💰 [proyecto completo re-editado]
+		- https://www.youtube.com/watch?v=4w1UmgkPcUk&t=286s
+		
+- Truthy - Falsy  
+	- Valores que evaluados en un contexto BOOLEANO, arrojan FALSY:
+		- null
+		- undefined
+		- 0
+		- ""
+		- false 
+		- NaN
+		
+	- Valores q retornan Truthy 
+		- Todo lo que no es falsy 
+		- {}
+		- []
+		- 
+		
+- Por revisar 
+	- Customs elements.
+	- rest y spread operators. (urgente)
+	- Diferencia entre || y ??, ? (hasMovies ? ()
+		- mira si es falsi 
+		- mira si es null o undefined. 
+	- Patron m��dulo.
+
+- TypeScript 
+	- ! (Signo exclamación)
+		- https://stackoverflow.com/questions/42273853/in-typescript-what-is-the-exclamation-mark-bang-operator-when-dereferenci
+			- That's the non-null assertion operator. It is a way to tell the compiler "this expression cannot be null or undefined here, so don't complain about the possibility of it being null or undefined." Sometimes the type checker is unable to make that determination itself.
+				- https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
+					- A new ! post-fix expression operator may be used to assert that its operand is non-null and non-undefined in contexts where the type checker is unable to conclude that fact. Specifically, the operation x! produces a value of the type of x with null and undefined excluded. Similar to type assertions of the forms <T>x and x as T, the ! non-null assertion operator is simply removed in the emitted JavaScript code.
+					
+	- ¿Cómo clonar un objeto?
+		- const data = { name: "khriztianmoreno", age: 33 }
+		- // 1 usando structuredClone()
+			- const copy4 = structuredClone(data)
+		- // 2 spread operator
+			- const copy1 = { ...data }
+		- // 3 usando Object.assign()
+			- const copy2 = Object.assign({}, data)
+		- // 4 usando JSON parsing.
+			- const copy3 = JSON.parse(JSON.stringify(data))
+			
+	- Interrogación (?) en JavaScript
+		- https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/
+			- Operador ternario (Condición ? True : False)
+				- Condición ? True : False
+			- Optional Chaining (xxxx?.yyyy)
+				- Let's say you have code that calls on an object property that doesn't exist, which triggers an error at run time. This may be because of a missing or undefined value in your database or from an API:
+					- const user = { name: "Byron", age: 12 } 
+					  user.write.salary();
+					  ERROR YA QUE SALARY NO EXISTE.
+					  
+					- user.write?.salary()
+					  SI NO EXISTE SALARARY RETORNA UNDEFINED.
+			- Nullish Coalescing (??)
+				- In some cases, you have to set a default value for a missing property name or value. Por ejemplo vamos a un sitio que devuelve información por ciudad y su imagen, pero hay el caso q para algunas ciudades no hay la imagen, queremos que salga UNA IMAGEN PREDETERMINADA.
+					- FORMA 1:
+						- You can do this using the || operator, known as the logical OR operator: || 
+							- const employees = { name: undefined || "xx", description: undefined || "yyy"}
+							
+							- Pero de esta forma puede encontrar comportamiento no esperado si se considera algunos valores como "" o 0.
+								- Considere un escenario en el que una variable tiene el valor 0 o una cadena vacía. Si usamos (||), se considerará indefinido o NULL y devolverá algún valor predeterminado que hayamos corregido.
+								
+								- const value1 = 0 || 'default string'; // undefined
+								- const value2 = '' || 1000; // undefined
+								
+					- FORMA 2:
+						- ?? trabaja exactamente como operador logical OR, excepto que recibirá el lado correcto cuando el lado izquierdo es undefined o null. 
+						- En otras palabras, ?? solo permite valores undefined o null, no "" o 0s.
+					
+	- Objetos
+		const sup_languages {es: "español", en: "inglés"}
+		- Object.keys(sup_languages)
+			- console.log(Object.keys(sup_languages))
+				- ["es", "en"]
+		
+		- Object.entries(sup_languages)
+			- console.log(Object.entries(sup_languages))
+				- [
+				    ["es","español"],
+					["en", "inglés"]
+				  ]
+				  
+	- Filtrar 
+		- Ademas el uso de || en donde se cumple la primera parte ya no evalúa la segunda, y si no se cumple la primera va por la segunda. (Midulive 20.00 : https://www.youtube.com/watch?v=B9tDYAZZxcE&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=6)
+		- const filterProducts = (products) => {
+		    return (products.filter(product => {
+			  product.price >= filters.minPrice && 
+			  (
+			    filter.category === "all" || 
+				product.category === filter.category
+			  )
+			})
+		  }
+		  
+	- Paso propiedades 
+		- (Midulive 25.00 : https://www.youtube.com/watch?v=B9tDYAZZxcE&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=6)
+			- una función setFilters 
+				- <Header changeFilters={setFilters} />
+					- export function Header({changeFilters})
+				- <Filters onChange={changeFilters} />
+					- export function Filters({onChange})
+					
+	- Visor de estados en footer (Debuger de estados)
+		- (Midulive 38.00 : https://www.youtube.com/watch?v=B9tDYAZZxcE&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=6)
+			- export const IS_DEVELOMENT = process.env.NODE_ENV !=== "production";
+			- <IS_DEVELOMENT && <Footer filters={filters} />
+			- export function Footer({filters}){
+			    return(
+				  <footer className="footer">
+				    {
+					  JSON.stringify(filters, null, 2)
+					}
+				  </footer>
+				)
+			  }
+	
+				  
+	- Tipar TypeScript
+		- Props (43.54: https://www.youtube.com/watch?v=kZhabulNCUc&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=9)
+			- FORMA MALA (FUNCIONA PERO NO ES LA MEJOR)
+				- export const La = ({onchange}) => {}
+				- export const La = ({onchange} : {onchange: (lang: string) => void }) => {}
+				
+				- 
+					- const validateEmail = (email: string) : boolean => {}
+				
+			- FORMA BUENA 
+				- F1: (está bien)
+					- interface Props {
+						onchange: (lang: string) => void
+					}
+					
+					- export const La = ({onchange} : Props) => {}
+				- F1: 
+					- type Props {
+						| { type: "from", value: FromLanguage, onchange: (lang: FromLanguage) => void }
+						| { type: "to", value: Language, onchange: (lang: Language) => void }
+					}
+					
+					- export const La = ({onchange, type, value} : Props) => {}
+					
+					- interface Props {
+						onchange: (language: Language) => void
+					}
+					
+					- export const La = ({onchange} : Props) => {}
+				
+			- OTRA RECOMENDADA 
+				- F1:
+					- export const La: React.FC<Props> = ({onchange}) => {}
+				
+				- F2:
+					- import {FC} from 'react'
+					- export const La: FC<Props> = ({onchange}) => {}
+				
+				- ventajas: Esta forma detecta si vas a utilizar children, si devuelves un string en lugar de un elemento.
+				
+		- Objetos	
+			{a, b} : {a: string b:number}
+				
+		- Eventos 
+			- Para un SELECT
+				- event: React.ChangeEvent<HtmlSelectElement>
+				
+		- Validar si trae un string contenido:
+			- https://stackoverflow.com/questions/64940604/typescript-eslint-strict-boolean-expressions-check-for-falsy-value
+				- if (!(text ?? '')) {}
+				  O
+				- if (!(text !== null && text !== undefined ? text : '')) {}
+				
+		- children 
+			- Using the React children prop with TypeScript
+				- https://blog.logrocket.com/react-children-prop-typescript/
+				
+		- createContext 
+			- https://blog.logrocket.com/how-to-use-react-context-typescript/
+				- export const SnakeContext = createContext<SnakeBase>(...)
+				
+				- MUY BUENO. 
+				
+			- https://stackoverflow.com/questions/61333188/react-typescript-avoid-context-default-value
+			
+		- número random
+			- const rand = (min,max) => Math.random() * (max ?(max-min) : min) + (max ? min : 0); (Ver DEMO de: https://stackoverflow.com/questions/60241598/how-do-i-rotate-a-html-canvas-shape-by-only-using-a-transform)
+			
+		- context.tranformation 
+			- Especificación con excelente ejemplo en movimiento. 
+				- https://html.spec.whatwg.org/multipage/canvas.html#dom-context-2d-settransform-dev
+				
+			- Explicación con excelente ejemplo de img rotando.
+				- Ver DEMO de: https://stackoverflow.com/questions/60241598/how-do-i-rotate-a-html-canvas-shape-by-only-using-a-transform
+				
+- .env (variables de entorno / enviroment variables )
+	- Diferencias 
+		- Priority (https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used)
+			- Dev.: (npm start): .env.development.local, .env.local, .env.development, .env
+			- Prod.: (npm run build): .env.production.local, .env.local, .env.production, .env
+			
+		- Uso (https://stackoverflow.com/questions/55690143/what-is-the-difference-between-env-local-and-env-development-local)
+			- In .env.local you can set up environment variables that are specific to your local machine and it doesn't have to be on development mode to work, so variables there will work for both development and production.
+
+If you ever want to use something in your local environment without being specific to the development build or the production build, you can add some variables to your .env.local file.
+- AI (Inteligencia Artificial)
+	- Translate
+		- OpenAI
+			- pagada
+		- DeepLAPI
+		- Cohere.ai

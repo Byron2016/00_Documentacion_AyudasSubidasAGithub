@@ -1,0 +1,265 @@
+- Patrón UnitOfWork
+	- NetMentor: El patrón Unit of work con implementación en C#
+		- https://www.youtube.com/watch?v=SGG6dNFtuCs&list=PLesmOrW3mp4i2RdfsPI5R6o5EVacGuovz&index=8
+		
+			- Definición
+				- El patrón UnitOfWork es un patrón que se utiliza para agrupar varias operaciones que normalmente son a una base de datos pero no obligatoriamente asegurando que todas esas operaciones se ejecuten o no. Esto suena muy parecido a las transacciones pues es x q es eso, es una capa por encima de las transacciones de la base de datos 
+				
+			- Porqué es util utilizarlo
+				- Digamos que tienes un comercio electrónico y un usuario hace un pedido lo que invoca varios pasos:  verificas el inventario, creas la orden, descuentas el inventario y finalmente envías una confirmación por correo electrónico y cada uno de estos pasos modifica el estado de tu aplicación que normalmente o .... Esos pasos deben funcionar de un solo golpe si no funciona se vuelve al estado inicial. UnitOfWork se utiliza para todas esas situaciones en que se requiere alterar más de una tabla de una base de datos
+			
+			- DBContext y DBSet
+				- Técnicamente son una implementación del patrón repositorio, DBSet es el patrón repositorio y DBContext es el patrón Unit of work, pero existen developers que no consideran que DBContext y DBSet x q a la final estas accediendo a la base de datos directamente es más complicado hacer mock así que digamos que utilizando repository y repository patron es mucho más limpio y claro
+
+			- Cuando utilizarlo
+				- 
+				
+			- Implementación
+				- Implementarlo siempre que se tenga implementado Repository Pattern
+				- Crear Interfaces "IWorkingExperienceRepository"
+				
+namespace CursoEFCore.Codefirst.API.Data.Repositories;
+
+public Interface IWorkingExperienceRepository
+{
+	Task Insert(List<Workingexperience> workingexperience);
+}			
+				- Crear repositorio  "WorkingExperienceRepository"
+
+					namespace CursoEFCore.Codefirst.API.Data.Repositories;
+
+					public class WorkingExperienceRepository: IWorkingExperienceRepository
+					{
+						public readonly CursoEFContext _context
+						
+						public WorkingExperienceRepository(CursoEFContext cursoEfContext)
+						{
+							_context = cursoEfContext;
+						}
+						
+						public async Task Insert(List<Workingexperience> workingexperience)
+						{
+							... await _context.Workingexperience.AddRangeAsync(workingexperience);
+							await _context.SaveChangesAsync();
+							return insertedUser.Entity;
+							
+						}
+					}
+					
+				- Quitamos del UserRepository del método Insert ya que guardaremos esto a nivel de UnitOfWork a fin de guardar todas las acciones a la vez, en este caso lo insertado en users y lo insertado en workingexperiences
+					- await _context.SaveChangesAsync();
+					
+				- Crear en Carpeta "Data" clase "UnitOfWork"
+				
+					namespace CursoEFCore.Codefirst.API.Data;
+
+
+					public interface IUnitOfWork : IDisposable
+					{
+						public IUserRepository UserRepository { get; }
+						public IWorkingExperienceRepository WorkingExperienceRepository { get; }
+					
+					
+						Task<int> Save();
+					}
+					
+					public class UnitOfWork: IUnitOfWork
+					{
+					
+						public IUserRepository UserRepository { get; }
+						public IWorkingExperienceRepository WorkingExperienceRepository { get; }
+						
+						
+						public readonly CursoEFContext _context
+						
+						public UnitOfWork(CursoEFContext context, IUserRepository userRepository IWorkingExperienceRepository workingExperienceRepository)
+						{
+							_context = context;
+							UserRepository = userRepository;
+							WorkingExperienceRepository = workingExperienceRepository;
+						}
+						
+						public async Task<int> Save()
+						{
+							await _context.SaveChangesAsync();
+							
+						}
+						
+						public void Dispose()
+						{
+							_context.Dispose();
+							
+						}
+					}
+					
+					 Ojo: 7.49 Si no le queremos liar gorda el DBContext es disposable, debemos hacer dispose, por lo que la interfaz en si es : IDisposable
+					 Esto libera de la memoria los recursos utilizados. 
+					 
+				- Añadir al contenedor de dependencias
+						- En Program.cs
+							....
+							builder.Services.AddScoped<IWorkingExperienceRepository, WorkingExperienceRepository>();
+							
+							builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+							....
+							
+				- Crear servicio
+					- Crear carpeta "Services"
+					- Crear clase 
+					
+					namespace CursoEFCore.Codefirst.API.Services;
+					
+					public class InsertUserWithExperiencesService
+					{
+						// private readonly IUserRepository _userRepository
+						// private readonly IWorkingExperienceRepository _workingExperienceRepository
+						
+						//Inyectar UnitOfWork
+						private readonly IUnitOfWork _unitOfWork
+							
+						// public InsertUserWithExperiencesService(CursoEFContext userRepository, IWorkingExperienceRepository workingExperienceRepository, IUnitOfWork unitOfWork)
+						public InsertUserWithExperiencesService(IUnitOfWork unitOfWork)
+						{
+							// _userRepository = userRepository;
+							// _workingExperienceRepository = workingExperienceRepository;
+							
+							_unitOfWork = unitOfWork
+						}
+						
+						public async Task Execute(int id)
+						{
+							User user = new User()
+							{
+								Email= $"{Guid.newGuid()}@mail.com",
+								UserName = $"id{id}"
+							};
+							
+							List<Workingexperience> workingexperiences = new List<Workingexperience>
+							{
+								new Workingexperience()
+								{
+									UserId = user.Id,
+									Name = $"experience 1 user {id}",
+									Details = "details1",
+									Enviroment = "enviroment"
+								},
+								new Workingexperience()
+								{
+									UserId = user.Id,
+									Name = $"experience 2 user {id}",
+									Details = "details2",
+									Enviroment = "enviroment"
+								}
+							};
+							
+							//await _userRepository.Insert(user);
+							//await _workingExperienceRepository.Insert(workingexperiences);
+							
+							//await _unitOfWork.Save();
+							
+							await _unitOfWork.UserRepository.Insert(user);
+							
+							await _unitOfWork.WorkingExperienceRepository.Insert(workingexperiences);
+							await _unitOfWork.Save();
+							
+						}
+						
+					}
+					
+
+
+				- Moverlo a repository patron 
+					- Crear Carpeta Repositories
+					- Crear Interfaces "IUserRepository"
+						public interface IUserRepository
+						{
+							Task<User> Insert(User user);
+							Task<User?> GetById(int id);
+						}
+					- Crear Clases "UserRepository"
+						public class UserRepository: IUserRepository
+						{
+							public readonly CursoEFContext _context
+							
+							public TestController(CursoEFContext context)
+							{
+								_context = context;
+							}
+							
+							public async Task Insert(User user)
+							{
+								EntityEntry<User> insertedUser = await _context.User.AddAsync(user);
+								//await _context.SaveChangesAsync();
+								return insertedUser.Entity;
+								
+							}
+							
+							public async Task GetById(int id)
+							{
+								await _context.Users
+									.Include( a => a.WorkWorkingexperiences)
+									.FirstOrDefault(a => a.Id == userId);
+							}
+						}
+
+					- Añadir al contenedor de dependencias
+						- En Program.cs
+							....
+							builder.Services.AddScoped<IUserRepository, UserRepository>();
+							....
+							
+					- Modificaciones al controlador
+						- Quitar DBContext 
+						- Agregar el repositorio 
+
+						using CursoEFCore.Codefirst.API.Data.Entities;
+						using CursoEFCore.Codefirst.API.Data.Repositories;
+						using Microsoft.AspNetCore.Mvc;
+																
+						public class TestController: Controller
+						{
+							public readonly IUserRepository _userRepository
+							
+							public TestController(CursoEFContext userRepository)
+							{
+								_userRepository = userRepository;
+							}
+							
+							[HttpPost("test")]
+							public async Task test()
+							{
+								user user1 = new User()
+								{
+									Email= $"{Guid.newGuid()}@mail.com",
+									UserName = "userName",
+									Workingexperience = new List<Workingexperience>()
+									{
+										new Workingexperience()
+										{
+											Name = "experience 1",
+											Details = "details1",
+											Enviroment = "enviroment"
+										},
+										new Workingexperience()
+										{
+											Name = "experience 2",
+											Details = "details2",
+											Enviroment = "enviroment"
+										}
+									}
+								}
+								
+								await _userRepository.Insert(user1);
+								
+							}	
+							
+							[HttpGet("{userId}")]
+							public async Task<User?> Get(int userId)
+							{
+								await _userRepository.GetById(userId);
+								
+							}
+						}
+						
+			- Test 
+				- Es OBLIGATORIO hacer test para verificar que todas las queries están bien.

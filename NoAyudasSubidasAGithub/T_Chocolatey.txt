@@ -1,0 +1,29 @@
+- Chocolatey
+	- https://chocolatey.org/
+		- https://chocolatey.org/install
+
+		- Now run the following command:
+			- Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+	- Version
+		- choco --version
+	- Ya instalados
+		- choco list 
+
+	- Instala y actualiza todos tus programas con Chocolatey
+		- Ir a botón BUSCAR PAQUETES
+			- https://community.chocolatey.org/packages
+			- 
+choco install notepadplusplus -y
+choco install googlechrome -y
+choco install vscode -y
+choco install openoffice -y
+choco install googleearth -y
+
+
+No se pudo
+Brave
+Visual Studio
+
+
+choco uninstall googleearth -y

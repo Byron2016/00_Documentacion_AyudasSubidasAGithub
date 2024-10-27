@@ -1,0 +1,103 @@
+- Astro
+	- Coding in Public: Atro Blog Course 
+		- https://www.youtube.com/playlist?list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF
+			- Videos 
+				- Astro Blog Course #1 - Intro and Installation
+					- https://www.youtube.com/watch?v=F2pw1C9eKXw&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=2
+				- Astro Blog Course #2 - Astro Basics
+					- https://www.youtube.com/watch?v=JFHmIp58YOU&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=2
+				- Astro Blog Course #3 - Layouts
+					- https://www.youtube.com/watch?v=rK-rNRPyET0&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=3
+				- Astro Blog Course #4 - CSS & styling
+					- https://www.youtube.com/watch?v=KNtax5dHPfI&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=4
+				- Astro Blog Course #5 - Astro Components
+					- https://www.youtube.com/watch?v=-d7L2n6y5PU&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=5
+				- Astro Blog Course #6 - Routing basics
+					- https://www.youtube.com/watch?v=TnZ8MkddAUA&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=6
+						- 0:00 Introduction
+						- 2:07 About page
+						- 4:37 404 page
+						- 7:22 Adding blog posts
+		
+				- Astro Blog Course #7 - Markdown layouts
+					- https://www.youtube.com/watch?v=39qi3YxyiX8&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=7
+						- 0:00 Introduction
+						- 1:08 Blog post layout
+						- 7:40 Adding helper functions
+						- 11:10 Astro image integration
+						- 17:01 Extract Header component
+				- Astro Blog Course #8 - Card component
+					- https://www.youtube.com/watch?v=cH4SdQfoFPU&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=8
+						- 0:00 Introduction
+						- 0:46 Fetch all markdown pages
+						- 2:00 Post Card component
+						- 11:05 Displaying posts as cards
+				- Astro Blog Course #9 - Filter/sort posts
+					- https://www.youtube.com/watch?v=Eq0j71oLsFs&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=9
+						- 0:00 Introduction
+						- 0:56 Create filter/sort function
+						- 7:55 Apply filter/sort function
+						- 10:45 Customize homepage
+				- Astro Blog Course #10 - Dynamic routes
+					- https://www.youtube.com/watch?v=qEo4NSObLwg&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=10
+						- 0:00 Introduction
+						- 0:28 Create category routes
+						- 9:09 Create dynamic author routes
+				- Astro Blog Course #11 - Pagination
+					- https://www.youtube.com/watch?v=j_kWnI8rdLA&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=11
+						- 0:00 Introduction
+						- 0:30 Dynamic blog sub routes
+						- 3:36 Pagination component
+				- Astro Blog Course #12 - Tag cloud
+					- https://www.youtube.com/watch?v=AP2UD0wetAI&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=12
+						- 0:00 Introduction
+						- 0:34 Create cloud component
+						- 8:52 Adding cloud to posts
+				- Astro Blog Course #13 - Related posts
+					- https://www.youtube.com/watch?v=S3cX_zJ8_Kw&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=13
+						- 0:00 Introduction
+						- 1:10 Fetching related posts
+						- 3:50 Building related posts component
+				- Astro Blog Course #14 - Build a sitemap
+					- https://www.youtube.com/watch?v=8-qm9A24U9s&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=14
+				- Astro Blog Course #15 - Build an RSS feed
+					- https://www.youtube.com/watch?v=1Ep0gtED2wk&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=15
+						- 0:00 Introduction
+						- 0:58 Creating RSS feed
+						- 3:42 Styling RSS feed
+				- Astro Blog Course #16 - SEO basics
+					- https://www.youtube.com/watch?v=fPifaHiKzz4&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=16
+						- 0:00 Introduction
+						- 0:45 Explaining copied files
+						- 5:28 Adding SEO to head tag 
+						- 9:08 Walkthrough
+						- 13:23 set:html
+				- Astro Blog Course #17 - Integrations (React, Tailwind, CMS, and more)
+					- https://www.youtube.com/watch?v=VzU_yqmIuPM&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=17
+						- 0:00 Introduction
+						- 0:38 UI Frameworks (React example)
+						- 5:35 Tailwind CSS
+						- 7:33 Partytown
+						- 8:27 Using a CMS
+						- 10:34 Customizing the CSS
+				- Astro Blog Course #18 - Build, deploy, and update
+					- https://www.youtube.com/watch?v=TIlghu35niY&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF&index=18
+	
+	- Documentación
+		- Starlight (Midulive 26.53: https://www.youtube.com/watch?v=qQThXUmtp5w)
+		
+		
+- Testeo (https://www.youtube.com/watch?v=qQThXUmtp5w)
+	- Vitest
+	- Jest
+	- Mock Service Worker
+	- Playwright
+	- Cypress 
+	- StoryBook
+	- 
+	
+- CSS	
+	- CSS en js NO (impacto en run time)
+		- Styled components
+		- emotions
+	- 

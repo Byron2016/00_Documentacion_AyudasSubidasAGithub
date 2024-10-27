@@ -1,0 +1,50 @@
+- Null
+	- Working with Null in .NET 6 and C# 10
+		- https://www.youtube.com/watch?v=-bn4e5xUEeM
+		
+		// int? - nullable value type
+		// string? - nullable reference type
+		// Id?.ToString(); - null conditional operator
+		// var v = i ?? 0; - null coalescing operator
+		// (numbers ??= new()).Add(8); - null coalescing assigment operator
+		// <Nullable>enable</Nullable> - nullable annotation context
+		// 4 values for this - enable, disable, warnings, annotations
+		// #nullable enable - nullable directive
+		// 9 options - enable, disable, restore, enable warnings, enable annotations
+		// s!.ToString() - null forgiving operator 
+		// Nullable with generics - https://docs.microsoft.com/en-us/dotnet/csharp/nullable-reference#generics
+		https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
+		
+		
+		unless you´re very new to c-sharp you´ve almast certainly worked with null in some ways it can seem very easy to undestand however it´s a lot more depth to working with null than it first seems
+		in this video we´re going to llok at how to properly work with null in c sharp that includes nullable value types nullable reference types no conditional operators no coalescing operators no coalescing assigment operators no annotation context nullable directives and the null forgiving operator and more that´s a lot of stuff to help us work with null 
+		so let´s see how those features you know how to use 
+		All right let´s go to visual studio and we´re going to create a new project all right keep it simple just do a console app because the point is not to focus in on which product type it is but on how null works in c sharp so let´s call this our NullDemo project and our NullDemoApp Solution name next and we are going to use net 6 and this is important because some of the features where I use in this demo will be features that are pretty new to c# in fact c# 9 I believe was the latest changes there might be a couple of tweaks from 10 but I don´t think so but we´ll definitely need the latest version so if you´re on for example .net framework some of these won´t apply in fact a lot of these won´t apply and if you are an older version of .net some of these might not apply as well but we´ll talk about that as we go
+		so once we get started one of the things that we´re going to talk about is the defaults in the project I´m going to wait to do that so let´s get rid of the sample right here and we´ll just get a couple of blank lines 
+		2:33 so what is null well null is an absence of a value so there is a potential for some things to have a state that is not set or has no value has an absence of a value 
+		if we look at value types so for example an integer if I say int i the default value for an integer would be zero so that´s the default value that I wouldn´t have to assign now I do a more because we´ll get into that but because of the fact that it´s by default not nullable but it still wants us to assign initial value to it but we could use this potentially because of the fact that it does have a zero vaue noe I´ve assigne it automatic or manually but the default when we don´t have a value and integer the default value it puts in is zero all right however this is a value type value types since I believe C# 2 have had the opportunity to put a question mark at the end and this question mark it makes the value type nullable.
+		
+		int? i = 0;
+		
+		so this is saying this is a nullable value type and what that means is that I can say null and that is the dafault value for integer if we don´t assign a value
+		
+		int? i = null;
+		
+		now null because of the question mark so this adds an extra potential state of null now if I were to take a question mark off that´s going to give him an error because it says hey you cannot convert an int 
+		
+- Dependency Injection in .NET Core
+	- Dependency Injection in .NET Core (.NET 6)
+		- https://www.youtube.com/watch?v=Hhpq7oYcpGE
+		
+	- Creating a console app with Dependency Injection in .NET Core
+		- https://siderite.dev/blog/creating-console-app-with-dependency-injection-in-/
+		
+	- C# - .NET 6 - Console app with Generic Host vs without
+		- https://stackoverflow.com/questions/71156049/c-sharp-net-6-console-app-with-generic-host-vs-without
+		- https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host#default-builder-settings
+		
+		
+		
+
+			
+				

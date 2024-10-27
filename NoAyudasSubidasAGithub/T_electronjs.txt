@@ -1,0 +1,21 @@
+- Electronjs
+	- Curso 
+		- coderJeet: Getting Started With Electron JS - Learn Electron Basics
+			- https://www.youtube.com/watch?v=oPUwnDmJRak&list=PLmx8ERLT7ojO2PAH_sDnnoKXcqswxJ6CL
+			
+				- Requerimientos 
+					- nodejs LTS
+					- VSC
+					- 
+					
+				- instalación 
+					- pnpm init
+						- campos son importantes para luego hacer auto update.
+					- pnpm i -D electron nodemon
+				- Entry point
+					- main.js 
+						
+			
+	- Auto update (distribution / distribución)
+		- coderJeet: How to implement Automatic Updates in your Electron JS Application
+			- https://www.youtube.com/watch?v=oaza9tqCWXg

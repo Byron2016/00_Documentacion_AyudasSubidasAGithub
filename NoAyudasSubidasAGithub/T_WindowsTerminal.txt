@@ -1,0 +1,118 @@
+- Cómo configurar tu terminal para que sea asombrosa en Windows 11
+	- https://www.youtube.com/watch?v=6SGIFVJ5Izs
+	
+		- Instalar 
+			- Windows Terminal 
+				- Ir al Microsoft Store y buscar "windows terminal"
+				- Presionar "Get", si ya está instalada saldrá "Open"
+			- Power Shell 
+				- Es necesario instalarla ya que viene con las últimas funcionalidades.
+				- Ir al Microsoft Store y buscar "windows terminal"
+				- Presionar "Get", si ya está instalada saldrá "Open"
+			- Configuración 
+				- Ir a "configuración" de la "windows terminal" 
+				- Ir a pestaña "Inicio" 
+					- "Perfil Predeterminado" : Power shell 
+					- "Aplicación de terminal perederminada" : Windows terminal 
+					- Save 
+			- Cambiar colores 
+				- Ir a "configuración" de la "windows terminal"
+				- ir a pestaña "Combinación de colores"
+				- Seleccionar "Abrir JSON file"
+					- Al final copiar el json del color 
+						{
+							"name": "Snazzy",
+							"foreground": "#eff0eb",
+							"background": "#282a36",
+							"selectionBackground": "#3e404a",
+							"cursorColor": "#97979b",
+							"black": "#282a36",
+							"red": "#ff5c57",
+							"green": "#5af78e",
+							"yellow": "#f3f99d",
+							"blue": "#57c7ff",
+							"purple": "#ff6ac1",
+							"cyan": "#9aedfe",
+							"white": "#f1f1f0",
+							"brightBlack": "#686868",
+							"brightRed": "#ff5c57",
+							"brightGreen": "#5af78e",
+							"brightYellow": "#f3f99d",
+							"brightBlue": "#57c7ff",
+							"brightPurple": "#ff6ac1",
+							"brightCyan": "#9aedfe",
+							"brightWhite": "#eff0eb"
+						}
+					- ir a pestaña "Combinación de colores" y seleccionar "Snazzy"
+					- Presionar "usar como predeterminado"
+					- Guardar 
+			- Cambiar Barra superior 
+				- Ir a "configuración" de la "windows terminal"
+				- Ir a "Apariencia"
+					- Activar "Use acrylic material in the tab row"
+				- Guardar 
+			- Prompt Theme 
+				- https://ohmyposh.dev/docs/installation/windows
+					- Hay que tener winget instalado, las últimas versiones de windows 10 ya lo tienen.
+					- Ejecutar en la windows terminal:
+						- winget install JanDeDobbeleer.OhMyPosh -s winget
+						
+					- Instalar fuentes personalizadas 
+						- Ejecutar windows terminal como administrador 
+						- Ejecutar: oh-my-posh font install 
+						- Seleccionar la letra "FiraCode"
+						- Configuración 
+							- Abrir windows terminal como usuario común 
+							- Ir a "configuración" de la "windows terminal"
+							- Ir a "Profiles / Defaults" 
+								- Apariencia 
+									- Font Face 
+										- FiraCode Nerd Font Mono 
+						
+		- Activar "Oh-my-posh"
+			- Ir al "Windows Terminal" "Power Shell" 
+			- oh-my-posh + Enter 
+				- Se despliegan los comandos disponibles demostrándome que oh-my-posh se encuentra activo con éxito 
+				
+		- Utilizar tema x defecto en "Oh-my-posh" 
+			- Ir a las instrucciones de instalación de oh-my-posh para windows, y al final en "Defaults Themes" copiar el comando y ejecutarlo  
+				- oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json"
+				
+			- Este nos devuelve otro comando, lo copiamos y ejecutamos 
+				- Comando para poner tema:
+				- (@(& 'C:/Users/bgva/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.exe' init pwsh --config='C:\Users\bgva\AppData\Local\Programs\oh-my-posh\themes\jandedobbeleer.omp.json' --print) -join "`n") | Invoke-Expression
+				
+		- Cambiar el tema 
+			- Get-PoshThemes + enter 
+			- Buscar el tema que nos gusta y sobre el nombre del tema presionar CRTL + Click, esto abrirá en VSC la configuración del tema, copiamos el NOMBRE DEL ARCHIVO y volvemos a ejecutar el comando que nos devolvió antes (Referencia: Comando para poner tema) CAMBIANDO EL NOMBRE CON EL DEL ARCHIVO. 
+				- (@(& 'C:/Users/bgva/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.exe' init pwsh --config='C:\Users\bgva\AppData\Local\Programs\oh-my-posh\themes\pure.omp.json' --print) -join "`n") | Invoke-Expression
+				
+		- Guardar configuraciones 
+			- notepad $PROFILE
+				- Si da error ejecutar este otro 
+					- New-Item -Path $PROFILE -Type File -Force
+					- notepad $PROFILE
+					
+			- Copiar el comando anterior en el archivo que se abrió. 
+				- (@(& 'C:/Users/bgva/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.exe' init pwsh --config='C:\Users\bgva\AppData\Local\Programs\oh-my-posh\themes\pure.omp.json' --print) -join "`n") | Invoke-Expression
+				
+		- Agregar iconos al ls 
+			- Install-Module -Name Terminal-Icons -Repository PSGallery
+			- Import-Module Terminal-Icons
+			- notepad $PROFILE
+				- Agregar la siguiente línea:
+					- Import-Module Terminal-Icons
+					
+		- Utilizar módulo predictivo para lo que se escribe 
+			- PSReadLine 
+				- Ahora para que funcione hay que presionar tecla a la derecha. 
+			- Set-PSReadLineOption -PredictionViewStyle ListView 
+			- Agregar configuración al perfil 
+				- notepad $PROFILE
+					- Agregar la siguiente línea:
+						- Set-PSReadLineOption -PredictionViewStyle ListView
+						
+		- La configuración final queda:
+			(@(& 'C:/Users/bgva/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.exe' init pwsh --config='C:\Users\bgva\AppData\Local\Programs\oh-my-posh\themes\pure.omp.json' --print) -join "`n") | Invoke-Expression
+			Import-Module Terminal-Icons
+			Set-PSReadLineOption -PredictionViewStyle ListView

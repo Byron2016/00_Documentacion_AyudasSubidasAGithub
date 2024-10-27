@@ -1,0 +1,262 @@
+- APACHE
+	- Cumpi Linux: CONFIGURACIÓN VIRTUAL HOSTS APACHE EN LINUX (UBUNTU 20.04) | CAP #2
+		- https://www.youtube.com/watch?v=OPkghJVOZqE
+		
+		- Comandos
+			- Crear carpetas contengan contenido web
+				- sudo mkdir -p /var/www/prueba
+				- sudo mkdir -p /var/www/prueba2
+				
+			- Cambiar usuario dueño y permisos
+				- sudo chown -R byron:byron /var/www/prueba
+				- sudo chown -R byron:byron /var/www/prueba2
+				- sudo c
+				- sudo chmod 755 -R /var/www/prueba
+				- sudo chmod 755 -R /var/www/prueba2
+				
+			- Crear archivos configuración
+				- cd /etc/apache2/sites-available/
+				- sudo cp 000-default.conf prueba.conf
+				- sudo nano /etc/apache2/sites-available/prueba.conf
+					- Modificar:
+						- ServerName prueba.com
+						- ServerAdmin xxx@gmail.com
+						- DocumentRoot /var/www/prueba
+						- ErrorLog...
+						- CustomLog...
+						
+				- Hacer lo mismo para prueba2
+				
+			- Crear los sitios enables
+				- sudo a2ensite prueba.conf
+				- sudo a2ensite prueba2.conf
+				
+			- Activar nueva configración en apache2
+				- sudo systemctl reload apache2
+				
+			- Crear en /var/www/prueba los index.html.
+			- habilitar los sitios (Registrar los domineos localmente)
+				- sudo nano /etc/hosts
+					- 10.0.2.15 prueba.com
+					- 10.0.2.15 prueba2.com
+					
+			- Reiniciar apache para aplicar los cambios.
+				- sudo systemctl reload apache2
+				
+			- Revisar todo este ok
+				- sudo systemctl status apache2 
+				
+				
+			- Cómo crear un certificado SSL autofirmado para Apache en Ubuntu 20.04
+				- https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-20-04-es
+				
+					- Instalar apache2 y habilitar en firewall
+						- sudo apt update
+						- sudo apt install apache2
+						- sudo ufw allow "Apache Full"    #  si tiene un firewall ufw configurado, abra los puertos http y https
+						
+					- Paso 2: Crear el certificado SSL
+						- sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+						
+						- sudo apt install openssl ca-certificates
+						- sudo openssl genrsa -out server.key 2048
+						
+						-  
+						
+						
+					- Habilitar mod_ssl
+						- Ver si está instalado:
+							- grep "mod_ssl" /var/log/apt/history.log
+							- apt list --installed | grep ssl
+
+						- 
+						
+					- Paso 3: Configurar Apache para usar SSL
+						- sudo nano /etc/apache2/sites-available/your_domain_or_ip.conf
+						- sudo a2ensite your_domain_or_ip.conf
+						- sudo apache2ctl configtest
+						
+			- APACHE2 - Servidor SSL/TLS con CERTIFICADOS AUTOFIRMADOS
+				- https://www.youtube.com/watch?v=leuVWU2Sb6c
+					- Crear un directorio en donde se genere el certificado
+						- sudo mkdir /etc/apache2/ssl 
+					- Cargar los paquetes q se requieren para generar certificados
+						- sudo apt install openssl ca-certificates
+					- Ir a carpeta creada anteriormente
+						- cd /etc/apache2/ssl
+					- Generar clave privada
+						- sudo openssl genrsa -out aanueva.key 2048
+							- Verificar permisos ls -la
+								- deben estar con permisos 600
+					- Generar archivo csr (certifequet signed request)
+						- sudo openssl req -new -key  aanueva.key -out aanueva.csr
+							- Country Name (2 letter code) [AU]:EC
+							- State or Province Name (full name) [Some-State]:Pichincha
+							- Locality Name (eg, city) []:Quito
+							- Organization Name (eg, company) [Internet Widgits Pty Ltd]:bg
+							- Organizational Unit Name (eg, section) []:bg
+							- Common Name (e.g. server FQDN or YOUR name) []:aanueva.com 
+							- Email Address []:bgva2005@yahoo.com
+
+					- Generar certificado auto firmado.
+						- sudo openssl x509 -req -days 365 -in aanueva.csr -signkey aanueva.key -out aanueva.crt
+					- Activar el virtual host
+						- cd /etc/apache2/sites-available
+						- echo "$(tput setaf 3)Desabilitar site $(tput setaf 7)" && sudo a2dissite aanueva.conf && sudo systemctl reload apache2 && ls -al /etc/apache2/sites-enabled && echo "$(tput setaf 3)Habilitar site $(tput setaf 7)" && sudo a2ensite aanueva.conf && sudo systemctl reload apache2 && ls -al /etc/apache2/sites-enabled
+						- sudo apache2ctl configtest
+						
+
+	- Cumpi Linux: HTTPS EN APACHE LINUX y REDIRECCIÓN HTTP A HTTPS(UBUNTU 20.04) | CAP #3
+		- https://www.youtube.com/watch?v=KQWr1WHPEMk
+		
+		-Habiliar ssl en apache
+			- sudo a2enmod ssl
+			- sudo systemctl reload apache2
+			
+			
+			- cd /etc/apache2/sites-available/
+			- sudo nano default-ssl.conf
+				- copiar 
+			- Abrir el puerto 443 en el firewall
+				- sudo ufw status
+				- sudo ufw allow 443/tcp
+				- sudo ufw enable
+				- sudo ufw status
+				
+			- sudo systemctl restart apache2
+			
+			
+	- Cumpi Linux: INSTALAR CERTIFICADO SSL LET'S ENCRYPT EN APACHE (UBUNTU 20.04) | CAP #4
+		- https://www.youtube.com/watch?v=mDveKQNNY2s
+		
+		- Instalación de certificados SSL a través de Leds en creep.
+		- certbot
+			- https://certbot.eff.org/
+			
+			- sudo apt install certbot python3-certbot-apache
+			- Ejecutar certbot para apache
+				- hay dos opciones
+					- sudo certbot --apache
+					- sudo certbot --apache -d prueba1.com -d aanueva.com
+					
+			- Certificados
+				- Luego de la instalación se despliega:
+				
+					Obtaining a new certificate
+					Performing the following challenges:
+					http-01 challenge for aanueva.com
+					http-01 challenge for prueba1.com
+					Enabled Apache rewrite module
+					Waiting for verification...
+					Challenge failed for domain aanueva.com
+					Challenge failed for domain prueba1.com
+					http-01 challenge for aanueva.com
+					http-01 challenge for prueba1.com
+					Cleaning up challenges
+					Some challenges have failed.
+					
+					IMPORTANT NOTES:
+					- The following errors were reported by the server:
+					
+					Domain: aanueva.com
+					Type:   dns
+					Detail: DNS problem: NXDOMAIN looking up A for aanueva.com - check
+					that a DNS record exists for this domain; DNS problem: NXDOMAIN
+					looking up AAAA for aanueva.com - check that a DNS record exists
+					for this domain
+					- The following errors were reported by the server:
+					
+					Domain: prueba1.com
+					Type:   unauthorized
+					Detail: 52.86.6.113: Invalid response from
+					https://www.hugedomains.com/domain_profile.cfm?d=prueba1.com:
+					"\n<!doctype html>\n<html lang=\"en\">\n<head>\n\n<meta
+					charset=\"utf-8\">\n<meta name=\"viewport\"
+					content=\"width=device-width, initial-scal"
+					
+					To fix these errors, please make sure that your domain name was
+					entered correctly and the DNS A/AAAA record(s) for that domain
+					contain(s) the right IP address.
+					- Your account credentials have been saved in your Certbot
+					configuration directory at /etc/letsencrypt. You should make a
+					secure backup of this folder now. This configuration directory will
+					also contain certificates and private keys obtained by Certbot so
+					making regular backups of this folder is ideal.
+			
+				- sudo systemctl status certbot.timer
+			
+- APACHE REVERSE PROXY 
+	- Host ASP.NET Core on Linux with Apache
+		- https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-apache?view=aspnetcore-6.0
+		
+		
+	- 
+		- https://blog.containerize.com/2021/05/21/how-to-configure-apache-as-a-reverse-proxy-for-ubuntudebian/
+		
+			- Step 1: Instalar Apache2
+				- sudo apt-get update
+				- sudo apt-get install apache2
+				
+				- After installing Apache2 on your system, use the following systemctl commands on Debian Linux or Ubuntu Linux version Ubuntu to stop, start, enable and restart Apache2 to always restart when the server boots up.
+					- sudo systemctl stop apache2.service
+					- sudo systemctl start apache2.service
+					- sudo systemctl enable apache2.service
+					- sudo systemctl restart apache2.service
+					
+				- You can view web server status using the following command:
+					- sudo systemctl status apache2.service
+					
+				- To check Apache2 setup
+					- localhost
+				
+			- Step 2: Configure Apache2 as Reverse Proxy
+				- sudo nano /etc/apache2/sites-available/Apache2Proxy.conf
+				
+				<VirtualHost *:80>
+					ServerName example.com
+					ServerAlias www.example.com
+					ServerAdmin webmaster@example.com
+					ErrorLog ${APACHE_LOG_DIR}/error.log
+					CustomLog ${APACHE_LOG_DIR}/access.log combined
+					
+					ProxyRequests Off
+					<Proxy *>
+					Order deny,allow
+					Allow from all
+					</Proxy>
+					
+					ProxyPass / http://127.0.0.1:8080/
+					ProxyPassReverse / http://127.0.0.1:8080/
+					
+					<Location />
+					Order allow,deny
+					Allow from all
+					</Location>
+				</VirtualHost>
+				
+			- Step 3: Enable Apache2 Proxy
+				- Apache2 web server is now installed and setup successfully. Apache has many available bundled modules bundled with in it. These modules are not enabled in fresh apache2 installation. First we’ll need to enable the modules we need to enable required apache mod_proxy module and several of its add-on modules to support different network protocols. Run the below listed commands to enable its http proxy modules.
+				
+					- sudo a2enmod proxy
+					- sudo a2enmod proxy_http
+					- sudo a2enmod proxy_balancer
+					- sudo a2enmod lbmethod_byrequests
+					
+				- Now enable the VirtualHost site and restart Apache2 to enable reload the Apache2 modules configuration
+				
+					- sudo a2ensite Apache2Proxy.conf
+					- sudo systemctl restart apache2.service
+					
+			- Step 4: Enable the SSL
+				- sudo a2enmod ssl
+				
+			- Step 5: Restart Apache2
+				- sudo systemctl restart apache2.service
+	
+		
+		
+	- ERROR 
+		- wget: unable to resolve host address ‘packages.microsoft.com’
+		
+			- Agregar otro DNS
+				- The DNS server seems out of order. You can use another DNS server such as 8.8.8.8. Put nameserver 8.8.8.8 to the first line of /etc/resolv.conf

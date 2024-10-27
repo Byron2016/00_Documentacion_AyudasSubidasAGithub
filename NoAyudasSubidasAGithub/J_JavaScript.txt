@@ -1,0 +1,21 @@
+- Electrified button - GSAP & SVG
+	- https://codepen.io/GreenSock/pen/NWMYMQr
+	
+- Kass : UI Interactions
+	- Tarjeta interactiva que presenta precios.
+		- https://codepen.io/kassandrasanch/pen/ZEQejwy
+		
+	- Profile Card Hover Effect
+		- https://codepen.io/petegarvin1/pen/YzWBbRx
+		
+	- Elegant shadow
+		- https://codepen.io/juanbrujo/pen/DBKxxM
+		
+- Libro "Elocuent JavaScript"
+	- file:///C:/Users/bgva/Downloads/Eloquent_JavaScript.pdf
+	- Codigo
+		- https://eloquentjavascript.net/code/#3.3
+		
+	- pag. 71
+		
+	

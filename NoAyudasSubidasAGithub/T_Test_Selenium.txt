@@ -1,0 +1,11 @@
+- Selenium
+	- Ntech Developers: [Pluralsight - Automated Web Testing with Selenium] 1 Course Introduction
+		- https://www.youtube.com/watch?v=jKzcju0doJc&list=PLKzgdQXYRdY2-iWeRI053_EMmdQYln2p3&index=1
+		
+			- V_010_SeleniumIDE
+				- Solo funciona en firefox/chrome
+				- https://www.selenium.dev/
+					- Selenium IDE
+					- https://addons.mozilla.org/en-GB/firefox/addon/selenium-ide/
+					
+				

@@ -1,0 +1,549 @@
+- Falcon Master
+	-
+		-
+			- minmax 
+			  Si tenemos una configuración en donde los elementos se SALEN del ancho del contenedor
+				.contenedor {
+					width: 98%;
+					max-width: 1000px;
+				}
+				
+				.contenedor {
+					display: grid;
+					grid-template-columns: 300px 300px 400px;
+					grid-template-rows: 150px 300px;
+					grid-gap: 20px;
+				}
+				
+				- Se trabaja con tamaños MINIMOS Y MAXIMOS.
+					.contenedor {
+						display: grid;
+						grid-gap: 20px;
+						grid-template-columns: minmax(300px , 1fr) 1fr;
+					}
+					
+				- Para el tema de filas se hace lo mismo, se recomienda usar auto para el tamaño máximo de la fila, de esta forma se logra que se adapte solo al mismo.
+					.contenedor {
+						display: grid;
+						grid-gap: 20px;
+						/* grid-template-columns: 200px 200px; */
+						/* grid-template-columns: 200px 1fr; */
+						grid-template-columns: minmax(300px , 1fr) 1fr;
+						/* grid-template-rows: minmax(150px , 200px) 400px; */
+						grid-template-rows: minmax(150px , auto) 400px;
+					}			
+
+					
+			- repeat
+			  A fin de evitar el tener que estar definiendo de esta manera:
+			  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			  Podemos usar la función repeat
+			  grid-template-columns: repeat(6, 1fr);
+			  
+			- POSICIONAMIENTO.
+			  podemos cambiar el orden y posicionamiento de nuestros elementos.
+			  
+				- Indicar donde iniciar y donde terminar.
+					grid-column-start: 2;
+					grid-column-end: 3;
+					
+				- Cambiar el tamaño del elemento.
+					grid-column-start: 2;
+					grid-column-end: 4;
+					
+					- En caso que agreguemos una nueva columna, el header ha no fuera en toda la fila y nos tocaría cambiar, para solucionarlo USAMOS NÚMERO NEGATIVOS que van de derecha a izquierda.
+						grid-column-start: 1;
+						grid-column-end: -1;
+						
+					- En caso que siempre quiero dejar una columna al final, entonces pongo un valor negativo mayor.
+						grid-column-start: 1;
+						grid-column-end: -2;
+						
+					- Se puede hacer lo mismo para las filas.
+						grid-row-start: 2;
+						grid-row-end: 4;
+						
+						- Para las filas también funcionan los números negativos.
+							grid-row-start: 1;
+							grid-row-end: -1;
+							
+				- Acortar líneas de código:
+					.contenedor .item {
+						background: #ff8000;
+						grid-column-start: 1;
+						grid-column-end: 3;
+					
+						grid-row-start: 1;
+						grid-row-end: 3;
+					}
+					
+					1ra. forma
+					.contenedor .item {
+						background: #ff8000;
+						grid-column: 1/4;
+					
+						grid-row-start: 1/3;
+					}
+					
+					
+					2da. forma
+					.contenedor .item {
+						background: #ff8000;
+						/*
+						grid row start
+						grid column start
+						
+						grid row end
+						grid column end
+						*/
+						grid-area: 2/1 / 4 / 3;
+					}
+					
+				- Solo cambiar el tamaño estirarlo.
+					grid-column: 1/ span 3;
+					
+					- podemos obviar el primer número, lo que nos dice que de su posición original se estira x columnas.
+						grid-column: span 3;
+						grid-row: 3 / span 3;
+					
+					
+			- AREAS.
+				- Primer acercamiento
+					- Definimos el contenedor
+						- tipo de display
+						- número de columnas
+						- nombre de areas.
+						
+						.contenedor {
+							display: grid;
+							grid-gap: 20px;
+							grid-template-columns: repeat(3, 1fr);
+							grid-template-areas: "header header header";
+						}
+						
+					- especificamos el elemento y su tamaño.
+	
+						.contenedor .header {
+							background: #ff8000; 
+							grid-column-start: header;
+							grid-column-end: header;
+						}
+						
+				- Definición de otras filas y columnas y configuración de una en sus 3 formas.
+					.contenedor {
+						display: grid;
+						grid-gap: 20px;
+						grid-template-columns: repeat(3, 1fr);
+						grid-template-rows: repeat(3, auto);
+					
+						grid-template-areas: "header header header"
+						"sidebar-1 contenido sidebar-2"
+						"sidebar-1 widgets sidebar-2"
+						"footer footer footer";
+					}
+					
+					.contenedor .header {
+						background: #ff8000; 
+						grid-column-start: header;
+						grid-column-end: header;
+					}
+					
+					.contenedor .sidebar-1 {
+						background: #393e46; 
+						/* forma 1 */
+						/* grid-column-start: sidebar-1;
+						grid-column-end: sidebar-1;
+						grid-row-start: sidebar-1;
+						grid-row-end: sidebar-1; */
+					
+						/* forma 2 */
+						/* grid-column: sidebar-1;
+						grid-row: sidebar-1; */
+					
+						/* forma 2 */
+						grid-area: sidebar-1;
+					}
+					
+				- Configurando todo el layout
+				
+					<body>
+						<div class="header">
+							<p>CSS GRID - Grid Areas</p>
+						</div>
+						<div class="contenedor">
+							<!-- div*12{$} -->
+							<div class="header">1</div>
+							<div class="sidebar-1">2</div>
+							<div class="contenido">3</div>
+							<div class="widgets">4</div>
+							<div class="sidebar-2">5</div>
+							<div class="footer">6</div>
+						</div>
+					</body>
+					
+					.contenedor {
+						display: grid;
+						grid-gap: 20px;
+						grid-template-columns: repeat(3, 1fr);
+						grid-template-rows: repeat(3, auto);
+					
+						grid-template-areas: "header header header"
+						"sidebar-1 contenido sidebar-2"
+						"sidebar-1 widgets sidebar-2"
+						"footer footer footer";
+					}
+					
+					.contenedor .header {
+						background: #ff8000; 
+						grid-column-start: header;
+						grid-column-end: header;
+					}
+					
+					.contenedor .sidebar-1 {
+						background: #393e46; 
+						grid-area: sidebar-1;
+					}
+					
+					.contenedor .contenido {
+						background: #fff; 
+						color: #000;
+						grid-area: contenido;
+					}
+					
+					.contenedor .widgets {
+						background: #ff8000; 
+						grid-area: widgets;
+					}
+					
+					.contenedor .sidebar-2 {
+						background: #393e46; 
+						grid-area: sidebar-2;
+					}
+					
+					.contenedor .footer {
+						background: #222831; 
+						grid-area: footer;
+					}
+					
+			- ALINEACIÓN DE ELEMENTOS.
+				- Hacer que css grid no estire los elementos si no que ABARQUE SOLO LO QUE REQUIERE.
+					- Alineación horizontal.
+						- justify-items: start;
+						auto toma el tamaño automático 100%
+						stretch todo el espacio q pueda
+						center centrado horizontal
+						end colocarlos hacia la derecha.
+						
+					- Alineación vertical.
+						- align-items: start;
+						center
+						end
+						stretch
+						
+						
+				- cambiar el tamaño.
+					- con width no respeta los márgenes, sobrepone los gaps. para eso usamos
+					justify-self: stretch;
+					align-self: stretch;
+					
+			- ALINEACIÓN DE TRACKS.
+			  Todo el grupo alinearlo tanto horizontal como vertical.
+			  
+				.contenedor {
+					display: grid;
+					grid-gap: 20px;
+					height: 700px;
+				
+				
+					grid-template-columns: repeat(3, 150px);
+					grid-template-rows: repeat(3, 150px);
+				
+					justify-content: normal;
+					/* normal start center end space-around space-between space-evenly */
+				
+				}
+				
+			- GRID IMPLICITA
+				- Lo que queremos hacer es poder cambiar el tamaño a las filas/columnas implícitas.
+				
+				grid-auto-rows: 400px;
+				
+				- para las columnas debemos saber el flow de la grid, el acomodo, inicialmente se lo tiene en modo fila.
+				grid-auto-flow: column
+				grid-auto-columns: 400px;
+				
+				Los valores hay algunos, pero hay uno en particular q resulta interesate.
+				
+				
+				- Rellenar espacios en blanco.
+					- grid-auto-flow: dense
+					
+			- AUTO FILL Y FIT (usados para diseño responsive)
+				- Tenemos casos en que el contenedor se va haciendo pequeño pero los elementos no se van adaptando
+					Es usado cuando usamos REPEAT.
+					grid-template-columns:repeat(4, minmax(100px, 1fr));
+					
+					para ello usamos:
+						- auto-fill
+						grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
+						
+						con esto el elemento q no entra se pone debajo.
+						
+						- auto-fit
+							trabajan igual, la diferencia es cuando tengamos pocos elementos y los elementos abarcarán todo el espacio disponible.
+						
+						
+			- HACER LAYOUT
+				- 1ra forma SIN USAR AREAS
+					<div class="contenedor">
+						<!-- div*12{$} -->
+						<header class="header">
+							<h2>HEADER</h2>
+						</header>
+						<main class="contenido">
+							<h1>Contenido</h1>
+							<p>
+								Lorem 
+								<br><br>
+				
+								2 Lorem 
+								<br><br>
+				
+								3 Lorem 
+							</p>
+						</main>
+						<aside class="sidebar">
+							<h3>SIDEBAR</h3>
+						</aside>
+						<div class="widgets-1">
+							<h3>WIDGET 1</h3>
+						</div>
+						<div class="widgets-2">
+							<h3>WIDGET 2</h3>
+						</div>
+						<footer class="footer">
+							<h3>FOOTER</h3>
+						</footer>
+					</div>
+					
+					* {
+						margin: 0;
+						padding: 0;
+					}
+					
+					body {
+						background: #E9ECF4;
+						color: #000;
+						font-family: 'Roboto', sans-serif;
+					}
+					
+					.contenedor {
+						width: 90%;
+						max-width: 1000px;
+						margin: 20px auto;
+					
+						display: grid;
+						grid-gap: 20px;
+					
+						grid-template-columns: repeat(3, 1fr);
+						grid-template-rows: repeat(4, auto);
+					
+						/* grid-template-areas: "header header header"; */
+					}
+					
+					.contenedor > div,
+					.contenedor .header,
+					.contenedor .contenido,
+					.contenedor .sidebar,
+					.contenedor .footer {
+						background: #fff;
+						padding: 20px;
+						border-radius: 4px;
+					}
+					
+					.contenedor .header,
+					.contenedor .contenido,
+					.contenedor .sidebar,
+					.contenedor .footer {
+						background: #fff;
+						padding: 20px;
+						border-radius: 4px;
+					}
+					
+					.contenedor .header{
+						background: #12203E;
+						color: #fff;
+						grid-column-start: 1;
+						grid-column-end: -1; /* quitamos el 4 y ponemos -1*/
+					}
+					
+					.contenedor .contenido {
+						grid-column: span 2;
+					}
+					
+					.contenedor .sidebar  {
+						grid-column: 3 / 4;
+						background: #FAA43D;
+						/* text-align: center; */
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						min-height: 100px;
+					
+						/* grid-row: 2 / 4; */
+						grid-row: span 2; 
+					}
+					
+					.contenedor .widgets-1,
+					.contenedor .widgets-2 {
+						background: #55a8fd;
+						color: #fff;
+						height: 100px;
+						text-align: center;
+					
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+					
+					.contenedor .footer {
+						background: #12203e;
+						color: #fff;
+						grid-column: span 3;
+					}
+					
+					@media screen and (max-width: 768px) {
+						body {
+							background: #000;
+						}
+					
+						.contenedor .contenido {
+							grid-column: 1 / -1;
+						}
+					
+						.contenedor .sidebar  {
+							grid-column: 1 / -1;
+						}
+					
+						.contenedor .widgets-1 {
+							grid-column: span 2;
+						}
+					}
+					
+				- 2da forma CON AREAS
+					* {
+						margin: 0;
+						padding: 0;
+					}
+					
+					body {
+						background: #E9ECF4;
+						color: #000;
+						font-family: 'Roboto', sans-serif;
+					}
+					
+					.contenedor {
+						width: 90%;
+						max-width: 1000px;
+						margin: 20px auto;
+					
+						display: grid;
+						grid-gap: 20px;
+					
+						grid-template-columns: repeat(3, 1fr);
+						grid-template-rows: repeat(4, auto);
+					
+						grid-template-areas: "header header header"
+						"contenido contenido sidebar"
+						"widget-1 widget-2 sidebar"
+						"footer footer footer"; 
+					}
+					
+					.contenedor > div,
+					.contenedor .header,
+					.contenedor .contenido,
+					.contenedor .sidebar,
+					.contenedor .footer {
+						background: #fff;
+						padding: 20px;
+						border-radius: 4px;
+					}
+					
+					.contenedor .header,
+					.contenedor .contenido,
+					.contenedor .sidebar,
+					.contenedor .footer {
+						background: #fff;
+						padding: 20px;
+						border-radius: 4px;
+					}
+					
+					.contenedor .header{
+						background: #12203E;
+						color: #fff;
+						/* grid-column-start: 1;
+						grid-column-end: -1;  */
+						grid-area: header;
+					}
+					
+					.contenedor .contenido {
+						/* grid-column: span 2; */
+						grid-area: contenido;
+					}
+					
+					.contenedor .sidebar  {
+						/* grid-column: 3 / 4; */
+						background: #FAA43D;
+						/* text-align: center; */
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						min-height: 100px;
+					
+						/* grid-row: span 2;  */
+						grid-area: sidebar;
+					}
+					
+					.contenedor .widgets-1,
+					.contenedor .widgets-2 {
+						background: #55a8fd;
+						color: #fff;
+						height: 100px;
+						text-align: center;
+					
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+					
+					.contenedor .widgets-1 {
+						grid-area: widget-1;
+					}
+					
+					.contenedor .widgets-2 {
+						grid-area: widget-2;
+					}
+					
+					.contenedor .footer {
+						background: #12203e;
+						color: #fff;
+						/* grid-column: span 3; */
+						grid-area: footer;
+					}
+					
+					@media screen and (max-width: 768px) {
+						body {
+							background: #000;
+						}
+					
+						.contenedor {
+							grid-template-areas: "header header header"
+							"contenido contenido contenido"
+							"sidebar sidebar sidebar"
+							"widget-1 widget-1 widget-2 "
+							"footer footer footer"; 
+						}
+					}
+					
+			- SUB GRID	
+				

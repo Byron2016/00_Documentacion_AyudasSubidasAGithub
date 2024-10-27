@@ -1,0 +1,261 @@
+- OAuth
+	- C# ASP.NET MVC Authentication - Logging in locally or with OAuth (using Twitter)
+		- https://www.youtube.com/watch?v=kpSwmLlMu9E
+		
+		- Crear proyecto
+			- Seleccionar el proyecto ASP.NET Web Application (.NET Framework)
+			- MVC
+			- Individual Authentication
+			- Sol: AuthenticationDemo
+			- Projecto: MVCDemo
+		- 
+		
+		
+	- ASP.NET Core 5.0 - Authentication/Authorization - .Net Engineering Forum 2021-01-26
+		- https://www.youtube.com/watch?v=BWa7Mu-oMHk
+			- Hace un paso a paso explicando 
+			
+			
+			
+	- Benjamín Camacho: ASP.NET Core Identity 3.1 | Scaffold identity   
+		- https://www.youtube.com/watch?v=MqcLBewsNUE
+			- Creación con comandos
+				- dotnet new sln --name OAuthn --output OAuthn
+				- dotnet new mvc --auth Individual -n IntroIdentity --language "C#" --output OAuthn\WepApp0
+				- dotnet sln OAuthn\ add OAuthn\WepApp0\IntroIdentity.csproj
+				- dotnet sln OAuthn\OAuthn.sln add OAuthn\WepApp0\IntroIdentity.csproj
+				
+				dotnet new sln --name OAuthn --output OAuthn && dotnet new mvc --auth Individual -n IntroIdentity --language "C#" --output OAuthn\WepApp0 && dotnet sln OAuthn\OAuthn.sln add OAuthn\WepApp0\IntroIdentity.csproj
+				- cd OAuthn\WepApp0
+				- dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+				
+				- dotnet tool install --global dotnet-aspnet-codegenerator
+				- dotnet aspnet-codegenerator --help
+				- dotnet aspnet-codegenerator identity --help
+				- dotnet aspnet-codegenerator identity --listFiles
+				- dotnet aspnet-codegenerator identity -dc IntroIdentity.Data.ApplicationDbContext -sqlite --files "Account._StatusMessage;Account.AccessDenied;Account.ConfirmEmail;Account.ConfirmEmailChange;Account.ExternalLogin;Account.ForgotPassword;Account.ForgotPasswordConfirmation;Account.Lockout;Account.Login;Account.LoginWith2fa;Account.LoginWithRecoveryCode;Account.Logout;Account.Manage._Layout;Account.Manage._ManageNav;Account.Manage._StatusMessage;Account.Manage.ChangePassword;Account.Manage.DeletePersonalData;Account.Manage.Disable2fa;Account.Manage.DownloadPersonalData;Account.Manage.Email;Account.Manage.EnableAuthenticator;Account.Manage.ExternalLogins;Account.Manage.GenerateRecoveryCodes;Account.Manage.Index;Account.Manage.PersonalData;Account.Manage.ResetAuthenticator;Account.Manage.SetPassword;Account.Manage.ShowRecoveryCodes;Account.Manage.TwoFactorAuthentication;Account.Register;Account.RegisterConfirmation;Account.ResetPassword;Account.ResetPasswordConfirmation"
+				
+				- dotnet aspnet-codegenerator identity -dc IntroIdentity.Data.ApplicationDbContext --files "Account._StatusMessage;Account.AccessDenied;Account.ConfirmEmail;Account.ConfirmEmailChange;Account.ExternalLogin;Account.ForgotPassword;Account.ForgotPasswordConfirmation;Account.Lockout;Account.Login;Account.LoginWith2fa;Account.LoginWithRecoveryCode;Account.Logout;Account.Manage._Layout;Account.Manage._ManageNav;Account.Manage._StatusMessage;Account.Manage.ChangePassword;Account.Manage.DeletePersonalData;Account.Manage.Disable2fa;Account.Manage.DownloadPersonalData;Account.Manage.Email;Account.Manage.EnableAuthenticator;Account.Manage.ExternalLogins;Account.Manage.GenerateRecoveryCodes;Account.Manage.Index;Account.Manage.PersonalData;Account.Manage.ResetAuthenticator;Account.Manage.SetPassword;Account.Manage.ShowRecoveryCodes;Account.Manage.TwoFactorAuthentication;Account.Register;Account.RegisterConfirmation;Account.ResetPassword;Account.ResetPasswordConfirmation"
+				
+				
+				- TODO
+				git init && dotnet new sln --name OAuthn --output OAuthn && dotnet new mvc --auth Individual -n IntroIdentity --language "C#" --output OAuthn\WepApp0 && dotnet sln OAuthn\OAuthn.sln add OAuthn\WepApp0\IntroIdentity.csproj && cd OAuthn\WepApp0 && dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design && dotnet aspnet-codegenerator identity -dc IntroIdentity.Data.ApplicationDbContext --files Account.Login
+				
+				
+	- I See Sharp: MVC Login and Registration with Identity - Identity Customization - .NET Core 6 - Part 1
+		- https://www.youtube.com/watch?v=I-ZzFLruiuo
+		
+	- Patrick God: https://www.youtube.com/c/PatrickGod/videos
+		- Uso de tokens, buenos ejemplos.
+			- https://www.youtube.com/watch?v=v7q3pEK1EA0
+			- https://www.youtube.com/watch?v=TDY_DtTEkes
+			
+- Patrick God: https://www.youtube.com/c/PatrickGod/videos
+	- Hot Reload
+		- Hot Reload of .NET 6 & Visual Studio 2022 in (buggy) action & how to make it work
+			- https://www.youtube.com/watch?v=DNicD_r1Ca4
+			
+				- 
+	- 	CRUD with a .NET 6 Web API	
+		- CRUD with a .NET 6 Web API & Entity Framework Core 🚀 Full Course
+			- https://www.youtube.com/watch?v=Fbf_ua2t6v4
+				- D:\dev_20220602\CSharpCore\058_PatricGod
+				
+				- Crear proyecto: ASP.NET Core Web API	
+					- .NET 6
+					- Configure for HTTPS
+					- Use controllers (uncheck to use minimal APIs)
+					- Enable OpenAPI support
+						- Esto es para tener swagger support y testear el API.
+						
+				- Program.cs
+					- Para swagger
+						- En propiedades del proyecto está incluído el paquete:
+							- Swashbuckle.AspNetCore
+						- launchSettings.json
+							- En profiles/nombreProyecto
+								- "launchUrl": "swagger",
+							- En IIS Express
+								- "launchUrl": "swagger",
+						- // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+						builder.Services.AddEndpointsApiExplorer();
+						builder.Services.AddSwaggerGen()
+						.....
+						// Configure the HTTP request pipeline.
+						if (app.Environment.IsDevelopment())
+						{
+							app.UseSwagger();
+							app.UseSwaggerUI();
+						}
+						
+				- Visualizar en swagger ejemplo.
+					- Tenemos en el método inicialmente el tipo "public async Task<IActionResult> Get()" en swagger no se visualiza ejemplo del tipo de retorno.
+					Cambiándolo a "public async Task<ActionResult<List<SuperHero>>> Get()" ya podemos verlo.
+					
+				- Insomnia
+					- ERROR: insomnia ssl peer certificate or ssh remote key was not ok
+						- insomnia ssl peer certificate or ssh remote key was not ok
+						
+				- 35.02 Entity Framework
+					- Agregar Nuevo Folder llamado Data
+					- Usar services con el patrón repositorio.
+					- Crear nueva clase DataContext
+						- Hereda de DBContext
+						- Instalar Microsoft.EntityFrameworkCore
+						- Instalar Microsoft.EntityFrameworkCore.Design
+						- Instalar Microsoft.EntityFrameworkCore.SqlServer
+						
+					- Creaar en appsettings.json el connectionString
+						- 
+							"ConnectionStrings": {
+								"DefaultConnection": "Server=localhost;Database=db_patric_god;User Id=sa;Password=Aa123456;"
+							},
+							
+					- Instalar EntityFramework
+						- Ir a PackageManagerConsole
+							- View/Other Windows/PackageManagerConsole
+						- Revisar si ya está instalado
+							- dotnet ef
+						- Instalar si no se tiene
+							- dotnet tool install --global dotnet-ef
+						
+					- DbContext
+						public class DataContext: DbContext
+						{
+							public DataContext(DbContextOptions<DataContext> options) : base(options)
+							{
+					
+							}
+					
+							public DbSet<SuperHero> SuperHeroes { get; set; }
+						}
+						
+						- Registrar el DbContext
+							- En Program.cs
+								- 
+									builder.Services.AddDbContext<DataContext>(options =>
+									{
+										options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+									});
+									
+						- 
+							- dotnet ef migrations add CreateInitial
+								ERROR: No project was found. Change the current working directory or use the
+									- dotnet ef migrations add CreateInitial --startup-project "./SuperHeroAPI/SuperHeroAPI.csproj"
+									
+							- dotnet ef database update
+							
+						- 50.00 Se visualice "_dataContext"
+							- Tools/Options/Text Editor/C#/Code Style/Naming/
+								- Manage naming styles
+									- Naming style titles: _fieldName
+									- Required Prefix: _
+									- Capitalizacion: camel Case Name
+									- Sample Identifier: _exampleIdentifier
+								- Presionar +
+									- Seleccionar Private or Internal
+									- _fieldName
+									- Suggestion
+									
+							
+	- JSON Web Tokens (JWT)
+		- .NET 6 Web API 🔒 Create JSON Web Tokens (JWT) - User Registration / Login /
+			- https://www.youtube.com/watch?v=v7q3pEK1EA0
+			
+			- Ver teoría: 
+				- https://www.enmilocalfunciona.io/construyendo-una-web-api-rest-segura-con-json-web-token-en-net-parte-i/
+				- https://www.enmilocalfunciona.io/construyendo-una-web-api-rest-segura-con-json-web-token-en-net-parte-ii/
+				
+				- .NET 6.0 - JWT Authentication Tutorial with Example API
+					- https://jasonwatmore.com/post/2021/12/14/net-6-jwt-authentication-tutorial-with-example-api
+					
+					
+	- Entity Framework EF Core ALL Relationships (1:1, 1:n, n:n) scaffolding
+		- .NET 6 & EF Core 🚀 ALL Relationships (1:1, 1:n, n:n) with Entity Framework Core 6 & SQL
+			- https://www.youtube.com/watch?v=FHx6AGVF_IE
+			
+				- https://www.youtube.com/watch?v=8aHzSx-inDE&list=PL6n9fhu94yhVkdrusLaQsfERmL_Jh4XmU&index=47
+					- Microsoft.EntityFrameworkCore.SqlServer
+					- Microsoft.EntityFrameworkCore.Relational
+					- Microsoft.EntityFrameworkCore
+					
+				- dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+				- dotnet add package Microsoft.EntityFrameworkCore.Design
+					- Este es para las migraciones.
+				
+						- Instalar Microsoft.EntityFrameworkCore
+						- Instalar Microsoft.EntityFrameworkCore.Design
+						- Instalar Microsoft.EntityFrameworkCore.SqlServer
+						
+				- migrar
+					- dotnet ef migrations add UserEntity
+					- dotnet ef database update
+					
+			- One to One
+				- https://www.entityframeworktutorial.net/efcore/one-to-one-conventions-entity-framework-core.aspx
+			- One to Many
+				- https://www.entityframeworktutorial.net/efcore/one-to-many-conventions-entity-framework-core.aspx
+				
+				- https://docs.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-simple-key%2Csimple-key#many-to-many
+				
+			- Siguiendo el tutorial de "https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx" 
+				- Installation (https://www.entityframeworktutorial.net/efcore/install-entity-framework-core.aspx)
+					- Install Entity Framework Core
+						- NuGet package
+							- EF Core DB provider
+								- Microsoft.EntityFrameworkCore.SqlServer
+									- dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 6.0.11
+							- EF Core tools
+								- Microsoft.EntityFrameworkCore.Tools
+									- dotnet add package Microsoft.EntityFrameworkCore.Tools --version 6.0.11
+									
+					- Install EF Core Tools for dotnet CLI
+						- If you want to execute EF Core commands from .NET Core's CLI (Command Line Interface), first install the NuGet package Microsoft.EntityFrameworkCore.Tools.DotNet using NuGet UI.
+						
+						- Microsoft.EntityFrameworkCore.Tools.DotNet
+							- dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet --version 2.0.3
+							
+							- Luego de instalar en el archivo . se debe incluir:
+							<ItemGroup>
+							    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+							</ItemGroup>
+							
+							Now, open the command prompt (or terminal) from the root folder of your project and execute EF Core commands from CLI starting with dotnet ef, as shown below
+							
+				- Existing Database (https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx) scaffolding
+					- Scaffold-DbContext Command
+						- Scaffold-DbContext [-Connection] [-Provider] [-OutputDir] [-Context] [-Schemas>] [-Tables>]
+						                     [-DataAnnotations] [-Force] [-Project] [-StartupProject] [<CommonParameters>]
+											 
+								- Ayuda en Consule Nuget Package: get-help scaffold-dbcontext –detailed
+											 
+							- Ejemplo: 
+								- Console Nuget Package:
+									- Scaffold-DbContext "Server=localhost;Database=db_Genealogico;User Id=sa;Password=123456;"
+									Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+								
+								- DotNet CLI
+									- dotnet ef dbcontext scaffold "Server=localhost;Database=db_Genealogico;User Id=sa;Password=123456;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+									
+				- Entity Framework Core: DbContext (https://www.entityframeworktutorial.net/efcore/entity-framework-core-dbcontext.aspx)
+					- Creating the Model					
+					
+				- First EF Core Console Application (https://www.entityframeworktutorial.net/efcore/entity-framework-core-console-application.aspx)
+					- Migration
+						- Adding a Migration
+							- add-migration CreateSchoolDB
+							- dotnet ef migrations add CreateSchoolDB
+						- create the database
+							- update-database –verbose
+							- dotnet ef database update
+					- Reading or Writing Data
+					
+				- Querying in Entity Framework Core (https://www.entityframeworktutorial.net/efcore/querying-in-ef-core.aspx)
+					- C#/VB.NET Functions in Queries
+						- Include()
+						- FromSql()
+						- Projection Query
+						
+				- Conventions in Entity Framework Core (https://www.entityframeworktutorial.net/efcore/conventions-in-ef-core.aspx)
+					- 
+					

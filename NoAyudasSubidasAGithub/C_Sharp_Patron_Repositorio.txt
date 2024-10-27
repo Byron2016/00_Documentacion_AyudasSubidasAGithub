@@ -1,0 +1,16 @@
+- Patrón Repositorio
+	- Aplicando Patrón Repositorio en .NET Core
+		- https://www.youtube.com/watch?v=bstBdEjfuZ0
+		
+		- Agenda
+			- Qué es el patrón repositorio?
+			- Diferencia entre repositorio genérico y no genérico´
+			- Combinar patrón repositorio genérico y clean architecture
+			- Realizar un Get con la implementación.
+			
+		- Qué es el patrón repositorio?
+			- UI & Business Logic <-> Repository DbContext <-> Domain Entities
+			- Request <-> IIS Web Server <-> Controller <-> Repository <-> Data Access using EF <-> Database Server 
+			
+			
+			

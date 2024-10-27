@@ -1,0 +1,93 @@
+- Yarn
+	- Yarn WorkSpaces
+		- Ben Awand: Yarn Workspaces Tutorial
+			- https://www.youtube.com/watch?v=G8KXFWftCg0
+			
+			- En un directorio vacío crear:
+				- packages.json
+					- va a ser la raíz del proyecto
+					- lo nombraremos
+					- {
+						"private": true,
+						"workspaces": [
+							"common", "server"
+						]
+					  }
+				- Crear directorios de los proyectos
+					- mkdir common 
+					- mkdir server
+				- Inicializar yarn en cada una de las carpetas creadas antes.
+					- yarn init -y
+				
+				- En /common crear
+					- index.js
+						module.expors = () => {
+							console.log("Hellow from common");
+						};
+						
+				- En /server 
+					- index.js
+						const commonFunction = require("common");
+						module.expors = () => {
+							console.log("Hellow from common");
+						};
+						
+					- Actualizar package.json 
+						- {
+							....
+							"dependencies": {
+								"common": "1.0.0"
+							}
+						  }
+						  
+					- Vincular los proyectos. (estando dentro dir server)
+						- yarn install
+							- esto creará una carpeta node_modules y dentro existirán dos directorios "common" y "server"
+							
+				- Ejecutar
+					- node ./server/index.js
+					
+				- Cambios
+					- Notar que si hacemos cambios en ./common/index.js NO es necesario actualizar nada para que funcione.
+				
+				- Recomendaciones
+					- Para los packages que se encuentran dentro de cada proyecto lo más recomendable es colocarle el nombre de la siguiente forma:
+						- En common dir
+							- "name": "@nombrePrograma/common"
+						
+						
+						- En server dir
+							- package.json
+								- "name": "@nombrePrograma/server"
+								  "dependencies": { "@yarn_webspaces/common": "1.0.0"}
+								  
+							- index.js 
+								- const commonFunction = require("@yarn_webspaces/common");
+								
+						- en raiz ejecutar: 
+							- yarn install.
+						
+					- Mover a carpeta packages
+						- Mover directorios "common" y "server" dentro carpeta "packages"
+						
+						- Actualizar package.json:
+							- De
+							"workspaces": [
+								"common",
+								"server"
+							]
+							
+							- A
+							"workspaces": [
+								"packages/*"
+							]
+							
+						- en raiz ejecutar: 
+							- rm node_modules -rf
+							- yarn install.
+							
+						- node packages/server/index.js
+							
+				
+				- Interés
+					- Si en paquete server instalo alguna dependencia esta se instala en el node_modules general, no crea uno dentro de server.

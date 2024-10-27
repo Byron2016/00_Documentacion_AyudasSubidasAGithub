@@ -1,0 +1,5 @@
+- Formas escribir variables
+	- PascalCase
+	- camelCase
+	- snake_case
+	- kebab-case 

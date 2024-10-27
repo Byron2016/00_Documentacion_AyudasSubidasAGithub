@@ -1,0 +1,100 @@
+- X / Tweeter 
+	- API V2
+		- Significado de las credenciales 
+			- https://developer.x.com/en/docs/authentication/oauth-1-0a/obtaining-user-access-tokens
+				- Terminology clarification: In the guide below, you may see different terms referring to the same thing.
+					- Client credentials:
+						- App Key === API Key === Consumer API Key === Consumer Key === Customer Key === oauth_consumer_key
+						- App Key Secret === API Secret Key === Consumer Secret === Consumer Key === Customer Key === oauth_consumer_secret
+						- Callback URL === oauth_callback
+						
+					- Temporary credentials:
+						- Request Token === oauth_token
+						- Request Token Secret === oauth_token_secret
+						- oauth_verifier
+						
+					- Token credentials:
+						- Access token === Token === resulting oauth_token
+						- Access token secret === Token Secret === resulting oauth_token_secret
+						
+		- Postman 
+			- Forkd del workspace 
+				- https://www.postman.com/xapidevelopers/
+					- https://www.postman.com/xapidevelopers/workspace/twitter-s-public-workspace/collection/9956214-784efcda-ed4c-4491-a4c0-a26470a67400
+					
+			- Credenciales Solicita 
+				- WorkSpace Twitter API v2 
+					- Variables 
+						- consumer_key
+						- consumer_secret
+						- access_token
+						- token_secret
+						- bearer_token 
+	
+			- Proyectos
+				- Interesante paso a paso que se puede ver. 
+					- https://medium.com/@nathaly12toledo/steps-to-create-a-single-tweet-with-a-free-account-and-the-twitter-api-via-postman-bc3ac8a2fd3e
+					
+				- https://developer.twitter.com/en/portal/dashboard
+					- Seleccionar el proyecto controlsX_001
+					- En la parte inferior "Apps" está "My001TestApplication"  (video tuto: https://www.youtube.com/watch?v=Qdv4YJ8So0I)
+						- Seleccionar rueda dentada "App Settings"
+						
+						- Settings
+							- App Details 
+								- Name: My001TestApplication
+								- APP ID: 14654175
+								- Description: EsParaPruebas 
+							
+						
+							- User authentication settings
+								- App permissions
+									- Read and write and Direct message (Read Posts and profile information, read and post Direct messages)
+									
+								- Type of App 
+									- Web App, Automated App or Bot 
+									
+								- App info 
+									- Callbacku URI / Redirect URL 
+										- https://botize.com/callback/twitter
+									- Website URL
+										- https://botize.com
+										
+						- Keys and tokens 
+						
+							- Consumer Keys 
+								- API key and Secret 
+									- API Key 
+										- c5JrCpV3vbo3yQmdBV06dGpHz
+									- API Key Secret 
+										- XT610Eos90eMWRmAzZWiRWUmmM9LMzklgYgGbAXSGorDUrsUQN
+										
+							- Authentication Tokens 
+								- Bearer Token
+									- AAAAAAAAAAAAAAAAAAAAAN%2Ba3wAAAAAAL52%2BXXTJH5ROHuRQMhmhUySaNW8%3D9A0OL2TXI4IChP1cKSOe30EpYAi9bClBqzzgIy5yO3tGMhrovE
+									:bearer_token
+									
+								- Access Token and Secret
+									- Access Token 
+										- 798560294339543040-3V9I66Gfhm9jBTl8vb1Kisivw6u13LB
+									- Access Token Secret
+										- xBLCCtnjkVg19Fh87clt3IJODiGwL4OasZOlJ4b6eBwwo
+										
+							- OAuth 2.0 Client ID and Client Secret 
+								- Client ID
+									- M2V2Z182bmJBaFZEekxTWUJKZUw6MTpjaQ
+								- Client Secret 
+									- l55yHAcqOJeuOZuJ8ciek0ZucBcTavc8nYVwrqdIwT8fnuGczt
+								
+
+
+- My twitter ID
+	- https://ilo.so/twitter-id/
+		- 798560294339543040
+
+
+ 
+
+
+
+1788213561283493915

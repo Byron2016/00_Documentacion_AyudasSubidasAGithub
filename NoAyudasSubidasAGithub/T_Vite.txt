@@ -1,0 +1,136 @@
+- Vite
+	- Garaje de ideas: Cómo integrar Storybook en tus proyectos de React
+		- https://www.youtube.com/watch?v=2_ln5eNKvRI
+	
+			- npm create vite@latest
+				- React
+				- JavaScript
+			- npm i
+			- npx sb@next init --builder vite
+			- npm i
+			- npm run storybook
+	- Ady Ngom: How to build and deploy with Vite JS (VANILLA JS)
+		- https://www.youtube.com/watch?v=731woPHHVNU
+			- DEPLOY
+			
+		- Hacer actualización y subir de nuevo (2.30)
+			- https://www.youtube.com/watch?v=-EjdMvYPSVU
+			- npx surge
+				- 
+			npx surge --domain sofy.surge.sh
+			npx surge --domain santi15.surge.sh
+
+			
+		- How To Optimize Video For Smooth Website Playback Using Handbrake
+			- https://www.youtube.com/watch?v=kMB_tRJj6OM
+			- https://handbrake.fr/rotation.php?file=HandBrake-1.6.1-x86_64-Win_GUI.exe
+	
+	
+	- Change structure to src
+		- https://stackoverflow.com/questions/66863200/changing-the-input-and-output-directory-in-vite
+			- Crear en directorio donde está el package.json el archivo "vite.config.js"
+			- Poner dentro del archivo cualquiera de los siguientes códigos de configuración:
+			
+			import path from "path";
+			import glob from "glob";
+			
+			export default {
+			root: path.join(__dirname, "src"),
+			build: {
+				outDir: path.join(__dirname, "dist"),
+				rollupOptions: {
+				input: glob.sync(path.resolve(__dirname, "src", "*.html")),
+				},
+			},
+			};
+			
+			O
+			
+			import path from 'path'
+			
+			export default {
+			root: path.resolve(__dirname, 'src'),
+			build: {
+				outDir: path.resolve(__dirname, 'dist'),
+				rollupOptions: {
+				input: {
+					index: path.resolve(__dirname, 'src/index.html'),
+					about: path.resolve(__dirname, 'src/about.html')
+				}
+				}
+			}
+			}
+			
+	- Sass
+		- Instalar, en el manual de vite:
+			- npm add -D sass
+			
+		- Instalar postcss y autoprefixer:
+			- npm add -D postcss@latest autoprefixer@latest
+			
+		- Agregar al "vite.config.js"
+			
+			import path from "path";
+			import autoprefixer from "autoprefixer";
+			
+			export default {
+				root: path.resolve(__dirname, "src"),
+				build: {
+					...
+				},
+				css: {
+					postcss: {
+					plugins: [
+						autoprefixer({}), // add options if needed
+					],
+					},
+				},
+			};
+			
+			
+			
+	- LINTER Y FORMATING
+		- CÓMO configurar ESLINT y PRETTIER en REACT 🤒 sin romperte la cabeza! 😎 Curso de React desde cero #4
+			- https://www.youtube.com/watch?v=3BHXuZvI4FI
+			
+				- npm i -D eslint
+				- npx eslint --init o npm init @eslint/config
+				- Configuración
+					- D:\dev\HTML_CS_JS\012_EslintPrettier\conf_eslint_prettier
+				- npx eslint src/js/main.js --color
+				- Extension VSC Eslint verificada x Microsoft
+				- 
+				
+				- npm i -D prettier
+				- npx prettier src/js/main.js --write
+				- Archivo .prettierrc
+				- Extension VSC Prettier verificada x Prettier
+				- Boton derecho format document with prettier
+				- Extensiones/Settings/Format on Save
+				- 
+				
+				- RESOLVER PROBLEMAS DE INCOMPATIBILIDAD ESLINT Y PRETTIER
+					- npm i -D eslint-config-prettier
+					- copiar en eslintrc.js sección extends:
+					['eslint-config-prettier']
+			
+- Use a screen reader with the Accessibility Checker
+	- https://support.microsoft.com/en-us/office/use-a-screen-reader-with-the-accessibility-checker-4be102bf-8bb1-47f6-a5b8-3e055aa5b342#:~:text=To%20run%20the%20Accessibility%20Checker%2C%20press%20Alt%2BWindows%20logo%20key,right%20side%20of%20the%20screen.
+			
+- Accessibility Testing with NVDA Screen Reader for Beginners - Recorded Live Lecture
+	- https://www.youtube.com/watch?v=mlPxld8EHTQ
+	
+		- NonVisual Desktop Access (NVDA) is a free and open source screen reader for the Microsoft Windows operating system. Providing feedback via synthetic speech and Braille, it enables blind or vision impaired people to access computers running Windows for no more cost than a sighted person.
+		
+		- NVDA 
+			- https://www.nvaccess.org/
+			- en español: 
+				- https://nvda.es/
+				
+			- Pages to test:
+				- https://sundayriley.com/
+				- 
+			
+- React Escritorio
+	- Aplicación de Desktop con Tauri, React y Typescript
+		- https://www.youtube.com/watch?v=XYH6_GV5KQ0

@@ -1,0 +1,151 @@
+- Netlify
+	- Netlify Tutorial - How to build and deploy websites using Netlify
+		- https://www.youtube.com/watch?v=mT5siI19gtc
+		- Deploy
+			- Drag and drog
+			- netlify-cli
+				- npm i netlify-cli -D
+				- npx netlify --version
+				-Ver si está conectado
+					- npx netlify status
+				- conectarse
+					- npx netlify login
+				- Deploy
+					- npx netlify deploy  O ntl deploy		0824
+						- Me añade automaticamente a .gitignore el directorio .netlify.
+						- Crea un directorio .netlify con archivo state.json
+					
+					- a PRODUCCION
+						- npx ntl deploy --prod
+						- npx ntl deploy --prod --site "pru230130" --alias 001_cards --message "Deploy 001_cards branch"
+						- npx ntl deploy --prod --alias test_netlify_001 --message "Deploy test_netlify_001"
+						- npx ntl deploy --prod --site "sweet-snickerdoodle-cd3e9e" --alias test_netlify_001 --message "Deploy test_netlify_001 20230131 1355"
+						
+					- Poniendo conf. en archivo.
+						netlify.toml
+							[build]
+							# command = "rm -r publis && npm run build"
+							# functions = "functions"
+							publish = "public"
+							
+							# more info https://www.netlify.com/docs/netlify-toml-reference/
+							
+					- .netlify
+						- state.json
+						
+						- netlify status
+						
+					- Agregar a .GITIGNORE 
+						.netlify
+						
+						
+					- RESUMEN
+						# install the CLI for current and future use:
+						npm install netlify-cli -g (ONO MEJOR HACERLO LOCALMENTE EN devDependencies)
+						# log in to Netlify using it
+						netlify login
+						# choose a site to connect this repo with
+						netlify link
+						# build your site
+						netlify build
+						# optionally, push your successfully built site up to our CDN:
+						netlify build --deploy
+						
+					
+				- Continous Deploy to Netlify  1503
+				
+		- Deploy to Netlify Button 2048
+			- https://docs.netlify.com/site-deploys/create-deploys/#markup
+			- Ir a github y copiar url
+				- https://github.com/Byron2016/019__FM_products/tree/deploy_test_01
+				
+				https://github.com/Byron2016/019__FM_products/tree/deploy_test_01
+				
+				[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Byron2016/019__FM_products/tree/deploy_test_01)
+				
+				- Introducing the Deploy to Netlify button
+					- https://docs.netlify.com/site-deploys/create-deploys/#deploy-to-netlify-button
+						- Markup
+							- https://www.netlify.com/img/deploy/button.svg
+							- https://app.netlify.com/start/deploy?repository=https://github.com/xxxxxxxx
+							
+							[context.branchname], [context.deploy_test_01]
+							
+							https://app.netlify.com/start/deploy?repository=https://github.com/myworkspace/sweetkittentemplate#SECRET_TOKEN=specialuniquevalue&CUSTOM_LOGO=https://placekitten.com/100/100
+							
+							[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](
+							https://app.netlify.com/start/deploy?repository=https://github.com/Byron2016/019__FM_products)
+			- REFERENCIAS
+				- [Support Guide] Frequently encountered problems during builds
+					- https://answers.netlify.com/t/support-guide-frequently-encountered-problems-during-builds/213
+				- https://answers.netlify.com/t/support-guide-debugging-netlify-site-builds/142
+				- https://www.netlify.com/blog/2016/10/18/how-our-build-bots-build-sites/
+				- https://github.com/netlify/build-image#running-locally
+				- https://answers.netlify.com/t/support-guide-failed-build-debugging-advice-preparing-the-best-help-request/73269
+				- https://github.com/Byron2016/019__FM_000
+
+					
+		- Build 4000
+			- 
+			
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://github.com/Byron2016/019__FM_products/tree/deploy_test_01)
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Byron2016/019__FM_products/tree/deploy_test_01)
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Byron2016/019__FM_products)
+
+
+	- HACER DEBUG
+		- [Guía de soporte] Depuración de compilaciones de sitios de Netlify
+			- https://answers.netlify.com/t/support-guide-debugging-netlify-site-builds/142
+				- Netlify Build Image
+					- https://github.com/netlify/build-image#running-locally
+					
+						- Running locally
+							- Emulating Netlify's buildbot on your local machine requires the following:
+
+								- Docker
+								- A local clone of this build-image repository
+								- A local clone of the site repository you want to test, checked out to the branch you want to be built, with a clean git status (nothing to commit).
+								
+						- Step 1: Pull the build image
+							- Open your Docker terminal, and run the following command to pull the default image:
+								docker pull netlify/build:focal
+								or
+								docker pull netlify/build:v3.0.2 # replace the version with a git tag of the specific version you want to test
+								
+						- Step 2: Start the script to run interactively
+							- Still in your Docker terminal, change directories into your local clone of this build-image repository.
+							  If you pulled an alternate image in Step 1, check out the corresponding branch in this repository.
+							  Run the following command to start the interactive shell within the container:
+							  
+								./test-tools/start-image.sh path/to/site/repo
+								
+								If you receive a command not found message, make sure you are in the base of the build-image repository.
+								If the command works correctly, you should see a new prompt, with the user buildbot.
+								
+						- Step 3: Have the buildbot run your build command
+							- In the buildbot shell, run build followed by your site build command. For example, for a site build command of npm run build, you would run the following:
+							
+								/opt/build-bin/build npm run build
+								This will run the build as it would run on Netlify, displaying logs in your terminal as it goes. When you are done testing, you can exit the buildbot shell by typing exit.
+								
+								
+steps:
+- on Sites press "add new site" botton
+- select "import an existing project" option
+- press "github" button
+- choose "Byron2016/019__FM_000" project
+	- owner: Byron2016's team
+	- Branch to deploy: 001_cards
+	- Build command: npm run build
+	- Publish directory: public
+- press "Deploy site" botton
+
+it is generated an error.
+
+Production: test_netlify_0...@HEAD Failed.
+
+I already tried:
+	- button "Retry - clear chache and retry with latest branch commit"
+

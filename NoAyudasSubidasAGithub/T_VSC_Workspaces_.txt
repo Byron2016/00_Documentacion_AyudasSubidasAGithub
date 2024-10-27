@@ -1,0 +1,116 @@
+- Workspaces
+	-  Cómo usar perfiles y workspaces en #vscode - #programacionenespañol 
+		- https://www.youtube.com/watch?v=7Aq4qx8wJJQ
+			- Workspaces vs Profiles 
+				- Workspaces
+					- Son espacios de trabajo que se enfocan en la gestión y configuración de proyectos.
+					- Puedes abrir el workspaces y el editor te muestre todos los directorios que pertenecen a ese workspaces aún cuando estén en diferentes lugares. 
+					- Maneja lo que son extensiones y recomendaciones específicas de extensiones para el proyecto.
+					- Puede ser compartido con el equipo de desarrollo 
+					- 
+					
+				- Profiles 
+					- Se centran más en experiencia de desarrollo, temas como aspecto de VSC, comandos específicos, combinaciones de teclas, extensiones instaladas para cada perfil. 
+					- Para un mismo workspace puedo tener diferentes perfiles, lo que podrá permitierme cambiar de uno a otro, por ejemplo perfil-desarrollo y perfil-testing. 
+		
+		
+			- Ejercicio práctico.
+				- Crear un proyecto nuevo de react 
+				- code . -r 
+				- .vscode 
+					- Hay dos tipos de workspaces que se pueden tener 
+						- Single folder workspace 
+							- Un único directorio y especificaciones específicas para este espacio de trabajo.
+						- Multi-root workspace 
+							- Más de un directorio y añadimos esos directorios al espacio de trabajo. 
+							
+					- Archivos 
+						- Listado de archivos 
+							- extensions.json 
+							- launch.json 
+							- task.json.
+						- Explicación
+							- extensions.json 
+								- Recomendaciones de extensiones, podemos subirlo a git y se tendrán recomendaciones de extensiones para el proyecto. 
+								- Si deseo añadir una recomendación, voy a la extensión, click sobre rueda y "Add to workspace Recommendations"
+							- launch.json 
+								- Para trabajar con el debuger integrado de VSC. 
+							- task.json.
+								- Tareas predefinidas y se pueden agregar más si así lo quieres.
+								- VSC nos provee de ciertas tareas que podemos ejecutar desde paleta de comandos 
+									- crtl shif p
+									- tareas 
+										- Listado de tareas 
+										
+								- Crtl Shif b (6.31)
+									- Listado de tareas detectadas y sugeridas 
+									
+				- Añadir otro proyecto al mismo workspace
+					- "Add folder to Workspace"
+					- Seleccionar la carpeta.
+				- Guardar workpace 
+					- "Save workspace as" 
+					- Se crea un archivo en donde le digamos (.vscode) con la lista de los workspaces existentes. 
+					
+						{
+							"folders": [
+								{
+									"path": "."
+								},
+								{
+									"path": "projects/b_snake_weibenfalk_react_jhampier_001"
+								}
+							],
+							"settings": {}
+						}
+						
+					- En "settings" podemos guardar settings específicos para esta workpace	
+						- listado de extensiones 
+						- settings de VSC que son compartidas en las distintas áreas de trabajo. Como por ejemplo temas de configuración. 
+							- Se puede desabilitar un extensión para el área de trabajo 
+							- se puede recomendar extensión para el área de trabajo 
+							- 
+							
+				- Preferences 
+					- Crtl shif P 
+					- Preferences: Open Settings (UI) (Preferencias: Abrir configuración IU )
+						- Users
+							- Generales
+						- Workspace
+							- para el espacio de trabajo.
+						- Folders 
+							- Nos lista los folder que tenemos en el espacio de trabajo.
+						- Seleccionar Workspace 
+						- 
+						
+	- Configuring recommended extensions
+		- https://dev.to/askrishnapravin/recommend-vs-code-extensions-to-your-future-teammates-4gkb
+			- CMD + Shift + p
+			- Type Configure Recommended Extensions
+			- A new file called extensions.json will be created under .vscode/ in the root of the project.
+			- Place the cursor within the recommendations array and press CMD + i
+			- Select the required extensions from the list of installed extensions and save the file.
+			- Include this file in your source control tools(we use Git).
+			
+	- Archivo .vscode/settings.json 
+		- {
+		    "editor.formatOnSabe": true,
+			"editor.codeActionsOnSave": {
+			  "": true,
+			  "": true
+			}
+		  }
+						
+- Perfiles 
+	- En VSC ir a "Manage" ruedita en la parte inferior izquierda.
+	- 
+					
+					
+- Multi-root Workspaces
+	- https://code.visualstudio.com/docs/editor/multi-root-workspaces#_workspace-launch-configurations
+		- 
+				
+		- pnpm add -g pnpm
+		
+- Monorepo eslint vscode
+	- https://medium.com/devityoself/monorepo-eslint-vscode-6f5982c8404d

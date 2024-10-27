@@ -1,0 +1,24 @@
+HP SPARE 650797-001
+
+  - The tape that connect laptop fan and heatsink
+	- https://superuser.com/questions/1612399/whats-the-name-of-the-tape-used-on-laptop-heat-sinks
+	
+	https://m.aliexpress.com/item/32816049557.html?gatewayAdapt=glo2esp&_fs_=true
+	- Cloth-Tape Wire-Wrap Adhesive Sticky Insulated-Rubber Black for Laptop Pc-Fan Monitor
+		- https://www.alibaba.com/product-detail/Cloth-Tape-Wire-Wrap-Adhesive-Sticky_1600175452017.html
+		
+	- Cloth-Tape Wire-Wrap Adhesive Sticky Insulated-Rubber Black for Laptop Pc-Fan Monitor
+		- 
+		
+	- https://superuser.com/questions/1357115/the-tape-that-connect-laptop-fan-and-heatsink
+		Anti-static and dissipation heat,, sticker (Generaly in silicon because not électrical conducbility).
+		
+		You Can put KAPTON adhésive 3M by DUPONT or similary. Résistance 200°C and adhésive. Thé black color is for esthetic and for not see that by side out of computer.
+		
+		The big difficulty is for the same solution...but for the PCB...In any HP computer had a BLACK MASK for a function dissipation heat colling (components PCB), But necessary anti-static and adhésive electrical isolant (silicone glue Composant)
+		
+		
+		
+	- https://www.amazon.com.mx/Cinta-aislante-acetato-reparaci%C3%B3n-port%C3%A1tiles/dp/B01NA8TIJ5
+		Cinta aislante de acetato para reparación de portátiles (8 mm, 10 mm, 12 mm, 15 mm, 20 mm, 30 mm, 40 mm x 30 m), color negro, 8MM
+		MARCA GENNEL

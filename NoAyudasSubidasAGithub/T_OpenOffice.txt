@@ -1,0 +1,37 @@
+- OppenOffice 
+	- Calc
+		- Macros
+			- Guardar
+				- En Windows 10, ya no existe el directorio 'C:\Documents and Settings'. 
+					- Deben ser buscados en 'C:\Users\YourUserID\AppData\Local' folder in Windows 10.
+					
+					
+	- Instalar Entorno JRE
+		- Instalación JRE + OpenOffice
+			- https://www.youtube.com/watch?v=xgiw8Hk7ybM
+			- https://www.youtube.com/watch?v=J9X4iz1ugUM
+				- Bajar el instalador: https://www.java.com/es/download/ie_manual.jsp
+					- C:\Program Files (x86)\Java\jre-1.8
+				- Cómo verificar la presencia de JRE en tu Windows
+					- java -version
+				- Ubicación del entorno de ejecución de Java (JRE)
+					
+		- https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB
+			- Downloading the Java Runtime Environment
+				- Go to http://www.oracle.com/technetwork/java/javase/downloads/index.htmlOpens a new window.
+				- Under Java Platform, Standard Edition, select either the current release, or click Previous Releases to install an earlier supported version. You can use either the JDK or JRE. The JDK includes the JRE. Do not use any non-supported version or edition of the Java JRE or JDK.
+				- Follow the navigation aids to download the JRE or JDK that is appropriate for your operating system.
+				- Follow the installation instructions that are provided with the JRE.
+				- Save the path to the JRE executable file. You will need it later.
+				- Proceed to the instructions in Verifying the JRE Environment.
+				
+			- Verifying the JRE on Windows
+				- Verify the JRE Version
+					- press the Win (Windows) key and the R key simultaneously to open the Run box. Alternatively, you can select Start, then Run.
+					- In the Run box, type cmd to run the Windows command console.
+					- java -version
+					- Do one of the following:
+					
+						- If the results show the JRE cversion that you installed, continue to the instructions in Installing Oracle GoldenGate Director Server.
+					
+						- If the results do not show that version, close the command console and continue with the steps in Set the JAVA_HOME System Variable.

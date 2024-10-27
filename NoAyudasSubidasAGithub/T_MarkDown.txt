@@ -1,0 +1,16 @@
+- MarkDown
+	- Desplegable
+		- How to add Dropdown in Markdown ??
+			- https://dev.to/asyraf/how-to-add-dropdown-in-markdown-o78
+			
+			<details open>
+			<summary>How do I dropdown?</summary>
+			<br>
+			This is how you dropdown.
+			</details>
+			
+	- Front Matter
+		- Va entre 3 líneas al principio y al final y en medio se anexa título y lo que se quiera.
+		- Es usado también con Astro. (https://www.youtube.com/watch?v=RB5tR_nqUEw&t=2223s)
+		- What is Front Matter and How is it Used to Create Dynamic Webpages
+			- https://dpericich.medium.com/what-is-front-matter-and-how-is-it-used-to-create-dynamic-webpages-9d8dc053b457

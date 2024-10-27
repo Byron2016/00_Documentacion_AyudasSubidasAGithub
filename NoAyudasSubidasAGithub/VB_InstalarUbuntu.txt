@@ -1,0 +1,32 @@
+- Virtual Box
+	- Ubuntu
+		- Installing Ubuntu Desktop 22.04 LTS on a virtual machine using VirtualBox
+			- https://technology.amis.nl/tech/installing-ubuntu-desktop-22-04-lts-on-a-virtual-machine-using-virtualbox/
+			
+		- Solucionar error de pantalla completa en VirtualBox (Distros de Linux) 
+			- https://www.youtube.com/watch?v=EIFwxmtpxNQ
+		
+		- Coders Free
+		
+			- Cómo instalar Ubuntu 22.04 en VirtualBox
+				- https://www.youtube.com/watch?v=4wnpf0CitsA
+			- Cómo Poner Ubuntu/Linux en PANTALLA COMPLETA en Virtualbox
+				- https://www.youtube.com/watch?v=AezT1PrB-Yo
+				
+					- Instalar los paquetes.
+						- gcc (the GNU Compiler Collection)
+						- make
+						- perl
+						
+						- sudo apt install gcc make perl
+						
+					- Agregar CD de Guest Additions
+						- Ir a Dispositivo y seleccionar "Inserte Guess Additions"
+						- Ir a Ubuntu, presionar ícono de carpetas / Files
+						- Seleccinar CD VBox_GAs_7.0.8
+						- Boton derecho, "Open in Terminal"
+						- ls
+					- Ejecutar instalador de Guess Additions
+						- ./VBoxLinuxAdditions.run
+						
+					- Reiniciar la máquina.

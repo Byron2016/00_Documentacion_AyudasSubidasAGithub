@@ -1,0 +1,461 @@
+- Publicar NET CORE en LINUX
+	- Rodolfo Borja: Cómo publicar un sitio ASP .NET Core en Ubuntu con Nginx
+		- https://www.youtube.com/watch?v=r0Qv4EpOxnw
+			- Crear los archivos a publicar
+				- En .NET ir a "Build o Compilar/Publis <nombre del proyecto> o Publicar <nombre del proyecto>"
+				- Target
+					- Folder
+					- Folder Profile
+						- Configuration: Release
+						- Target Framework: net6.0
+						- Deployment Mode: Framework-dependent
+						- Target Runtime: linux-x64
+						- Save
+					- Presionar botón Pubish.
+			- Instalar nginx
+				- sudo apt-get install nginx
+			- Instalar WebMin
+				- Rodolfo Borja: https://www.youtube.com/watch?v=WhZwvOxyLzg
+					- Editar y actualizar archivo de repositorios del servidor
+						- sudo nano /etc/apt/sources.list
+							- Agregar el repositorio
+								- deb http://download.webmin.com/download/repository sarge contrib
+						- Guardar
+					- Instalar llave del repositorio de WebMin al sistema operativo.
+						- sudo wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add
+					- Actualizar repositorios
+						- sudo apt update
+					- Instalar
+						- sudo apt-get install webmin
+					- Conectarse:
+						- https://ip:10000
+							- https://192.168.100.14:10000
+						- Configuración avanzada
+						- acceder a un sitio no seguro.
+						- Usuario / constraseña root.
+				- https://ubunlog.com/webmin-instalacion-ubuntu-20-04/
+					- sudo apt update && sudo apt upgrade
+					- A continuación tendremos que instalar las dependencias necesarias utilizando el comando:
+						- sudo apt install software-properties-common apt-transport-https
+					- Habilitar el repositorio de Webmin
+						- En primer lugar, vamos a agregar la clave GPG de Webmin como se muestra a continuación:
+							- sudo wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+						- ya podremos agregar manualmente el repositorio de Webmin con el comando:
+							- sudo add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
+						- Instalar Webmin
+							- sudo apt install webmin
+							
+					- Finalizada la instalación, vamos a poder verificar el estado del servicio ejecutando el comando:
+						- sudo systemctl status webmin
+					- Ahora para verificar la versión instalada, solo tendremos que utilizar el siguiente comando:
+						- dpkg -l | grep webmin
+						
+					- Configurar el firewall
+						- De manera predeterminada, esta herramienta escucha en el puerto TCP 10000
+							- sudo ufw allow 10000/tcp
+							- sudo ufw reload
+							- sudo ufw status
+							
+						- Si no tienes la cuenta de root activada, quizás necesites cambiar la clave del usuario root de Webmin. Esto se puede hacer abriendo una terminal (Ctrl+Alt+T) y escribiendo el comando:
+							- sudo /usr/share/webmin/changepass.pl /etc/webmin root nueva-clave
+							
+					- Desinstalar
+						- Eliminar repositorio:
+							- sudo add-apt-repository --remove "deb https://download.webmin.com/download/repository sarge contrib"
+						- A continuación podemos eliminar la herramienta usando el comando:
+							- sudo apt remove webmin; sudo apt autoremove
+							
+			- Iniciar sesión WebMin
+				- https://IP-del-servidor:10000/
+					- NOTA: Inicialmente, vamos a ver la siguiente página web que indica que hay un riesgo potencial por delante. Esto no es preocupante, ya que sucede porque Webmin genera su propio certificado SSL autoasignado que el navegador no considera seguro.
+				- Para sortear este obstáculo, simplemente haremos clic en la pestaña ‘Avanzado‘ y luego en ‘Aceptar el riesgo y continuar‘.
+				- Tools/File Manager
+					- /var/www
+					- Seleccionar File/Upload to current directory
+					- Subir el .zip
+					- Botón derecho sobre el .zip y extraer.
+				- 
+
+							
+			- Copiar archivos al ubunto usando WebMin
+				- Conectarse a Webmin
+				- Ir a 
+				
+				
+			- Install the .NET SDK or the .NET Runtime on Ubuntu
+				- 22.04 (https://learn.microsoft.com/es-es/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website)
+				- Ir a (https://learn.microsoft.com/es-es/dotnet/core/install/linux-ubuntu)
+						
+					- 20.04
+						- Antes de instalar .NET, ejecute los siguientes comandos para agregar la clave de la firma del paquete de Microsoft a la lista de claves de confianza y agregar el repositorio de paquetes.
+							- wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+							- sudo dpkg -i packages-microsoft-prod.deb
+							- rm packages-microsoft-prod.deb
+							
+							
+						- Instalación de la instancia en tiempo de ejecución
+							- sudo apt-get update 
+							- sudo apt-get install -y aspnetcore-runtime-6.0
+				
+				
+			- Ejecutar
+				- ls /var/www -al
+				- cd /var/www/Publicado
+				- ls T*.dll -al
+				- dotnet TestCoreUbuntu.dll
+				http://localhost:5000
+				
+			- Configuración de nginx
+				- Host ASP.NET Core on Linux with Nginx
+					- https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-6.0
+						- sudo nano /etc/nginx/sites-enabled/default
+						server {
+							listen        80;
+							server_name   core.bioxor.net;
+							location / {
+								proxy_pass         http://127.0.0.1:5000;
+								proxy_http_version 1.1;
+								proxy_set_header   Upgrade $http_upgrade;
+								proxy_set_header   Connection keep-alive;
+								proxy_set_header   Host $host;
+								proxy_cache_bypass $http_upgrade;
+								proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+								proxy_set_header   X-Forwarded-Proto $scheme;
+							}
+						}
+						
+						- Reiniciar servicio de nginx
+							- sudo service nginx restart
+							
+						- 
+							- Abrir como administrador block de notas
+							- Abrir Wiindows\system32\drivers\etc\hosts
+							- agregar
+								- 192.168.100.14 core.bioxor.net
+								
+							- Llamar
+								- core.bioxor.net
+
+
+				
+			
+							
+			- Install the .NET SDK or the .NET Runtime on Ubuntu
+				- 22.04 (https://learn.microsoft.com/es-es/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website)
+					- Ir a (https://learn.microsoft.com/es-es/dotnet/core/install/linux-ubuntu)
+						- sudo apt-get update && \
+						    sudo apt-get install -y dotnet6
+							
+						- sudo apt-get install -y aspnetcore-runtime-6.0
+						
+						- 20.04
+							- Antes de instalar .NET, ejecute los siguientes comandos para agregar la clave de la firma del paquete de Microsoft a la lista de claves de confianza y agregar el repositorio de paquetes.
+								- wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+								- sudo dpkg -i packages-microsoft-prod.deb
+								- rm packages-microsoft-prod.deb
+								
+								
+							- Instalación de la instancia en tiempo de ejecución
+								- sudo apt-get update 
+								- sudo apt-get install -y aspnetcore-runtime-6.0
+				
+				
+				
+				
+				
+				- 22.04 (https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2204)
+					- Instalar con APT puede ser hecho con unos pocos comandos. Antes de instalar .NET, 
+					correr los siguientes comando para añadir los paquetes de firmas de Microsoft a la lista 
+					de llaves de confianza y agregar el package repository.
+						- wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+						- sudo dpkg -i packages-microsoft-prod.deb
+						- rm packages-microsoft-prod.deb
+						
+					- Instalar el SDK
+						- sudo apt-get update; \
+						sudo apt-get install -y apt-transport-https && \
+						sudo apt-get update && \
+						sudo apt-get install -y dotnet-sdk-6.0
+						
+					- Install the runtime
+						- sudo apt-get update; \
+						sudo apt-get install -y apt-transport-https && \
+						sudo apt-get update && \
+						sudo apt-get install -y aspnetcore-runtime-6.0
+						
+					- Testear
+						- cd /var/www
+						- ls
+						- cd core (aca es donde esta el ejecutable)
+						- dotnet core.dll
+						
+					- Configuracion nginx
+						- Host ASP.NET Core on Linux with Nginx
+							- https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-6.0
+								- Configure Nginx
+									- En  ir a "/etc/nginx/sites-available/default
+									- Agregar:
+										server {
+											listen        80;
+											server_name   example.com *.example.com;
+											location / {
+												proxy_pass         http://127.0.0.1:5000;
+												proxy_http_version 1.1;
+												proxy_set_header   Upgrade $http_upgrade;
+												proxy_set_header   Connection keep-alive;
+												proxy_set_header   Host $host;
+												proxy_cache_bypass $http_upgrade;
+												proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+												proxy_set_header   X-Forwarded-Proto $scheme;
+											}
+										}
+										
+			- Hacer seguro SSL
+				- Cómo hacer más segura tu conexión por SSH en Ubuntu Server
+					- https://www.youtube.com/watch?v=P0RAktS460w
+						- Usar
+							- SolarPutty
+								- https://www.solarwinds.com/free-tools/solar-putty
+						- Generar llaves
+							- Abrir PuttyGen
+								- Poner un key passphrase y confirmar
+								- Guardar la clave primaria y pública
+								
+						- Guardar clave privada en servidor
+							- Ver si existe carpeta .ssh en ruta base_path
+								- mkdir .ssh
+								- Poner dueño
+									- chown byron:byron .ssh
+								- Hacer que solo yo pueda usar
+									- chmod 700 ~/.ssh
+								- cd .ssh
+								- crear archivo sudo nano authorized_keys
+									- Copiar lo que se tiene en Putty que es nuestra llave pública, todo debe estar en una línea.
+						- Desabilitar el ingreso con usuario y password y cambiar puerto
+							- sudo nano /etc/ssh/sshd_config
+								- Quitar # en Port 22 y cambiarlo a Port 2222
+								- quitar # en PasswordAuthenticaton yes y ponerlo a no
+								
+							- reiniciar servicio de ssh
+								- sudo service ssh restart
+								
+						- Habilitar puerto 222 en firewall de ubuntu
+							- sudo ufw allow 2222
+							- Habilitar el firewall
+								- sudo ufw enable
+								
+						- Configurar Putty
+							- ir a Connection/ssh
+							- Poner la ruta de la llave privada
+								- Ir a Connection/SSH/Auth y colocar path al archivo de llave privada.
+								
+						- ERROR:
+							- Couldn't load private key (Putty key format too new)
+								- https://mulcas.com/couldnt-load-private-key-putty-key-format-too-new/#:~:text=Go%20to%20Key%20%3E%20Parameters%20for,using%20the%20ppk%20version%202.
+								- Run the PuTTYgen program. Go to Key > Parameters for saving key files...
+								- Change the PuTTygen PPK File Version to version 2.
+								- Generate a new SSH key pair or change the format of an existing one.
+								
+						
+								
+								
+	- NetMentor: Publicar aplicacion ASP.NET Core en servidor Linux CentOS paso a paso
+		- https://www.youtube.com/watch?v=AJjtzZaKw2A
+		- Curso
+			- https://www.netmentor.es/entrada/servidor-dominio
+			
+			
+			
+	- Vagelis Prokopiou: How to create / publish / deploy / host an ASP.NET Core app on Debian Linux with Apache
+		- https://www.youtube.com/watch?v=mBhT_MRwGYE
+		
+		- Publish (6:50)
+			- dotnet publish --configuration Release  	
+				- Esto para tener una versión Release y no Debug version. 
+			
+		-  Apache Reverse (8:30)
+			- Usa un script.
+				- apache-vhost-create-dot.net.core.sh app
+				
+			- 
+			
+				<VirtualHost *:*>
+					RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+				<VirtualHost>
+				
+				<VirtualHost *:80>
+					ProxyPreserveHost On
+					ProxyPass / http://127.0.0.1:5000/
+					ServerName app.local
+					ServerAlias www.app.local
+					
+					ErrorLog /home/va/www/app/logs/error.log 
+					CustomLog /home/va/www/app/logs/access.log combined
+				<VirtualHost>
+		
+				Enabling site app.local
+				
+				To activate the new configuration, you need to run:
+					systemctl reload apache2
+				127.0.0.1 app.local
+				You can access the site at http://app.local/
+
+			- Ver el script
+				- type apache-vhost-create-dot.net.core.sh
+				apache-vhost-create-dot.net.core.sh is hashed (/home/va/bin/apache-vhost-create-dot.net.core.sh)
+				
+				- sudo nano /home/va/bin/apache-vhost-create-dot.net.core.sh
+				
+				#!/usr/bin/env bash
+				
+				# Author: Vagelis Prokopiou <vagelis.prokopiou@gmail.com>
+				
+				# Check for a provided hostname argument.
+				if [[ ! "$1" ]]; then
+				echo "Usage: $0 <hostName>";
+				exit 1;
+				fi
+				
+				# Make sure the following modules are enabled.
+				sudo a2enmod headers;
+				sudo a2enmod proxy;
+				sudo a2enmod proxy_http;
+				
+				user="va";
+				base_path="/home/${user}/www";
+				domain="$1";
+				docroot="${base_path}/${domain}/public_html/web";
+				logsdir="${base_path}/${domain}/logs";
+				
+				if [[ -d "${base_path}/${domain}" ]]; then
+				echo "${domain} already exists. Skipping...";
+				exit 0;
+				fi
+				
+				sudo mkdir -p "${docroot}";
+				sudo mkdir -p "${logsdir}";
+				# Create an index file.
+				echo "<h1>${domain}.local has been created successfully.</h1>" | sudo tee "${docroot}/index.html";
+				
+				domainSuffix="local.com";
+				
+				# Create the Apache config files.
+				echo "
+				<VirtualHost *:*>
+					RequestHeader set \"X-Forwarded-Proto\" expr=%{REQUEST_SCHEME}
+				</VirtualHost>
+				<VirtualHost *:80>
+					ProxyPreserveHost On
+					ProxyPass / http://127.0.0.1:5000/
+					ProxyPassReverse / http://127.0.0.1:5000/
+					ServerName ${domain}.local
+					ServerAlias www.${domain}.local
+					ErrorLog ${logsdir}/error.log
+					CustomLog ${logsdir}/access.log combined
+				</VirtualHost>" | sudo tee "/etc/apache2/sites-available/${domain}.local.conf";
+				
+				# Enable the site.
+				sudo a2ensite "${domain}.${domainSuffix}";
+				
+				# Add the vhost to the vhosts file.
+				echo "127.0.0.1 ${domain}.${domainSuffix}" | sudo tee --append /etc/hosts;
+				
+				sudo chown -R va:www-data "${base_path}/${domain}";
+				
+				# Restart Apache.
+				sudo systemctl restart apache2;
+				echo "You can access the site at https://${domain}.${domainSuffix}";
+							
+		-  Deploy (13:57)	
+			- copiar los archivos
+				- rsync -r bin/Release/netcoreapp3.0/publish/* /home/va/www/app/public_html
+				
+			- ejecutar
+				- dotnet /home/va/www/app/public_html/app.dll
+				
+		- Manejar aplicación desde un servicio. (18:58)
+			- Crear el servicio para manejar la aplicación.
+				- Script dotnet-create-systemctl-entry.sh
+				  - vim ~/bin/dotnet-create-systemctl-entry.sh
+					#!/usr/bin/env bash
+					
+					# Author: Vagelis Prokopiou <vagelis.prokopiou@gmail.com>
+					
+					if [ ! "$1" ]; then
+						echo "Usage: $0 <app_name>";
+						echo "Example: $0 myapp";
+						exit 1;
+					fi
+					
+					user="va";
+					www="/home/${user}/www";
+					app_name="$1";
+					distribution=$(lsb_release -a 2> /dev/null | grep --color=auto Description | sed 's/^Description:\s\+//');
+					
+					echo "[Unit]
+					Description=.NET Core App running on ${distribution}
+					[Service]
+					WorkingDirectory=${www}/${app_name}/public_html
+					ExecStart=/usr/bin/dotnet ${www}/${app_name}/public_html/${app_name}.dll
+					Restart=always
+					# Restart service after 10 seconds if the dotnet service crashes:
+					RestartSec=10
+					KillSignal=SIGINT
+					SyslogIdentifier=dotnet-${app_name}-app
+					User=${user}
+					Environment=ASPNETCORE_ENVIRONMENT=Production 
+					[Install]
+					WantedBy=multi-user.target" | sudo tee "/etc/systemd/system/kestrel-${app_name}.service";
+				
+				- sudo systemctl status kestrel-app
+				- sudo systemctl restart kestrel-app
+				- Ejecutar servicio automaticamente 
+					- sudo systemctl enable kestrel-app
+				
+				
+
+	
+
+					
+- SSH
+	- Instalar	
+		- sudo apt-get install openssh-server openssh-client
+		- Si queremos saber qué la instalación ha sido correcta, podemos teclear el siguiente comando
+			- ssh usuario@ip_servidor
+				- ssh byron@192.168.100.14
+	- SSH into VirtualBox VM [Step-by-Step]
+		- https://www.golinuxcloud.com/ssh-into-virtualbox-vm/
+		
+		- systemctl status ssh
+		- systemctl enable ssh --now
+		- What Port Number is used by your SSH Server?
+			- ss -ntlp | grep -i ssh 
+			o
+			- netstat -ntlp | grep -i ssh
+		- Is your firewall blocking SSH Server?
+			- apt-get install firewalld
+				- Check if firewalld is running
+					- firewall-cmd --state
+				- If the above command returns 'not running' then you can start the service using:
+					- systemctl start firewalld
+				- Get your default zone
+					- firewall-cmd --get-default-zone
+				- Get the list of interfaces part of your active zone
+					- firewall-cmd --get-active-zones
+					
+			- check if SSH service is enabled in your firewall:
+				- 
+				
+		- Method-1: SSH into VirtualBox using Bridged Network Adapter
+			- Ir en la VM a Settings/Red/Adaptador 2/adaptador puente.
+			- Configure Network on Linux Server
+				- ip a
+				- Next check if your selected interface is configured for STATIC IP or DHCP:
+					- nmcli con show
+				- check if the enp0s8 interface is configured with static or dhcp:
+					- nmcli con show "Wired connection 2" | grep "ipv4.method"
+				- In case you do want to switch from static to dhcp then you can execute this command:
+					- nmcli con mod "Wired connection 2" ipv4.method auto
+				- restart your network:
+					- nmcli networking off
+					- nmcli networking on

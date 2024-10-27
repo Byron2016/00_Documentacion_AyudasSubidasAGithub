@@ -1,0 +1,58 @@
+- Mutaciones
+	- Producen Mutación
+		- push
+		- pop
+		- reverse
+		- sort 
+	- NO Mutación
+		- slice
+		- filter
+		- map
+		
+		
+- React asume
+	- Cada componente es una "función pura"
+		- Función pura
+			- Se preocupa de su propios asuntos. No cambia ninguna variable u objeto definidos antes de su existencia
+			- A las mismas entradas devuelve las mismas salidas.
+		- El componente siempre regresará el mismo JSX dados los mismos parámetros de ingreso.
+		
+		- event handlers: when you click a button. Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.
+		
+		- Solamente componentes, inicializadores y funciones actualizadoras necesitan ser puros. Manejadores de eventos no necesitan ser puros. Only component, initializer, and updater functions need to be pure (React no llamará a los eventos dos veces). 
+		
+- Pasar funciones con useState.
+	- NO se puede 
+		- useState(someFunction)
+		- setFn(someOtherFunction)
+	- LO CORRECTO se puede 
+		- useState(() => someFunction)
+		- setFn(() => someOtherFunction)
+		
+- Copiar array 
+	- superficial
+		- [....aSerCopiado] (spred operator o destructure)
+	- profunda
+		- structuredClone(aSerCopiado)
+		
+- Asegurar que se tiene ganador. 36.46 (https://www.youtube.com/watch?v=qkzcjwnueLA&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=2)
+	- Hay que pasarle una función al set...
+	- if(newWinner) {
+		setWinner((prevWinner) => {
+			console.log(`Ganador: ${newWinner}, el anterior era ${prevWinner}`)
+			return newWinner
+		
+		})
+	}
+	
+	- Ojo, ese también es asíncrono.
+	
+- confeti
+	- npm i canvas-confetti
+	- Confeti()
+	
+- Sacar del localStorage
+	- const [board, setBoard] = useState(() => {
+		const boardFromLocalStorage = window.localStorage.getItem('board');
+		return boardFromLocalStorage ? JSON.parse(boardFromLocalStorage) : Array(9).fill(null)
+	})

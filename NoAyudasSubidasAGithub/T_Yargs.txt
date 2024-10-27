@@ -1,0 +1,95 @@
+- yargs
+	- https://yargs.js.org/
+	
+	- Borrar tweets
+		- https://hbish.com/deleting-old-tweets/
+			- https://github.com/hbish/delete-old-tweets/blob/master/README.md
+				TWITTER_CONSUMER_KEY=he0fBWX56EK8pOYGFRsY9RgVB-Borrar-
+				TWITTER_CONSUMER_SECRET=yGpNiovkHWy0Pd4TQu0DWmbqtRMdi4bxLYJK1TFnaIQkQurw9n-Borrar-
+				TWITTER_ACCESS_TOKEN_KEY=798560294339543040-27R5gTPFkd9OFgVneCDLysyAEl7zuQv-Borrar-
+				TWITTER_ACCESS_TOKEN_SECRET=H0ZMIZe3JmNh17HCN2fzcpEtkheC66zSuYizRpIzW1SUi-Borrar-
+				
+	- Tutorial: Writing a Node.js Twitter Bot
+		- https://blog.risingstack.com/node-js-twitter-bot-tutorial/
+		- https://developer.twitter.com/en/support/twitter-api/error-troubleshooting
+		
+		-PARTE 2 How to make a Twitter Bot with Node.js – Part 2
+			- https://blog.risingstack.com/how-to-make-a-twitter-bot-with-node-js/
+			
+		curl -u "$API_KEY:$API_SECRET_KEY" \ --data 'grant_type=client_credentials' \ 'https://api.twitter.com/oauth2/token'
+		curl -u "he0fBWX56EK8pOYGFRsY9RgVB:yGpNiovkHWy0Pd4TQu0DWmbqtRMdi4bxLYJK1TFnaIQkQurw9n" \ --data 'grant_type=client_credentials' \ 'https://api.twitter.com/oauth2/token'
+		
+		curl -u "he0fBWX56EK8pOYGFRsY9RgVB:yGpNiovkHWy0Pd4TQu0DWmbqtRMdi4bxLYJK1TFnaIQkQurw9n" --data 'grant_type=client_credentials' 'https://api.twitter.com/oauth2/token'
+		
+		
+		TWITTER_CONSUMER_KEY=he0fBWX56EK8pOYGFRsY9RgVB
+		TWITTER_CONSUMER_SECRET=yGpNiovkHWy0Pd4TQu0DWmbqtRMdi4bxLYJK1TFnaIQkQurw9n
+		TWITTER_ACCESS_TOKEN_KEY=798560294339543040-27R5gTPFkd9OFgVneCDLysyAEl7zuQv
+		TWITTER_ACCESS_TOKEN_SECRET=H0ZMIZe3JmNh17HCN2fzcpEtkheC66zSuYizRpIzW1SUi
+		
+		
+		https://hbish.com/deleting-old-tweets/
+		https://github.com/hbish/delete-old-tweets/blob/master/README.md
+		
+		
+		Execute the script (below will delete 100 tweets before 2011-01-01)
+		
+		node index.js -d 2023-01-01 -n 1000
+		-d - cutoff date in yyyy-mm-dd format
+		-n - number of tweets to delete (optional, default to 100)
+		
+		To see all of the scripts options, please run node index.js -h		
+		
+		{"token_type":"bearer","access_token":"AAAAAAAAAAAAAAAAAAAAAN%2Ba3wAAAAAANSc2gXXUR8tcHR7zRWUd4Nyz%2B%2Bo%3DZ56qd1hA6aEFPEDmy96SWSSRwVHEGlZOoBtCspGBt5Xdbcp1v1"}
+		
+		setInterval(() => {
+		for (const d of document.querySelectorAll('div[data-testid="unretweet"]')) {
+			d.click()
+		}
+		window.scrollTo(0, document.body.scrollHeight)
+		}, 1000)
+		
+		- https://stackoverflow.com/questions/64863099/deleting-tweets-with-js-console
+
+		(async () => {
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			
+			let found;
+			
+			while (found = document.querySelectorAll('[data-testid="caret"]').length) {
+			
+				// get first tweet
+				let tweet = document.querySelectorAll('[data-testid="tweet"]')[0];
+			
+				// if it is a retweet, undo it
+				if (tweet.querySelectorAll('[data-testid="unretweet"]').length) {
+				tweet.querySelectorAll('[data-testid="unretweet"]')[0].click()
+				await sleep(1000)
+				document.querySelectorAll('[data-testid="unretweetConfirm"]')[0].click()
+				await sleep(1000)      
+				}
+				// is a tweet
+				else {
+				if (new Date(document.querySelectorAll('[datetime]')[0].getAttribute('datetime')) < new Date('2023')) {
+					console.log('Limit date reach')
+					break;
+				}
+			
+				tweet.querySelectorAll('[data-testid="caret"]')[0].click()
+				await sleep(1000)
+				document.querySelectorAll('[role="menuitem"]')[0].click()
+				await sleep(1000)
+				document.querySelectorAll('[data-testid="confirmationSheetConfirm"]')[0].click()
+				}
+			}
+			
+			if (!found)
+				console.log('No more tweets found');
+			
+			})();

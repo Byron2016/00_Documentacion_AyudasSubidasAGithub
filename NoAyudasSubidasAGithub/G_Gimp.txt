@@ -1,0 +1,113 @@
+- Parker Photographic
+	- buscar texturas
+		- https://pixabay.com/photos/search/textures/?manual_search=1
+	- TEXT EFECT
+		- GIMP Text Effects {Nostalgic, Retro Text Design}
+			- https://www.youtube.com/watch?v=aMoEMumWrA8&list=PLkwVVRDtp4_eJBqFTrJXZLiXzy1uUhf5B
+			
+			- Archivo Nuevo
+				- Anchura: 1920 
+				- Altura: 1080
+				- Opciones avanzadas
+					- Resolucion 300
+					- First Background Color: afa58f
+					- Segundo Background Color: e9deb0
+					
+			- Añadir texto
+			
+				- Letra: https://www.dafont.com/thirsty-script.font
+					- Añadir letra
+						- https://www.youtube.com/watch?v=Hcgywk4cFcg
+						- Windows. arrastrar el archivo bajado .oft a carpeta C:\windows\fonts o C:\winnt\fonts. 
+						- Cerrar y abrir GIMP
+						
+				- Seleccionar letra
+				- Seleccionar tipo de letra, tamaño y color (blanco)
+				- Escribir dar Esc para salir de letra.
+			
+			- Rotar Texto
+				- Seleccionar Rotar o Shift + Retro
+				- Rotar el angulo
+				- Return.
+				
+			- Incrementar layer boundary size.
+				- Ir a Layer / Layer to Image Size 
+				- Eso pone la capa letra al tamaño de la capa de fondo.
+				
+			- Agregar "canal Alfa".
+				- Click Derecho sobre capa de letra
+				- Seleccionar "Alfa a seleccion"
+				
+			- Create a stroke around your text
+				- Método 1 (pero no lo usaremos)
+					- ir a menu Editar / Trazar Seleccion (Stroke)
+					- Cambiar foreground and backgroud colors x que se quiere usar e9deb0
+					- Menu Seleccionar / Nada
+				 
+				- Método 2 (lo usaremos)
+					- Select / Grow (Seleccionar /Agrandar)
+					- tamaño: 3px
+					- Ir a "Crear nueva capa"
+						- llamarla Stroke
+						- Transparente
+					- Ir a "herramienta de relleno" Shift + B 
+						- Coloar fondo e9deb0
+						- Select / None
+						- poner capa de nombre sobre esta stroke.
+						
+					- Agregar grupo de capas
+						- click derecho sobre capa Byron
+						- seleccionar "Grupo de capa nuevo" y nombrarlo Original
+						- Mover capa Byron y capa Stroke a este grupo
+						
+					- Corregir error sobre capa "Byron"
+						- Duplicar "Byron", ponerlo bajo y nombrarla "Byron 1"
+						- Seleccionando "Shadow 3" Ir a Filtros / Light and Shadow / Drop Shadow (Filtros / Luz y sombra / Sombra Base)
+						- Cambiar color a 9d4626
+						- Blur radius: 0
+						- Opacity al máximo
+						- Grow radius a 15
+						- cambiar angulo x y y a 2.821
+						
+						
+						
+					- Create several long shadows for the retro text effects.
+						- Duplicar "Grupo de capa Original"
+						- Sobre este último selecionar "Merge Layer Group" (combinar grupos de capas)
+						- ponerle nombre "Byron 1"
+						- Duplicar esta úlpima y ponerle "Shadow 1" y bajo "Byron 1"
+						- Seleccionando "Shadow 1" Ir a Filtros / Light and Shadow / Long Shadow (Filtros / Luz y sombra / Sombra alargada)
+						- Cambiar color a 9d4626
+						- Cambiar Length (largo): 37.8
+						- Duplicar capa "Shadow 1" y colocarla bajo "Shadow 1" con nombre "Shadow 2"
+						- Seleccionando "Shadow 2" Ir a Filtros / Light and Shadow / Long Shadow (Filtros / Luz y sombra / Sombra alargada)
+						- Cambiar color a d07e0e
+						- Cambiar Length (largo): 29
+						- Duplicar capa "Shadow 2" y colocarla bajo "Shadow 2" con nombre "Shadow 3"
+						- Seleccionando "Shadow 3" Ir a Filtros / Light and Shadow / Long Shadow (Filtros / Luz y sombra / Sombra alargada)
+						- Cambiar color a 5b1f09
+						- Cambiar Length (largo): 46.5
+						- Duplicar 
+						- Seleccionando "Shadow 3" Ir a Filtros / Light and Shadow / Long Shadow (Filtros / Luz y sombra / Sombra alargada)
+						- Cambiar color a 25564f
+						- Cambiar Length (largo): 34.5
+						
+						
+			- Poner old schoolck
+				- Agregar la textura. https://pixabay.com/photos/texture-grunge-fracture-cracked-1874580/
+				- Subirla como primera capa
+				- Cambiar el Mode de Normal a Pantalla
+				- Opacidad a 19
+				
+			- Para poder poner esto en cualquier parte
+				- Crear un grupo
+				- Poner ahí todo mennos la textura
+				- Seeccionar el grupo 
+				- Selecting the layer group gragging 
+				- M
+				- Tool options puesto a move the active layer
+				- 
+						
+					
+						
+			

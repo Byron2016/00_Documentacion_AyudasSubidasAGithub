@@ -1,0 +1,5 @@
+- Sobre cursos
+	- Martín Gesualdo: Cursos para iniciarte como Desarrollador WEB | Stack MERN (no divagues 😵)
+		- https://www.youtube.com/watch?v=w8WhnoQPBtI
+		
+		
