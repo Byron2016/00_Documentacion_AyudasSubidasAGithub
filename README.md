@@ -14,7 +14,7 @@
 
 - .editorconfig
 - T_Astro_Auth.md
-- T_Authentication.txt
+- T_Authentication.md
 - T_CSS_Tips.md
 - T_Debug.md
 - T_Documentacion.md
