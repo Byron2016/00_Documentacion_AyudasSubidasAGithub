@@ -26,6 +26,7 @@
 - T_Linters_Eslint_8x.md
 - T_Linters_Eslint_Rules.md
 - T_Monorepositorios.md
+- T_Monorepositorios_tips.md
 - T_NPM_001.md
 - T_Node_001.md
 - T_Node_env-vars.txt
