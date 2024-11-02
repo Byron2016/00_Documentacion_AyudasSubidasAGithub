@@ -14,6 +14,7 @@
 
 - .editorconfig
 - C_Sharp_EF_IConfiguration_01.md
+- C_Sharp_EF_IConfiguration_02_IOptions.md
 - T_Astro_Auth.md
 - T_Authentication.md
 - T_CSS_Tips.md
