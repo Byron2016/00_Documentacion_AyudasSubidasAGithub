@@ -13,6 +13,7 @@
 # Table of contents
 
 - .editorconfig
+- C_Sharp_EF_IConfiguration_01.md
 - T_Astro_Auth.md
 - T_Authentication.md
 - T_CSS_Tips.md
