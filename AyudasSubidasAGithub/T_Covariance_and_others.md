@@ -1,4 +1,4 @@
-- Covariance, Contravariance, Preconditions, Postconditions
+- Covariance, Contravariance, Preconditions, Postconditions, Invariants
 
   - [Design Patterns: Liskov Substitution Principle Explained Practically in C# (The L in SOLID)](https://www.youtube.com/watch?v=-3UXq2krhyw&list=RDQMXGFDNO2iiQk&index=3)
 
@@ -38,3 +38,13 @@
       - Definición (9.24)
 
         - Postconditions usted no puede debilitar las post conditions lo que significa que no puede ser estricto de que viene, no puede retornar un valor dentro de un rango
+
+  - [Preconditions, Postconditions, Invariants: How They Help Write Robust Programs - Andrzej Krzemieński](https://www.youtube.com/watch?v=JfZaNVgU3kI)
+    - Preconditions
+    - Postconditions
+    - Invariants
+    - Functions contract
+    - Strong and weak contracts
+    - Checking contract violation
+    - Constrained types for enforcing contracts
+    - Language support
