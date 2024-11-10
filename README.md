@@ -17,6 +17,7 @@
 - C_Sharp_EF_IConfiguration_02_IOptions.md
 - T_Astro_Auth.md
 - T_Authentication.md
+- T_Covariance_and_others.md
 - T_CSS_Tips.md
 - T_Debug.md
 - T_Documentacion.md
