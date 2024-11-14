@@ -39,7 +39,7 @@
 - T_ReactCurso_001.md
 - T_Releases_Versioning.md
 - T_SEO.md
-- T_ssh.md
+- T_SSH.md
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_TypeScript_tsconfig.md
