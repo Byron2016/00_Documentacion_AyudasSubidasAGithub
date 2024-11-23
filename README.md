@@ -39,13 +39,14 @@
 - T_ReactCurso_001.md
 - T_Releases_Versioning.md
 - T_SEO.md
+- T_SOLID.md
 - T_SSH.md
+- T_Two_Factors_Auth.md
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_TypeScript_tsconfig.md
 - T_VSC_Config.md
 - T_VSC_Plugins.md
-- T_Two_Factors_Auth.md
 
 - Diferentes
   - T_Ortografia.md
