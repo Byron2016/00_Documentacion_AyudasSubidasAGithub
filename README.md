@@ -45,6 +45,7 @@
 - T_TypeScript_ESM_CJS.txt
 - T_TypeScript.txt
 - T_TypeScript_tsconfig.md
+- T_UML.md
 - T_VSC_Config.md
 - T_VSC_Plugins.md
 
