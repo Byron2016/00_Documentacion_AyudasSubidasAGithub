@@ -1,5 +1,10 @@
 - UML
 
+  - [PROCESO DE DISEÑO DEL SISTEMA](https://www.u-cursos.cl/ingenieria/2011/1/CC61J/1/material_docente/bajar?id_material=372021)
+
+    - Documentación en español de todo el proceso.
+    - MUY BUENO
+
   - [UML Class Diagram Relationships Explained with Examples](https://creately.com/guides/class-diagram-relationships/)
 
     - Tiena una explicación y diagramación de cada tipo.
