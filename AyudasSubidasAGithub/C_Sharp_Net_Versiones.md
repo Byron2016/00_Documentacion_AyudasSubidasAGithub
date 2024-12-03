@@ -2,6 +2,7 @@
 
   - [EDteam: ¿Qué es .NET? Guía definitiva para entender la plataforma de Microsoft](https://www.youtube.com/watch?v=fuTDzzarQGg)
   - [campusMVP.es: .NET vs .NET Core vs .NET Framework vs .NET Standard 🤯 ¡Fuera DUDAS!](https://www.youtube.com/watch?v=zWfIl2Za-es)
+  - [IAmTimCorey: 62. .NET Framework vs .NET Core vs .NET vs .NET Standard vs C#](https://www.youtube.com/watch?v=4olO9UjRiww)
 
   - [kudvenkat: What is ASP.NET Core 5](https://www.youtube.com/watch?v=t3zj0c244UE)
 
