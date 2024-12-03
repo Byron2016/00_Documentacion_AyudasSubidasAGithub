@@ -1,0 +1,7 @@
+- JavaScript
+  - [Pascal Schilp:Javascript Questions for the Dazed and Confused](https://dev.to/thepassle/the-javascript-ecosystem-for-the-dazed-and-confused-36il)
+    - process.env,
+    - bare module specifiers,
+    - import maps,
+    - package exports,
+    - non-standard imports.
