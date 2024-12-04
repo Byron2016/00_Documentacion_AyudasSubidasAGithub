@@ -402,6 +402,15 @@
 
                 res.json(response.data)
 
+  - [DOMINICODE: ¿Access token, RefreshToken? - API NodeJS #8](https://www.youtube.com/watch?v=pM5T5RbUDzo&t=186s)
+    - Access Token (6.21)
+      - Contiene toda la información que necesita el servidor para saber si el usuario/dipositivo que nos hace la petición es quien dice ser. Por ejemplo saber si es un admin o no lo es.
+      - Tienen un período de valiz corto
+    - Refresh Token (7.01)
+      - Es utilizado para generar un nuevo access token, por ejemplo si nuestros usurios hacen login y reciben el access token normalmente como tienen una validez puede ser que el token caduque, si pasa esto, el procedimiento será que el usuario tendrá que volver a loguearse en la aplicación, con el refresh token evitamos este paso. El back end devolverá un nuevo access token al usuario.
+
+103 k suscriptores
+
 - pnpm add -g typeorm
 - pnpm list -g
 
@@ -486,9 +495,9 @@ connect to Aiven for Mysql with nodejs
   subject: "Forgot password ✔", // Subject line
   text: "Hello you have forgoten your password?", // plain text body
   html: `
-				<b>Please click on the following link, or paste this into your browser to complete the process:</b>
-				<a href="${verificationLink}">${verificationLink}</a>
-			`
+			<b>Please click on the following link, or paste this into your browser to complete the process:</b>
+			<a href="${verificationLink}">${verificationLink}</a>
+		`
   "", // html body
   });
   console.log("Message sent: %s", info.messageId);
