@@ -1,4 +1,9 @@
-- React Router Dom / react-router-dom
+- React Router Dom / react-router-dom / react-router
+
+  - Elementos interesantes
+
+    - [The Power Of CreateBrowserRouter: Optimizing Your React App's Navigation](https://www.dhiwise.com/post/the-power-of-createbrowserrouter-optimizing-your-react-app)
+      - Permite entender mejor **createBrowserRouter**
 
   - V7 **TODO**
 
