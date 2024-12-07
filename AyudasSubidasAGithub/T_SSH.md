@@ -13,6 +13,7 @@
         - <code>mkdir .ssh</code>
       - Generar clave privada y púbica
         - <code>ssh-keygen -t ed25519 -C "xxxx@yyyy.com"</code>
+          - <code>"xxxx@yyyy.com"</code> Es el correo ligado a **GitHub**
           - Enter file in which to sabe the key(/c/users/xxx/.ssh/id_ed25519)
           - Enter passphrase (empty for no passphrase)
           - Enter same passphrase again
@@ -62,10 +63,30 @@
           - Es una forma distinta de criptografía, esta no está destinada a ser descifrada.
           - El hashing genera un valor único de una longitud fija
 
-  - (Carlos Azaustre: Cómo Configurar Claves SSH para Git y GitHub 2024)[https://www.youtube.com/watch?v=akuG7eRtaXc]
+  - [Carlos Azaustre: Cómo Configurar Claves SSH para Git y GitHub 2024](https://www.youtube.com/watch?v=akuG7eRtaXc)
 
     - Hace referencia a la _Guia escrita por github_ que se especifica más abajo.
 
   - Indicaciones de GitHub
-    - (Guia escrita por github)[https://docs.github.com/es/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
-    - (Adding a new SSH key to your GitHub account)[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]
+
+    - [Guia escrita por github](https://docs.github.com/es/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+    - [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+    - [Working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
+
+  - Clonando un repositorio de GitHub con SSH
+
+    - Clave errada
+
+      ```bash
+        $ git clone git@github.com:Byron2016/052_es.react.dev.git
+        Cloning into '052_es.react.dev'...
+        Enter passphrase for key '/c/Users/xxxx/.ssh/id_ed25519':
+        git@github.com: Permission denied (publickey).
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+        and the repository exists.
+
+      ```
+
+      - Seguí los pasos para crear una nueva.
