@@ -118,6 +118,12 @@
     - Para crear componentes
       - ES7 + React/Redux/React-Native snippets
   - Otras
+    - Spanish - Code Spell Checker [Recomendada en](https://github.com/reactjs/es.react.dev/blob/main/TRANSLATION.md#identificadores-de-los-t%C3%ADtulos)
+      - Street Side Software
+      - Spanish Add-On for Code Spell Checker
+      - Uso
+        - Agregar en **Settings**
+          - <code>"cSpell.language": "en,es"</code>
     - EditorConfig for VS Code
       - EditorConfig editorconfig.org
       - EditorConfig Support for Visual Studio Code
