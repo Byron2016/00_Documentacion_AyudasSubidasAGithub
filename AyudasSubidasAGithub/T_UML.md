@@ -153,15 +153,15 @@
                 public Persona(String nombre, String ci, String vehiculoAsignado)
                 {
                   this.nombre = nombre;
-              	  this.ci = ci;
-              	  this.vehiculoAsignado = vehiculoAsignado
+                  this.ci = ci;
+                  this.vehiculoAsignado = vehiculoAsignado
                 }
                 //Metodos
                 public void mostrar()
                 {
                   system.out.println("Nombre: " + nombre);
-              	  system.out.println("Ci: " + ci);
-              	  system.out.println("Vehículo asignado: " + vehiculoAsignado);
+                  system.out.println("Ci: " + ci);
+                  system.out.println("Vehículo asignado: " + vehiculoAsignado);
                 }
               }
 
@@ -173,13 +173,13 @@
                 public Afiliado(String nombre, String ci, String vehiculoAsignado, int antiguedad)
                 {
                   super(nombre, ci, vehiculoAsignado);
-              	  this.antiguedad = antiguedad;
+                  this.antiguedad = antiguedad;
                 }
                 //Metodos
                 public void mostrar()
                 {
                   super.mostrar();
-              	  system.out.println("Antiguedad: " + antiguedad);
+                  system.out.println("Antiguedad: " + antiguedad);
                 }
               }
             ```
