@@ -58,6 +58,43 @@
           }
         ```
 
+        - [Jhordan Flores Marca: Programación Orientada a Objetos - Asociación - C# (3.16)](https://www.youtube.com/watch?v=VSAfFzMvYtQ)
+
+        - [Informática EJN: 30.Curso C# || Asociaciones en POO.](https://www.youtube.com/watch?v=AECigjxeLOM)
+
+        ![Composición](../images/uml/asociacion_01.JPG)
+
+        ![Composición](../images/uml/asociacion_02.JPG)
+
+        ```c#
+          public class Venta
+          {
+            private int numVenta;
+            private double totalVenta;
+
+            //Asociaciones
+            private Cliente cliente;
+            private Fecha fechaVenta;
+
+            public Venta(int nv, double tv, Cliente cte, Fecha f)
+            {
+              numVenta = nv;
+              totalVenta = tv;
+              cliente = cte;
+              fechaVenta = f;
+            }
+
+          }
+          public class Cliente
+          {
+           .......
+          }
+          public class Fecha
+          {
+           .......
+          }
+        ```
+
       - **Agregación**
 
         - Aggregation is a special type of Association.
