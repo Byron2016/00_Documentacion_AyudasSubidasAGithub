@@ -1,36 +1,109 @@
 - Acentuación
 
-  - Vocales (Susi Profe: https://www.youtube.com/watch?v=mvmYv3iYsq4)
+  - [Linguriosa: Esto es SÚPER IMPORTANTE ⚠️ [Reglas de Acentuación] 📏](https://www.youtube.com/watch?v=5GEr6PaMc-g)
+
+    - **Acento**
+      - Es la fuerza, la intensidad que recae en la sílaba de una palabra en **PEDANTE** está en **DAN**
+        - Esto se llama **acentro prosódico**
+          - Desde el punto de vista de la pronunciación las palabras **átonas**, se unen a otras palabras
+            - **TU ZANAHORIA** -> **TUZANAHORIA**
+      - Acento tiene dos significados
+        - Símbolo **"´"** que escribimos encima de una vocal
+        - La fuerza (marca la sílaba tónica) que recae en una sílaba de una palabra
+      - Podríamos decir que **PEDANTE** tiene acento en **DAN** pero no tiene acento (tilde) para evitar esta confusión tenemos dos alternativas
+        - Alternativa 1
+          - Ser más específico y llamar a esto **"´"** **acento gráfico**
+          - Y la fuerza (marca la sílaba tónica) **acento prosódico**
+        - Alternativa 2
+          - Llamar a esto **"´"** **tilde**
+            - tomar en cuenta que estas dos son tildes: **"´"** y **"~"**
+          - Y la fuerza (marca la sílaba tónica) llamarle **acento**
+      - **Reglas de acentuación**
+        - La acentuación es superimportante para saber cómo se pronuncia una palabra que no hemos escuchado nunca. Por ejemplo si viéramos esta palabra **ORATE** y no existieran reglas de acentuación no sabríamos si se pronuncia: **ÓRATE/ORÁTE/ORATÉ**, si está escrita según las reglas de aceptuación sabría exactamente como pronunciarla.
+        - **Primera Regla**
+          - Si una palabra **SI** termina en **N, S o VOCAL** el **acento prosódico** (la fuerza) recae en la penúltima sílaba.
+            - PALABRA -> PA **LA** BRA
+              - termina en vocal y no tiene ninguna tilde, esto significa que la sílaba tónica es la penúltima.
+            - ORATE -> O **RA** TE
+              - termina en vocal y no tiene ninguna tilde, esto significa que la sílaba tónica es la penúltima.
+            - ESLEVIOSA -> ES LE **VIO** SA
+              - termina en vocal y no tiene ninguna tilde, esto significa que la sílaba tónica es la penúltima.
+        - **Segunda Regla**
+          - Si una palabra **NO** termina en **N, S o VOCAL** el **acento prosódico** (la fuerza) recae en la última sílaba.
+            - COMER -> CO **MER**
+              - no termina en **N, S o VOCAL** y no tiene ninguna tilde, esto significa que la sílaba tónica es la última.
+        - **Tercera Regla**
+          - Si una palabra **sílaba tónica** no es la última o penúltima siempre va a tener una tilde.
+            - Llámame
+            - Escríbeme
+            - página
+            - Teléfono
+        - **Excepciones**
+          - La **tilde** se usa para las excepciones a estas dos reglas anteriores.
+          - Imagina que una palabra **SI** termina en **N, S o VOCAL** pero la sílaba tónica no es la penúltima sino la última, **tenemos que marcarlo con la tilde**
+            - ESTOY -> ES **TOY** no termina en **N, S o VOCAL** esta es la segunda regla, esto significa que la sílaba tónica tiene que ser la última y no tiene ninguna tilde que nos diga lo contrario.
+            - Terminan en **N, S o VOCAL** pero en este caso la regla no funciona porque la sílaba tónica no es la penúltima sino la última y por eso llevan **tilde**
+              - ESTÁN -> ES **TÁN**
+              - ESTÁS -> ES **TÁS**
+              - ESTÁ -> ES **TÁ**
+            - Segunda regla no funcione
+              - no termina en **N, S o VOCAL** y no tiene ninguna tilde, esto significa que la sílaba tónica es la última.
+                - FÁCIL -> **FÁ** CIL. no termina en **N, S o VOCAL**, termina en L entonces la pronunciación más fuerte es decir la sílaba tónica debería ser la última pero NO, como la segunda regla no funciona debemos escribir una tilde
+          - **YO** solo tiene una sílaba, no lleva tilde.
+          - **TU** y **TÚ**
+            - Se usa la tilde para distinguir dos palabras que tienen **dos categarías gramaticales diferentes** (verbo adjetivo pronombre adverbio conjunción sustantivo)
+              - Determinante posesivo y pronombre personal respectivamente.
+          - Todos los adverbios interrogativos (dónde, cuándo, qué, quién, cuánto, cuál, por qué) llevan **tilde**
+          - Terminados en **MENTE**
+            - **CURIOSAMENTE** **CURIOSA** no lleva tilde entonces con **CURIOSA + MENTE** tampoco (no aplica: termina en **N, S o VOCAL** y la sílaba tónica está antes de la penúltima tiene que tener tilde.)
+          - **Diptongos y hiatos(aptongos)**
+            - Dos vocale juntas podemos tener un diptongo o un hiato.
+            - **Diptongos**
+              - Las dos vocales forman una sílaba
+              - VF + VD
+                - PIE no lleva tilde por que solo tiene una sílaba.
+            - **Hiatos(aptongos)**
+              - Las dos vocales forman dos sílaba
+              - VF + VF
+                - PO E MA -> PO **E** MA. Funciona no hay tilde
+                - CO RE Ó GRA FA -> CO RE **Ó** GRA FA. Termina en vocal pero la sílaba tónica no es la penúltima entonces debemos poner una **tilde**
+              - VF + VD
+                - RÍO cuando tenemos un hiato formado por una vocal débil y una vocal fuerte la debil siembre lleva tilde.
+      - Por qué **superinteresante** no lleva tilde y VA UNIDO
+        - Termina en vocal y la sílaba tónica es la penúltima entonces no lleva tilde.
+        - [Deja de escribir súper simpático y súper especial](https://algomasquetraducir.com/deja-de-escribir-super-simpatico-y-super-especial/#:~:text=No%20debe%20confundirse%20con%20el,%2C%20s%C3%BAper%20amable%2C%20s%C3%BAper%20atento.)
+
+  - [Susi Profe: Vocales](https://www.youtube.com/watch?v=mvmYv3iYsq4)
     - Abiertas
       - a e o
     - Cerradas
       - i u
-  - Diptongos, Triptongos y Hiatos (Susi Profe: https://www.youtube.com/watch?v=mvmYv3iYsq4)
-    - Diptongo: Se pronuncian en un solo golpe de voz
+  - [Susi Profe: DIPTONGOS, TRIPTONGOS e HIATOS 🔠 Cómo reconocerlos](https://www.youtube.com/watch?v=mvmYv3iYsq4)
+    - **Diptongo**: Se pronuncian en un solo golpe de voz
       - abierta + cerrada: aula (au-la) rey / ahijado
       - cerrada + abierta: cielo (cie-lo)
       - cerrada + cerrada: ciudad (ciu-dad)
-    - Triptongo:
+    - **Triptongo**:
       - cerrada + abierta + cerrada: apreciáis / confiéis (a-pre-ciáis / con-fiés)
       - OJO: buey (es triptongo)
-    - Hiato: Se pronuncian en diferentes sílabas.
+    - **Hiato**: Se pronuncian en diferentes sílabas.
       - abierta + abierta: caer (ca-er) león
       - cerrada tildada + abierta: río (rí-o)
       - abierta + cerrada tildada: país (pa-ís) a-hín-co / pro-hí-be
       - OJO:
         - Tilde en vocal abierta NO rompe diptongo. canción (can-ción) Miércoles,
-  - Acentuación Diptongos y Hiatos
-    - Diptongo
+  - **Acentuación Diptongos y Hiatos**
+    - **Diptongo**
       - Hacer caso a las reglas básicas de acentuación.
-      - Caso 1:
+      - **Caso 1**:
         - Está formada por abierta + cerrada o viceversa
         - SIEMPRE LLEVARÁ LA ABIERTA si la regla acentuación lo solicita.
-      - Caso 2:
+      - **Caso 2**:
         - Está formada por cerrada + cerrada o viceversa
         - SIEMPRE LLEVARÁ LA SEGUNDA CERRADA, si la regla acentuación lo solicita. Si la palabra no necesita acento según las reglas pues no la pondremos.
-    - Hiatos
+    - **Hiatos**
       - Hacer caso a las reglas de acentuación SOLO EN ALGUNOS CASOS.
-      - Caso 1:
+      - **Caso 1**:
         - Vocales iguales (créeme), acento en la primera de las vocales. (En este caso es esdrújula, siempre se acentúa)
         - Vocales Abiertas (héroe / aéreo a-e-re-o), esdrújula.
         - abierta + cerrada tildada / cerrada tildada + abierta:
@@ -40,7 +113,7 @@
             - Grave, terminada en vocal no se acentúa, pero como es un hiato hay que acentuarlo.
           - Rehúyo
             - Grave, terminada en vocal no debería acentuarse pero x el hiato lo debemos hacer.
-    - Triptongos (https://www.youtube.com/watch?v=_F4aUQek-a4&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=6)
+    - Triptongos [Triptongos](https://www.youtube.com/watch?v=_F4aUQek-a4&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=6)
       - Débil + fuerte + débil
       - Siempre llevará en la fuerte.
       - Casi todas son agudas.
@@ -48,13 +121,13 @@
         - Excepciones
           - Paraguay
   - Agudas - Gravés - Esdrújulas
-    - Agudas (unProfesor: https://www.youtube.com/watch?v=9O5KcjToaQo&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf)
+    - [unProfesor: Agudas](https://www.youtube.com/watch?v=9O5KcjToaQo&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf)
       - Termina en vocal, n o s
       - Excepciones:
         - Monosílabas (salvo para diferenciar de otra): son
         - terminada en n o s precedidas por consonante: robots
         - terminadas en y: hoy / rey
-    - Graves (unProfesor: https://www.youtube.com/watch?v=cF72NPmGots&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=2)
+    - [unProfesor: Graves](https://www.youtube.com/watch?v=cF72NPmGots&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=2)
       - Contrario de las agudas
       - NO termina en vocal, n o s
         - OJO: para s hay excepcion mirar más abajo.
@@ -63,16 +136,16 @@
       - Excepción
         - Terminan en S pero antes hay otra consonante SI se acentúan.
           - bíceps /
-    - Esdrújulas (unProfesor: https://www.youtube.com/watch?v=FnN-ZNhn79U&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=3)
+    - [unProfesor: Esdrújulas](https://www.youtube.com/watch?v=FnN-ZNhn79U&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=3)
       - Todas se acentúan
-    - Sobreesdrújulas (https://www.youtube.com/watch?v=B89T7Ti9nqM&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=4)
+    - [Sobreesdrújulas](https://www.youtube.com/watch?v=B89T7Ti9nqM&list=PLlJ-LmCi75KZSeKEkAqpSCRJCKxk1VKrf&index=4)
       - Siempre
       - Excepción
         - Advervios terminados en MENTE formados por un ADJETIVO NO ACENTUADO.
           - elejante + mente: elejantemente.
           - abierta + mente: abiertamente
 
-- Porqué - Por qué - Porque - Por que (Susi Profe: https://www.youtube.com/watch?v=M73CFFUQNwQ)
+- Porqué - Por qué - Porque - Por que [Susi Profe:](https://www.youtube.com/watch?v=M73CFFUQNwQ)
 
   - Se las conoce como palabras homófonas
 
