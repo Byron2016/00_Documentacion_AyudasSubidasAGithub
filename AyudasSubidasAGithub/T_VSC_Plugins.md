@@ -1,5 +1,10 @@
 - Command line extension management
 
+  - Git Blame SIN EXTENSIONES
+    - Ir a Configuración de Usuario
+      - <code>crtl + ,</code>
+    - Buscar blame
+    - <code>Git/Blame/Editor Decoration:Enabled (Controla si se va a mostrar información de autoría en el editor)</code>
   - https://code.visualstudio.com/docs/editor/extension-marketplace#:~:text=Depending%20on%20your%20platform%2C%20the,%25USERPROFILE%25%5C.vscode%5Cextensions
 
     - code --extensions-dir <dir>
