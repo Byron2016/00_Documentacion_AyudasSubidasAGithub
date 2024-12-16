@@ -82,6 +82,231 @@
             - expresiones regulares
             - objeto literal
 
+  - **Herencia por Prototipos**
+
+    - [La Cocina del Código: 17. HERENCIA POR PROTOTIPOS EN JAVASCRIPT](https://www.youtube.com/watch?v=a2tp64Vtzxs&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB&index=11)
+
+      - **¿Q**
+
+    - **jonmircha**
+
+      - [ jonmircha: 22. Prototipos - #jonmircha ](https://www.youtube.com/watch?v=nS5FmAx4u_0)
+
+        - JavaScript es un lenguaje **multi paradigma**, es decir podemos utilizar programación orientada a objetos, funcional, javaScript no maneja los objetos con clases sino que usa **herencia prototípica**, es decir basada en **prototipos**, las clases las convierte a **funciones prototípicas**
+
+        - Un **prototipo** en javaScript es un mecanismo por el cual un objeto puede heredar de un objeto padre atributos y métodos.
+
+        - **Cadena de prototipos**
+
+          ```js
+            // Entendiendo con objeto literal (ojo: nombre con a minúscula)
+            const animal = {
+              nombre: "Snoopy",
+              sonar():{
+                console.log("Hago sonidos por que estoy vivo")
+              }
+            }
+            const animal2 = {
+              nombre: "LolaBoony",
+              sonar():{
+                console.log("Hago sonidos por que estoy vivo")
+              }
+            }
+            console.log(animal); // Vemos que hay una propiedad __proto__ que apunta al prototipo más elemental que tiene javaScript Object
+            console.log(animal2); // tuvimos que copiar y pegar código, esto no es funcional, para eso usamos las clases/funciones prototípicas.
+          ```
+
+        - **Generando funciones prototípicas**
+
+          ```js
+          // función constructora y a partir de ella generar nuevas instancias. (ojo: nombre con A mayúscula)
+          function Animal(nombre, genero) {
+            // TIP: tanto atributos como métodos deben colgar de this.
+            // atributos
+            this.nombre = nombre;
+            this.genero = genero;
+            // metodos
+            this.sonar = function () {
+              console.log("Hago sonidos por que estoy vivo");
+            };
+            this.saludar = function () {
+              console.log(`Me llamo ${this.nombre}`);
+            };
+          }
+          // Heredamos
+          const snoopy = new Animal("Snoopy", "macho");
+          const lolaBunny = new Animal("LolaBoony", "hembra");
+          console.log(snoopy);
+          console.log(lolaBunny);
+          // Ojo, que tengo repetido la función sonar, lo que no es correcto x q me está consumiendo memoria. Lo correcto es enviarle la función al prototipo.
+          ```
+
+          - Mejor uso de manera más eficiente.
+
+            ```js
+            // función constructora y a partir de ella generar nuevas instancias. (ojo: nombre con A mayúscula)
+            function Animal(nombre, genero) {
+              // TIP: tanto atributos como métodos deben colgar de this.
+              // atributos
+              this.nombre = nombre;
+              this.genero = genero;
+            }
+            // sacamos la función sonar al prototipo de Animal.
+            Animal.prototype.sonar = function () {
+              console.log("Hago sonidos por que estoy vivo");
+            };
+            Animal.prototype.saludar = function () {
+              console.log(`Me llamo ${this.nombre}`);
+            };
+
+            // Heredamos
+            const snoopy = new Animal("Snoopy", "macho");
+            const lolaBunny = new Animal("LolaBoony", "hembra");
+            console.log(snoopy);
+            console.log(lolaBunny);
+            // Ojo, ya no tenemos repetidos los métodos sino que están en el prototipo.
+            ```
+
+      - [jonmircha: Curso JavaScript: 23. Herencia Prototípica - #jonmircha ](https://www.youtube.com/watch?v=1-m7xtwvH1E)
+
+        - Mejor uso de manera más eficiente.
+
+          ```js
+          // constructor
+          function Animal(nombre, genero) {
+            this.nombre = nombre;
+            this.genero = genero;
+          }
+          // Asignación de funciones a prototipo de constructor.
+          Animal.prototype.sonar = function () {
+            console.log("Hago sonidos por que estoy vivo");
+          };
+          Animal.prototype.saludar = function () {
+            console.log(`Me llamo ${this.nombre}`);
+          };
+          // Herencia prototípica
+          function Perro(nombre, genero, tamanio) {
+            this.super = Animal; // creamos una variable que cuelga del this de la función y le asignamos el prototipo de cual estamos heredando.
+            this.super(nombre, genero);
+            this.tamanio = tamanio;
+          }
+          // asignar al prototipo de perro que sea una instancia de Animal.
+          Perro.prototype = new Animal(); // no especifíco los parámetros x q lo hago en el constructor de perro.
+          Perro.prototype.constructor = Perro;
+          // Sobre escritura.
+          Perro.prototype.sonar = function () {
+            console.log("soy un perro y mi sonido es un ladrido ");
+          };
+          // Nuevo método
+          Perro.prototype.ladrar = function () {
+            console.log("wouu wauuu");
+          };
+
+          const snoopy = new Perro("Snoopy", "macho", "mediano");
+          const lolaBunny = new Animal("LolaBoony", "hembra");
+          console.log(snoopy);
+          snoopy.sonar();
+          snoopy.saludar();
+          snoopy.ladrar();
+          ```
+
+    - [Carlos Azaustre - Aprende JavaScript: JavaScript ¿Qué es la HERENCIA de PROTOTIPOS?](https://www.youtube.com/watch?v=h_n_UIOycgM)
+
+      - **¿Qué es? y ¿Cómo funciona?**
+
+        - Es un mecanismo de javaScript, que permite a los objtetos, heredar propiedades y métodos de otros objetos.
+        - No utiliza clases, en javaScript ESC2015 se añade clases pero como **azúcar sintáctica** a la final todo el código es transformado a **herencia prototípica**
+        - Cada objeto en javaScript tiene una propiedad interna conocida como **prototype** y es una referencia a otro objeto al cual se lo conoce como el **prototipo del objeto**
+        - Orden de búsqueda de propiedades y métodos en javaScript
+
+          - Busca primero en el propio objeto
+          - Busca en su **cadena de prototipos** hasta que encuentra la propiedad o alcanza el final de la cadena en donde su prototipo es **null**
+
+      - **Su aplicación en situaciones reales**
+
+        - **Ejemplo 1**
+
+          ```js
+          // vehiculo funcionará como clase y recibe argumento marca
+          function Vehiculo(marca) {
+            this.marca = marca;
+          }
+          // añadimos una función a este prototipo
+          Vehiculo.prototype.informacion = function () {
+            return `Marca del vehículo: ${this.marca}`;
+          };
+          // crearemos otro objeto
+          function Coche(marca, modelo) {
+            // como marca es una propiedad de Vehiculo y queremos que Coche herede de Vehiculo
+            Vehiculo.call(this, marca); // this es la referencia del objeto
+            this.modelo = modelo;
+          }
+          // Ahora para unir todo esto
+          Coche.prototype = Object.create(Vehiculo.prototype);
+          // El método constructor
+          Coche.prototype.constructor = Coche;
+          // Añadimos una función a Coche
+          Coche.prototype.mostrarModelo = function () {
+            return `Modelo del Coche: ${this.modelo}`;
+          };
+          // crear un objeto de esta clase Coche
+          let miCoche = new Coche("Tesla", "Model Y");
+          console.log(miCoche.mostrarModelo());
+          ```
+
+        - **Ejemplo 2**
+
+          ```js
+          // Constructor usuario que será la base para propiedades y métodos comunes a todos los usuarios.
+          function Usuario(nombre, email) {
+            this.nombre = nombre;
+            this.email = email;
+          }
+          // añadimos una función a este prototipo
+          Usuario.prototype.informacion = function () {
+            return `Nombre: ${this.nombre}, Email: ${this.email}`;
+          };
+          // extendemos la funcionalidad a un usuario de tipo administrador y otro de tipo moderador.
+          // creamos los constructores para administrador y moderador, y que extiendan la funcionalidad del constructor usuario.
+          function Administrador(nombre, email) {
+            // Llamamos al constructor de Usuario y le pasamos la referencia this y los argumentos
+            Usuario.call(this, nombre, email); // this es la referencia del objeto
+          }
+          // Ahora para unir todo esto
+          Administrador.prototype = Object.create(Usuario.prototype);
+          // El método constructor sea el propio administrador
+          Administrador.prototype.constructor = Administrador;
+          // Añadimos un método propio de Administrador
+          Administrador.prototype.accesoTotal = function () {
+            return `El usuario ${this.nombre} tiene acceso total al sistema`;
+          };
+          // ****************
+          // Moderador
+          // creamos el constructores para moderador, y que extienda la funcionalidad del constructor usuario.
+          function Moderador(nombre, email) {
+            // Llamamos al constructor de Usuario y le pasamos la referencia this y los argumentos
+            Usuario.call(this, nombre, email); // this es la referencia del objeto
+          }
+          // Ahora extendemos el prototipo, que herede de Usuario.
+          Moderador.prototype = Object.create(Usuario.prototype);
+          // El método constructor sea el propio Moderador
+          Moderador.prototype.constructor = Moderador;
+          // Añadimos un método propio de Moderador
+          Moderador.prototype.moderarContenido = function () {
+            return `El usuario ${this.nombre} puede moderar contenido`;
+          };
+          // USO
+          let administrador = new Administrador(
+            "nom_administrador",
+            "email_administrador"
+          );
+          console.log(administrador.informacion());
+          console.log(administrador.accesoTotal());
+          let moderador = new Moderador("nom_moderador", "email_moderador");
+          console.log(moderador.informacion());
+          console.log(moderador.moderarContenido());
+          ```
+
   - **Closures**
 
     - [La Cocina del Código: 21. CLAUSURAS (Closures) EN JAVASCRIPT](https://www.youtube.com/watch?v=JXG_gQ0OF74)
