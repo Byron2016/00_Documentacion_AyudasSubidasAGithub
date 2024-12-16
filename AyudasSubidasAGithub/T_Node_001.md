@@ -707,35 +707,107 @@
               d
               o - TODO RESUELTO callBack o promesa resuelta
 
-    - Variables de entorno (env / .env)
+    - **Variables de entorno (env / .env)**
 
-      - midulive: https://www.youtube.com/watch?v=J8E-6QqZfgI
+      - [midudev: Variables de Entorno Hell](https://www.youtube.com/watch?v=T00cCOoT408)
+
+        - Uso adecuado de las variables de entorno y el process.env.xxxx
+        - **Mala práctica**
+
+          - Debido a que es costoso las llamadas a <code>process.env.xxxx</code>
+
+          ```js
+          // env.config.ts
+          export const EnvConfig = () => ({
+            environment: process.env.NODE_ENV || "development",
+            port: process.env.NEXT_PORT || "3000",
+            cors_origin: process.env.CORS_ORIGIN || "http://localhost:4700",
+            open_api_key: process.env.OPENAPI_API_KEY || "",
+          });
+          ```
+
+          ```js
+          // index.ts
+          import {EnvConfig} from "./env.config";
+          let allowedOrigins: (RegExp | string)[] = [/localhost:\]
+          if(EnvConfig().cors_origin){
+            allowedOrigins = allowedOrigins.concat(EnvConfig().cors_origin)
+          }
+          export const corsConfig = {
+            origin: allowedOrigins,
+            methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+            allowedHeaders: ['Authorization', 'X-Requested-With',''],
+            maxAge: 86400, //NOTICE: 1 DAY
+            credentials: true,
+          }
+          ```
+
+        - **Solución**
+
+          - Acceder solo una vez.
+
+          ```js
+          // env.config.ts
+          // accedes una vez, les pones valores x defecto, les cambias los nombres de una vez a lo que se devuelve.
+          const {
+            NODE_ENV: environment = "development",
+            NEST_PORT: port = "3000",
+            CORS_ORIGIN: cors_origin = "http://localhost:4700",
+            OPENAI_API_KEY: open_api_key = "",
+          } = process.env;
+          export const EnvConfig = () => ({
+            environment,
+            port,
+            cors_origin,
+            open_api_key,
+          });
+          ```
+
+          ```js
+          // index.ts
+          import {EnvConfig} from "./env.config";
+          let allowedOrigins: (RegExp | string)[] = [/localhost:\]
+          if(EnvConfig().cors_origin){
+            allowedOrigins = allowedOrigins.concat(EnvConfig().cors_origin)
+          }
+          export const corsConfig = {
+            origin: allowedOrigins,
+            methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+            allowedHeaders: ['Authorization', 'X-Requested-With',''],
+            maxAge: 86400, //NOTICE: 1 DAY
+            credentials: true,
+          }
+          ```
+
+      - [midulive: Novedades BRUTALES de Node.js ¡Me encanta!](https://www.youtube.com/watch?v=J8E-6QqZfgI)
 
         - API_KEY="1234"
-        - Antes
+        - **Antes**
           - require('dotenv').config();
-          - Invocación
+          - **Invocación**
             - node index.js
-        - ahora
+        - **ahora**
 
-          - console.lgo(process.env.API_KEY)
+          - console.log(process.env.API_KEY)
 
-          - Invocación
+          - **Invocación**
             - node --env-file=.env index.js
 
-        - Ahora mejor con V. 21.7.1
+        - **Ahora mejor con V. 21.7.1**
 
           - process.loadEnvFile() //si no se le pasa nada, leeerá el .env por defecto.
           - console.lgo(process.env.API_KEY)
-          - Invocación
+          - **Invocación**
 
             - node index.js
 
-          - if(process.env.NODE_ENV !== 'production') {
-            process.loadEnvFile("./env.dev")
-            } else {
-            process.loadEnvFile()
-            }
+              ```js
+              if (process.env.NODE_ENV !== "production") {
+                process.loadEnvFile("./env.dev");
+              } else {
+                process.loadEnvFile();
+              }
+              ```
 
           - const envFile = process.env.NODE_ENV !== 'production'
             ? "./env.dev"
@@ -743,7 +815,7 @@
 
             process.loadEnvFile(envFile)
 
-    - Colores para la consola
+    - **Colores para la consola**
 
       - Antes se hacía con chalk
       - Ahora V.21.7.1
