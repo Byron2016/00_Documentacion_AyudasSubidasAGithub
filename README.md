@@ -33,6 +33,7 @@
   - T_IA.md
   - T_Interesting_links.md
   - T_JS_Conceptos.md
+  - T_JS_IntersectionObserver.md
   - T_Linters.md
   - T_Linters_Eslint_8x.md
   - T_Linters_Eslint_Rules.md
