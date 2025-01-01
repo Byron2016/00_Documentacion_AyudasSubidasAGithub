@@ -4,6 +4,8 @@
 
     - [La Cocina del Código: 1. La PILA DE EJECUCIÓN (Call Stack) de JAVASCRIPT | JS en ESPAÑOL](https://www.youtube.com/watch?v=ygA5U7Wgsg8&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB)
 
+      - [Github: leonardomso / 33-js-concepts](https://github.com/leonardomso/33-js-concepts)
+
       - **Pila de ejecución**
         - Otros nombres: Pila de ejecución, call stack o pila de contextos de ejecución.
       - **Contexto de ejecución (scope)**
@@ -28,7 +30,7 @@
 
         - **Tipado dinámico** : javaScript al igual que PHP o Ruby tienen un **tipado dinámico** es decir los tipos se asignan conforme se asigna un valor, pero además javaScript tiene **tipado débil**
 
-        - **tipado débil**: Se puede asignar a una variable otro tipo independientemente de lo que ya se asignó antes.
+        - **tipado débil**: Se puede realizar operaciones entre variables de distintos tipos <code>2 + "4" = "24"</code>, asignar a una variable otro tipo independientemente de lo que ya se asignó antes.
 
       - **Coerción de tipos**
 
