@@ -45,6 +45,7 @@
   - T_Node_ESM_CJS.md
   - T_Node_Template.md
   - T_PackageJson.md
+  - T_Puertos_Cables_Conectores.md
   - T_React_Router_Dom.md
   - T_ReactCurso_001.md
   - T_Releases_Versioning.md
