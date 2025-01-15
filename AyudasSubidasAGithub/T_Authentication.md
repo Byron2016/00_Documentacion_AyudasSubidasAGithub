@@ -494,10 +494,8 @@ connect to Aiven for Mysql with nodejs
   to: user.username // list of receivers
   subject: "Forgot password ✔", // Subject line
   text: "Hello you have forgoten your password?", // plain text body
-  html: `
-			<b>Please click on the following link, or paste this into your browser to complete the process:</b>
-			<a href="${verificationLink}">${verificationLink}</a>
-		`
+  html: `	<b>Please click on the following link, or paste this into your browser to complete the process:</b>
+<a href="${verificationLink}">${verificationLink}</a>`
   "", // html body
   });
   console.log("Message sent: %s", info.messageId);
@@ -506,7 +504,7 @@ connect to Aiven for Mysql with nodejs
   return res.status(400).json({ message: 'Something goes wrong!' });
   }
 
-      }
+                      }
 
   }
 
@@ -816,3 +814,65 @@ connect to Aiven for Mysql with nodejs
 
               return callback(new Error("Not allowed by CORS"))
               }))
+
+    - **Explicación de CORS**
+
+      - [Oleks Gorpynich: CORS Finally Explained — Simply](https://levelup.gitconnected.com/cors-finally-explained-simply-ae42b52a70a3)
+
+        - **ERROR**: Access to fetch at "https...." from origin "http://localhost:3000" has been blocket by **CORS** policy: No "Access-Control-Allow-Origin" header is present on the requested resource. If an opaque response serves your needs, set the request´s mode to "no-cors" to fetch the resource with **CORS** disabled
+
+        ¿Ha visto lo anterior antes? Probablemente... y probablemente bastante...
+
+        Hay millones de artículos que explican cómo solucionar el error anterior, pero ¿qué es exactamente este "intercambio de recursos de origen cruzado" (**CORS**) y por qué existe?
+
+        ¿Por qué?
+
+        Empecemos por responder la pregunta de por qué a través de un escenario y cómo se desarrollaría en diferentes momentos.
+
+        Imagine esto: inicia sesión en **bank.com**, que es su servicio bancario. Después de iniciar sesión, se almacena una "cookie de sesión" en su navegador. (Las cookies de sesión básicamente le dicen al servidor detrás de **bank.com** que su navegador ahora está conectado a su cuenta). Todas las futuras solicitudes a **bank.com** ahora contendrán esta cookie, y puede responder correctamente sabiendo que ha iniciado sesión.
+
+        Bien, entonces ahora decide revisar su buzón de correo. Ve un correo electrónico sospechoso y, por supuesto, decide hacer clic en el enlace que lo envía a **attack.com**. A continuación, este sitio web envía una solicitud a **bank.com** para obtener sus datos bancarios. Tenga en cuenta que **bank.com** sigue pensando que ha iniciado sesión debido a esa cookie de sesión... esa cookie se almacena en su navegador. Para los servidores detrás de **bank.com**, parece que usted solicitó sus datos bancarios normalmente, por lo que los envía de vuelta. Ahora **attack.com** tiene acceso a ellos y los almacena en otro lugar de forma maliciosa.
+
+        La gente se dio cuenta de que esto era malo, por lo que los navegadores adoptaron una **SOP** (Política del mismo origen) según la cual, si su navegador detecta que está intentando realizar solicitudes a **bank.com** desde cualquier otro lugar que no sea **bank.com**, se bloquearán. Ahora bien, esto es algo clave que hay que tener en cuenta: se trata de una política basada en el navegador. **bank.com** realmente no tiene forma de saber de dónde proviene una solicitud, por lo que no puede proteger mucho contra ataques como **CSRF**. El navegador que está utilizando interviene y básicamente dice que si parece que está intentando solicitar detalles de un origen (esquema + nombre de dominio + puerto, https//foo.com:4000, http//bar.org:3000, etc... Básicamente la URL), solo enviará esas solicitudes para los mismos orígenes.
+
+        Ahora bien, esto era genial y todo eso, pero era increíblemente limitante. Quiero decir, las API públicas no funcionarían en absoluto. No podría solicitarles datos a menos que utilice algún tipo de solución proxy.
+
+        **CSRF**
+
+        El problema es que los servidores pueden saber de dónde proviene una solicitud. Existe el encabezado **“Origin”**, que deben tener las solicitudes, que muestra el origen de la solicitud. Por ejemplo, en el ejemplo anterior, la solicitud se vería así:
+
+        ```bash
+          Request to -----> bank.com
+          {
+            Headers: { Origin: http://attack.com }
+          }
+        ```
+
+        En teoría, **bank.com** debería comprobar esto para asegurarse de que solo responde a solicitudes cuyo origen tenga sentido. Y normalmente lo hace, por lo que el procedimiento operativo estándar parece algo limitante.
+        Aquí es donde entra en juego el CORS.
+
+        **CORS**
+
+        Cuando una aplicación web de **example.com** intenta solicitar recursos de **bank.com**, el navegador incluye automáticamente un encabezado Origin en la solicitud, indicando de dónde proviene la solicitud (**example.com**). Esta es la parte crucial: en lugar de bloquear directamente dichas solicitudes de origen cruzado según el **SOP**, el servidor de **bank.com** puede inspeccionar este encabezado Origin y decidir si permite o rechaza la solicitud según su propia política **CORS**.
+
+        Si **bank.com** considera que **example.com** es confiable o el recurso solicitado está destinado a ser de acceso público, puede responder con encabezados **CORS** específicos, como **Access-Control-Allow-Origin**, indicando qué orígenes tienen permiso para acceder al recurso. Este encabezado puede configurarse como **http://example.com**, lo que permite explícitamente este origen, o **\*** para recursos públicos a los que cualquier origen puede acceder.
+
+        Por supuesto, el navegador facilita todo esto. Si algo es incorrecto, obtendrá ese desagradable error.
+
+        Ahora bien... ¿qué sucede si la solicitud no tiene el encabezado **Origin**? ¿Qué sucede si tiene muchos otros encabezados y no utiliza uno de los métodos HTTP básicos?
+
+        En estas situaciones, el manejo de **CORS** se vuelve un poco más complejo, ya que ya no es una "solicitud simple". Aquí es donde entra en juego el concepto de **"preflight (solicitudes previas)"** en **CORS**.
+
+        **preflight (solicitudes previas)**
+
+        Para ciertos tipos de solicitudes que podrían modificar potencialmente los datos en el servidor (aquellas que usan métodos **HTTP como PUT, DELETE** o usan encabezados que no se incluyen automáticamente en cada solicitud), los navegadores primero enviarán una solicitud de "verificación previa" **preflight** antes de realizar la solicitud real. Esta solicitud de verificación previa es una solicitud **HTTP OPTIONS** y su propósito es verificar con el servidor si es seguro enviar la solicitud real.
+
+        La solicitud de verificación previa **preflight** incluye encabezados que describen el método **HTTP** y los **encabezados de la solicitud real**. Esto es lo que sucede a continuación:
+
+        1.- **Respuesta del servidor**: si el servidor admite la política **CORS** y la solicitud real, responde a la solicitud de verificación previa con encabezados que indican qué métodos y encabezados están permitidos. Esto puede incluir encabezados como **Access-Control-Allow-Methods** y **Access-Control-Allow-Headers**.
+
+        2.- **Decisión del navegador**: según la respuesta del servidor a la solicitud de verificación previa, el navegador decide si continuar con la solicitud real. Si la respuesta del servidor indica que la solicitud está permitida, el navegador la envía; De lo contrario, el navegador bloquea la solicitud y verás un error relacionado con **CORS**.
+
+        **Conclusion**
+
+        Ahora, con suerte, entiendes un poco más sobre **CORS**. Creo que lo más importante que debes entender es que todo esto es una política del navegador y tu servidor debe estar codificado para cumplirla. Está ahí para mantenerte seguro. Si usas Chrome, no deberías preocuparte tanto por hacer clic en los enlaces incorrectos (por supuesto, aún deberías preocuparte un poco :D). Sin embargo, esta no es una política infalible. Si usas un navegador de terceros que no cumple con los estándares, todo esto se echaría a perder. ¡Es por eso que uno debe tener cuidado con el software que usa!
