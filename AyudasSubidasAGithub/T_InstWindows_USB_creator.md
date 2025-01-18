@@ -3,6 +3,7 @@
   - [Tecnación Daez:👨‍💻 Informática - Crear USB Booteable de Windows 10 con Rufus | 2021 | ✅](https://www.youtube.com/watch?v=PFFj6SZaDEI)
     - Tener una USB de 8Gb mínimo
     - Tener archivo ISO o archivo de imagen de Windows 10 [Tecnación Daez:👨‍💻 Informática - Descargar Windows 10 ultima versión (Imagen ISO) | 2021 | ✅](https://www.youtube.com/watch?v=GHLoYw_6ias)
+      - Ver manual en [T_InstWindows](https://github.com/Byron2016/00_Documentacion_AyudasSubidasAGithub/blob/main/AyudasSubidasAGithub/T_InstWindows.md)
     - Ir a [Rufus](https://rufus.ie/es/)
     - Bajar programa existen dos versiones
       - Versiones
