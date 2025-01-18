@@ -1,16 +1,58 @@
 - **LAPTOP dv6-6180la + windows + 10 + drivers**
 
-  - PC portátil de entretenimiento HP Pavilion dv6-6180la
-  - Serial:
-    - 5CH14112HQ
-  - Product:
-    - A2U69LA#ABM
-  - CustModel:
-    - dv6-6180la
-  - Warranty:
-    - 1y1y0y
-  - PCID:
-    - 058E110000244710000620100
+  - **Características**
+
+    - PC portátil de entretenimiento HP Pavilion dv6-6180la
+    - Serial:
+      - 5CH14112HQ
+    - Product:
+      - A2U69LA#ABM
+    - CustModel:
+      - dv6-6180la
+    - Warranty:
+      - 1y1y0y
+    - PCID:
+
+      - 058E110000244710000620100
+
+    - **System Information (Presionar ESC y luego F1)**
+      - Notebook Model: HP Pavillion dv6 Notebook PC
+      - Product Number: A2U69LA#AEM
+      - Serial Number: 5CH14112HQ
+      - Warranty Start Date: 10/14/2011
+      - System board ID: 3388
+      - Product configuration ID: 058E110000244710000620100
+      - System Board CT Number: PBZAU04HT1H00N
+      - BIOS Version: F.1A
+      - Processor Type: Intel(R) Core(TM) i7-2630QM CPU @ 2.00GHz
+      - Processor Spedd: 2000 MHZ
+      - Total Memory: 12 GB
+      - Primary Battery SN: 04147 09/17/2011
+      - WLAN FCC ID: PD911230BNHU
+      - Bluetooth FCC ID:
+
+  - **Entrar al BIOS**
+    - Presionar ESC para que salga el siguente menú
+      - F1 System Information
+      - F2 System Diagnostic
+      - F9 Boot Device Options
+      - F10 BIOS Setup
+      - F11 System Recovery
+      - F12 Network BOOT
+
+- **Windows 10**
+
+  - Descargar Imagen
+    - [Tecnación Daez:👨‍💻 Informática - Descargar Windows 10 ultima versión (Imagen ISO) | 2021 | ✅](https://www.youtube.com/watch?v=GHLoYw_6ias)
+      - Ir a [Descargar Windows 10](https://www.microsoft.com/es-es/software-download/windows10)
+      - Seleccionar **Descargar ahora** en **Crear medios de instalación de Windows 10**
+        - MediaCreationTool_22H2.exe
+      - Pero eso no me sirve, en esta pantalla presionar click derecho y dar en "Inspeccionar"
+      - Presionar para ver como en **dispositivo móvil**
+      - Hacer click en recargar y cerrar el inspector de página
+      - Ahora en sección **Actualización de Windows 10 2023 | Versión 22H2**
+      - Seleccionar el idioma
+      - Seleccionar 64 o 32 bits.
 
 - **Unidades de arranque**
 

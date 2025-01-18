@@ -31,6 +31,7 @@
   - T_Express.md
   - T_Fuentes_001.md
   - T_IA.md
+  - T_InstWindows.md
   - T_InstWindows_USB_creator.md
   - T_Interesting_links.md
   - T_JS_Conceptos.md
