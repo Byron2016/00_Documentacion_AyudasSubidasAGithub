@@ -1,6 +1,7 @@
 - **RUFUS**
 
   - [Tecnación Daez:👨‍💻 Informática - Crear USB Booteable de Windows 10 con Rufus | 2021 | ✅](https://www.youtube.com/watch?v=PFFj6SZaDEI)
+
     - Tener una USB de 8Gb mínimo
     - Tener archivo ISO o archivo de imagen de Windows 10 [Tecnación Daez:👨‍💻 Informática - Descargar Windows 10 ultima versión (Imagen ISO) | 2021 | ✅](https://www.youtube.com/watch?v=GHLoYw_6ias)
       - Ver manual en [T_InstWindows](https://github.com/Byron2016/00_Documentacion_AyudasSubidasAGithub/blob/main/AyudasSubidasAGithub/T_InstWindows.md)
@@ -13,14 +14,18 @@
           - [Link descarga rufus-4.6p.exe](https://github.com/pbatard/rufus/releases/download/v4.6/rufus-4.6p.exe)
         - Usaremos la **Estándar**
     - **Uso**
+
       - Conectar memoria USB antes de ejecutar **rufus**
       - Dar doble click en el programa **rufus-4.6**
       - Responder SI a: ¿Quieres permitir que esta aplicación haga cambios en el dispositivo? Rufus
       - Responder SI a: Política de actualización de Rufus ¿Quieres permitir que Rufus busque actualizaciones en línea?
       - Seleccionar parámetros de configuración:
+
         - **Propiedades de la unidad**
+
           - En **Dispositivo** seleccionar la memoria USB
           - En **Elección de arranque** seleccionar
+
             - Disco o imagen ISO
             - Seleccionar la ubicación de la ISO (D:\YaPasadoASSD_verde\DelDownload_20240611\Iso/Win10_20220522_SpanishMx_x64_2.iso)
             - En **Opciones de imagen** dejar
@@ -42,13 +47,23 @@
                   - MBR aún es necesario por temas de compatibilidad con dispositivos de almacenamiento móviles y sistemas operativos antiguos que aún se están utilizando como Windows XP SP3 de 32 bits.
             - En **Sistema de destino**
               - UEFI (no CSM)
+            - En caso de producirse error, como fue el caso de la Pavilion Dv6 que se despliega la siguiente pantalla, se debe seleccionar
+
+              ![Error ejecutar instalación en Pavilion Dv6](../images/HpPavilionDv6_2011/CrearArranqueRufus.JPG)
+
+              - En **Esquema de partición**
+                - MBR
+              - En **Sistema de destino**
+                - BIOS (o UEFI-CSM)
+
         - **Opciones de formateo**
           - En **Etiqueta de volumen**
-            - Colocar el volumen que se quiere
+            - Colocar el volumen que se quiere "Win10_X64_22H2_SpaMX_250118_MBR_BIOS" / "Win10_X64_22H2_SpaMX_250118_GPT_UEFI"
           - En **Sistema de archivos**
             - Colocar NTFS
           - En **Tamaño del clúster**
             - Colocar la que esté por defecto
+
       - Presionar **Empezar**
         - Como en la USB se creará un sector de arranque que sería UEFI NTFS, nos pedirá que desactivemos **Secure Boot**
           - Esta es una opción que viene en las placas bases de UEFI:NTFS , si secure boot está activado impedirá la ejecución de cualquier software que no esté firmado o certificado.
