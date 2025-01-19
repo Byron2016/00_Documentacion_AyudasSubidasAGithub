@@ -36,6 +36,9 @@
       - Con **F10**
         - Colocar el drive USB en el equipo
         - Prender y presionar de manera repetitiva **F10**
+          - En **Boot Options** Existe una entrada **POST HotKey Delay (sec)**
+            - **POST hotkey delay** es una configuración del BIOS que controla que tiempo un usuario tiene para presionar la tecla de función para entrar a la utilidad de Setup cuando el computador arranca.
+              - [Que hace POST hotkey delay](https://h30434.www3.hp.com/t5/Notebook-Operating-System-and-Recovery/How-much-of-a-delay-in-seconds-should-I-set-up-Also-what-the/td-p/6271964)
         - Ir a **Boot Order** y colocar primero al USB.
         - Guardar y Salir/reboot.
       - Con **ESC** para que salga el siguente menú
