@@ -32,13 +32,22 @@
       - Bluetooth FCC ID:
 
   - **Entrar al BIOS**
-    - Presionar ESC para que salga el siguente menú
-      - F1 System Information
-      - F2 System Diagnostic
-      - F9 Boot Device Options
-      - F10 BIOS Setup
-      - F11 System Recovery
-      - F12 Network BOOT
+    - **LAPTOP dv6-6180la**
+      - Con **F10**
+        - Colocar el drive USB en el equipo
+        - Prender y presionar de manera repetitiva **F10**
+        - Ir a **Boot Order** y colocar primero al USB.
+        - Guardar y Salir/reboot.
+      - Con **ESC** para que salga el siguente menú
+        - Menu
+          - F1 System Information
+          - F2 System Diagnostic
+          - F9 Boot Device Options
+          - F10 BIOS Setup
+          - F11 System Recovery
+          - F12 Network BOOT
+        - Seleccionar **F10** para hacer lo que indica en Con **F10**
+        - Podría ser que se necesite **F9** para seleccionar el USB
 
 - **Windows 10**
 
