@@ -27,7 +27,7 @@
           - En **Elección de arranque** seleccionar
 
             - Disco o imagen ISO
-            - Seleccionar la ubicación de la ISO (D:\YaPasadoASSD_verde\DelDownload_20240611\Iso/Win10_20220522_SpanishMx_x64_2.iso)
+            - Seleccionar la ubicación de la ISO (D:\YaPasadoASSD_verde\DelDownload_20240611\Iso_20250118/Win10_20220522_SpanishMx_x64_2.iso)
             - En **Opciones de imagen** dejar
               - Instalación de Windows estándar
             - En **Esquema de partición** hay que tener un poco de cuidado
