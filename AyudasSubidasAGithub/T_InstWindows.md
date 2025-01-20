@@ -55,6 +55,7 @@
 - **Windows 10**
 
   - Descargar Imagen
+
     - [Tecnación Daez:👨‍💻 Informática - Descargar Windows 10 ultima versión (Imagen ISO) | 2021 | ✅](https://www.youtube.com/watch?v=GHLoYw_6ias)
       - Ir a [Descargar Windows 10](https://www.microsoft.com/es-es/software-download/windows10)
       - Seleccionar **Descargar ahora** en **Crear medios de instalación de Windows 10**
@@ -65,6 +66,25 @@
       - Ahora en sección **Actualización de Windows 10 2023 | Versión 22H2**
       - Seleccionar el idioma
       - Seleccionar 64 o 32 bits.
+
+  - [MovilAndroide: Instala Windows 11/10 en un disco duro sin usar Pendrives ni Discos de Instalación](https://www.youtube.com/watch?v=HMhaejCWuM4)
+    - [MovilAndroide: Instala Windows 11/10 en un disco duro sin usar Pendrives ni Discos de Instalación](https://movilandroide.com/instalar-windows-11-10-sin-usar-pendrives-ni-discos-de-instalacion/)
+      - **Requisitos**
+        - Un PC con Windows instalado
+        - El disco duro donde vayamos a instalar Windows debe estar conectado a la placa base del PC mediante un cable serial ATA
+        - El archivo .ISO de instalación
+        - Bajar programa [WinToHDD](https://www.easyuefi.com/wintohdd/index.html)
+      - **Proceso**
+        - Ejecutar **WinToHDD** y seleccionar **Instalación Nueva**
+        - Seleccionar el **.ISO** y elegir la versión
+        - **Unidad de destino** ponemos el nuevo disco
+        - Selected device needs to be formatted, plase select the partition schema
+          - MBR para BIOS <----- 📌
+          - GPT para UEFI
+          - Conservar el esquema de partición existente
+        - La unidad se formatea y se crea una pequeña partición de sistema y una de arranque y formateamos las dos.
+        - Al finalizar se tendrá windows instalado pero sin configurar. (En carpeta Usuarios no aparece ni siquiera el usuario)
+        - Cambiar el Disco al nuevo equipo para que al prenderlo se empiece a configurar.
 
 - **Unidades de arranque**
 
