@@ -61,6 +61,7 @@
   - T_UML.md
   - T_VSC_Config.md
   - T_VSC_Plugins.md
+  - Z_ToDoS.md
 
 - Diferentes
   - T_Ortografia.md

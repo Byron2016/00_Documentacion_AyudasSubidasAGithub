@@ -1,0 +1,5 @@
+- TODO:
+  - Del Disco Origina he actualizado 00_Documentación y he subido a github
+    - Habría que hacer gl git pull en donde se instale ya que no está en el verde.
+- OK
+  -
