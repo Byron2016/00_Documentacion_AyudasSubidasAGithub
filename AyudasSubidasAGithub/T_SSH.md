@@ -24,6 +24,8 @@
           - Agregar clave privada al ssh-agent
           - <code>ssh-add ~/.ssh/id_ed25519</code>
             - Solicita el passphrase que se puso antes
+            - En caso de salir el siguiente mensaje de error **Could not open a connection to your authentication agent.**
+              - Usar: <code>eval "$(ssh-agent -s)"</code>
           - Copiar clave pública a memoria
             - <code>clip < ~/.ssh/id_ed25519.pub</code>
             - Si no funciona abrir el .pub manualmente.
