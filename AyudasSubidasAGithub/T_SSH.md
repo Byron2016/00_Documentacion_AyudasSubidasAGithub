@@ -34,6 +34,9 @@
         - Presionar el botón new SSH key
         - Poner nombre referente al dispositivo que se arega.
         - En key copiar la llave pública que se copió antes.
+    - Para hacer PUSH deben haber sido configurados estos parámetros
+      - <code>git config --global user.name "Xxxxx"</code>
+      - <code>git config --global user.email "yyyy@yahoo.com"</code>
 
   - [joanmedia: Generar Clave SSH GIT WINDOWS | Como Configurar SSH Key en github | Que ES SSH](https://www.youtube.com/watch?v=g0ZV-neSM7E)
 
