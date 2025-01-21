@@ -189,3 +189,20 @@
   - **Drivers - HP Pavilion dv6-6180la**
 
     ![HpPavilionDv6_2011](../images/HpPavilionDv6_2011/HpPavilionDv6_2011_AdmDispositivos.jpg)
+
+
+- Para el tema de drivers 20250121
+  - [Crear una lista con todos los controladores del sistema](https://www.softzone.es/windows/como-se-hace/ver-controlado)
+    -  cmd
+      - <code>driverquery</code>
+    - PowerShell
+      - <code>Get-WmiObject Win32_PnpSignedDriver| select DeviceName, Manufacturer, DriverVersion</code>
+    - Otros Programas
+      - InstalledDriverList 
+      - IObit Driver Booster
+
+- hacker Albacore (https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
+	- OEMDRIVERS
+	- %SystemRoot%\System32\DriverStore
+	- En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
+	
