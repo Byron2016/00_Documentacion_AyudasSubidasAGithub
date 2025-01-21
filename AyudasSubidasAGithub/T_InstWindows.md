@@ -200,9 +200,21 @@
     - Otros Programas
       - InstalledDriverList 
       - IObit Driver Booster
+    - **Crear copia y restaurar con Dism**
+      - Copia
+        - <code>dism /online /export-driver /destination:C:/Copia-seguridad-drivers_conDism</code>
+      - Restaurar
+        - <code>dism /online /Add-Driver /Driver: C:/Copia-seguridad-drivers_conDism /Recurse</code> 
 
-- hacker Albacore (https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
-	- OEMDRIVERS
-	- %SystemRoot%\System32\DriverStore
-	- En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
+  - [Windows 10 tendrá carpeta OEMDRIVER para controladores de terceros](https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
+    - hacker Albacore ()
+	    - OEMDRIVERS
+	    - %SystemRoot%\System32\DriverStore
+	    - En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
+     
+  - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://www.youtube.com/watch?v=DombCEIloag)
+    - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://tutosvideos.com/4089/)
+      - windows/System32/DriverStore Los controladores estarán en carpeta FileRepository
+      - [Driver Genius: DG_Setup](https://www.mediafire.com/file/8vcsnxh1ob77sq1/DG_Setup.exe/file)
+        - [Driver Genius: DG_Setup](https://drivergenius.es/))
 	
