@@ -190,31 +190,30 @@
 
     ![HpPavilionDv6_2011](../images/HpPavilionDv6_2011/HpPavilionDv6_2011_AdmDispositivos.jpg)
 
-
 - Para el tema de drivers 20250121
+
   - [Crear una lista con todos los controladores del sistema](https://www.softzone.es/windows/como-se-hace/ver-controlado)
-    -  cmd
-      - <code>driverquery</code>
+
+    - cmd
+    - <code>driverquery</code>
     - PowerShell
-      - <code>Get-WmiObject Win32_PnpSignedDriver| select DeviceName, Manufacturer, DriverVersion</code>
+      - <code>Get-WmiObject Win32_PnpSignedDriver| select DeviceName, Manufacturer, DriverVersion Get-WmiObject Win32_PnPSignedDriver| select DeviceName, Manufacturer, DriverVersion</code>
     - Otros Programas
-      - InstalledDriverList 
+      - InstalledDriverList
       - IObit Driver Booster
-    - **Crear copia y restaurar con Dism**
+    - **Crear copia y restaurar con Dism** TODO Pendiente poner de donde se saco.
       - Copia
         - <code>dism /online /export-driver /destination:C:/Copia-seguridad-drivers_conDism</code>
       - Restaurar
-        - <code>dism /online /Add-Driver /Driver: C:/Copia-seguridad-drivers_conDism /Recurse</code> 
+        - <code>dism /online /Add-Driver /Driver: C:/Copia-seguridad-drivers_conDism /Recurse</code>
 
   - [Windows 10 tendrá carpeta OEMDRIVER para controladores de terceros](https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
     - hacker Albacore ()
-	    - OEMDRIVERS
-	    - %SystemRoot%\System32\DriverStore
-	    - En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
-     
+      - OEMDRIVERS
+      - %SystemRoot%\System32\DriverStore
+      - En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
   - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://www.youtube.com/watch?v=DombCEIloag)
     - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://tutosvideos.com/4089/)
       - windows/System32/DriverStore Los controladores estarán en carpeta FileRepository
       - [Driver Genius: DG_Setup](https://www.mediafire.com/file/8vcsnxh1ob77sq1/DG_Setup.exe/file)
         - [Driver Genius: DG_Setup](https://drivergenius.es/))
-	
