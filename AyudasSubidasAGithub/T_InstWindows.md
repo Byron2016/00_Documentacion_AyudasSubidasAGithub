@@ -207,6 +207,9 @@
           - <code>dism /online /export-driver /destination:C:/Copia-seguridad-drivers_conDism</code>
         - Restaurar
           - <code>dism /online /Add-Driver /Driver: C:/Copia-seguridad-drivers_conDism /Recurse</code>
+          - <code>dism /online /Add-Driver /Driver: D:\Borrar_20250121\b00_Documentacion_AyudasSubidasAGithub\z_Respaldos\Copia-seguridad-drivers_conDism /Recurse</code>
+          - <code>dism /online /Add-Driver /Driver:D:\Borrar_20250121\b00_Documentacion_AyudasSubidasAGithub\z_Respaldos\Copia-seguridad-drivers_conDism /Recurse</code>
+          
 
   - [Windows 10 tendrá carpeta OEMDRIVER para controladores de terceros](https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
     - hacker Albacore ()
