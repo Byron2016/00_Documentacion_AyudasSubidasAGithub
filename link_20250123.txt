@@ -176,3 +176,14 @@ se baja: "amd-amd-radeon-hd-7400m-series-outbyte-driver-updater.exe"
 				- C:\Program Files\AMD
 			- Pantalla negra solución 
 				- Entrar a opciones de windos / opciones de reinicio / modo seguro opciones de red
+					- Una vez salga la pantalla azul 
+						- Opciones avanzadas
+						- Solucionar problemas
+						- Opciones avanzadas
+						- Configuración de inicio
+						- Reiniciar 
+						- Seleccionar Modo Seguro soporte a red. 
+						
+					- Reparación de inicio 
+						- [cual es la contraseña que pide en la reparación de inicio, en el apartado de modo seguro](https://answers.microsoft.com/es-es/windows/forum/all/cual-es-la-contrase%C3%B1a-que-pide-en-la/8944fe60-6c27-4baa-aa23-2881c68da1f7)
+							- 
