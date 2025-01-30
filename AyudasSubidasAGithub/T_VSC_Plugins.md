@@ -80,7 +80,7 @@
             "workbench.editor.languageDetection" : true, //Detectar lenguaje
             "workbench.iconTheme": "material-icon-theme", //hay que instalar material icon theme
             "files.autoSave": "afterDelay",
-            "editor.fontFamily": "\"Cascadia Code\", Arial",
+            "editor.fontFamily": "\"Cascadia Code\",Consolas, \"Courier new\", monospace, Arial",
             "editor.fontLigatures": true,
             "editor.guides.bracketPairs":true , //Brackets
             "editor.bracketPairColorization.enabled": true, //Brackets
@@ -149,9 +149,9 @@
         - Rganga Vadheneni
         - Lightweight Rest API Client for VS Code
         - Es como tener un Insomnia o Postman.
-      - **Runjs** 1:07:02
+      - **Runjs** (L1 1:07:02) (ojo es pagado)
         - https://runjs.app/
-        -
+        - The JavaScript playground for your desktop
       - ✔**Version Lens** L1 25.00
         - pflannery
         - Shows the latest version for each package using code lens
@@ -204,34 +204,38 @@
     - **Emoji Snippets**
       - Devzstudio
       - Insert emoji to your Vscode files
-    - **Error Lens**
+    - ✔**Error Lens**
       - Alexander
       - Improve highlighting of errors, warnings and other language diagnostics
     - **ES7+ React/Redux/React-Native snippets**
       - dsznajder
       - Extensions for React, React-Native and Redux in JS/TS with ES7+ syntax. Customizable. Built-in i
-    - **ESLint**
+    - ✔**ESLint**
       - Microsoft
       - Integrates ESLint JavaScript into VS Code.
-    - **GitHub Copilot**
+    - ✔**GitHub Copilot**
       - GitHub
       - Your AI pair programmer
     - **GitHub Copilot Chat**
       - GitHub
       - AI chat features powered by Copilot
-    - **GitLens — Git supercharged**
+    - ✔**GitLens — Git supercharged**
       - GitKraken
       - Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens, seamlessly navigate and explore Git repositories, gain valuable insights via rich visualizations and powerful comparison commands, and so much more
+    - **Iconos**
+      - ✔**Material Icon Theme**
+        - Philipp Kief
+        - Material Design Icons for Visual Studio Code 
     - **Image preview**
       - Kiss Tamás
       - Shows image preview in the gutter and on hover
     - **indent-rainbow**
       - oderwat
       - Makes indentation easier to read
-    - **Live Server**
+    - ✔**Live Server**
       - Ritwick Dey
       - Launch a development local Server with live reload feature for static & dynamic pages
-    - **Live Share**
+    - ✔**Live Share**
       - Microsoft
       - Real-time collaborative development from the comfort of your 
     - **Markdown All in One**
@@ -240,9 +244,6 @@
     - **Markdown Emoji**
       - Matt Bierner
       - Adds emoji syntax support to VS Code's built-in markdown preview and markdown cells in no
-    - **Material Icon Theme**
-      - Philipp Kief
-      - Material Design Icons for Visual Studio Code 
     - **npm Intellisense**
       - Christian Kohler
       - Visual Studio Code plugin that autocompletes npm modules in import statements
@@ -270,19 +271,19 @@
     - **styled-jsx**
       - niceSprite
       - styled-jsx syntax highlight and code intellisense
-    - **Tailwind CSS IntelliSense**
+    - ✔**Tailwind CSS IntelliSense**
       - Tailwind Labs
       - Intelligent Tailwind CSS tooling for VS Code
     - **Text Pastry**
       - jkjustjoshing
       - Extend the power of multiple selections in VS Code. Modify selections, insert numeric sequences, incremental numbers, generate uuids, date ranges, insert continuously from a word list and more.
-    - **Thunder Client**
+    - ✔**Thunder Client**
       - Thunder Client
       - Lightweight Rest API Client for VS Code
     - **Todo Tree**
       - Gruntfuggly
       - Show TODO, FIXME, etc. comment tags in a tree view
-    - **Version Lens**
+    - ✔**Version Lens**
       - pflannery
       - Shows the latest version for each package using code lens
       - 
