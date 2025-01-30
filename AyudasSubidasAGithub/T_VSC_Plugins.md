@@ -55,7 +55,14 @@
         
       - **Abrir settings.json** (L1 32:05)
         - Crtl + Shif + P
-        - Open Settings.json
+        - Open Settings.json (buscar settings.json y escoger user settings.json)
+          - Existen 
+            - Preferences: Open User Settings (JSON)
+              - Path: (C:\Users\Byron\AppData\Roaming\Code\User\settings.json)
+            - Preferences: Open Default Settings (JSON)
+              - Path: read-only version of the defaultSettings.json
+            - Preferences: Open Workspace Settings (JSON)
+              - Path: .vscode
         - Abrir un editor cree un archivo nuevo sin título.
           - "workbench.startupEditor":"newUntilLedFile"
         - brackets líneas colores (L1 36:00)
@@ -66,33 +73,32 @@
           - "workbench.editor.languageDetection" : true
 
         ```json
-			  	{
-			  		"workbench.colorTheme": "One Dark Pro Darker",
-            "workbench.startupEditor":"newUntilLedFile", //al abrir editor crea archivo nuevo
+
+          {
+            "workbench.colorTheme": "One Dark Pro Darker",
+            "workbench.startupEditor":"newUntitledFile", //al abrir editor crea archivo nuevo
             "workbench.editor.languageDetection" : true, //Detectar lenguaje
-			  		"files.autoSave": "afterDelay",
-			  		"editor.fontFamily": "\"Cascadia Code\", Arial",
-			  		"editor.fontLigatures": true,
-            "editor.guides.barcketPairs": true, //Brackets
-            "editor.barcketPairsColorizations.enable": true, //Brackets
-			  		"gitlents.hovers.currentLine.over": "line",
-			  		"gitlents.currentLine.enable": false,
-			  		"windows.titleBarStyle": "custom",
+            "workbench.iconTheme": "material-icon-theme", //hay que instalar material icon theme
+            "files.autoSave": "afterDelay",
+            "editor.fontFamily": "\"Cascadia Code\", Arial",
+            "editor.fontLigatures": true,
+            "editor.guides.bracketPairs":true , //Brackets
+            "editor.bracketPairColorization.enabled": true, //Brackets
+            "gitlens.hovers.currentLine.over": "line",
+            "gitlens.currentLine.enabled": false,
+            "window.titleBarStyle": "custom",
             "oneDarkPro.bold": true,   //tema
             "oneDarkPro.italic": true, //tema
             "oneDarkPro.vivid": true,  //tema
-            "workbech.sidebar.location":"left", //poner a que lado se ve el sidebar
+            "workbench.sideBar.location":"left", //poner a que lado se ve el sidebar
             "telemetry.telemetryLevel": "off", //no telemetría
             "editor.codeActionsOnSave": {
-              "source.fixAll.eslint": true //para eslint al guardar arregle
-
-            }
-			  	}
+              "source.fixAll.eslint": "always" //para eslint al guardar arregle (ojo midu puso true)
+            },
+          }
 			  ```
 
         - **Configuración de Prettier** NO hacerlo en el editor, hacerlo en un fichero aparte. 43:30 
-
-
 
     - **Plugins**
       - *✔ sigfinica que en otros se vuelve a poner el mismo plugins.*
@@ -111,7 +117,7 @@
       - ✔**GitLens — Git supercharged** L1
         - GitKraken
         - Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and Co
-        - *Ojo al instalar te permite escoger que instalar*.
+        - *Ojo al instalar te permite escoger que instalar se presiona en la rueda dentada y se escoge openSettings*.
       - **Iconos** L1 43.39
         - file-icons (simpático)
         - vscode-icons
