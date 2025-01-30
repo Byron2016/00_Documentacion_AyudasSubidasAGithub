@@ -268,6 +268,10 @@
     - **React Create Component**
       - Javier Gutierrez
       - Generate your components quickly, with multiple easily customizable templates. 🚀
+    - **Rest Client**
+      - Huachao Mao
+      - REST Client for Visual Studio Code
+      - *requiere el api.http*
     - **styled-jsx**
       - niceSprite
       - styled-jsx syntax highlight and code intellisense
