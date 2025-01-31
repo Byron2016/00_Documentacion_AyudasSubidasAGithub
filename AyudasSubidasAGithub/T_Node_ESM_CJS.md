@@ -20,8 +20,8 @@
 
           - module.export
           - require
-          - \_\_dirname
-          - \_\_filename
+          - \_\_dirname (__dirname)
+          - \_\_filename (__filename)
           - Import directo de JSON
 
         - **Usar en su lugar**
@@ -165,6 +165,32 @@
                     import { readJSON } from "./utils.js";
                     const users = readJSON("./users.json");
                     ```
+
+
+        - **Resolver problema con __dirname en ESM**
+          - [How to fix error "__dirname is not defined in ES module scope" in Node.js](https://byby.dev/node-dirname-not-defined)
+            
+            - Using *import.meta.url* and *path.dirname*:
+
+              ```javascript
+                import path from 'path';
+                import { fileURLToPath } from 'url';
+
+                const __filename = fileURLToPath(import.meta.url);
+                const __dirname = path.dirname(__filename);
+              ```
+
+
+            - Using **URL* constructor:
+
+              ```javascript
+                import { URL } from 'url';
+                
+                const __filename = new URL('', import.meta.url).pathname;
+                const __dirname = new URL('.', import.meta.url).pathname;
+              ```
+
+
 
       - **CJS**
 
