@@ -205,4 +205,23 @@
       app.listen(PORT, () => {
           console.log(`Server is running on http://localhost:${PORT}`);
       });
-    ```
+    ```  
+- *Express no lee los datos enviados por el formulario*
+  - [](https://stackoverflow.com/questions/24543847/req-body-empty-on-posts#answer-24557561)
+    - In Postman of the 3 options available for content type select "*X-www-form-urlencoded*" and it should work.
+    Also to get rid of error message replace:
+
+    <code>app.use(bodyParser.urlencoded())</code>
+    With:
+    <code>app.use(bodyParser.urlencoded({extended: true}));</code>
+
+
+    [See](https://github.com/expressjs/body-parser)
+
+    The 'body-parser' middleware only handles JSON and urlencoded data, not multipart
+
+    As @SujeetAgrahari mentioned, body-parser is now inbuilt with express.js.
+
+    Use <code>app.use(express.json());</code> to implement it in recent versions for JSON bodies. For URL encoded bodies (the kind produced by HTTP form POSTs) <code>use app.use(express.urlencoded());</code>
+
+    - Ejemplo en *"057_refreshToken\rt_001_tuto"*
