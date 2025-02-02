@@ -156,6 +156,7 @@
       - **Acercamiento 2**
     
         ```javascript
+          // app.use(express.json()) // hace todo lo de abajo.
           app.use((res,req, next) => {
             if (req.method !== "POST") return next();
             if (req.headers["content-type"] !== "application/json") return next();
