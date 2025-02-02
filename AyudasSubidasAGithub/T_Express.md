@@ -1,4 +1,4 @@
-- express.urlencoded
+- **express.urlencoded**
 
   - [¿Qué podemos hacer con el express.urlencoded?](https://keepcoding.io/blog/que-podemos-hacer-con-el-express-urlencoded/)
 
@@ -16,14 +16,14 @@
       // extended: true --> para indicar que también se analizarán objetos anidados
       ```
 
-    - Observaciones
+    - **Observaciones**
 
       - Si no se lo pone, por ejemplo en la ruta que recibe el **post** al tratar de hacer un <code>console.log(req.body);</code> me indicará que es **undefined**
 
     - TODO
       - Ver como se lo hace sin esa utilidad.
 
-- Variables globales (express global variables)
+- **Variables globales (express global variables)**
 
   - [How to Create Global Variables Accessible in all Views using Express/NodeJS ?](https://www.geeksforgeeks.org/how-to-create-global-variables-accessible-in-all-views-using-express-nodejs/)
     - Indice
@@ -34,16 +34,16 @@
     - En minuto 1.58.00
     - En minuto 3.22.45
 
-- Seguridad
+- **Seguridad**
 
   - Express desabilitar header
     - Cuando se usa <code>app.use(cors())</code> este agrega de manera automática un header 'x-powered-by' por lo que por seguridad para no informar que usamos express hay que dabilitarlo con <code>app.disable('x-powered-by')</code>
 
-- cors
+- **cors**
 
   - https://github.com/midudev/curso-node-js/blob/main/clase-4/middlewares/cors.js
 
-    - Crear un archivo **middlewares/cors.js**
+    - **Crear un archivo *middlewares/cors.js***
 
       ```javascript
       import cors from "cors";
@@ -69,7 +69,7 @@
         });
       ```
 
-    - Agregar **middlewares/cors.js** en **index.js**
+    - **Agregar *middlewares/cors.js* en *index.js***
 
       ```javascript
       import { corsMiddleware } from "./middlewares/cors.js";
@@ -84,8 +84,109 @@
     - (A_TODO) tried to implement manually with two simple examples by using Synchronizer Token Pattern and Double Submit Cookie techniques.
       - [CSRF Prevention on Node.js Express without csurf](https://medium.com/@brakdemir/csrf-prevention-on-node-js-express-without-csurf-da5d9e6272ad)
 
-- Unir los **chunks** en express
-  - formas
+- **Unir los *chunks* en express**
+  - [midulive (54.00): Desarrollando una API con Express desde cero](https://www.youtube.com/watch?v=YmZE1HXjpd4&t=1582s)
+    - **Sin express** 
+    
+      ```javascript
+        let body="";
+        res.on("data", chunk => {
+          body += chunk.toString(); // Este chunk es un buffer pq va recibiendo binarios, por eso lo transformamos a string
+          /*
+          ### chunk 1 
+          {
+          "na 
+              me": "ditt
+          ### chunk 2
+                        o",
+          ### chunk 3
+          "type": "no
+          ### chunk 4
+                      rmal",
+          ### chunk 5
+          "moves": [
+          ### chunk 6
+              "transform"
+          ### chunk 7
+          ]
+          }
+          */
+
+        }
+        res.on("end", chunk => {
+          // nodejs está basado en eventos.
+          const data = JSON.parse(body);
+          // llamar a una base de datos para guardar la info 
+          res.writeHead(201, {"Content-Type":"application/json; charset=utf-8" })
+          res.end(JSON.stringify(data));
+        })
+      ```    
+    - **Con express** 
+      - Express en la mayoría de las veces detectará el content type correcto si tu no se lo pones.
+      - **Acercamiento 1**
+    
+        ```javascript
+          app.get("/", (res,req) => {
+            res.send("<h1>Mi página</h1>")
+          })
+          
+          app.post("/pokemon", (res,req) => {
+            let body ="";
+            // escuchar el evento data
+            res.on("data", chunk => {
+              body += chunk.toString(); // Este chunk es un buffer pq va recibiendo binarios, por eso lo transformamos a string
+
+            })
+            res.on("end", chunk => {
+              const data = JSON.parse(body);
+              // res.writeHead(201, {"Content-Type":"application/json; charset=utf-8" })
+              // res.end(JSON.stringify(data));
+              res.status(201).json(data)
+            })
+          })
+
+          // tratar el 404
+          // debe ser la última 
+          app.use((req, res) => {
+            res.status(404).send("<h1>404</h1>")
+          })
+        ```
+      
+      
+      - **Acercamiento 2**
+    
+        ```javascript
+          app.use((res,req, next) => {
+            if (req.method !== "POST") return next();
+            if (req.headers["content-type"] !== "application/json") return next();
+            // solo llegan request que son POST y que tienen content-type="application/json"
+            let body ="";
+            // escuchar el evento data
+            res.on("data", chunk => {
+              body += chunk.toString(); // Este chunk es un buffer pq va recibiendo binarios, por eso lo transformamos a string
+
+            })
+            res.on("end", chunk => {
+              const data = JSON.parse(body);
+              req.body = data;
+              next();
+            })
+          })
+          
+          app.post("/pokemon", (res,req) => {
+            res.status(201).json(req.body);
+          })
+
+          // tratar el 404
+          // debe ser la última 
+          app.use((req, res) => {
+            res.status(404).send("<h1>404</h1>")
+          })
+        ```
+  
+  
+  
+  - **formas**
     - [Express JS— body-parser and why may not need it](https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c)
   
     ```javascript
@@ -108,7 +209,7 @@
       // And you need catch the error when parse the string to json and need to judge the Content-type of the Req.
     ```
 
-    otra forma 
+    *otra forma* 
 
     ```javascript
       app.use("/", (req, res, next)=>{
@@ -127,7 +228,7 @@
           console.log(body);
       });
     ```
-- Invocar un  **HTML** desde express
+- **Invocar un  *HTML* desde express**
   - [How to handle form data in Express ?](https://www.geeksforgeeks.org/how-to-handle-form-data-in-express/)
 
     ```html
