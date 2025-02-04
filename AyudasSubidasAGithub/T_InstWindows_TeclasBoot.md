@@ -1,3 +1,5 @@
+- 
+
 - **TECLAS PARA ACCDER AL BOOT MENU PARA LAPTOPS**
   - **Acer**
     - Aspire One zg5, zg8
@@ -84,11 +86,11 @@
       - F12 
 
 - **TECLAS PARA ACCEDER AL BOOT MENU EN PC ESCRITORIO**
-  - MSI: Al encender pulsar tecla  F11
-  - Foxconn:  Al encender pulsar tecla   F7
-  - Gigabyte: Al encender pulsar tecla   F12
-  - ASUS: Al encender pulsar tecla   F8
-  - EVGA: Al encender pulsar tecla   F7
-  - BIOSTAR: Al encender pulsar tecla   F9
-  - ASRock: Al encender pulsar tecla   F11
-  - Zotac: Al encender pulsar tecla   Esc
+  - MSI:      Al encender pulsar tecla   F11
+	- Foxconn:  Al encender pulsar tecla   F7
+	- Gigabyte: Al encender pulsar tecla   F12
+	- ASUS:     Al encender pulsar tecla   F8
+	- EVGA:     Al encender pulsar tecla   F7
+	- BIOSTAR:  Al encender pulsar tecla   F9
+	- ASRock:   Al encender pulsar tecla   F11
+	- Zotac:    Al encender pulsar tecla   Esc
