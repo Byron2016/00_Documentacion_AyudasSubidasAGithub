@@ -1,0 +1,94 @@
+- **TECLAS PARA ACCDER AL BOOT MENU PARA LAPTOPS**
+  - **Acer**
+    - Aspire One zg5, zg8
+      - F12
+    - Aspire Timeline
+      - F12
+    - Aspire v3, v5, v7
+      - F12 (Es necesario activarlo desde el BIOS)
+  - **Asus**
+    - VivoBook f200ca, f202e, q200e, s200e, s400ca, s500ca, u38n, v500ca, v550ca, v551, x200ca, x202e, x550ca, z202e
+      - Esc
+    - N550JV, N750JV, N550LF, Rog g750jh, Rog g750jw, Rog g750jx
+      - Esc (Deshabilitar Fast Boot y Secure Boot)
+    - Zenbook Infinity ux301, Infinity ux301la, Prime ux31a, Prime ux32vd, R509C, Taichi 21, Touch u500vz, Transformer Book TX300
+      - Esc (Deshabilitar Fast Boot y Secure Boot)
+    - k25f, k35e, k34u, k35u, k43u, k46cb, k52f, k53e, k55a, k60ij, k70ab, k72f, k73e, k73s, k84l, k93sm, k93sv, k95vb, k501, k601, R503C, x32a, x35u, x54c, x61g, x64c, x64v, x75a, x83v, x83vb, x90, x93sv, x95gl, x101ch, x102ba, x200ca, x202e, x301a, x401a, x401u, x501a, x502c, x750ja
+      - F8
+    - Eee PC 1015, 1025c
+      - Esc
+  - **Dell**
+    - Inspiron 11 3000 series touch, 14z Ultrabook, 14 7000 series touch, 15z Ultrabook touch, 15 7000 series touch, 17 7000 series touch
+      - F12
+    - Inspiron 14R non-touch, 15 non-touch, 15R non-touch, 17 non-touch, 17R non-touch
+      - F12
+    - Latitude c400, c600, c640, d610, d620, d630, d830, e5520, e6320, e6400, e6410, e6420, e6430, e6500, e6520, 6430u Ultrabook, x300
+      - F12
+    - Precision m3800, m4400, m4700, m4800, m6500, m6600, m6700, m6800
+      - F12
+    - Alienware 14, Alienware 17, Alienware 18, XPS 11 2-in-1, XPS 12 2-in-1, XPS 13, XPS 14 Ultrabook, XPS 15 Touch
+      - F12
+  - **Gateway**
+    - NE56R
+      - F12
+  - **HP**
+    - 2000
+      - Esc (Opción F9)
+    - Pavilion g4
+      - Esc
+    - ENVY x2, m4, m4-1015dx, m4-1115dx, sleekbook m6, m6-1105dx, m6-1205dx, m6-k015dx, m6-k025dx, touchsmart m7
+      - Esc (Opción F9)
+    - Envy, dv6 and dv7 PC, dv9700, Spectre 14, Spectre 13
+      - Esc (Opción F9)
+    - 2000 - 2a20nr, 2a53ca, 2b16nr, 2b89wm, 2c29wm, 2d29wm
+      - Esc (Opción F9)
+    - Probook 4520s, 4525s, 4540s, 4545s, 5220m, 5310m, 5330m, 5660b, 5670b
+      - Esc 
+  - **Lenovo**
+    - No especificado
+      - Esc 
+    - ThinkPad edge, e431, e531, e545, helix, l440, l540, s431, t440s, t540p, twist, w510, w520, w530, w540, x140, x220, x230, x240, X1 carbon
+      - F12
+    - IdeaPad s300, u110, u310 Touch, u410, u510, y500, y510, yoga 11, yoga 13, z500
+      - Novo button (Cerca del botón de encendido)
+    - IdeaPad P500
+      - F12 o Fn+F11
+    - IdeaPad S10-3
+      - F12
+    - g460, g470, g475, g480, g485
+      - F12 
+  - **Samsung**
+    - NC10
+      - Esc 
+    - np300e5c, np300e5e, np350v5c, np355v5c, np365e5c, np550p5c
+      - Esc 
+    - Series 5 Ultra, Series 7 Chronos, Series 9 Ultrabook
+      - Esc (Deshabilitar Fast Boot en el BIOS)
+    - Ativ Book 2, 8, 9
+      - F2 (Deshabilitar Fast Boot en el BIOS) 
+  - **Sony**
+    - VAIO, PCG, VGN
+      - F11 
+    - VGN
+      - Esc, F10 
+  - **Toshiba**
+    - Kira, Kirabook 13, Ultrabook
+      - F12 
+    - Qosmio g30, g35, g40, g50
+      - F12 
+    - Qosmio x70, x75, x500, x505, x870, x875, x880
+      - F12 
+    - Protege, Satellite, Tecra
+      - F12 
+    - Equium
+      - F12 
+
+- **TECLAS PARA ACCEDER AL BOOT MENU EN PC ESCRITORIO**
+  - MSI: Al encender pulsar tecla  F11
+  - Foxconn:  Al encender pulsar tecla   F7
+  - Gigabyte: Al encender pulsar tecla   F12
+  - ASUS: Al encender pulsar tecla   F8
+  - EVGA: Al encender pulsar tecla   F7
+  - BIOSTAR: Al encender pulsar tecla   F9
+  - ASRock: Al encender pulsar tecla   F11
+  - Zotac: Al encender pulsar tecla   Esc
