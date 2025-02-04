@@ -189,3 +189,64 @@
   - **Drivers - HP Pavilion dv6-6180la**
 
     ![HpPavilionDv6_2011](../images/HpPavilionDv6_2011/HpPavilionDv6_2011_AdmDispositivos.jpg)
+
+- Para el tema de drivers 20250121
+
+  - [Crear una lista con todos los controladores del sistema](https://www.softzone.es/windows/como-se-hace/ver-controlado)
+
+    - cmd
+    - <code>driverquery</code>
+    - PowerShell
+      - <code>Get-WmiObject Win32_PnpSignedDriver| select DeviceName, Manufacturer, DriverVersion Get-WmiObject Win32_PnPSignedDriver| select DeviceName, Manufacturer, DriverVersion</code>
+    - Otros Programas
+      - InstalledDriverList
+      - IObit Driver Booster
+    - **Crear copia y restaurar con Dism** 
+      - [Utilizar CMD para copiar y restaurar drivers de Windows]https://www.softzone.es/windows/como-se-hace/truco-cmd-ver-guardar-drivers/)
+        - Copia
+          - <code>dism /online /export-driver /destination:C:/Copia-seguridad-drivers_conDism</code>
+            - [export-driver](https://learn.microsoft.com/es-es/windows-hardware/manufacture/desktop/dism-driver-servicing-command-line-options-s14?view=windows-11#export-driver)
+        - Restaurar
+          - <code>dism /online /Add-Driver /Driver: C:/Copia-seguridad-drivers_conDism /Recurse</code>
+            - [add-driver](https://learn.microsoft.com/es-es/windows-hardware/manufacture/desktop/dism-driver-servicing-command-line-options-s14?view=windows-11#add-driver)
+          - <code>dism /online /Add-Driver /Driver: D:\Borrar_20250121\b00_Documentacion_AyudasSubidasAGithub\z_Respaldos\Copia-seguridad-drivers_conDism /Recurse</code>
+          - <code>dism /online /Add-Driver /Driver:D:\Borrar_20250121\b00_Documentacion_AyudasSubidasAGithub\z_Respaldos\Copia-seguridad-drivers_conDism /Recurse</code>
+          
+          - La herramienta DISM (Deployment Image Servicing and Management) con el comando **DISM /Cleanup-Image** analiza y repara la imagen de Windows
+            - dism /Online /Cleanup-Image /AnalyzeComponentStore (https://www.youtube.com/watch?v=c95a5HweNr0)
+
+
+  - [Windows 10 tendrá carpeta OEMDRIVER para controladores de terceros](https://www.muycomputer.com/2021/03/30/controladores-de-windows/)
+    - hacker Albacore ()
+      - OEMDRIVERS
+      - %SystemRoot%\System32\DriverStore
+      - En las versiones actuales de Windows 10, todos los controladores, ya sean controladores de Microsoft o de terceros, se almacenan juntos en DriverStore.
+  - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://www.youtube.com/watch?v=DombCEIloag)
+    - [TutosVideos: Como Guardar Drivers o Controladores Antes de Formatear tu PC: Trucos y Pasos Cruciales](https://tutosvideos.com/4089/)
+      - windows/System32/DriverStore Los controladores estarán en carpeta FileRepository
+      - [Driver Genius: DG_Setup](https://www.mediafire.com/file/8vcsnxh1ob77sq1/DG_Setup.exe/file)
+        - [Driver Genius: DG_Setup](https://drivergenius.es/))
+
+  - [¿En qué CARPETA se GUARDAN los DRIVERS en WINDOWS 10?](https://www.dailymotion.com/video/x8xmndw)
+  - [✅ Cómo REPARAR automáticamente PROBLEMAS de BUCLE en Windows 11🔴 Reparación de INICIO de Windows](https://www.youtube.com/watch?v=lXdGJBv6OJQ)
+    - diskpart
+      - list volume 
+        - Ver en que volumen está instalado
+      - exit 
+    - chkdsk c: 
+      - Escanea en busca de errores 
+        - chkdsk c: /r /f
+        - NUNCA DETENER A LA MITAD X Q PUEDES DAÑAR SISTEMA DE ARCHIVOS Y SE VUELVEN IRRECUPERABLES 
+    - Examinar sistema operativo en busca archivos daños y reparlos o sustituirlos
+      - sfc /scannow  
+    - Actualizar directivas. si no pertenece a un domineo no funcionará.
+      - gpupdate
+    - Reparar el boot del sistema operativo.
+      - bootrec /fixmbr
+      - bootrec /fixboot
+    - exit 
+    - apagar equipo 
+    - Si no funcionaria volver a inicio avanzado windows
+      - Solucionar problemas 
+        - Restablecer este equipo 
+          - formateará con dos opciones mantener o formatear todo.
