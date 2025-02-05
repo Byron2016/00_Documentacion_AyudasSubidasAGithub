@@ -57,6 +57,8 @@
 				                  |<-------------|----------------|
 				                  |              |          datos |
 				
+        ![MVC](../images/arquitectura/mvc_001.jpg)
+        ![MVC](../images/arquitectura/mvc_002.jpg)
 				
 			- **MVP**
 				- Descripción:
@@ -110,6 +112,9 @@
 				                  | actualizar UI|                |
 				                  |<-------------|                |
 				                  |  showPost(ds)|                |
+				
+        ![MVP](../images/arquitectura/mvp_001.jpg)
+        ![MVP](../images/arquitectura/mvp_002.jpg)
 				
 			- **MVVM**
 				- Descripción:
@@ -168,6 +173,9 @@
 				                  |mundo update  |                |
 				                  |mostrado      |                |
 				                  |              |                |
+				
+        ![MVVM](../images/arquitectura/mvvm_001.jpg)
+        ![MVVM](../images/arquitectura/mvvm_002.jpg)
 								  
 								  		
 				- [Código Estudiante: Patron MVVM en .NET MAUI](https://www.youtube.com/watch?v=ZVJV6bj2qSw) 
