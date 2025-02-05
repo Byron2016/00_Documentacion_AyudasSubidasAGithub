@@ -18,6 +18,7 @@
   - C_Sharp_EF_IConfiguration_01.md
   - C_Sharp_EF_IConfiguration_02_IOptions.md
   - C_Sharp_Net_Versiones.md
+  - T_Arquitectura_Web.md
   - T_Astro_Auth.md
   - T_Authentication.md
   - T_Bindings.md
