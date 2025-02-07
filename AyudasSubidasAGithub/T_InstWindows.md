@@ -159,38 +159,88 @@
 
 - **DRIVERS**
 
-  - SDI (https://www.youtube.com/watch?v=vc63owOUUoY)
-    - Bajar utorrent: https://getintopc.com/softwares/utorrent-pro-2019-free-download/ o en su defecto qBittorrent
-    - Bajar SDI Drivers
-      - how to download and install SDI drivers (step by step)
-        - https://www.youtube.com/watch?v=vc63owOUUoY
-      - SDI
-        - https://sdi-tool.org/download/
-        - seleccionar Torrent y download SDI Full
-        - Alternativa para no descargar todo lo de SDI
-          - Snappy Driver El mejor buscador de Drivers (Controladores) para Windows
-            - https://www.youtube.com/watch?v=cIlqUAsEleE
-      - qBittorrent
-        - https://www.qbittorrent.org/download
-        - Download qBittorrent v4.5.4
-    - Una vez bajado el torrent de SDI Drivers abrirlo con qBittorrent y mandar a bajarlo
-    - Entrar a la descarga realizada y ejecutar "SDI_x64_R2305.exe"
-      - Idioma: Español
-      - Tema: Grass
-      - Modo Experto: Visto
-      - Incluído en DireverPacks
-        - No Instalado
-        - Más nuevo
-        - Más apropiado
-      - No incluido en DriverPacks
-        - No instalado
-      - Presionar botón "Seleccionar Todo"
-      - Presionar botón "Instalar"
+  - **Funcional al 100% 20250207 cambio Disco Duro**
+    - Copiar localmente windows/system32 del disco viejo
+      - A copiar:
+        - 5.42GB (5.823.126.864 bytes)
+        - En disco: 5.37GB (5.768.355.840 bytes)
+        - 15.219 archivos. 1.286 carpetas
+			- Copiado <code>D:\Borrar_20250121\CopiaParaDrivers</code>: 
+				- 6.02GB (6.472.562.391 bytes)
+				- En disco: 6.05GB (6.500.368.384 bytes)
+				- 16.248 archivos. 3.604 carpetas
+ 
+    - Abrir el *Administrador de dispositivos* 
+      - Seleccionar el controlador a corregir 
+      - Botón derecho "Actualizar Controlador"
+      - Seleccionar "Buscar controlador en mi equipo" y apuntar a <code>D:\Borrar_20250121\CopiaParaDrivers</code>
+      - Resultado:
+        - Para: *Dispositivo PCI*
+          - Instala: RealTek PCIE CardReader 
+        - Para: *Dispositivo desconocido*
+          - Instala: HP Mobile Data Protection Sensor 
+        - Para: *Controladora simple de comunicaciones PCI*
+          - Instala: Intel(R) Management Engine Interface 
+        - Para: *AMD Radeon HD 6700M Series*
+          - Resolución de pantalla sigue igual.
+
+			- Al ver los dispositivos nuevamente en *Administrador de dispositivos*
+				- Indica para Intel(R) HD Graphics 3000 
+					- **Windows detuvo este dispositivo porque informó de problemas. (Código 43)**
+						- [Tutoriales IT: ¿ERROR 43 en WINDOWS 10/11? 🛠️ Aquí tu SOLUCIÓN](https://www.youtube.com/watch?v=Uq-XzK7KLjc)
+							- Presionar tecla windows + R 
+							- Ejecuar <code>msdt.exe -id DeviceDiagnostic</code> 
+  							- Abre el asistente "Solucionar y audar a evitar los problemas del equipo" presionar siguiente
+								- Indica que: Intel(R) HD Graphics 3000 tiene un error.
+								- Habilitar Windows para buscar comprobación automática.
+								- Reiniciar el equipo. 
+  
+  - **Solo como referencia Esto no funciona.**
+    - Puse a buscar directamente en el <code>windows/system32/drives (incluídas subcarpetas) del disco viejo</code> para  
+      - Adaptadores de pantala: 
+        - AMD Radeon HD 6700M Series 
+        - Intel(R) HD Graphics 3000
+      - Otros dispositivos	
+        - Controladora simple de comunicaciones PCI 
+        - Dispositivo desconocido 
+        - Dispositivo PCI 
+		- Resultado NULO.
+  
+  - **Esto ya no aplicaría se deja como referencia**
+
+    - [SDI] (https://www.youtube.com/watch?v=vc63owOUUoY)
+      - Bajar utorrent: https://getintopc.com/softwares/utorrent-pro-2019-free-download/ o en su defecto qBittorrent
+      - Bajar SDI Drivers
+        - how to download and install SDI drivers (step by step)
+          - https://www.youtube.com/watch?v=vc63owOUUoY
+        - SDI
+          - https://sdi-tool.org/download/
+          - seleccionar Torrent y download SDI Full
+          - Alternativa para no descargar todo lo de SDI
+            - Snappy Driver El mejor buscador de Drivers (Controladores) para Windows
+              - https://www.youtube.com/watch?v=cIlqUAsEleE
+        - qBittorrent
+          - https://www.qbittorrent.org/download
+          - Download qBittorrent v4.5.4
+      - Una vez bajado el torrent de SDI Drivers abrirlo con qBittorrent y mandar a bajarlo
+      - Entrar a la descarga realizada y ejecutar "SDI_x64_R2305.exe"
+        - Idioma: Español
+        - Tema: Grass
+        - Modo Experto: Visto
+        - Incluído en DireverPacks
+          - No Instalado
+          - Más nuevo
+          - Más apropiado
+        - No incluido en DriverPacks
+          - No instalado
+        - Presionar botón "Seleccionar Todo"
+        - Presionar botón "Instalar"
+  
   - **Drivers - HP Pavilion dv6-6180la**
 
     ![HpPavilionDv6_2011](../images/HpPavilionDv6_2011/HpPavilionDv6_2011_AdmDispositivos.jpg)
 
-- Para el tema de drivers 20250121
+- **Para el tema de drivers 20250121**
 
   - [Crear una lista con todos los controladores del sistema](https://www.softzone.es/windows/como-se-hace/ver-controlado)
 
