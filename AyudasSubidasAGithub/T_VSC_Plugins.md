@@ -253,6 +253,53 @@
     - **Path Intellisense**
       - Christian Kohler
       - Visual Studio Code plugin that autocompletes filenames
+    - **Plantuml**
+      - jebbs
+      - Rich PlantUML support for Visual Studio Code.
+      - Configuración:
+        - Presionar Crtl+,
+        - Ir en "User" 
+        	- a Plantuml: Render
+        		- Seleccionar: PlantUMLServer
+        	- a Plantuml: Server 
+        		- Colocar: http://www.plantuml.com/plantuml/
+		
+        - **Instalar Java** 
+        	- Ir a "https://www.java.com/es/download/ie_manual.jsp"
+        	- Carpeta destino: "c:\Program Files(x86)\Java\jre1.8.0_441"
+        	- <code>java -version</code>
+        	- [Configurar Java en Windows. Variables de entorno JAVA_HOME y PATH](https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=389:configurar-java-en-windows-variables-de-entorno-javahome-y-path-cu00610b&catid=68&Itemid=188)
+		        - JAVA_HOME 
+		        	- Editar "Variables de entorno"
+		        	- Variables del sistema 
+		        		- Nombre de la variable: JAVA_HOME
+		        		- Valor de la variable: C:\Program Files (x86)\Java\jre1.8.0_441
+		        - PATH 
+		        	- Editar 
+		        	- Añadir al final "%JAVA_HOME%\bin"
+		        	- <code>echo $PATH</code>
+      	- **Probar**
+          ```plantuml
+            @startuml
+              skinparam backgroundColor #EEEBDC
+              skinparam handwritten true
+              actor Customer
+              Customer -> "login()" : username & password
+              "login()" -> Customer : session token
+              activate "login()"
+              Customer -> "placeOrder()" : session token, order info
+              "placeOrder()" -> Customer : ok
+              Customer -> "logout()"
+              "logout()" -> Customer : ok
+              deactivate "login()"
+            @enduml
+          ```
+
+          ```plantuml
+            @startuml
+              Bob -> Alice : hello
+            @enduml
+          ```
     - **Playwright Test for VSCode**
       - Microsoft
       - Run Playwright Test tests in Visual Studio Code.
