@@ -1,5 +1,6 @@
 - UML
-
+  - Mirar en T_VSC_Plugins.md el plugin **Plantuml** para visualizar uml en markdown.
+  
   - [PROCESO DE DISEÑO DEL SISTEMA](https://www.u-cursos.cl/ingenieria/2011/1/CC61J/1/material_docente/bajar?id_material=372021)
 
     - Documentación en español de todo el proceso.
