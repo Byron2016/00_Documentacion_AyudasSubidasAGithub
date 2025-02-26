@@ -1430,10 +1430,226 @@ dueño.listarPerros(); // Asociación: Dueño tiene Perros
 
 <code>--></code>: Representa una **asociación** (relación fuerte y permanente).
 
+- En el ejemplo anterior usaste <code>..></code> en lugar de <code>--></code> **¿cuál es el motivo?**
+
+  ¡Buena pregunta! En UML, la notación <code>..></code> y <code>--></code> tienen significados ligeramente diferentes, y la elección entre una y otra depende del tipo de relación que se quiera representar. Vamos a desglosarlo:
+  - **Diferencia entre <code>..></code> y <code>--></code> en UML**
+    - **<code>..></code> (Dependencia):**
+
+      Representa una relación de dependencia entre dos elementos.
+      Indica que un elemento (por ejemplo, una clase) depende de otro para su funcionamiento, pero no lo contiene como parte de su estructura.
+      Es una relación débil y temporal. Por ejemplo, un método de una clase puede recibir un objeto de otra clase como parámetro, pero no lo almacena como atributo.
+      En el caso de Veterinario y Perro, el Veterinario depende de Perro para realizar el método chequear, pero no lo contiene como parte de su estructura.
+
+    - **<code>--></code> (Asociación):**
+
+      Representa una relación de asociación entre dos elementos.
+      Indica que un elemento está conectado con otro de manera más fuerte y permanente.
+      Puede ser una relación de composición (<code>*--</code>) o agregación (<code>o--</code>), donde un objeto contiene o está compuesto por otro.
+      En el caso de Perro y Collar, Perro contiene un Collar como parte de su estructura, por lo que se usa <code>*--</code> (composición).
+
+    - **¿Por qué usé <code>..></code> en lugar de <code>--></code> en el ejemplo?**
+      En el caso de Veterinario y Perro, la relación es una dependencia, no una asociación. Esto se debe a que:
+      El Veterinario no contiene un Perro como parte de su estructura.
+      El Veterinario solo usa un Perro temporalmente (como parámetro en el método chequear).
+      No hay una relación permanente o fuerte entre Veterinario y Perro.
+
+      Por lo tanto, la notación correcta es <code>..></code> para representar una dependencia.
+
+  **Ejemplo Corregido en PlantUML**
+  Aquí está el fragmento del diagrama UML que muestra la relación de dependencia entre Veterinario y Perro:
+
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+      @startuml
+        class Perro {
+          - nombre: String
+          - raza: String
+          - collar: Collar
+          - juguetes: Array
+          + ladrar()
+          + agregarJuguete(Juguete)
+          + listarJuguetes()
+        }
+
+        class Veterinario {
+          + chequear(Perro)
+        }
+
+        Perro <|-- Animal
+        Veterinario ..> Perro
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+      @startuml
+        class Perro {
+          - nombre: String
+          - raza: String
+          - collar: Collar
+          - juguetes: Array
+          + ladrar()
+          + agregarJuguete(Juguete)
+          + listarJuguetes()
+        }
+        
+        class Veterinario {
+          + chequear(Perro)
+        }
+        
+        Perro <|-- Animal
+        Veterinario ..> Perro
+      @enduml
+
+  </pre>
+  </td>
+  </tr>
+</table>
+
+  - **¿Cuándo usar <code>--></code>?**
+    Se usa <code>--></code> cuando hay una relación más fuerte y permanente entre dos clases. Por ejemplo:
+    Composición (<code>*--</code>): Perro tiene un Collar como parte de su estructura.
+    Agregación (<code>o--</code>): Perro tiene una lista de Juguetes, pero los Juguetes pueden existir independientemente.
+
+  - **<code>..></code> en lugar de <code>--></code>**
+
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+      @startuml
+        class Perro {
+          - nombre: String
+          - raza: String
+          - collar: Collar
+          - juguetes: Array
+          + ladrar()
+          + agregarJuguete(Juguete)
+          + listarJuguetes()
+        }
+        
+        class Collar {
+          - color: String
+          + getColor()
+        }
+        
+        class Juguete {
+          - nombre: String
+          + getNombre()
+        }
+        
+        Perro *-- Collar
+        Perro o-- Juguete
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+      @startuml
+        class Perro {
+          - nombre: String
+          - raza: String
+          - collar: Collar
+          - juguetes: Array
+          + ladrar()
+          + agregarJuguete(Juguete)
+          + listarJuguetes()
+        }
+
+        class Collar {
+          - color: String
+          + getColor()
+        }
+
+        class Juguete {
+          - nombre: String
+          + getNombre()
+        }
+
+        Perro *-- Collar
+        Perro o-- Juguete
+      @enduml
+
+  </pre>
+  </td>
+  </tr>
+</table>
+
+  - **Resumen**
+    <code>..></code>: Se usa para representar una dependencia (relación débil y temporal).
+
+    <code>--></code>: Se usa para representar una asociación (relación fuerte y permanente), como composición (<code>*--</code>) o agregación (<code>o--</code>).
+
+    En el caso de Veterinario y Perro, la relación es una dependencia, por lo que <code>..></code> es la notación correcta. Si Veterinario tuviera un atributo de tipo Perro, entonces usaríamos <code>--></code> para representar una asociación.
+
+
+
 ### **¿Cuándo usar <code>o--</code> en lugar de <code>--></code>?**
 
 <code>o--</code>: Se usa para relaciones de **agregación** (todo-parte, donde la parte puede existir independientemente).
 
 <code>--></code>: Se usa para relaciones de **asociación** (relaciones genéricas entre clases).
 
+- **Este ultimo ejemplo habría podido ser reemplazada <code>--></code> en lugar de <code>o--</code>?**
 
+  ¡Buena pregunta! Vamos a analizar si la relación --> en el último ejemplo podría haberse reemplazado por o-- (agregación). La respuesta es no, y te explico por qué:
+
+  - **Diferencia entre <code>--></code> (Asociación) y <code>o--</code> (Agregación)**
+    - **<code>--></code> (Asociación):**
+
+      Representa una relación genérica entre dos clases.
+      No implica una relación de "todo-parte".
+      Es una relación más flexible y puede usarse en casos donde no hay una dependencia fuerte de existencia entre las clases.
+      En el ejemplo, Dueño y Perro están asociados, pero un Perro no es parte de un Dueño, ni viceversa.
+
+    - **<code>o--</code> (Agregación):**
+
+      Representa una relación de "todo-parte" donde la parte puede existir independientemente del todo.
+      Es una relación más específica que la asociación.
+      En el ejemplo, Perro y Juguete tienen una relación de agregación (<code>o--</code>), porque un Juguete puede existir sin un Perro.
+
+  - **¿Por qué no usar <code>o--</code> en lugar de <code>--></code> en el ejemplo de Dueño y Perro?**
+    En el caso de Dueño y Perro, la relación no es de agregación (<code>o--</code>) porque:
+    Un Perro no es una "parte" de un Dueño.
+    Un Perro puede existir sin un Dueño (es decir, no hay una dependencia de existencia).
+    La relación es más genérica: un Dueño tiene Perros, pero no los contiene como partes suyas.
+    Por lo tanto, la relación correcta es una asociación (<code>--></code>), no una agregación (<code>o--</code>).
+
+  - **¿Por qué no usar <code>o--</code> en lugar de <code>--></code> en el ejemplo de Dueño y Perro?**
+    En el caso de Dueño y Perro, la relación no es de agregación (<code>o--</code>) porque:
+    Un Perro no es una "parte" de un Dueño.
+    Un Perro puede existir sin un Dueño (es decir, no hay una dependencia de existencia).
+    La relación es más genérica: un Dueño tiene Perros, pero no los contiene como partes suyas.
+    Por lo tanto, la relación correcta es una asociación (<code>--></code>), no una agregación (<code>o--</code>).
+
+  - **¿Cuándo usar <code>o--</code>?**
+    Se usa <code>o--</code> cuando hay una relación de "todo-parte" y la parte puede existir independientemente del todo. Por ejemplo:
+
+    Agregación (<code>o--</code>): Perro tiene una lista de Juguetes, pero los Juguetes pueden existir sin un Perro.
+
+  - **Resumen**
+    <code>--></code> (Asociación): Se usa para relaciones genéricas entre dos clases, donde no hay una relación de "todo-parte".
+    <code>o--</code> (Agregación): Se usa para relaciones de "todo-parte" donde la parte puede existir independientemente del todo.
+
+    En el caso de Dueño y Perro, la relación es una asociación (<code>--></code>), no una agregación (<code>o--</code>), porque un Perro no es una parte de un Dueño y puede existir independientemente.
