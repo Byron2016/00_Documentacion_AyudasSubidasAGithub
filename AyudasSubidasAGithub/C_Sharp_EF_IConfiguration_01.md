@@ -223,3 +223,7 @@
               }
             }
           ```
+
+- Felipe Gavilan Programa: [SQL Server Como Proveedor de Configuración - IConfiguration con Una Base de Datos](https://www.youtube.com/watch?v=sfviUF_EJGw)
+  - Poner la configuración en base de datos.
+  - TODO pasar lo del vídeo. PENDIENTE. 
