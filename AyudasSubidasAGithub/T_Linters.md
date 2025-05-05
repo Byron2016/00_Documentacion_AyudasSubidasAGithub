@@ -196,6 +196,7 @@
 		- eslint.config.js ✅
 			```javascript
           // github.com/eslint/eslint/discussions/19257#discussioncomment-13035062
+          // github.com/eslint/eslint/discussions/19689
           // usa recomended rules, neostandar, css, desabilita regla de esltin/js pero la tiene activa en neostandard.
           import js from "@eslint/js";
           import globals from "globals";
@@ -1084,5 +1085,4 @@
             },
           ]);
 			```
-
 
