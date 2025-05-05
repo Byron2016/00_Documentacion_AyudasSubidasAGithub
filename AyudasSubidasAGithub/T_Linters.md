@@ -1,3 +1,70 @@
+-  [Gentleman Programming: Configuramos ESLint + Prettier y luego lo miramos a Biome #programacion #frontend #backend](https://www.youtube.com/watch?v=8ZjAy0U_pVg)
+  - (V >= 9.19.0)
+    -  package.json 
+       -  "devDependencies"
+          -  @eslint/compat
+          -  @eslint/js
+          -  eslint
+          -  eslint-plugin-react
+          -  eslint-plugin-react-hooks
+          -  globals
+          -  prettier
+          -  typescript
+          -  typescript-eslint
+          -  typescript-eslint/parser
+    -  **Prettier**
+       -  src/.prettierignore
+       -  src/.prettierrc
+        ```javascript
+          {
+            "singleQuote": true,
+            "printWidth": 80,
+
+          }
+        ```
+    - **Eslint** 
+      - ./eslint.config.mjs
+        
+        ```javascript
+          import {fixupConfigRules} from '@eslint/compat';
+          import js from '@eslint/js';
+          import reactHooks from 'eslint-plugin-react-hooks';
+          import reactJsx from 'eslint-plugin-react/configs/jsx-runtime.js';
+          import react from 'eslint-plugin-react/configs/recommended.js';
+          import globals from 'globals';
+          import ts from 'typescript-eslint';
+          import tsParser from 'typescript-eslint/parser';
+
+          // Utilizamos un Default configuration a la cual vamos a ir incrementando las cosas
+          export default [
+            { languageOptions: {globals: globals.browser} },
+            js.configs.recomended, // todas las recomendadas para javascript
+            ...ts.configs.recomended, // todas las recomendadas para typescript
+            ...fixupConfigRules([
+              {
+                ...react,
+                settings: {
+                  react: {version:'detect'},
+                },
+              },
+              reactJsx,
+            ]),
+            {
+              plugins: {
+                // esto es para poder utilizar los plugins que importamos.
+                'react-hooks':reactHooks,
+              },
+              rules: {
+                // todas las reglas que vienen de 
+                ...reactHooks.configs.recommended.rules,
+              },
+            },
+            {ignores: ['dist/']},
+          ];
+        ```
+    - **Biome** 
+
+
 - MonoRepo
 
   - Tips para automatizar
@@ -11,7 +78,171 @@
     - https://medium.com/hike-medical/ditching-yarn-creating-a-monorepo-with-pnpm-workspaces-6fa7e3bfe19c
       - (muy bueno paso por paso pero eslintrc)
 
-- Prettier
+
+- **Configurar neostandard**
+  - **Eslint**
+    - Instalar dependencia: <code>npm init @eslint/config</code>
+    - Agregar "neostandard": <code>pnpm i -D neostandard</code>
+    - Agregar "eslint.config.mjs":
+      ```js
+        import neostandard from 'neostandard'
+
+        export default [...neostandard()]
+      ```
+    - **Scripts** 
+      - <code>"lint": "eslint . ",</code>
+      - <code>"lintfix": "eslint --fix",</code>
+    
+  - **Prettier**
+    - Instalar dependencia: <code>pnpm add -D -E prettier</code>
+    - Agregar ".prettierrc": <code>node --eval "fs.writeFileSync('.prettierrc','{}\n')"</code>
+    - Agregar ".prettierignore":<code>node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"</code>
+    - **Scripts** 
+      - <code>"pre": "prettier . --check",</code>
+      - <code>"prewri": "prettier . --write",</code>
+    
+  - **Testear**
+    - **Eslint**
+      - Crear un archivo "./src/js/main.js" 
+        ```js
+          let a = "hola";
+          let b = "mundo";
+        ```
+      - Ejecutar <code>npm run lint</code>
+        ```js
+          C:\Users\...\src\js\main.js
+            1:5   error  'a' is never reassigned. Use 'const' instead  prefer-const
+            1:9   error  Strings must use singlequote                  @stylistic/quotes
+            1:15  error  Extra semicolon                               @stylistic/semi
+            2:5   error  'b' is never reassigned. Use 'const' instead  prefer-const
+            2:9   error  Strings must use singlequote                  @stylistic/quotes
+            2:16  error  Extra semicolon                               @stylistic/semi
+            4:15  error  Strings must use singlequote                  @stylistic/quotes
+            4:22  error  Extra semicolon                               @stylistic/semi
+            5:15  error  Extra semicolon                               @stylistic/semi
+        ```
+      - Ejecutar <code>npm run lintfix</code>
+    - **Prettier**
+      - Crear un archivo "./src/js/main.js" 
+        ```js
+          let a = "hola";
+          let b = "mundo";
+        ```
+      - Ejecutar <code>npm run lint</code>
+        ```js
+          C:\Users\...\src\js\main.js
+            1:5   error  'a' is never reassigned. Use 'const' instead  prefer-const
+            1:9   error  Strings must use singlequote                  @stylistic/quotes
+            1:15  error  Extra semicolon                               @stylistic/semi
+            2:5   error  'b' is never reassigned. Use 'const' instead  prefer-const
+            2:9   error  Strings must use singlequote                  @stylistic/quotes
+            2:16  error  Extra semicolon                               @stylistic/semi
+            4:15  error  Strings must use singlequote                  @stylistic/quotes
+            4:22  error  Extra semicolon                               @stylistic/semi
+            5:15  error  Extra semicolon                               @stylistic/semi
+        ```
+      - Ejecutar <code>npm run prewri</code>
+        - Colocará comillas dobles y puntos y comas.
+
+
+  - **eslint-config-prettier**
+    - Instalar dependencia: <code>pnpm add -D -E eslint-config-prettier</code>
+    - Agregar "eslint.config.mjs":
+      ```js
+        import neostandard from 'neostandard'
+        import eslintConfigPrettier from 'eslint-config-prettier/flat'
+
+        export default [...neostandard(), eslintConfigPrettier];
+      ```
+    - **Al testear nuevamente**
+      - Ya no se pondrá con el lint la comilla simple.
+      - Ya no se quitarán los ";"
+
+  - **Incorporando @eslint/js**
+      ```js
+        import neostandard from 'neostandard'
+        import eslintConfigPrettier from 'eslint-config-prettier/flat'
+        import js from '@eslint/js'
+        import globals from 'globals'
+        import { defineConfig } from 'eslint/config'
+
+        const RULES = {
+          OFF: 'off',
+          WARN: 'warn',
+          ERROR: 'error'
+        }
+
+        export default [...neostandard(), eslintConfigPrettier];
+        export default [
+          ...defineConfig([
+            {
+              files: ['**/*.{js,mjs,cjs}'],
+              plugins: { js },
+              extends: ['js/recommended'],
+              rules: {
+                'no-unused-vars': RULES.off,
+              },
+            },
+            {
+              files: ['**/*.{js,mjs,cjs}'],
+              languageOptions: { globals: { ...globals.browser, ...globals.node } },
+            },
+          ]),
+          ...neostandard(),
+          eslintConfigPrettier,
+        ]
+      ```
+
+		- eslint.config.js ✅
+			```javascript
+          // github.com/eslint/eslint/discussions/19257#discussioncomment-13035062
+          // usa recomended rules, neostandar, css, desabilita regla de esltin/js pero la tiene activa en neostandard.
+          import js from "@eslint/js";
+          import globals from "globals";
+          import css from "@eslint/css";
+          import { defineConfig } from "eslint/config";
+          import neostandard from "neostandard";
+          import eslintConfigPrettier from "eslint-config-prettier/flat";
+
+          const RULES = {
+            OFF: "off",
+            WARN: "warn",
+            ERROR: "error",
+          };
+
+          export default defineConfig([
+            {
+              files: ["**/*.{js,mjs,cjs,ts}"],
+              plugins: { js },
+              languageOptions: { globals: { ...globals.browser, ...globals.node } },
+              extends: ["js/recommended", neostandard(), eslintConfigPrettier],
+              rules: {
+                "@/no-unused-vars": RULES.WARN,
+              },
+            },
+
+            {
+              files: ["**/*.css"],
+              plugins: { css },
+              language: "css/css",
+              extends: ["css/recommended"],
+              rules: {
+                "css/no-empty-blocks": RULES.WARN,
+              },
+            },
+          ]);
+			```
+  - **Testear**
+    - Prueba 1
+      - Condiciones
+        - Poner en off la regla "no-unused-vars" en el "defineConfig"
+        - Hacer el import de "eslint-config-prettier/flat"
+        - Comentar el "eslintConfigPrettier" 
+      - Resultado 
+        - "defineConfig" no la toma en cuenta 
+        - "neostandard" si la toma en cuenta
+
+- **Prettier**
 
   - Instalar dependencia
 
@@ -673,3 +904,185 @@
 
       - PROBLEMAS
         - JavaScript modules/No framework/SI TypeScript/Node y Browser
+
+- *Pruebas con <code>npm init @eslint/config</code>*
+	- **Opción 1**
+		- What do you want to lint? *JavaScript*
+		- How would you like to use ESLint? *To check syntax only* 
+		- What Type of modules does your project use? *JavaScript modules (import/export)*
+		- which framework does your project use? *None of these*
+		- Does your project use TypeScript? *no*
+		- Where does your code run? *Browser and Node* 
+		- Package.json
+  		- DevDependencies
+    		- globals
+    		- eslint
+		- eslint.config.js 
+			```javascript
+				import globals from 'globals';
+				import { defineConfig } from 'eslint/config';
+					
+				export default defineConfig([
+          { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+        ]);
+			```
+	- **Opción 2**
+		- What do you want to lint? *JavaScript*
+		- How would you like to use ESLint? *To check syntax and find problems* 
+  		- Se agregó que también encuentre problemas, entonces agrega *@eslint/js*
+		- What Type of modules does your project use? *JavaScript modules (import/export)*
+		- which framework does your project use? *None of these*
+		- Does your project use TypeScript? *no*
+		- Where does your code run? *Browser and Node* 
+		- Package.json
+  		- DevDependencies
+    		- @eslint/js
+    		- globals
+    		- eslint
+		- eslint.config.js 
+			```javascript
+				import js from "@eslint/js";
+				import globals from 'globals'
+				import { defineConfig } from 'eslint/config'
+					
+				export default defineConfig([
+          // { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
+          {
+            files: ["**/*.{js,mjs,cjs}"],  // ▶ Define qué archivos afecta esta configuración
+            plugins: { js },               // ▶ Carga un plugin (en este caso, '@eslint/js')
+            extends: ["js/recommended"]    // ▶ Hereda reglas recomendadas del plugin
+          },
+          { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+        ]);
+			```
+	- **Opción 3**
+		- What do you want to lint? *JavaScript, json, jsonc, json5, md, css*
+		- How would you like to use ESLint? *To check syntax and find problems* 
+		- What Type of modules does your project use? *JavaScript modules (import/export)*
+		- which framework does your project use? *None of these*
+		- Does your project use TypeScript? *no*
+		- Where does your code run? *Browser and Node* 
+		- What flavor of Markdown do you want to lint? *gfm* (CommonMark/GitHub Flavored Markdown)
+		- Package.json
+  		- DevDependencies
+    		- @eslint/js
+    		- globals
+    		- eslint
+    		- @eslint/css
+    		- @eslint/json
+    		- @eslint/markdown
+		- eslint.config.js 
+			```javascript
+          import js from "@eslint/js";
+          import globals from "globals";
+          import json from "@eslint/json";
+          import markdown from "@eslint/markdown";
+          import css from "@eslint/css";
+          import { defineConfig } from "eslint/config";
+
+
+          export default defineConfig([
+            { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
+            { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+            { files: ["**/*.json"],         plugins: { json },     language: "json/json",    extends: ["json/recommended"] },
+            { files: ["**/*.jsonc"],        plugins: { json },     language: "json/jsonc",   extends: ["json/recommended"] },
+            { files: ["**/*.json5"],        plugins: { json },     language: "json/json5",   extends: ["json/recommended"] },
+            { files: ["**/*.md"],           plugins: { markdown }, language: "markdown/gfm", extends: ["markdown/recommended"] },
+            { files: ["**/*.css"],          plugins: { css },      language: "css/css",      extends: ["css/recommended"] },
+          ]);
+			```
+	- **Opción 4**
+		- What do you want to lint? *JavaScript, json, jsonc, json5, md, css*
+		- How would you like to use ESLint? *To check syntax and find problems* 
+		- What Type of modules does your project use? *JavaScript modules (import/export)*
+		- which framework does your project use? *None of these*
+		- Does your project use TypeScript? *no*
+		- Where does your code run? *Browser and Node* 
+		- What flavor of Markdown do you want to lint? *CommonMark* (CommonMark/GitHub Flavored Markdown)
+  		- Se cambia a *CommonMark*
+		- Package.json
+  		- DevDependencies
+    		- @eslint/js
+    		- globals
+    		- eslint
+    		- @eslint/css
+    		- @eslint/json
+    		- @eslint/markdown
+		- eslint.config.js 
+			```javascript
+          import js from "@eslint/js";
+          import globals from "globals";
+          import json from "@eslint/json";
+          import markdown from "@eslint/markdown";
+          import css from "@eslint/css";
+          import { defineConfig } from "eslint/config";
+
+
+          export default defineConfig([
+            { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
+            { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+            { files: ["**/*.json"],         plugins: { json },     language: "json/json",    extends: ["json/recommended"] },
+            { files: ["**/*.jsonc"],        plugins: { json },     language: "json/jsonc",   extends: ["json/recommended"] },
+            { files: ["**/*.json5"],        plugins: { json },     language: "json/json5",   extends: ["json/recommended"] },
+            //{ files: ["**/*.md"],           plugins: { markdown }, language: "markdown/gfm", extends: ["markdown/recommended"] },
+            { files: ["**/*.md"],           plugins: { markdown }, language: "markdown/commonmark", extends: ["markdown/recommended"] },
+            { files: ["**/*.css"],          plugins: { css },      language: "css/css",      extends: ["css/recommended"] },
+          ]);
+			```
+	- **Opción 5**
+		- What do you want to lint? *JavaScript, css*
+		- How would you like to use ESLint? *To check syntax and find problems* 
+		- What Type of modules does your project use? *JavaScript modules (import/export)*
+		- which framework does your project use? *None of these*
+		- Does your project use TypeScript? *yes*
+		- Where does your code run? *Browser and Node* 
+		- What flavor of Markdown do you want to lint? *gfm* (CommonMark/GitHub Flavored Markdown)
+		- Package.json
+  		- DevDependencies
+    		- @eslint/js
+    		- globals
+    		- eslint
+    		- @eslint/css
+    		- neostandard
+    		- typescript-eslint
+		- eslint.config.js 
+			```javascript
+          // github.com/eslint/eslint/discussions/19257#discussioncomment-13035062
+          // usa recomended rules, neostandar, css, desabilita regla de esltin/js pero la tiene activa en neostandard.
+          import js from "@eslint/js";
+          import globals from "globals";
+          import css from "@eslint/css";
+          import { defineConfig } from "eslint/config";
+          import neostandard from "neostandard";
+          import eslintConfigPrettier from "eslint-config-prettier/flat";
+
+          const RULES = {
+            OFF: "off",
+            WARN: "warn",
+            ERROR: "error",
+          };
+
+          export default defineConfig([
+            {
+              files: ["**/*.{js,mjs,cjs,ts}"],
+              plugins: { js },
+              languageOptions: { globals: { ...globals.browser, ...globals.node } },
+              extends: ["js/recommended", neostandard(), eslintConfigPrettier],
+              rules: {
+                "@/no-unused-vars": RULES.WARN,
+              },
+            },
+
+            {
+              files: ["**/*.css"],
+              plugins: { css },
+              language: "css/css",
+              extends: ["css/recommended"],
+              rules: {
+                "css/no-empty-blocks": RULES.WARN,
+              },
+            },
+          ]);
+			```
+
+
