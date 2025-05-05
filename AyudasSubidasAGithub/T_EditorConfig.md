@@ -12,6 +12,7 @@ Crear un archivo **.editorconfig**
   charset = utf-8
   trim_trailing_whitespace = true
   insert_final_newline = true
+  quote_type = single
 
   [*.md]
   trim_trailing_whitespace = false
