@@ -1,6 +1,7 @@
 - D:\dev_20220602\00_Documentacion\T_Node_001.txt
 
 - Versiones
+  - [Node 24.00](https://nodesource.com/blog/Node.js-version-24)
 
   - [Node 22.10](https://nodejs.org/en/blog/release/v22.10.0)
 
@@ -85,8 +86,31 @@
           - las versiones impares (9, 11, etc.) dejan de recibir soporte (unsupported) y
           - las versiones pares (10, 12, etc.) pasan al estado de LTS activa (Active LTS status) y están listas para su uso general.
         - El estado de lanzamiento LTS es "soporte a largo plazo", que generalmente garantiza que los errores críticos se solucionarán durante un total de 30 meses. Las aplicaciones de producción solo deben utilizar versiones LTS activas (Active LTS releases) o LTS de mantenimiento (Maintenance LTS releases).
+      - **Current, Active, Maintenance**
+        - **Current**
+          - Versión Actual / Línea de Desarrollo
+          - **Qué es**
+            - La versión más reciente lanzada, que incluye las últimas características, mejoras y cambios (puede tener breaking changes).
+          - **Soporte**
+            - Recibe actualizaciones frecuentes (parches, nuevas funcionalidades).
+            - No es recomendada para producción si buscas estabilidad, ya que puede contener cambios no depurados.
+        - **Active**
+          - Long-Term Support - Soporte Activo a Largo Plazo
+          - **Qué es**
+            - Versiones estables recomendadas para producción, con soporte extendido y actualizaciones de seguridad.
+          - **Soporte**
+            - Recibe parches de seguridad y bugs críticos.
+            - Sin nuevas características (para evitar breaking changes).
+            - Es la versión que deberías usar en proyectos serios.
+        - **Maintenance**
+          - Soporte de Mantenimiento
+          - **Qué es**
+            - Versiones antiguas que solo reciben parches de seguridad críticos (sin corrección de bugs menores).
+          - **Soporte**
+            - Útil para proyectos legacy que no pueden migrar aún.
+            - Se recomienda actualizar a Active LTS o Current cuanto antes.
 
-  - Errores
+  - **Errores**
 
     - "NODE_ENV" no se reconoce como un comando interno o externo, programa o archivo por lotes ejecutable.
 
