@@ -156,6 +156,24 @@
         - pflannery
         - Shows the latest version for each package using code lens
         - En las dependencias del package.json me indica si tengo algo x actualizar.
+      - **Para IA**
+        - [Fazt Code: Cómo Tener tu Chat IA Gratis para programar con Cline (Paso a Paso)](https://www.youtube.com/watch?v=Gw441rJolzg)
+          - **Cline** (Es el agente inteligente)
+            - Cline cline.bot
+            - Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.
+          - **Google AI Studio**
+            - [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
+              - Es para usar Gemini através del API
+              - Ir a **Get API key**
+              - Presionar **Create API key**
+                - Presionar **Crear clave de API en un proyecto nuevo**
+              - Seleccionar el ícono de **Cline** que se crea y presionar **Use your own API key**
+                - API provider 
+                  - Google Gemini
+                - Pegar la API Key antes copiada
+                - **Let´s go**
+                - En la parte superior escoger **Open in Editor** para que se abra en la parte derecha
+
 
   - [Recomendados por Midudev](https://www.youtube.com/watch?v=RB5tR_nqUEw&t=2223s)
       - Astro Language support for astro
