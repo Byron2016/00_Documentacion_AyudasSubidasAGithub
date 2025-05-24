@@ -300,3 +300,153 @@
       - Solucionar problemas 
         - Restablecer este equipo 
           - formateará con dos opciones mantener o formatear todo.
+
+- **Windows 10 LTSC**
+	- [Instalación Windows 10 IoT Enterprise 2021 x64 caduca en 2032](https://www.youtube.com/watch?v=Lp7qepjK_oI)
+		- Licencia 
+  		- [MS Win 10 Enterprise LTSC 2021 IoT Edition CD Key Global ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
+    		- Buy now
+    		- Cup(A_no) 
+      		- **A_ACA_A**
+      		- **A_KMS_A**
+      		- **A_SKU3_A** (MIO)
+    - **ISO** 
+      - **Inglés**
+        - [ISO Windows 10 IoT Enterprise LTSC 2021 (English) x64](https://archive.org/details/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f_202301)
+          - Una vez instalado si se puede cambiar a inglés
+      - **Español** 
+        - [ISO Windows 10 Enterprise LTSC 2021 (Spanish) [x86/x64]]()
+      - **Multilingual**
+        - [ISO Windows 10 IoT Enterprise LTSC 2021 64bit Multilingual (Fully Updated) Archive](https://archive.org/details/mul_windows_10_iot_enterprise_ltsc_custom-Archive)
+
+  - **DeepSeek preguntas**
+  	- Los requisitos mínimos oficiales para Windows 10 LTSC (Long-Term Servicing Channel) son los mismos que para las versiones estándar de Windows 10, ya que comparten la misma base técnica. A continuación, te detallo los requerimientos:
+    	- **Requisitos mínimos para Windows 10 LTSC (2021 o versiones anteriores)**
+      	- **Procesador**: 
+        	- CPU de 1 GHz o más rápido (compatible con PAE, NX y SSE2).
+      	- **RAM**:
+		    	- 2 GB para versiones de 64 bits (x64).
+		    	- 1 GB para versiones de 32 bits (x86).
+		    - **Almacenamiento**:
+  		    - 32 GB de espacio en disco para versiones de 64 bits.
+  		    - 16 GB para versiones de 32 bits.
+        - **Tarjeta gráfica**:
+          - DirectX 9 o posterior con controlador WDDM 1.0.
+          - Para determinar la tarjeta gráfica mirar más abajo pasos a seguir
+        - **Pantalla**:
+          - Resolución mínima de 800 × 600 píxeles.
+        - **Conexión a Internet**:
+          - No es obligatoria, pero se recomienda para activación y actualizaciones.
+      - **Notas importantes**:
+        - LTSC vs. Versiones normales:
+          - Windows 10 LTSC está optimizado para entornos críticos (como kioscos, equipos industriales o sistemas embebidos) y no incluye aplicaciones modernas como Microsoft Store, Cortana ni actualizaciones de características frecuentes.
+          - Solo recibe actualizaciones de seguridad durante su ciclo de vida (generalmente 5 años de soporte estándar + 5 años opcionales con pago).
+    - **Recomendaciones reales**:
+      - Para un mejor rendimiento, se sugiere al menos 4 GB de RAM y un SSD (especialmente en sistemas de 64 bits).
+      - Algunas aplicaciones empresariales pueden requerir más recursos.
+    - **Compatibilidad**:
+      - Verifica que el hardware sea compatible con Windows 10 (algunos drivers antiguos pueden no funcionar).
+      - Si planeas instalar Windows 10 LTSC 2021, asegúrate de que tu hardware cumpla estos requisitos para un funcionamiento óptimo.
+	
+    - **Conocer que Tarjeta gráfica tengo**
+	    - Para determinar qué tarjeta gráfica tiene tu CPU (o sistema en general), puedes seguir estos métodos según tu sistema operativo:
+	    	- En Windows:
+	    		- 1. Usar el Administrador de dispositivos
+	    			- Presiona Win + X y selecciona "Administrador de dispositivos". 
+	    			- Expande la sección "Adaptadores de pantalla". 
+	    				- Ahí aparecerá el modelo de tu tarjeta gráfica (ejemplo: NVIDIA GeForce RTX 3060, AMD Radeon RX 6700 XT, o Intel UHD Graphics 630 si es gráfica integrada).
+
+			    - 2. Usar el comando dxdiag
+			    	- Presiona Win + R, escribe dxdiag y presiona Enter. 
+			    	- Ve a la pestaña "Pantalla".
+			    	- En "Nombre" aparecerá el modelo de tu GPU.
+
+			    - 3. Usar la Configuración de Windows
+			    	- Ve a Configuración > Sistema > Pantalla > Configuración de gráficos.
+			    	- Haz clic en "Propiedades de la pantalla" y luego en "Adaptador de pantalla".
+
+			    - 4. Usar software de terceros
+			    	- CPU-Z (gratis): Muestra detalles de la GPU en la pestaña "Graphics".
+			    	- GPU-Z (especializado en tarjetas gráficas).
+			    	- Speccy (muestra información detallada del hardware).
+				
+    - **Software en Windows 10 LTSC**
+      - **Adobe**
+	      - **Adobe Photoshop**
+	      	- Sí, Adobe Photoshop puede instalarse y ejecutarse en Windows 10 LTSC, pero hay algunas consideraciones importantes que debes tener en cuenta:
+	      	- 1. Compatibilidad Técnica
+	      		- Windows 10 LTSC está basado en la misma base técnica que las versiones normales de Windows 10, por lo que Photoshop (CS6, CC 2018, 2020, 2024, etc.) debería funcionar sin problemas.
+	      		- Requisitos oficiales de Adobe Photoshop (2024):
+	      			- Windows 10 (versión 22H2 o posterior, LTSC 2021 está basado en 21H2, por lo que es compatible).
+	      			- CPU de 2 GHz o más rápido (SSE2+).
+	      			- 8 GB de RAM (recomendado 16 GB para edición profesional).
+	      			- 2 GB de espacio en disco (más para archivos temporales).
+	      			- GPU compatible con DirectX 12 (opcional, pero necesario para funciones aceleradas por hardware).
+
+		      - 2. Posibles Problemas y Soluciones
+		      	- A. Falta de Microsoft Store y dependencias
+		      		- Windows 10 LTSC no incluye Microsoft Store por defecto, y algunas versiones recientes de Photoshop CC pueden requerir componentes como:
+		      			- Microsoft Edge WebView2 (necesario para funciones de Creative Cloud).
+		      			- VC++ Redistributable y otros runtime libraries. 
+		      		- Solución:
+		      		- Instala manualmente los requisitos desde el sitio oficial de Microsoft:
+		      			- WebView2 Runtime
+		      		- Visual C++ Redistributable.
+
+			      - B. Creative Cloud (CC) en LTSC
+			      	- La aplicación Adobe Creative Cloud (necesaria para instalar Photoshop CC) funciona en LTSC, pero puede requerir ajustes:
+			      		- Si falla la instalación, descarga el instalador manual desde Adobe.com.
+			      		- Algunas funciones en la nube (como fuentes de Adobe) pueden tener limitaciones.
+
+	      		- C. Versiones Recomendadas
+			      	- Si prefieres evitar Creative Cloud, puedes usar:
+			      		- Photoshop CS6 (versión independiente, sin suscripción).
+			      		- Photoshop Portable (no oficial, útil para usos básicos).
+
+		      - 3. Optimización en LTSC
+		      	- Desactiva las actualizaciones automáticas de LTSC (ya que no recibirá nuevas funciones, solo parches de seguridad).
+		      	- Asegúrate de tener los drivers de GPU actualizados (especialmente si usas funciones como Hardware Acceleration en Photoshop).
+
+		      - Conclusión
+			      - ✅ Photoshop funciona en Windows 10 LTSC, pero: 
+			      	- Si usas Photoshop CC (Creative Cloud), instala manualmente los requisitos faltantes (WebView2, VC++).
+			      	- Si prefieres evitar dependencias, opta por CS6 o versiones portable.
+			      	- Verifica que tu hardware cumpla con los requisitos de Adobe.
+
+        - **Adobe Illustrator**
+		      - Sí, Adobe Illustrator puede instalarse y ejecutarse en Windows 10 LTSC, pero al igual que con Photoshop, hay algunos detalles importantes que debes considerar para garantizar su correcto funcionamiento.
+		      - 1. Compatibilidad Oficial
+		      	- Windows 10 LTSC 2021 (basado en Windows 10 21H2) cumple con los requisitos de Adobe Illustrator CC (2020, 2021, 2022, 2023, 2024).
+		      	- Requisitos mínimos de Illustrator CC (2024):
+		      		- Windows 10 (versión 22H2 o posterior). (LTSC 2021 usa 21H2, pero funciona sin problemas en la práctica).
+		      		- CPU multicore de 2 GHz o superior (SSE4.2+).
+		      		- 8 GB de RAM (16 GB recomendado para proyectos complejos).
+		      		- 2 GB de espacio en disco (más para archivos temporales).
+		      		- GPU compatible con DirectX 12 (opcional, pero necesario para renderizado acelerado).
+
+		      - 2. Posibles Problemas y Soluciones
+		      	- A. Dependencias Faltantes (Creative Cloud y Microsoft Store)
+		      		- Windows 10 LTSC no incluye Microsoft Store, y algunas funciones de Illustrator CC pueden requerir:
+		      			- Microsoft Edge WebView2 (necesario para el panel de inicio de Adobe).
+		      			- Paquetes de Visual C++ Redistributable.
+		      		- Soluciones:
+		      			- Instalar WebView2 manualmente (desde Microsoft).
+		      			- Descargar los VC++ Redistributables (x64) desde Microsoft.
+		      			- Usar el instalador offline de Creative Cloud (si el instalador online falla):
+		      				- Descarga el instalador desde Adobe.
+			      - B. Problemas con Servicios de Adobe
+				      - Algunas funciones en la nube (como Adobe Fonts o Bibliotecas CC) pueden requerir ajustes en firewalls o políticas de red.	
+			      - C. Alternativas si Creative Cloud no funciona
+			      	- Illustrator CS6 (versión independiente, sin suscripción).
+			      	- Illustrator Portable (no oficial, para usos básicos).
+
+		      - 3. Recomendaciones para un Rendimiento Óptimo
+		      	- Actualiza los drivers de tu GPU (especialmente si usas NVIDIA/AMD para renderizado GPU). 
+		      	- Asigna más RAM a Illustrator (en Edición > Preferencias > Rendimiento).
+		      	- Desactiva actualizaciones automáticas de Windows LTSC (para evitar conflictos con Creative Cloud).
+
+    		  - Conclusión
+			      - ✅ Adobe Illustrator funciona en Windows 10 LTSC, pero:
+			      	- Si usas Illustrator CC (Creative Cloud), instala manualmente WebView2 y VC++.
+			      	- Si prefieres evitar la nube, Illustrator CS6 es una opción estable.
+			      	- Verifica que tu hardware cumpla los requisitos de Adobe.
