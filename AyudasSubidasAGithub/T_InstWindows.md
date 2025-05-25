@@ -302,9 +302,32 @@
           - formateará con dos opciones mantener o formatear todo.
 
 - **Windows 10 LTSC**
-	- [Instalación Windows 10 IoT Enterprise 2021 x64 caduca en 2032](https://www.youtube.com/watch?v=Lp7qepjK_oI)
-		- Licencia 
-  		- [MS Win 10 Enterprise LTSC 2021 IoT Edition CD Key Global ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
+	- [Proto: Me REGRESO a Windows 10 PERO CON 7 AÑOS DE SOPORTE GRATIS](https://www.youtube.com/watch?v=j6FFrSJr9aE)
+    - **ISO** 
+      - **Inglés**
+        - Baja automáticamente
+          - [ISO Windows 10 IoT Enterprise LTSC 2021 (English) x64](https://archive.org/download/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f_202301/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso&v=j6FFrSJr9aE)
+        - Al archive para seleccionar
+        - [en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso (View Contents)](https://archive.org/download/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f_202301/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso)
+        - **Desde Microsoft**
+          - [Windows 10 Enterprise](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise)
+            - Ir a esa página.
+            - Presionar a **Download the ISO - LTSC Enterprise**
+              - [Evaluate Windows 10 Enterprise](https://info.microsoft.com/ww-landing-windows-10-enterprise.html)
+              - Ingresar la información que solicitan
+              - Presonar **Descargar ahora**
+              - Buscar
+                - Español
+                - ISO: descargar de la versión LTSC de Enterprise
+		- **Licencia** 
+  		- [VIP-UEcdkey: ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
+    		- Al parecer es más barata que la **kopkeys**
+    		- Cup(A_no) 
+      		- **A_PROTO_A**
+      		- **A__A** (MIO)
+	- [acaele: Instalación Windows 10 IoT Enterprise 2021 x64 caduca en 2032](https://www.youtube.com/watch?v=Lp7qepjK_oI)
+		- **Licencia** 
+  		- [kopkeys: MS Win 10 Enterprise LTSC 2021 IoT Edition CD Key Global ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
     		- Buy now
     		- Cup(A_no) 
       		- **A_ACA_A**
