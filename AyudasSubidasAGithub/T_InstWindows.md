@@ -320,11 +320,11 @@
                 - Español
                 - ISO: descargar de la versión LTSC de Enterprise
 		- **Licencia** 
-  		- [VIP-UEcdkey: ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
+  		- [VIP-UEcdkey: ](https://www.vip-urcdkey.com/software/p202502111054418302.html?urd=PROTOL)
     		- Al parecer es más barata que la **kopkeys**
     		- Cup(A_no) 
       		- **A_PROTO_A**
-      		- **A__A** (MIO)
+      		- **A_UKGA_A** (MIO)
 	- [acaele: Instalación Windows 10 IoT Enterprise 2021 x64 caduca en 2032](https://www.youtube.com/watch?v=Lp7qepjK_oI)
 		- **Licencia** 
   		- [kopkeys: MS Win 10 Enterprise LTSC 2021 IoT Edition CD Key Global ](https://www.kopkeys.com/software/p202504011030576914.html?urd=LTSC2021)
