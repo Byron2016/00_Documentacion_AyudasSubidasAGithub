@@ -321,6 +321,16 @@
 
   - (V >= 9)
 
+    - [Syntax: Lint como un desarrollador senior con eslint + husky + lint staged + acciones de github](https://www.youtube.com/watch?v=Kr4VxMbF3LY)
+      - [antfu eslint-config](https://github.com/antfu/eslint-config) 
+      - [Configuración de CJ para antfu eslint-config](https://gist.github.com/w3cj/21b1f1b4857ecd13d076075a5c5aaf13/) 
+      - [ESLint Stylistic](https://eslint.style/) 
+      - [Husky](https://typicode.github.io/husky/) 
+      - [lint-staged](https://www.npmjs.com/package/lint-staged) 
+      - [Compilación y pruebas de Node.js](https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-nodejs) 
+      - [Activación de un flujo de trabajo](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow) 
+      - [act](https://nektosact.com/) 
+
     - Soportar Json & Markdown
 
       - Soportar [Json](https://github.com/eslint/json)
