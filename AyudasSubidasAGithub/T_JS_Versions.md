@@ -1,0 +1,4 @@
+- Versiones 
+  - 2025
+    - [9 NEW JavaScript Features in ES2025](https://www.youtube.com/watch?v=1-cjrEMj_us) 
+    - [proposals/finished-proposals.md](https://github.com/tc39/proposals/blob/main/finished-proposals.md) 
