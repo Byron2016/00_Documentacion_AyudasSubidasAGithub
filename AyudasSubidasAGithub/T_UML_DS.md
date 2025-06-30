@@ -19,6 +19,7 @@
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -59,6 +60,10 @@
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/01_herencia.JPG" alt="Herencia" width="260" height="250">
   </td>
   </tr>
 </table>
@@ -139,6 +144,7 @@ miPerro.ladrar();      // Específico de Perro
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -189,6 +195,10 @@ miPerro.ladrar();      // Específico de Perro
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/02_interfaz.JPG" alt="Interfaz" width="170" height="360">
   </td>
   </tr>
 </table>
@@ -287,6 +297,7 @@ miPerro.ladrar();      // Específico de Perro
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -351,6 +362,10 @@ miPerro.ladrar();      // Específico de Perro
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/03_composicion.JPG" alt="Composición" width="151" height="530">
   </td>
   </tr>
 </table>
@@ -483,6 +498,7 @@ console.log(`El color del collar es: ${miPerro.getColorCollar()}`); // Usando el
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -565,6 +581,10 @@ console.log(`El color del collar es: ${miPerro.getColorCollar()}`); // Usando el
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/04_agregacion.JPG" alt="Agregación" width="300" height="580">
   </td>
   </tr>
 </table>
@@ -759,6 +779,7 @@ miPerro.listarJuguetes(); // Listar juguetes
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -851,6 +872,10 @@ miPerro.listarJuguetes(); // Listar juguetes
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/05_dependencia_debil.JPG" alt="Dependencia Débil" width="320" height="570">
   </td>
   </tr>
 </table>
@@ -1063,6 +1088,7 @@ veterinario.chequear(miPerro); // Dependencia fuerte: Veterinario usa Perro
   <tr>
     <th>Diagrama Renderizado</th>
     <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
   </tr>
   <tr>
   <td>
@@ -1171,6 +1197,10 @@ veterinario.chequear(miPerro); // Dependencia fuerte: Veterinario usa Perro
       @enduml
 
   </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/06_asociación.JPG" alt="Asociación" width="470" height="545">
   </td>
   </tr>
 </table>
