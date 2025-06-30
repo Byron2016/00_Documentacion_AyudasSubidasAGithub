@@ -1200,7 +1200,7 @@ veterinario.chequear(miPerro); // Dependencia fuerte: Veterinario usa Perro
   </td>
   <td>
       <!-- Columna 3: Gráfico Git-->
-    <img src="../images/uml_ds/06_asociación.JPG" alt="Asociación" width="470" height="545">
+    <img src="../images/uml_ds/06_asociacion.JPG" alt="Asociación" width="470" height="545">
   </td>
   </tr>
 </table>
