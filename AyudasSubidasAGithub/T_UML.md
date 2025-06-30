@@ -34,6 +34,10 @@
   - [Aggregación vs Composición Explicado](https://www.gleek.io/blog/aggregation-vs-composition)
 
     - Excelente artículo para entenderlo.
+      - **Agregación**
+        - La **agregación** es una forma especializada de **asociación** en UML que representa una relación de "has a - tiene un" o "whole/part - todo/parte" entre el agregado (el todo) y sus partes, lo que implica una **propiedad débil** entre ellas. Esta relación sugiere que, si bien el agregado puede contener o estar compuesto por sus partes, estas pueden existir independientemente del agregado. Es esta independencia la que caracteriza a la agregación y la distingue de otros tipos de asociaciones.
+      - **Composición**
+        - La **composición** en UML representa una forma sólida de la relación "has a - tiene un" o "whole/part - todo/parte", caracterizada por una fuerte propiedad y un ciclo de vida coincidente entre el todo y sus partes. Esto significa que las partes se crean cuando se crea el todo y se destruyen cuando este se destruye. La composición implica una relación más rígida que la agregación, destacando una relación inseparable donde las partes no tienen existencia independiente sin el todo.
 
   - **Implementación de Asociación, Agregación y Composición en C#**
 
