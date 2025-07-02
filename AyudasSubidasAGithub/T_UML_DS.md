@@ -8,6 +8,8 @@
 5. [Relación de Dependencia Débil](#relación-de-dependencia-débil)
 6. [Relación de Asociación](#relación-de-asociación)
 7. [Preguntas Frecuentes](#preguntas-frecuentes)
+8. [A usa B vs A conoce B](#A-usa-B-vs-A-conoce-B)
+
 
 ---
 
@@ -1683,3 +1685,204 @@ dueño.listarPerros(); // Asociación: Dueño tiene Perros
     <code>o--</code> (Agregación): Se usa para relaciones de "todo-parte" donde la parte puede existir independientemente del todo.
 
     En el caso de Dueño y Perro, la relación es una asociación (<code>--></code>), no una agregación (<code>o--</code>), porque un Perro no es una parte de un Dueño y puede existir independientemente.
+
+
+## **8. A usa B vs A conoce B** <a name="A-usa-B-vs-A-conoce-B"></a>
+
+- Pregunta realizada a ChatGPT con la siguiente respuesta 
+  - En UML, la frase "A usa B" no es exactamente lo mismo que "A conoce B", aunque están relacionadas.
+
+### **"A conoce B" (Asociación)**
+  - Significa que A tiene una referencia directa a B.
+
+  - Es una asociación duradera o persistente.
+
+  - Se representa con una línea sólida entre A y B. <code>--></code>
+  
+
+### **""A usa B" (Dependencia)**
+  - Significa que A depende de B temporalmente, por ejemplo, como parámetro de un método o al crear una instancia local.
+
+  - Se representa con una línea discontinua con flecha punteada. <code>..></code>
+
+  - Es una relación más débil y temporal.
+
+
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+      @startuml
+      class A {
+        +metodo(b: B): void
+      }
+
+      class B
+
+      A ..> B : usa (dependencia)
+      A --> B : conoce (asociación)
+
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+      @startuml
+      class A {
+        +metodo(b: B): void
+      }
+
+      class B
+
+      A ..> B : usa (dependencia)
+      A --> B : conoce (asociación)
+
+      @enduml
+  </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/07_usa-vs-conoce.JPG" alt="Usa vs Conoce" width="260" height="190">
+  </td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+
+      @startuml
+      class Document {
+        +printWith(printer: Printer): void
+      }
+
+      class Printer {
+        +print(): void
+      }
+      
+      Document ..> Printer : usa
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+      @startuml
+      class Document {
+        +printWith(printer: Printer): void
+      }
+
+      class Printer {
+        +print(): void
+      }
+      
+      Document ..> Printer : usa
+      @enduml
+  </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_ds/08_usa-vs-conoce.JPG" alt="Usa vs Conoce" width="260" height="190">
+  </td>
+  </tr>
+</table>
+
+
+### **Código en JavaScript ("A usa B" (Dependencia))**
+```js
+class B {
+  saludar() {
+    console.log("Hola desde B");
+  }
+}
+
+class A {
+  metodo() {
+    const b = new B(); // Uso temporal de B
+    b.saludar();
+  }
+}
+```
+
+
+### **Código en JavaScript ("A usa B" (Dependencia))**
+```js
+// Paso como parámetro
+// Clase B: Printer
+class Printer {
+  print() {
+    console.log("Imprimiendo documento...");
+  }
+}
+
+// Clase A: Document
+class Document {
+  printWith(printer) {
+    // Se pasa la instancia de Printer como argumento
+    printer.print(); // Uso temporal de Printer
+  }
+}
+
+// Uso
+const printer = new Printer();
+const doc = new Document();
+
+doc.printWith(printer); // Document usa Printer en este método
+```
+
+### **Código en JavaScript ("A conoce B" (Asociación))**
+```js
+class B {
+  saludar() {
+    console.log("Hola desde B");
+  }
+}
+
+class A {
+  constructor(b) {
+    this.b = b; // Asociación: A conoce B de forma persistente
+  }
+
+  metodo() {
+    this.b.saludar();
+  }
+}
+
+const b = new B();
+const a = new A(b);
+a.metodo();
+```
+
+### **🧠 Conclusión:**
+- En UML:
+
+  - "Usa" = dependencia (→ ..> flecha punteada)
+
+  - "Conoce" = asociación (→ --> flecha sólida)
+
+- En código:
+
+  - Usar = Crear o pasar B dentro de un método.
+
+  - Conocer = Guardar una referencia a B como propiedad o atributo.
