@@ -1872,6 +1872,11 @@ class A {
 const b = new B();
 const a = new A(b);
 a.metodo();
+// Elemento	            Significado
+// printer              en el método	Parámetro (no propiedad interna)
+// printer.print()	    Uso de la funcionalidad de B
+// No hay this.printer	No hay asociación, solo uso
+// UML ..>	            Dependencia/uso temporal
 ```
 
 ### **🧠 Conclusión:**
