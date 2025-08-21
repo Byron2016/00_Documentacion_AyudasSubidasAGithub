@@ -4,6 +4,7 @@
 ## **Índice**
 1. [Parte 1 - Modelo](#parte-1-modelo)
 2. [Parte 2 - Observer](#parte-2-observer)
+3. [Parte 3 - ModelVies](#parte-3-modelview)
 
 ## **1. Parte 1 - Modelo** <a name="parte-1-modelo"></a>
 
@@ -253,4 +254,158 @@ Model "1" *-- "0..*" Color
 -   **Justificación**: Indica que los `Color`s son una parte fundamental del `Model`. Si el `Model` fuera destruido, su lista de `Color`s (su estado) también lo sería. Refleja propiedad y una fuerte dependencia.
 
 **En conclusión** la evolución de `Parte1` a `Parte2` es un excelente ejemplo de cómo los requisitos de una aplicación impulsan cambios en su arquitectura. El diseño pasó de ser un simple modelo de datos a un patrón de diseño desacoplado y robusto. El cambio en la relación UML de agregación a composición refleja con precisión el aumento de la responsabilidad del `Model`, que pasó de ser un mero contenedor a ser el **propietario y gestor del estado de la aplicación**.
+
+
+## **3. Parte 3 - ModelVies** <a name="parte-3-modelview"></a>
+
+**Inicia en 20.21 termina en 28.28**
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+
+      @startuml
+      skinparam classAttributeIconSize 0
+      title Arquitectura Esencial (Corregida)
+
+      class Color {
+        - _r: number
+        - _g: number
+        - _b: number
+        - _name: string
+      }
+
+      class Model {
+        - _colorsList: Color[]
+        - _observers: Observer[]
+        + subcribe(observer: Observer): void
+        - _notify(evento: string): void
+      }
+
+      class ModelViewConsole {
+        - _model: Model
+        + reload(data: Color[]): void
+      }
+
+      class Observer {
+        - _modelView: ModelViewConsole
+        + update(data: Color[], event: string): void
+      }
+
+
+      Model "1" *-- "0..*" Color : se compone de
+      Model "1" o-- "0..*" Observer : notifica a
+      Observer ..> ModelViewConsole : actualiza
+      ModelViewConsole ..> Model : depende de
+
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+
+      @startuml
+      skinparam classAttributeIconSize 0
+      title Arquitectura Esencial (Corregida)
+
+      class Color {
+        - _r: number
+        - _g: number
+        - _b: number
+        - _name: string
+      }
+
+      class Model {
+        - _colorsList: Color[]
+        - _observers: Observer[]
+        + subcribe(observer: Observer): void
+        - _notify(evento: string): void
+      }
+
+      class ModelViewConsole {
+        - _model: Model
+        + reload(data: Color[]): void
+      }
+
+      class Observer {
+        - _modelView: ModelViewConsole
+        + update(data: Color[], event: string): void
+      }
+
+
+      Model "1" *-- "0..*" Color : se compone de
+      Model "1" o-- "0..*" Observer : notifica a
+      Observer ..> ModelViewConsole : actualiza
+      ModelViewConsole ..> Model : depende de
+
+      @enduml
+
+  </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_mvvm_f/03_modelview.JPG" alt="modelview" width="580" height="520">
+  </td>
+  </tr>
+</table>
+
+Las clases mostradas son:
+-   **`Color`**: Representa el dato elemental.
+-   **`Model`**: El sujeto. Propietario de los datos y responsable de notificar cambios.
+-   **`Observer`**: El conector. Escucha al `Model` y ordena a la `View` que se actualice.
+-   **`ModelViewConsole`**: La vista. Encargada de la presentación visual (en este caso, en la consola).
+
+---
+
+**Explicación de las Relaciones Actuales**
+
+1.  **`Model *-- Color` (Composición)**
+    -   **Significado**: "Un `Model` se compone de `Color`s".
+    -   **Explicación**: Esta es la relación más fuerte. Indica que el `Model` es el **propietario** de la lista de colores. Los colores son parte integral del estado del `Model`, y su ciclo de vida dentro de la aplicación es gestionado por él.
+
+2.  **`Model o-- Observer` (Agregación)**
+    -   **Significado**: "Un `Model` tiene una lista de `Observer`s a los que notificar".
+    -   **Explicación**: Es una relación de tipo "tiene-un". El `Model` mantiene una lista de observadores, pero no es su propietario. Los observadores pueden existir independientemente y se "suscriben" al `Model`.
+
+3.  **`Observer ..> ModelViewConsole` (Dependencia)**
+    -   **Significado**: "Un `Observer` depende de una `View` para poder trabajar".
+    -   **Explicación**: El `Observer` no realiza la presentación por sí mismo. Su única tarea es invocar un método en un objeto `View` (`ModelViewConsole`). Esta es la clave del desacoplamiento: el `Observer` no sabe *cómo* se ven los datos, solo sabe *a quién* pedir que los muestre.
+
+---
+
+**La Evolución de las Relaciones (Parte 1 -> Parte 2 -> Parte 3)**
+
+Esta sección detalla los cambios en las relaciones en cada etapa del proyecto.
+
+**Etapa 1: Modelo Simple**
+
+-   **Relación Principal**: `Model o-- Color` (Agregación).
+-   **Explicación**: En el inicio, la relación era débil. El `Model` era un simple contenedor pasivo de `Color`s. No había más arquitectura.
+
+**Etapa 2: Introducción del Patrón Observer**
+
+-   **CAMBIO 1: `Model *-- Color` (Composición)**
+    -   La relación entre `Model` y `Color` **se fortaleció**. Al convertirse en el "Sujeto" del patrón, el `Model` pasó a ser el gestor y propietario activo del estado, justificando el uso de la composición.
+-   **NUEVA RELACIÓN: `Model o-- Observer` (Agregación)**
+    -   Aparece la relación que define el patrón: el `Model` ahora mantiene una lista de `Observer`s a los que notificar.
+-   **NUEVA RELACIÓN (Implícita): `Observer -> DOM`**
+    -   En esta fase, los observadores estaban **fuertemente acoplados** a la presentación. Contenían código para generar HTML y manipular el DOM directamente. Era una dependencia no declarada pero muy real.
+
+**Etapa 3: Arquitectura Esencial (Modelo-Vista-Observador)**
+
+-   **CAMBIO 2: `Observer ..> ModelViewConsole` (Dependencia de Vista)**
+    -   Este es el cambio más importante de la Parte 3. La relación implícita e indeseable `Observer -> DOM` **se elimina**.
+    -   Se reemplaza por una relación de **dependencia limpia y explícita** hacia un objeto `View`. El `Observer` ahora está completamente desacoplado de la lógica de presentación.
+-   **Relaciones Estables**: Las relaciones `Model *-- Color` y `Model o-- Observer` se mantienen estables desde la Parte 2, demostrando que son el fundamento sólido sobre el que se construye esta nueva mejora.
+
 
