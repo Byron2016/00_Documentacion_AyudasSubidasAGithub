@@ -64,6 +64,7 @@
   - T_TypeScript_tsconfig.md
   - T_UML.md
   - T_UML_DS.md
+  - T_UML_MVVM.md
   - T_VisualStudio2022.md
   - T_VSC_001.md
   - T_VSC_Config.md
