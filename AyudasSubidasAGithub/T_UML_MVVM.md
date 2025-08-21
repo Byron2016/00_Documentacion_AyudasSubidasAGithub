@@ -3,8 +3,12 @@
 
 ## **Índice**
 1. [Parte 1 - Modelo](#parte-1-modelo)
+2. [Parte 2 - Observer](#parte-2-observer)
 
 ## **1. Parte 1 - Modelo** <a name="parte-1-modelo"></a>
+
+**Inicia en 0 termina en 13.14**
+
 El código en *js/Model.js* define dos componentes principales:
   **Color** y **Model**, que funcionan como "factorías" de objetos.
 
@@ -118,5 +122,135 @@ Buena pregunta. Digo que funcionan como **"factorías de objetos"** por la forma
   </tr>
 </table>
 
+---
 
+## **2. Parte 2 - Observer** <a name="parte-2-observer"></a>
+
+**Inicia en 13.15 termina en 20.21**
+
+En la segunda fase, surge una nueva necesidad: cuando la lista de colores en el `Model` cambia (se añade o elimina un color), diferentes partes de la interfaz de usuario deben ser notificadas para actualizarse automáticamente.
+
+Esta necesidad se resuelve implementando el **Patrón de Diseño Observer**.
+
+<table>
+  <tr>
+    <th>Diagrama Renderizado</th>
+    <th>Código PlantUML sin Renderizar</th>
+    <th>Gráfico GIT</th>
+  </tr>
+  <tr>
+  <td>
+      
+  ```plantuml
+      @startuml
+      skinparam classAttributeIconSize 0
+
+      title Evolución de Parte 1 a      Parte 2 (Arquitectura Observer)
+
+      class Color {
+        - _r: number
+        - _g: number
+        - _b: number
+        - _name: string
+        + getR(): number
+        + getG(): number
+        + getB(): number
+        + getName(): string
+        + getColor(): string
+      }
+
+      class Model {
+        - _colorsList: Color[]
+        - _observers: Observer[]
+        + getList(): Color[]
+        + addColor(newColor: Color):      void
+        + removeColor(index: number):       void
+        + subcribe(observer: Observer):       void
+        + unsubcribe(observer: Observer)      : void
+        - _notify(evento: string): void
+      }
+
+      class Observer {
+        + update(event: any): void
+      }
+
+      Model "1" *-- "0..*" Color :      contiene
+      Model "1" o-- "0..*" Observer :       notifica a
+
+      @enduml
+  ```
+
+  </td>
+  <td>
+      <!-- Columna 2: Código PlantUML sin renderizar -->
+  <pre>
+
+      @startuml
+      skinparam classAttributeIconSize 0
+
+      title Evolución de Parte 1 a      Parte 2 (Arquitectura Observer)
+
+      class Color {
+        - _r: number
+        - _g: number
+        - _b: number
+        - _name: string
+        + getR(): number
+        + getG(): number
+        + getB(): number
+        + getName(): string
+        + getColor(): string
+      }
+
+      class Model {
+        - _colorsList: Color[]
+        - _observers: Observer[]
+        + getList(): Color[]
+        + addColor(newColor: Color):      void
+        + removeColor(index: number):       void
+        + subcribe(observer: Observer):       void
+        + unsubcribe(observer: Observer)      : void
+        - _notify(evento: string): void
+      }
+
+      class Observer {
+        + update(event: any): void
+      }
+
+      Model "1" *-- "0..*" Color :      contiene
+      Model "1" o-- "0..*" Observer :       notifica a
+
+      @enduml
+
+  </pre>
+  </td>
+  <td>
+      <!-- Columna 3: Gráfico Git-->
+    <img src="../images/uml_mvvm_f/02_observer.JPG" alt="Herencia" width="465" height="505">
+  </td>
+  </tr>
+</table>
+
+La arquitectura evoluciona con nuevos roles:
+
+-   **Sujeto (Subject)**: El `Model` asume este nuevo rol. Ya no es un simple contenedor, ahora es el **gestor activo de los datos** y es responsable de notificar los cambios.
+-   **Observador (Observer)**: Se introduce un nuevo concepto, el `Observer`, que define un objeto que desea ser notificado de los cambios en el `Model`. Todos los observadores deben tener un método `update()`.
+
+### El Cambio Clave: De Agregación a Composición
+
+Con la nueva responsabilidad del `Model`, su relación con `Color` se vuelve más fuerte y significativa.
+
+-   **El `Model` como "Única Fuente de Verdad"**: El `Model` se convierte en el propietario y gestor central del estado de la aplicación. Los colores no solo están "en" el modelo, sino que son una **parte intrínseca de su estado**.
+-   **Gestión del Ciclo de Vida**: El `Model` ahora controla activamente cuándo un `Color` se añade o se elimina de la aplicación a través de sus métodos. El ciclo de vida de los `Color`s, dentro del contexto del estado de la aplicación, está ligado al `Model`.
+
+Esta relación más fuerte se representa con mayor precisión como **Composición**.
+
+```plantuml
+Model "1" *-- "0..*" Color
+```
+
+-   **Significado**: "Un `Model` *se compone de* una colección de `Color`s".
+-   **Justificación**: Indica que los `Color`s son una parte fundamental del `Model`. Si el `Model` fuera destruido, su lista de `Color`s (su estado) también lo sería. Refleja propiedad y una fuerte dependencia.
+
+**En conclusión** la evolución de `Parte1` a `Parte2` es un excelente ejemplo de cómo los requisitos de una aplicación impulsan cambios en su arquitectura. El diseño pasó de ser un simple modelo de datos a un patrón de diseño desacoplado y robusto. El cambio en la relación UML de agregación a composición refleja con precisión el aumento de la responsabilidad del `Model`, que pasó de ser un mero contenedor a ser el **propietario y gestor del estado de la aplicación**.
 
