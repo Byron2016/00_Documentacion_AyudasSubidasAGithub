@@ -56,6 +56,7 @@
   - T_ReactCurso_001.md
   - T_Releases_Versioning.md
   - T_SEO.md
+  - T_Sha256_Verification.md
   - T_SOLID.md
   - T_SSH.md
   - T_Streamer.md

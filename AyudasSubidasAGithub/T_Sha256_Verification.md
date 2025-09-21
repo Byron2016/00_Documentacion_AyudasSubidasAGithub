@@ -1,0 +1,13 @@
+- **SHA256**
+  - **Windows**
+    - **CMD / GITBASH** **CertUtil**
+      - <code>CertUtil -hashfile ffmpeg-master-latest-win64-gpl-shared.zip sha256</code>
+    - **PowerShell** **Get-FileHash**
+      - <code>Get-FileHash ffmpeg-master-latest-win64-gpl-shared.zip sha256 -Algorithm sha256</code>
+    - **7zip** **Get-FileHash**
+      - Botón derecho sobre el archivo zip
+      - Seleccionar 7-Zip
+      - Seleccionar "CRC SHA"
+      - Seleccionar el algoritmo (e.g., CRC-32, SHA-1, SHA-256) a calcular. 
+      - Comparar el resultado generado con el de la página web.
+
