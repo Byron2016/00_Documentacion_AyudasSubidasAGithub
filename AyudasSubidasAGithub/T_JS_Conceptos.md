@@ -193,6 +193,122 @@
       - **!=**
         - Diferencia debil **! un igual**
 
+
+  - **Scope**
+
+    - [La Cocina del Código: 6. EL SCOPE en JAVASCRIPT | JS en ESPAÑOL](https://www.youtube.com/watch?v=s-7C09ymzK8&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB&index=6)
+      - Es uno de los conceptos que más confuciones genera en javaScript y a la vez es una de las características más importantes que tiene este lenguaje de programación.
+      - Cuando hacemos referencia a una variable <code>if(true){console.log('comiendo ' + fruta)}</code> java script va a empezar buscando su definición en el entorno más cercano mirar numeración y orden de búsqueda.
+
+          ```javascript 
+            <script>
+              //3.- como no la encuentra en 2 busca en este entorno
+              var aafruta = 'manzana';
+              function comer(){
+                //2.- como no la encuentra en 1 busca en este entorno
+                if(true){
+                  //1.- busca dentro de este bloque
+                  console.log('lavando ' + aafruta);
+                }
+              }
+            <script>
+          ```
+      - Cada uno de estos entornos de búsqueda recibe el nombre de **scope** en javaScript.
+      - el **scope** es lo que le da significado a las variables y además determina el conjunto de variables que podemos acceder desde una línea de código.
+      - El **scope** en el que va a entrar cada variable depende de dónde y como la declaremos.
+        - *Cómo* 
+          - var (forma antigüa)
+          - let o Const
+        - *Por dónde* 
+          - Manera libre fuera de toda función o bloque de código
+          - Dentro de una función
+          - Dentro de un bloque de código como un if pero solo con **let o const**
+      - javaScript tiene un **scope léxico (lexical scoping)**: El scope de cada variable se determina leyendo el código del programa, sin ejecutarlo. Por eso a este modelo también se lo conoce como **scope estático (static scoping)**
+      - Temas a cubrir 
+        - Diferenciar entre **scope** vs **contexto**
+        - Tipos de scope y características
+        - Cadena de scopes (scope chain)
+        - Scope en las herramientas del navegador
+      - **Definición de scope**
+        - Es el contexto actual de ejecución. El contexto en el que los valores y las expresiones son "visibles" o pueden ser referenciados.
+          - Lo que quiere decir es que una palabra puede tener un significado en un contexto u otro totalmente distinto en otro contexto (ejemp: me puedo comer una manzana o salir a dar una vuelta a la manzana).
+
+          ```javascript 
+          //Ejemplo de dos contextos diferentes para aafruta
+          //El mismo identificador tiene un valor de acuerdo al contexto.
+          function comer(){
+            var aafruta = 'manzana';
+            console.log('comiendo ' + aafruta);
+          }
+          function lavar(){
+            var aafruta = 'banana';
+            console.log('lavando ' + aafruta);
+          }
+          ```
+        - **Contexto vs Contexto de ejecución**
+          - Las palabras se parecen pero son dos cosas totalmente distintas.
+          - **Contexto** en javascript es: El valor que tiene la variable **this** en algún momento de la ejecución. Con cuál es el objeto que está ejecutando una función.
+          - Te debe quedar claro que cuando hablamos de **scope** hablamos de **Contexto de ejecución** o mejor aún de **entorno**, de lo que le da significado a las variables.
+      - **Tipos de scope y características**
+        - Dependiendo de como escribamos nuestras variables, decidiremos si una variable va a vivir en un **scope global** o en un **scope local**
+          - **scope global** 
+            - Las **variables globales** pueden ser accedidas desde cualquier lugar de nuestro programa.
+              - <code>var/let/const fruta='manzana' //como está fuera de toda función, bloque independientemente de como se declare tendrá un scope global.</code>
+              - Lo mismo pasa con las funciones. Se podrán acceder desde cualquier lugar del código.
+              - Resumiendo: Las variables declaradas fuera de toda función o bloque de código son variables globales sin importar si las declaramos con **var, let o const**
+              - Están en memoria durante toda la ejecución del programa
+          - **scope local** 
+            - Las **variables locales** pueden ser accedidas desde una parte de nuestro programa.
+            - Existen dos tipos 
+              - **scope de función**
+              - **scope de bloque**
+            - **scope de función**
+              - Son declaradas dentro de una función
+              - Solo pueden ser accedidas desde esa función
+              - Si tratamos de accederlas desde afuera se tendrá un error de referencia.
+              - Lo mismo pasa con los parámetros que recibe una función, estos tienen un scope de función.
+              - Si estamos en un bloque dentro de una función y declaramos una variable con **var** esta se va a poder acceder desde cualquier parte de la función que la contiene debido al **hosting**
+            - **scope de bloque**
+              - Es toda función de código encerrada entre llaves. (if, else, while, for, )
+              - Si se declara una variable con **let / const** dentro de un bloque, desde fuera de ese bloque no se podrá acceder.
+              - Están en memoria durante toda la ejecución de la función o bloque al que pertenece, a menos que se trate de un **clousure**.
+            - **Cuál scope usar**
+              - Buena práctica, es declararla en el scope más reducido posible.
+      - **Cadena de scopes (scope chain)**
+          ```javascript 
+            <script>
+              var aafruta = 'manzana';
+              function comer(){
+                var aaotraFruta = 'banana';
+                function lavar(){
+                  console.log('lavando ' + aaotraFruta);
+                }
+                lavar();
+                console.log('comiendo ' + aaotraFruta);
+              }
+              comer();
+            <script>
+          ```
+        - función lavar es hija de la función comer debido a que está declarada directamente  dentro de ella y a su vez la función comer es hija de la función global.
+        - Entender la jerarquía que se genera entre los distintos scopes que existen de acuerdo a como escribamos nuestro código, es la clave para entender como funciona este mecanismo.
+        - Para aaotraFrua dentro de lavar, primero la busca en función lavar, no la encuentra va a la función comer, la encuentra, detiene la búsqueda.
+        - Si encambio sería aaFruta, no la encontraría en la función comer, entonces fuera al scope de la función global donde está.
+        - Este mecanismo descrito anteriormente es lo que se llama cadena de scope o scope chaining en inglés y es lo que permite que las variables globales se puedan acceder desde cualquier lugar del programa.
+        - Si por equivocación tipamos más una variable la búsqueda igual se dará y generará un error (La variable x no está definida)
+        - OJO: si en vez de escribir una variable que no existía, queremos agregar un valor sobre ella, lo que javaScript hace es realizar la búsqueda hasta llegar al scope global y al no encontrarla **crearía en el scope global**
+          - Esto NO queremos que pase
+          - Lo evitamos agregando **'use strict'** al inicio de la codificación. Y nos mostrará un error (ReferenceError: x is not defined)
+        - Hagamos la prueba de tanto en la función comer creamos y llamamos a variable con mismo nombre que la definida en la función global. Igualmente en la función lavar invocamos a la misma función.
+          - Va a buscar en el scope de la función, como no la encuentra va a función comer y detiene la búsqueda, tomando ese valor. Produciéndose un ocultamiento de variables
+          - **Ocultamiento de variables (variable shadowing)**
+            - Se produce cuando una variable que está en un scope más reducido tiene **el mismo nombre** que otra que está en un scope superior siguiendo su cadena de scopes.
+          - Si queremos referirnos específicamente a la variable global, deveríamos poner **window.fruta** dado que fruta fue declarada con var, lo que la agrega en la propiedad del objeto global window del navegador
+      - **Scope en las herramientas del navegador**
+        - en chrome si la variable global está declarada con **let o const** en lugar de **var** 
+          - Esta no se agrega como propiedad del objeto window
+          - Se agrega en un scope **Script**, ahí van a estar las variables globales que *no son propiedades de window*, pero no por eso dejan de ser globales.
+          - Y si ponemos un break point, veremos que aparece en scope algo nuevo **Clsure (comer)**
+
   - **This**
 
     - [La Cocina del Código: 15. THIS EN JAVASCRIPT (bind, call, apply y más)](https://www.youtube.com/watch?v=bS71_W_BDFE)
