@@ -163,6 +163,36 @@
           - Los **Lenguajes dinámicos** incentivan a **mantener una documentación actualizada** y **escribir mushos test** para asegurarnos de que el código funciona como debería antes de lanzar una **nueva versión** de un programa.
   
   
+  - **== vs ===**
+
+    - [La Cocina del Código: 5. == vs === en JAVASCRIPT | JS en ESPAÑOL](https://www.youtube.com/watch?v=FCkhDBsXsFg&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB&index=5)
+      - **===**
+        - Cuando comparamos **valores primitivos**, este nos dirá si son del **mismo tipo** y si tienen el **mismo valor**.
+        - <code>'2' === 2 // false</code>
+        - Operador de igualdad estricta (strict equality)
+        - Comparación de **objetos / arrays o funciones**
+          - No van a ser iguales ni con el doble igual.
+          - Esto es debido a que en la variable se guardan referencias a memoria.
+            - <code>{} === {} // false</code>
+            - <code>{nombre: Ana} === {nombre: Ana} // false</code>
+            - <code>var a= {nombre: Ana}; var b=a; a === b // true</code>
+            - lo mismo pasa para funciones y arrays.
+            - También se lo conoce como el **Operador de Identidad**: Cuando lo usamos para comparar objetos, este nos dice si estamos hablando del **mismo espacio de memoria**, del mismo objeto en la memoria.
+            - Para comparar dos objetos en diferentes partes de la memoria, es un proceso bastante costoso que debería en lo posible evitarse. Formas: 
+              - <code>JSON.stringify(a) === JSON.stringify(b) // true</code>
+              - <code>_.isEqual(a, b) // true con lodash esto es mejor de stringify</code>
+      - **==**
+        - JavaScript realiza internamente una **coerción de tipos**
+          - **coerción de tipos**: Cuando realizamos ciertas operaciones entre valores de **distinto tipos**, javaScript internamente convierte uno de ellos o ambos para que sean del mismo tipo y pueda concretar la operación.
+            - <code>'2' == 2 // true</code>
+            - <code>'  ' == 0 // true</code>
+            - <code>'\n' == 0 // true</code>
+        - Operador de igualdad débil (loose equality)
+      - **!==**
+        - Diferencia estricta **! dos iguales**
+      - **!=**
+        - Diferencia debil **! un igual**
+
   - **This**
 
     - [La Cocina del Código: 15. THIS EN JAVASCRIPT (bind, call, apply y más)](https://www.youtube.com/watch?v=bS71_W_BDFE)
