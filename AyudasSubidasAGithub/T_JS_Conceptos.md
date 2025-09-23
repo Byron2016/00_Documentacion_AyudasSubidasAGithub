@@ -84,6 +84,258 @@
             - expresiones regulares
             - objeto literal
 
+  
+  
+  - **Sistema de Tipos**
+
+    - [La Cocina del Código: 4. EL SISTEMA de TIPOS DE JAVASCRIPT | JS en ESPAÑOL](https://www.youtube.com/watch?v=0ei4nb49GKo&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB&index=4)
+
+      - **Sistema de Tipos**
+        - Las **reglas que impone un lenguaje** para clasificar qué tipos de valores existen, cómo podemos manipularlos y cuáles son las operaciones válidas para realizar con ellos. Y tienen las siguientes características: 
+          - Chequeo de tipos
+          - Exigencia de tipos
+          - Conversión de tipos 
+          - Equivalencia y compatibilidad de tipos
+        
+        - **Chequeo de tipos**
+          - Es el proceso de **verificar y hacer cumplir** las restricciones de tipos que existen en un lenguaje. Básicamente es verificar que si una variable dijimos que va a ser un número entero luego no le asignemos un string. O que si un método esperaba recibir un string no le estemos pasando un número.
+          - **Cuando ocurre**
+            - ANTES: chequeo **estático** de tipos (C#, Java, Scala, Kothin, Rust, Go)
+            - DURANTE: chequeo **dinámico** de tipos (JavaScript, php, ruby, python)
+        - **Exigencia de tipos** 
+          - Qué tan exigente es un lenguaje para considerar que estamos cometiendo un error de tipos.
+          - Mientras más extricto es un lenguaje con estas reglas decimos que es **más fuertemente tipado** mientras más relajado es con estas reglas decimos que es **más debilmente tipado**
+          - **Ejemplos en js**
+            - <code>2 + 'a' //'2a'</code>
+            - <code>true + true + true //3</code>
+            - <code>'Tengo ' + ['hambre', 'sueño'] + "!" //'Tengo hambre, sueño!</code>
+            - <code>[] + {} //'[objetc Object]'</code>
+            - <code>[1, 2, 3] + ' hola' //'1,2,3 hola'</code>
+            - <code>2 + true //3</code>
+            - <code>true + true //2</code>
+            - <code>(true + true) * 50 //100</code>
+            - <code>2 + BigInt(2) //ERROR</code>
+            - <code>var a='hola'; a() //ERROR</code>
+            - <code>var user; user.email //ERROR user es undefined o null</code>
+        - **Conversión de tipos**
+          - **Coerción de Tipos (Type coercion)** Es la **conversión implícita** de tipos que realiza el motor de javaScript para poder concretar una operación.
+          - JavaScript es super relajado, permite realizar operaciones entre diferentes tipos sin problema, pero para hacerlo va a tomar ciertas decisiones por nosotros.
+            - Num + string: Num transforma a string y concatena.
+            - Num - string: string transforma a número y resta.
+          - **Conversión explícita de tipos**
+            - **string**
+              - <code>String(123) //"123"</code>
+              - <code>123 + '' //"123"</code>
+              - <code>true + '' //"true"</code>
+              - <code>null + '' //"null"</code>
+              - Si no es NULL o UNDEFINE
+                - <code>(2019).toString() //"2019"</code>
+                - <code>var valor=true; valor.toString() //"true"</code>
+            - **number**
+              - <code>Number("123") //123</code>
+              - <code>+"123" //123</code>
+              - <code>+true //1</code>
+              - **Operación no se puede concretar** Se obtiene **NaN**
+                - <code>3 - 'a' //NaN</code>
+                - <code>Number("123a") //NaN</code>
+            - **boolena**
+              - <code>Boolea(null) //false</code>
+              - **Doble signo exclamación** el primero lo convierte al opuesto y el segundo da el valor real al negar el opuesto.
+                - <code>var text='hola'; !texto; !!texto //false true</code>
+          - **FALSY**
+            - <code>!!'' //false</code>
+            - <code>!!0 //false</code>
+            - <code>!!null //false</code>
+            - <code>!!undefined //false</code>
+            - <code>!!NaN //false</code>
+          - [WAT: A lightning talk by Gary Bernhardt from CodeMash 2012 ](https://www.destroyallsoftware.com/talks/wat)
+        - **Equivalencia y compatibilidad de tipos**
+          - Cómo un lenguaje determina que un tipo es **compatible** con otro tipo o **equivalente** a otro tipo.
+          - **Tipado Nominal**: Dos tipos son compatibles cuando **tienen el mismo nombre o cuando uno **es un subtipo del otro** (por herencia) 
+            - Con los lenguajes que tiene un tipado nominal se suelen crear programas escribiendo múltiples clases y utilizando muchos patrones de diseño de programación orientada a objetos lo que da lugar a soluciones elegantes y reconocibles fácilmente en la ingeniería del software (Singleton, Observer, Proxy, Builder, Adapter, Abstract Factory, Decorator, Memento, Strategy, Null Object), lo malo es que si modificamos algún tipo ya sea una clase o una interfaz agregando un método, probablemente terminemos modificando varias partes del programa para que los tipos sigan siendo compatibles, pero al mismo tiempo lo bueno es que vamos a tener muchos menos errores de tipo 
+          - **Sistema de tipos estructural**: Con los lenguajes que tiene un sistema de tipos estructural para que dos tipos sean compatibles **solo basta que compartan la estructura** que nos interesa.
+            - Función que recibe por parámetro variable persona que debe ser un objeto con un atributo de edad de tipo number. Pero esta función también podría recibir animales, edificios o cualquier cosa que tenga un atributo edad pero si le pasamos algo que no tenga el atributo edad tendremos un error de tipos 
+              - <code>!function esMayorDeEdad(persona: {edad: number}){ return persona.edad > 18 }</code>
+          - ANTES: Tanto el **Tipado Nominal** como **Tipado estructural** se realizan antes de ejecutar el programa en el **chequeo estático de tipos**
+          - DUCK TYPING: En los lenguajes **chequeo dinámico de tipos** se usa el **Duck Typing**
+            - Si camina como pato, nada como pato, y hace cuack como pato, entonces si es un pato. En programación yo no sé si es un pato, pero puedo tratarlo como tal.
+            - **No nos importa de qué tipo es un objeto**, siempre y cuando tenga los atributos y métodos a los cuales queremos acceder.
+          - Los **Lenguajes dinámicos** incentivan a **mantener una documentación actualizada** y **escribir mushos test** para asegurarnos de que el código funciona como debería antes de lanzar una **nueva versión** de un programa.
+  
+  
+  - **This**
+
+    - [La Cocina del Código: 15. THIS EN JAVASCRIPT (bind, call, apply y más)](https://www.youtube.com/watch?v=bS71_W_BDFE)
+    
+      - Cambiar el valor de *this* nos permite reutilizar métodos entre distintos objeto reutilizando la misma lógica.
+      - Pensar a *this* como un "parámetro especial"
+      - Preguntar ¿quién es this? o ¿qué valor tiene this? es lo mismo que preguntar ¿qué objeto está ejecutando la función esta vez? en otras palabras estamos preguntando *en que contexto se está ejecutando la función*
+        - *Contexto* es el *objeto* que está ejecutando una función  <u>en un momento específico</u>.
+        - *Contexto* es diferente a *Contexto de ejecución*
+          - *Contexto* tiene que ver con el valor de *this*, el *objeto* que está ejecutando una función en un momento específico.
+          - *Contexto de ejecución* tiene que ver con la *pila de ejecución*
+            - Cada vez que javaScript ejecuta un método o una función, crea un *Contexto de ejecución* para esa ejecución del método o de la función cargando en memoria todo lo necesario para ejecutarla: nombre de la función, parámetros que recibe, nombre del archivo, número próxima fila de ejecución, también crea un *entorno léxico* para las variables declaradas de la función y por último determina que valor tiene *this* para esta ejecución de la función y lo hace cada vez que ejecuta una función.  
+      
+      - **Errores**
+        - **HP y el misterio de this**
+          ```javascript 
+            const harry = {
+              nombre: "Harry",
+              saludar: function() {
+                console.log(`Hola, me llamo ${this.nombre}!`);
+              }
+            }
+            harry.saludar()
+            // Hola, me llamo Harry!
+          ```
+
+          Pero si lo guardamos en una variable:
+
+          ```javascript 
+            const harry = {
+              nombre: "Harry",
+              saludar: function() {
+                console.log(`Hola, me llamo ${this.nombre}!`);
+              }
+            }
+            const saludar = harry.saludar()
+            saludar();
+            // Hola, me llamo undefinde!
+            // this es el objeto que está ejecutando la función, entonces el objeto harry no es el que lo está ejecutando.
+          ```
+          
+        - **This y los eventos**
+          ```javascript 
+            const harry = {
+              nombre: "Harry",
+              saludar: function() {
+                console.log(`Hola, me llamo ${this.nombre}!`);
+              }
+            }
+            const boton = document.getElementById("miBoton")
+            boton.addEventListener("click",harry.saludar)
+            // Hola, me llamo undefinde!
+          ```
+        
+      - **Enlazamiento (binding)** 
+        - *Enlazamiento (binding)* es asignar el valor que va a tomar *this* <u>cuando se ejecute la función</u>
+        - **Tipos de Binding**
+          - *Lexical Binding (Arrow Functions)*
+          - *New Binding (Instanciar Objetos)*
+          - *Explicit Binding (Invocación Indirecta)*
+          - *Implicit Binding (Invocación de Método)*
+          - *Default Binding (invocación Directa)*
+          
+          - El orden en que mira javaScript es desde el Léxical al Default Binding en ese orden.
+          - ¿Cómo sabe qué enlazamiento aplicar?
+            - Mira cómo fue escrita la función
+            - Modificaciones desde la creación.
+            - El lugar de invocación (call site)
+
+        - Desarrollo de cada tipo 
+
+          - *Default Binding (invocación Directa)*
+          ```javascript 
+            function quienSoy() {
+              console.log('Soy el archivo index.js: ', this);
+            }
+
+            quienSoy();
+            // En las funciones sueltas, this es el objeto global / window
+            // Si trabajamos en modo estricto: use strict, veremos que this no está definido.
+            // esto mismo pasa en ES2015 (cuando usamos imports/export) que viene modo estricto por default.
+          ```
+
+        - *Implicit Binding (Invocación de Método)*
+          - Se produce cuando invocamos al método de un objeto.
+          ```javascript 
+            const sasha = {
+              nombre: "Sasha",
+              saludar: function() {
+                  console.log(`Hola, soy ${this.nombre}`);
+              },
+              hermano: {
+                nombre: "Eric",
+                saludar: function() {
+                  console.log(`Hola, soy el hermano y mi nombre es ${this.nombre}`);
+                }
+              }
+            }
+
+            sasha.saludar();
+            sasha.hermano.saludar();
+            // this es el primer objeto que este a la izquierda del punto. sasha y hermano respectivamente.
+          ```
+        - *Análisis de estos dos casos y como se aplica.*
+          - Se produce cuando invocamos al método de un objeto.
+          ```javascript 
+            "use strict";
+            const sasha = {
+              nombre: "Sasha",
+              x: "@sachalifs",
+              saludar: function() {
+                function seguimientoX(){
+                  console.log(this);
+                  console.log(`Sigueme en ${this.x}`);
+                };
+                console.log(`Hola, soy ${this.nombre}`);
+                seguimientoX(); // Es una funcion suelta, por tanto this será windows / global.
+              }
+            }
+
+            sasha.saludar();
+            // Inicialmente imprime "Hola soy Sasha" correctamente x que aplica el enlazamiento implícito en "sasha.saludar()" entonces this es el objeto sasha, x que estamos ejecutando un método de un objeto.
+            // Pero al llegar a "seguimientoX()" determina qué valor tendrá this dentro de esa ejecución. No aplica enlazamiento implícito pq no hay punto antes de una función, entonces aplica el enlazamiento por defecto, y como estamos en modo estricto this es undefine.
+          ```
+          - Se resuelve escribiendo la función como método del objeto y luego invocándolo con this y un punto.
+          ```javascript 
+            "use strict";
+            const sasha = {
+              nombre: "Sasha",
+              x: "@sachalifs",
+              saludar: function() {
+                console.log(`Hola, soy ${this.nombre}`);
+                this.seguimientoX(); 
+              },
+              seguimientoX: function (){
+                console.log(this);
+                console.log(`Sigueme en ${this.x}`);
+              };
+            }
+
+            sasha.saludar();
+          ```
+          - Caso de asignar la ejecución a una variable..
+          ```javascript 
+            const sasha = {
+              nombre: "Sasha",
+              saludar: function() {
+                console.log(`Hola, soy ${this.nombre}`);
+              }
+            }
+            
+            let saludar = sasha.saludar;
+
+            saludar(); 
+            // no estamos en modo stricto, saludar es una función suelta, this es el objeto global / window
+          ```
+          - Caso de asignar la ejecución a un evento.
+          ```javascript 
+            const sasha = {
+              nombre: "Sasha",
+              saludar: function() {
+                console.log(`Hola, soy ${this.nombre}`);
+                console.log(this);
+              }
+            }
+            const boton = document.getElementById('miBoton');
+            boton.addEventListener('click', sasha.saludar); // this es el objeto que dispara el evento, en este caso el boton por eso se imprime undefined
+
+          ```
+        - *Explicit Binding (Invocación Indirecta)*
+          - Call / applid / bind 
+          - 15.41
+
   - **Herencia por Prototipos**
 
     - [La Cocina del Código: 17. HERENCIA POR PROTOTIPOS EN JAVASCRIPT](https://www.youtube.com/watch?v=a2tp64Vtzxs&list=PLfWyZ8S-XzecAttp3QU-gBBXvMqEZTQXB&index=11)
