@@ -711,9 +711,92 @@
 
     - [La Cocina del Código: 21. CLAUSURAS (Closures) EN JAVASCRIPT](https://www.youtube.com/watch?v=JXG_gQ0OF74)
 
-      - Entorno léxico
+      - **Creación** 
+        - Para crear una **clausura o closure** en javaScript necesitamos tres ingredientes: 
+          - Una función escrita dentro de otra función
+          - Una variable que se encuentre en el **scope** de la función más grande y que sea llamada desde la función anidada.
+          - Invocar a la función interna pero no desde el scope en el que está escrita sino desde **otro scope**
+  
+        ```js
+        function crearContrador() {
+          // 2.- Una variable en el scope de la función contendeora.
+          let contador = 0;
+          // 1.- función dentro de otra
+          return function incrementarContrador(){
+            // 2.- Utilización de la variable dentro de la función anidada.
+            contador = contador + 1;
+            return contador;
+          }
+        }
+        //3.- Invocar a la función interna pero no desde el scope en el que está escrita sino desde **otro scope**
+        const contador1 = crearContador();
+        contador1(); //1
+        contador1(); //2
+        contador1(); //3
+        const contador2 = crearContador();
+        contador2(); //1 a pesar que contador1 lo subió hasta 100.
+        
+        ```
+        - Ahora la función interna se ha convertido en un **clousre** ya que al contener una referencia una variable declarada en el scope de una función superior es como si la función encerrara a la variable que se generara un vículo entre ellas, y no importa a donde vaya a parar esta función como en este caso que va al escope global. Si bien desde scope global no podemos acceder a esta variable contador porque es una variable local de la función crearContador, como sacamos a la función interna y la guardamos en nuestra variable global contador1, cuando la invoquemos esta va a seguir vinculada a la variable local y va a poder accederla normalmente. Javascript es un lenguaje de programación muy orientado a las funciones, podríamos decir que éstas tienen un rol protagónico.
+      - **Closure**
+        -  Son funciones anidadas que **recuerdan el conjunto de variables a las que podían acceder**, por más que se las invoque desde otro lugar, desde otro scope.
+        -  El vínculo creado entre closure y las variables a las que hace referencia. El Closure toma algún tipo de foto de la variable o sigue realmente vinculada a ella, en la siguiente función aprenderemos que las closures no sólo tienen que ver con los scopes de las variables sino también con los distintos **contextos de ejecución** así que vamos a entender cómo es que se relacionan estos dos conceptos introduciendo un concepto nuevo el **entorno  léxico**
+        -  Usos principales que tienen las closures
+           -  Proteger el acceso a las variables (18.0)
+           -  Fábrica de funciones (19.0)
+        - Aprenderemos a
+          - Administrar mejor la memoria de la computadora en tus programas.
+          - Hablaremos (29.39) sobre ciertas optimizaciones que hacen los motores de javaScript cuando ejecutan nuestros programas este es un detalle que te evitará dolores de cabeza cuando esté buscando bucks en los programas y requieras acceder a alguna variable que sabes está ahí pero el navegador te dice que no existe.
+
+  
+        ```js
+        function crearContador() {
+          let contador = 0;
+          //timer que modifica el contador en 5segundos
+          setTimeout(function(){
+            //Esta también es un closure ya que tiene una referencia a una variable externa.
+            contador = 100;
+          },5000)
+          return function incrementarContrador(){
+            contador = contador + 1;
+            return contador;
+          }
+        };
+        const contador1 = crearContador();
+        contador1(); //1
+        contador1(); //2
+        contador1(); //3
+        contador1(); //101 //luego de 5 segundos
+        //Esto crea un contador independiente debido al concepto del **contexto de ejecución**
+        const contador2 = crearContador();
+        contador2(); //101.
+        function crearContador(){
+          console.log("HOla")
+          };
+        ```
+
+
+      - **Entorno léxico** (7.09)
+        - (8.02) Es un objeto que tiene los contextos de ejecución donde se almacenan losn ombres de las variables que existen dentro de una función y los valores actuales que tienen. Son como un diccionario clave (que son únicas) / valor, donde las claves son los nombres de las variables declaradas dentro de la función o recibidas como parámetros y el valor son los valores actuales que tienen las variables. Los objetos, funciones y arrays en verdad se guardan como referencias de memoria o punteros a las posiciones de memoria donde realmente se encuentran esos objetos. Y también registra un puntero a su **entorno léxico exterior**, el entorno en el que este fue creado.
+          - Estas claves / valor se llaman **Registro de entorno / enviroment record**
+        - Cuando javaScript empieza a ejecutar nuestro programa, 
+          - lo primero que hace es crear el **contexto de ejecución inicial** para eso crea el primer registro de la pila de ejecución (llamada global o anonymous) que es un registro asociado a la función que engloba a todo el programa. Todo **contexto de ejecución** pasa por dos fases
+            - *Fase de creación* donde se carga en memoria todo lo necesario para ejecutar esa función, en esta etapa se inicializa el registro con cierta información como: el archivo al que pertenece la función (closures.js), se coloca el puntero de la próxima línea de código a ejecutar (global:1), para el primer registro se crea el objeto global que en el navegador es **window**, se pone el valor que va a tener **this** dentro de la función en este caso como no estamos en **modo sstricto** va a apuntar al objeto **window**, también se asocia el **contexto de ejecución** que se está creando con el código que se va a ejecutar, en este caso, todo nuestro script. Y acá viene lo importante, se crea un **entorno léxico** (Pasa a la definición que está arriba como 8.02 y luego vuelve.)
+            - Muchas veces cuando decimos que al ejecutarse una función se crea un nuevo scope para sus variables en realidad nos estamos refiriendo a este objeto **entorno léxico**, el lugar en donde se van a almacenar las variables y parámetros que utiliza esa función en nuestro caso para la función global javaScript ya sabe que existen tres identificadores de variables (crearContador, contador1, contador2), el nombre de la función (crearContador) que es un identificador más y  como es una función que está declarada se carga por completo directamente en memoria cuando se está creando este contexto de ejecución y cada vez que javaScript crea una nueva función en memoria la vincula al entorno donde la creó, así esta función (crearContador) queda vinculada al entorno léxico global. Además en el **entorno léxico global** están declaradas contador 1 y 2, como están declaradas con **const**, su valor inicial es **no inicializada**, si habrían sido declaradas con **var** su valor inicial sería **undefined**. Acordate que esto es lo que se conoce como **hosting** en javaScript, darle valores iniciales a las variables en cargar a las funciones en memoria justo antes de comenzar la ejecución de la función. Y por último cada **entorno léxico** guarda un puntero al  **entorno léxico** exterior pero en el caso de la función global este estará vacío ya que es el primero en crearse.
+            - (10.52) Vemos paso a paso como va leyendo y ejecutando el motor de javaScript el código.
+              - Ya tenemos en el **callstack / pila) *global:1*
+              - En la fase de ejecución javaScript va ejecutando sentencia por sentencia, las declaraciones de funciones o de variables le sirvieron a javascript en la fase anterior para crear el entorno léxico con sus valores iniciales pero no tiene que ejecutarlas así que pasa directamente a la línea 10 (<code>const contador1 = crearContador();</code>) donde se encuentra con una asignación. En donde estamos asignando el resultado de ejecutar una función
+                - Crea un nuevo **contexto de ejecución** para esta función: nombre de la función, información inicial necesaria que vimos antes (nombre del archivo al que pertneece la función, próximoa instrucción a ejecutar (crearContador:2), valor inicial a this, pero en este caso como no estamos en modo estricto y es una función suelta esta variable va a apuntar al objeto global, no se crea un objeto global xq no estamos en la función global, este ya fue creado, pero si se crea arguments un objeto similar a los arrays que contiene todos los argumentos que recibe la función cuando se le invocó en este caso no va a tener ninguno ya que no los enviamos.    ) y como antes se crea un **entorno lélxico** con las variables declaradas en la función o recibidas como parámetros (en este caso solo renemos la variable contador, OJO la función incrementar no se crea dado que no es un identificador que podamos usar dentro de esta función xq estamos haciendo un return de la función ). y por último javaScript conecta este **entorno lélxico** con su **entorno lélxico** exterior.
+
+        - (22.07)
+        ```js
+        console.log(`%c Error: ${str} `, "background:red; color: white;")
+        console.log(`%c Warning: ${str} `, "background:orange; color: white;")
+        console.log(`%c Exito: ${str} `, "background:green; color: white;")
+        ```
 
         ```js
+        //así se verían las funciones para imprimir los mensajes anteriores
         function error(str) {
           console.log(
             `%c Error: ${str} `,
@@ -740,12 +823,16 @@
         }
         ```
 
+        - En lo anterior hay cosas que se repiten por eso trataremos de crear una mejora.
+
         ```js
+        //función genérica.
         function crearImpresoraDeMensajes(tipo, estilos) {
-          function mensaje(str) {
+          return function mensaje(str) {
             console.log(`%c ${tipo}: ${str} `, estilos);
           }
         }
+        //asignación a variables
         const error = crearImpresoraDeMensajes(
           "Error",
           "background:red; color: white;"
@@ -758,16 +845,18 @@
           "Exito",
           "background:green; color: white;"
         );
-        ```
 
-        ```js
-        error("El usuario no inició sesión");
+        //uso
+        error("El usuario no inició sesión"); //pasamos str a la función que retorna.
         warning("El usuario no tiene dirección");
         exito("Usuario registrado");
+        //podemos de manera fácil agregar funcion.
+        const info = crearImpresoraDeMensajes(
+          "Info",
+          "background:blue; color: white;")
         ```
 
       - Uso Memoria (26.0)
-
         ```js
         function crearImpresoraDeMensajes(tipo, estilos) {
           const estilosPorDefecto = "color: white;";
@@ -788,7 +877,7 @@
         );
         ```
 
-        - Estamos almacenando el mismo string en el entorno de cada clousere que creemos, como es un string que ocupa 13 caracteres <code>color: white;</code>, cada uno de estos ocupa 2 bytes; para cada impresora que creamos estamos ocupando 26 bytes de memoria fijos a parte del tipo y los estilos que puede ir variando de tamaño para cada una de ellas.
+        - Estamos almacenando el mismo string (estilosPorDefecto) en el entorno de cada closure que creemos, como es un string que ocupa 13 caracteres <code>color: white;</code>, cada uno de estos ocupa 2 bytes; para cada impresora que creamos estamos ocupando 26 bytes de memoria fijos a parte del tipo y los estilos que puede ir variando de tamaño para cada una de ellas.
         - Para resolver esta situación lo que se hace es mover esta variable **afuera de la fábrica**, pero dejarla cerca a donde declaramos nuestra fábrica para saber que están íntimamente relacionadas. Moviendo la variable al entorno léxico global en donde todas pueden acceder ahorrándonos un poco de espacio en la memoria.
 
           ```js
