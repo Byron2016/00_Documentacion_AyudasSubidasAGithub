@@ -1,0 +1,31 @@
+- Debugger para windows 
+  - **Descargas**
+    - [Hackers Journal: 3. Downloading and installing x64dbg and Detect It Easy (DIE) | Hackers Journal](https://www.youtube.com/watch?v=mutp1_WB8uY)
+      - **x64dbg**
+        - [x64dbg](https://sourceforge.net/projects/x64dbg/)
+        - Bajar el instalador 
+        - Descomprimirlo
+        - Cambiar el nombre de la carpeta descomprimida a **x64dgb**
+        - Mover el folder al c:/
+        - Mandar a ejecutar el programa se instala solo apuntando a ese lugar, pero en caso que exista problemas
+          - Crear un shortCut
+            - Destino: C:\x64dgb\release\x64\x64dbg.exe
+            - Iniciar en: C:\x64dgb\release\x64
+            - Icono: C:\x64dgb\release\x96dbg.exe
+      - **Detect it Easy**
+        - [Detect it Easy](https://horsicq.github.io/)
+          - [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
+            - die_win64_portable_3.10_x64.zip	*Portable version for x64 Win64 (Win7-Win11)*
+        - Cambiar el nombre de la carpeta descomprimida a **die_win64_portable**
+        - Mover el folder al c:/
+          - Crear un shortCut
+            - Destino: C:\die_win64_portable\die.exe
+            - Iniciar en: C:\die_win64_portable
+            - Icono: C:\die_win64_portable\die.exe
+  - **Crack**
+    - [isoft: Crackear y Parchear Programas: Tutorial de Ingeniería Inversa](https://www.youtube.com/watch?v=5l30OqvI3Xw)
+    - **Detect it Easy**
+      - **Uso**
+        - Es para análisis de *Malware*
+        - [Cyberhill-Security: Análisis de Malware | Herramienta Detect it Easy](https://www.youtube.com/watch?v=S0gFxPaIr6E)
+        - [Dr Josh Stroschein - The Cyber Yeti: Investigating a Malicious Stealer to Learn Detect-It-Easy!](https://www.youtube.com/watch?v=FB_e1mIhykk)
