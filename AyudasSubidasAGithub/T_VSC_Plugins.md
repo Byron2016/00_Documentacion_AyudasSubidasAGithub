@@ -183,7 +183,7 @@
       - **Pretty TypeScript Errors**
         - yoavbls
         - Make TypeScript errors prettier and more human-readable in VSCode
-      - **Live Preview** [Recomendados por Midudev: Para el curso de JS](https://www.jscamp.dev/introduccion/extension-terminal)
+      - **Live Preview** [Midudev: Para el curso de JS](https://www.jscamp.dev/introduccion/extension-terminal)
         - Microsoft
         - Hosts a local server in your workspace for you to preview your webpages on.
   
