@@ -72,6 +72,7 @@
   - T_VSC_001.md
   - T_VSC_Config.md
   - T_VSC_Plugins.md
+  - T_Warp.md
   - Z_ToDoS.md
 
 - Diferentes
