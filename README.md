@@ -24,6 +24,7 @@
   - T_Bindings.md
   - T_Covariance_and_others.md
   - T_CSS_Tips.md
+  - T_Curso_Midu_Js_2025.md
   - T_Debug.md
   - T_Documentacion.md
   - T_Documentar_Pag_Web.md
