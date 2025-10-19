@@ -109,17 +109,17 @@
         class Pizza {
           + prepare(): void
         }
-        Pizza ..|> Food
+        Food <|.. Pizza
 
         class Sushi {
           + prepare(): void
         }
-        Sushi ..|> Food
+        Food <|.. Sushi
 
         class Empanada {
           + prepare(): void
         }
-        Empanada ..|> Food
+        Food <|.. Empanada
 
         ' 3. FoodFactory
         class FoodFactory {
@@ -263,12 +263,12 @@
       abstract class Pizza {
         + prepare(): void
       }
-      Pizza ..|> Food
+      Food <|.. Pizza
 
       abstract class Sushi {
         + prepare(): void
       }
-      Sushi ..|> Food
+      Food <|.. Sushi
 
       ' 2. Interfaz de Fábrica Abstracta
       interface FoodFactory {
@@ -281,22 +281,22 @@
       class ArgentinaPizza {
         + prepare(): void
       }
-      ArgentinaPizza --|> Pizza
+      Pizza <|-- ArgentinaPizza
 
       class ArgentinaSushi {
         + prepare(): void
       }
-      ArgentinaSushi --|> Sushi
+      Sushi <|-- ArgentinaSushi
 
       class JapanesePizza {
         + prepare(): void
       }
-      JapanesePizza --|> Pizza
+      Pizza <|-- JapanesePizza
 
       class JapaneseSushi {
         + prepare(): void
       }
-      JapaneseSushi --|> Sushi
+      Sushi <|-- JapaneseSushi
 
       ' 4. Fábricas Concretas (Implementando FoodFactory)
 
@@ -304,15 +304,23 @@
         + createPizza(): Pizza
         + createSushi(): Sushi
       }
-      ArgentinaFoodFactory ..|> FoodFactory
-      ArgentinaFoodFactory ..> ArgentinaPizza : <<creates>>
-      ArgentinaFoodFactory ..> ArgentinaSushi : <<creates>>
+      FoodFactory <|.. ArgentinaFoodFactory
 
       class JanapeseFoodFactory {
         + createPizza(): Pizza
         + createSushi(): Sushi
       }
-      JanapeseFoodFactory ..|> FoodFactory
+      FoodFactory <|.. JanapeseFoodFactory
+
+      class ClienteApp {
+        + ClienteApp(factory: FoodFactory)
+      }
+
+      ClienteApp --> FoodFactory
+
+
+      ArgentinaFoodFactory ..> ArgentinaPizza : <<creates>>
+      ArgentinaFoodFactory ..> ArgentinaSushi : <<creates>>
       JanapeseFoodFactory ..> JapanesePizza : <<creates>>
       JanapeseFoodFactory ..> JapaneseSushi : <<creates>>
 
@@ -432,6 +440,7 @@
 
       ' El Producto depende del Builder para su construcción (dependencia del constructor)
       Lasagna .> LasagnaBuilder : <<uses>>
+      @enduml
   ```
 
   </td>
