@@ -322,11 +322,152 @@
   - (V >= 9)
 
     - [Syntax: Lint como un desarrollador senior con eslint + husky + lint staged + acciones de github](https://www.youtube.com/watch?v=Kr4VxMbF3LY)
-      - [antfu eslint-config](https://github.com/antfu/eslint-config) 
-      - [Configuración de CJ para antfu eslint-config](https://gist.github.com/w3cj/21b1f1b4857ecd13d076075a5c5aaf13/) 
+      - **Instalar proyecto con vite**
+        - <code>pnpm create vite</code>
+      - **Actualizar eslint.config.js**
+        - @antfu/eslint-config
+          - [antfu eslint-config](https://github.com/antfu/eslint-config) 
+            - <code>pnpm i -D eslint @antfu/eslint-config</code>
+          
+          - Agregar scripts a package.json 
+
+              ```json
+                {
+                  "scripts": {
+                    "lint": "eslint",
+                    "lint:fix": "eslint --fix"
+                  }
+                }
+              ```
+          
+          - Configurar el IDE 
+            - Install  [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 
+            - Add the following settings to your .vscode/settings.json:
+
+              ```json
+                {
+                  // Disable the default formatter, use eslint instead
+                  "prettier.enable": false,
+                  "editor.formatOnSave": false,
+
+                  // Auto fix
+                  "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": "explicit",
+                    "source.organizeImports": "never"
+                  },
+
+                  // Silent the stylistic rules in you IDE, but still auto fix them
+                  "eslint.rules.customizations": [
+                    { "rule": "style/*", "severity": "off", "fixable": true },
+                    { "rule": "format/*", "severity": "off", "fixable": true },
+                    { "rule": "*-indent", "severity": "off", "fixable": true },
+                    { "rule": "*-spacing", "severity": "off", "fixable": true },
+                    { "rule": "*-spaces", "severity": "off", "fixable": true },
+                    { "rule": "*-order", "severity": "off", "fixable": true },
+                    { "rule": "*-dangle", "severity": "off", "fixable": true },
+                    { "rule": "*-newline", "severity": "off", "fixable": true },
+                    { "rule": "*quotes", "severity": "off", "fixable": true },
+                    { "rule": "*semi", "severity": "off", "fixable": true }
+                  ],
+
+                  // Enable eslint for all supported languages
+                  "eslint.validate": [
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "vue",
+                    "html",
+                    "markdown",
+                    "json",
+                    "jsonc",
+                    "yaml",
+                    "toml",
+                    "xml",
+                    "gql",
+                    "graphql",
+                    "astro",
+                    "svelte",
+                    "css",
+                    "less",
+                    "scss",
+                    "pcss",
+                    "postcss"
+                  ]
+                }
+              ```
+
+        - Crear archivo **eslint.config.mjs**
+          - Copiar los settings 20251024
+            - [Configuración de CJ para antfu eslint-config](https://gist.github.com/w3cj/21b1f1b4857ecd13d076075a5c5aaf13/) 
+
+              ```javascript
+                import antfu from "@antfu/eslint-config";
+
+                export default antfu({
+                  type: "app",
+                  react: true, // si tiene react
+                  typescript: true,
+                  formatters: true,
+                  stylistic: {
+                    indent: 2,
+                    semi: true,
+                    quotes: "double",
+                  },
+                }, {
+                  rules: {
+                    "ts/no-redeclare": "off",
+                    "ts/consistent-type-definitions": ["error", "type"],
+                    "no-console": ["warn"],
+                    "antfu/no-top-level-await": ["off"],
+                    "node/prefer-global/process": ["off"],
+                    "node/no-process-env": ["error"],
+                    "perfectionist/sort-imports": ["error", {
+                      tsconfigRootDir: '.',
+                    }],
+                    "unicorn/filename-case": ["error", {
+                      case: "kebabCase",
+                      ignore: ["README.md"],
+                    }],
+                  },
+                });
+              ```
+              
+          - Ejecutar <code>pnpm lint</code>
+            - Pedirá instalar paquetes pendientes 
+              - @eslint-react/eslint-plugin
+              - eslint-plugin-format 
+
+        - Agregar **Husky**
+          - [Husky](https://typicode.github.io/husky/) 
+            - <code>pnpm add --save-dev husky</code>
+            - <code>pnpm exec husky init</code>
+            - En **.husky/pre-commit**
+              - <code>pnpm lint</code>
+
+        - Lint solo archivos que han  **cambiado**
+          - [lint-staged](https://www.npmjs.com/package/lint-staged) 
+            - <code>pnpm i -D lint-staged</code>
+            - Confiración **package.json**
+
+              ```json
+                {
+                  "lint-staged": {
+                    "*": "pnpm lint"
+                  }
+                }
+              ```
+
+              
+            - <code>pnpm exec lint-staged</code>
+            - En **.husky/pre-commit**
+              - <code>pnpm exec lint-staged</code>
+
+        toca: 11:23
+
       - [ESLint Stylistic](https://eslint.style/) 
-      - [Husky](https://typicode.github.io/husky/) 
-      - [lint-staged](https://www.npmjs.com/package/lint-staged) 
+      
+      - 
       - [Compilación y pruebas de Node.js](https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-nodejs) 
       - [Activación de un flujo de trabajo](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow) 
       - [act](https://nektosact.com/) 
