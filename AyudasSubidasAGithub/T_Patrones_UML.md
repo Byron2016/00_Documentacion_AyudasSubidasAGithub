@@ -2,7 +2,7 @@
 
 ## **Índice**
 1. [Gentleman Programming: Te enseño TODOS los PATRONES de DISEÑO y cúando APLICARLOS](https://www.youtube.com/watch?v=GIS0_1kVBEM)
-   1. Creacionales
+   1. **Creacionales**
       1. [Factory Method](#factory-method-gp)
       2. [Abstract Factory Method](#abstract-factory-method-gp)
       3. [Patron Builer](#builder-patron-gp)
