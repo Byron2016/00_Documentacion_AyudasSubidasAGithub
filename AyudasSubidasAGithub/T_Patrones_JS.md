@@ -47,7 +47,8 @@
         }
       }
 
-      const factory = FoodFactory.createFood();
+      const factory = FoodFactory.createFood("pizza");
+      factory.prepare();
 
     ```
 
@@ -70,27 +71,6 @@
       const factory = FoodFactory.createFood("pizza");
       factory.prepare();
     ```
-
-    *Vamos a mejorarlo*
-
-    ```javascript 
-      ....
-      const TiposDeComida = {
-        pizza: Pizza,
-        sushi: Sushi,
-        empanada: Empanada,
-      } as const;
-
-      class FoodFactory {
-        //static createFood(type: TiposDeComida[keyof typeof TiposDeComida]) : Food {
-        static createFood(type: keyof typeof TiposDeComida) : Food {
-          return TiposDeComida[type]();
-        }
-      }
-      const factory = FoodFactory.createFood("pizza");
-      factory.prepare();
-    ```
-
 
 
 - **AbstractFactory Method**<a name="abstract-factory-method-gp"></a>
