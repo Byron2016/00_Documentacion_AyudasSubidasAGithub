@@ -6,6 +6,8 @@
       1. [Factory Method](#factory-method-gp)
       2. [Abstract Factory Method](#abstract-factory-method-gp)
       3. [Patron Builer](#builder-patron-gp)
+      4. [Patron Singleton](#singleton-patron-gp)
+      5. [Patron Prototype](#prototype-patron-gp)
 
 ---
 
@@ -249,5 +251,91 @@
       const lasagnaDos = new LasagnaBuilder()
         .setSize("grande")
         .build();
+    ```
+- **Patron Singleton**<a name="#singleton-patron-gp"></a>
+    - **Cuando utilizarlo**
+      - Cuando requiere una única instancia global
+        - Logger
+        - Servicio
+        - Configurador
+        - Compartir información entre diferentes lugares
+
+    ```javascript 
+      class ConfigManager {
+      	static #instance: ConfigManager; 
+      	#config: Record<string, any> = {}; 
+
+      	constructor(){
+      		if (ConfigManager.#instance) {
+                  throw new Error("ConfigManager es una clase Singleton. Usa ConfigManager.getInstance()      en su lugar.");
+              }
+      		ConfigManager.#instance = this; // ¡ASIGNAR esta nueva instancia a la propiedad estática!
+      	};
+
+      	static getInstance(): ConfigManager {
+      		if(!ConfigManager.#instance){
+      			ConfigManager.#instance = new ConfigManager();
+      		}
+      		return ConfigManager.#instance;
+      	}
+
+      	set(key: string, value: any){
+      		this.#config[key] = value;
+      	}
+
+      	get(key: string){
+      		return this.#config[key];
+      	}
+      }
+
+      const config0 = new ConfigManager();
+      const config1 = ConfigManager.getInstance();
+      const config2 = ConfigManager.getInstance();
+
+      const config3 = new ConfigManager(); // Debe dar error ya que ya existe una instancia.
+
+      console.info("TEST SINGLETON");
+      config1.set("apiUrl", "https://api.food.com");
+      console.log(config2.get("apiUrl"));
+      console.log(config1 === config2);
+    ```
+
+- **Patron Prototype**<a name="#prototype-patron-gp"></a>
+    - **Cuando utilizarlo**
+      - Requerimos clonar objetos complejos sin tener que reconstruirlos a mano
+
+    ```javascript 
+        interfase Clonable<T>{
+        	clone():T;
+        }
+
+        class Order implements Clonable<Order> {
+        	items: string[];
+        	address: string;
+
+        	constructor(items:string[], address: string){
+        		this.items = items;
+        		this.address = address;
+        	}
+          /*
+        	constructor(items:string[], address: string){
+        		// Otra forma: quitando los items y addres del  principio y dejándolos en el constructor
+        		private items: string[],
+        		private address: string
+        	}
+          */
+
+        	clone(): Order {
+        		return new Order([...this.items], this.address);
+        	}
+        }
+
+        const originalOrder = new order (["pizza","sushi"],"ad1");
+        const clonedOrder = originalOrder.clone();
+
+        clonedOrder.items.push("empanada");
+
+        console.log("Original order", originalOrder.items);
+        console.log("Cloned order", clonedOrder.items);
     ```
 
