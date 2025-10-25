@@ -32,3 +32,20 @@
           - <code>ffmpeg -i out.wav -oc 2 outf.wav</code>
         
       
+    - [Cortar y editar videos de forma automática con FFmpeg](https://apunteimpensado.com/cortar-editar-videos-forma-automatica-ffmpeg/) 
+      - Crear un archivo "timecode.txt" con los puntos de corte de cada vídeo
+        - miduClase_003_01_20251015.mp4, 00:00:00.0, 00:35:02.0, corte01.mp4
+        - miduClase_003_02_20251015.mp4, 00:21:35.0, 00:57:18.0, corte03.mp4
+      - Ejecutar usando gawk ffmpeg
+        - <code>gawk -F, '{cmd="ffmpeg -ss " $2 " -to " $3 " -i " $1 " -c copy " $4 ""; system(cmd)}' timecode.txt</code>
+        - Reemplazará: ffmpeg -ss INICIO -to FINAL -i ENTRADA -c copy SALIDA
+      - Generar el listado de archivos a ser concatenados en archivo montaje.txt
+        - <code>ls -1 c*.mp4 | sed 's/^/file /' > montaje.txt</code>
+          - queda:
+            - file corte01.mp4
+            - file corte03.mp4
+      - Ejecutar comando para concatenación
+        - <code>ffmpeg -f concat -safe 0 -i montaje.txt -c copy terminado.mp4</code>
+      - [Concatenating media files](https://trac.ffmpeg.org/wiki/Concatenate) 
+
+
