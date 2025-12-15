@@ -82,4 +82,10 @@
   - T_DesagueCasaVieja.md
   - T_Ortografia.md
 
+- PMP
+  - Palabras
+    - PMP_Palabras.csv
+    - PMP_Palabras.txt
+    - PMP_Palabras.ods
+
 [⏪(Back to top)](#table-of-contents)
