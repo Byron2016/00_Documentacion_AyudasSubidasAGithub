@@ -1,0 +1,69 @@
+INITIATING                          PLANNING                              EXECUTING                             MONITORING & CONTROLLING              CLOSING  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+001 Select project manager          001 Determine how you will            001 Execute the work according       001 Take action to control the         001 Confirm work is done to
+                                        plan for each knowledge               to the PM plan                       project                                requirements
+                                        area                                                                                                              
+002 Determine company               002 Determine detailed                002 Produce product                  002 Measure performance                002 Complete procurement
+    culture abd exustubg                requirements                          deliverables (product                against the performance                closure
+    ststens                                                                   scope)                               measurement baseline                   
+003 Collect processes,              003 Create project scope              003 Gather work performance          003 Measure performance                003 Gain final acceptance of the
+    procedures and historical           statement                             data                                 against other metrics in the           product
+    information                                                                                                    PM plan                                
+004 Divide large projects into      004 Assess what to purchase           004 Request changes                  004 Analyze and evaluate               004 Complete financial closure
+    phases                              and create procurement                                                     performance                            
+                                        documents                                                                                                         
+005 Understand the business         005 Determine planning team           005 Implement only approved          005 Determine if variances             005 Hand off completed
+    case                                                                      changes                              warrant a corrective action            product
+                                                                                                                   or other change request                
+006 Uncover initial                 006 Create WBS and WBS                006 Continuously improve             006 Influence the factors that         006 Solicit feedback from the
+    requirements, assumptions,          dictionary                                                                 cause changes                          customer about the project
+    risk, constraints, and                                                                                                                                
+    existing agreements                                                                                                                                   
+007 Assess project and product      007 Create activity list              007 Follow processes                 007 Request changes                    007 Complete final
+    feasibility within the given                                                                                                                          performance reporting
+    constraints                                                                                                                                           
+008 Create measurable               008 Create network diagram            008 Determine whether                008 Perform integrated change          008 Index and archive records
+    objectives                                                                processes are correct and            control                                
+                                                                              effective (quality assurance)                                               
+009 Develop project charter         009 Estimate resource                 009 Perform quality audits           009 Approve or reject changes          009 Gather final lessons learned
+                                        requirements                                                                                                      and update knowledge base
+010 Identify stakeholders           010 Estimate time and cost            010 Acquire final team               010 Update the PM plan and                 
+    and determine their                                                                                            project documents                      
+    expectations, influence,                                                                                                                              
+    and impact                                                                                                                                            
+                                    011 Determine critical path           011 Manage people                    011 Inform stakeholders of the             
+                                                                                                                   results of change requests             
+                                    012 Develop schedule                  012 Evaluate team and                012 Monitor stakeholder                    
+                                                                              individual performance               engagement                             
+                                    013 Develop budget                    013 Hold team-building               013 Manage configuration                   
+                                                                              activities                                                                  
+                                    014 Determine quality                 014 Give recognition and             014 Create forecasts                       
+                                        standards, processes, and             rewards                                                                     
+                                        metrics                                                                                                           
+                                    015 Create process                    015 Use issue logs                   015 Gain acceptance of interim             
+                                        improvement plan                                                           deliverables from the                  
+                                                                                                                   customer                               
+                                    016 Determine all roles and           016 Facilitate conflict resolution   016 Perform quality control                
+                                        responsibilities                                                                                                  
+                                    017 Plan communications and           017 Release resources as work        017 Perform risk reassessments             
+                                        stakeholder engagement                is completed                         and audits                             
+                                    018 Perform risk identification,      018 Send and receive                 018 Manage reserves                        
+                                        qualitative and quantitative          information, and solicit                                                    
+                                        risk analysis, and risk               feedback                                                                    
+                                        response planning                                                                                                 
+                                    019 Go back—iterations                019 Report on project                019 Control procurements                   
+                                                                               performance                                                                
+                                    020 Finalize procurement              020 Manage stakeholder                                                          
+                                        documents                             engagement and                                                              
+                                                                              expectations                                                                
+                                    021 Create change management          021 Hold meetings                                                               
+                                        plan                                                                                                              
+                                    022 Finalize the "how to              022 Select sellers                                                              
+                                        execute and control" parts                                                                                        
+                                        of all management plans                                                                                           
+                                    023 Develop realistic and final                                                                                       
+                                        PM plan and performance                                                                                           
+                                        measurement baseline                                                                                              
+                                    024 Gain formal approval of                                                                                           
+                                        the plan                                                                                                          
+                                    025 Hold kick-off meeting                                                                                             

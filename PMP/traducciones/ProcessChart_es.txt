@@ -1,0 +1,54 @@
+INICIACIÓN                          PLANIFICACIÓN                         EJECUCIÓN                             MONITOREO Y CONTROL                   CIERRE
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+001 Seleccionar al director         001 Determinar cómo planificará       001 Ejecutar el trabajo según         001 Tomar acciones para controlar     001 Confirmar que el trabajo se
+    del proyecto                        cada área de conocimiento             el plan para la dirección             el proyecto                           hizo según los requisitos
+002 Determinar la cultura de        002 Determinar los requisitos         002 Producir los entregables          002 Medir el desempeño contra         002 Completar el cierre de las
+    la empresa y sistemas               detallados                            del producto (alcance del             la línea base de medición             adquisiciones
+    existentes                                                                producto)                             del desempeño
+003 Recopilar procesos,             003 Crear el enunciado del            003 Recopilar datos de desempeño      003 Medir el desempeño contra         003 Obtener la aceptación final
+    procedimientos e información        alcance del proyecto                  del trabajo                           otras métricas del plan               del producto
+    histórica
+004 Dividir proyectos grandes       004 Evaluar qué comprar y crear       004 Solicitar cambios                 004 Analizar y evaluar el             004 Completar el cierre
+    en fases                            documentos de adquisición                                                   desempeño                             financiero
+005 Entender el caso de             005 Determinar el equipo de           005 Implementar solo los              005 Determinar si las variaciones     005 Entregar el producto
+    negocio                             planificación                         cambios aprobados                     ameritan acciones correctivas         completado
+006 Descubrir requisitos            006 Crear la EDT/WBS y el             006 Mejorar continuamente             006 Influir en los factores que       006 Solicitar retroalimentación
+    iniciales, supuestos, riesgos,      diccionario de la EDT/WBS                                                   provocan cambios                      al cliente sobre el proyecto
+    restricciones y acuerdos
+007 Evaluar viabilidad del          007 Crear la lista de actividades     007 Seguir los procesos               007 Solicitar cambios                 007 Completar el informe de
+    proyecto y del producto                                                                                                                               desempeño final
+008 Crear objetivos                 008 Crear el diagrama de red          008 Determinar si los procesos        008 Realizar el control               008 Indexar y archivar los
+    medibles                                                                  son correctos y efectivos             integrado de cambios                  registros
+009 Desarrollar el acta de          009 Estimar los requisitos de         009 Realizar auditorías de            009 Aprobar o rechazar cambios        009 Recopilar lecciones aprendidas
+    constitución del proyecto           recursos                              calidad                                                                     y actualizar base de conocimientos
+010 Identificar interesados         010 Estimar tiempo y costo            010 Adquirir el equipo final          010 Actualizar el plan y los
+    y determinar sus expectativas,                                                                                  documentos del proyecto
+    influencia e impacto            011 Determinar la ruta crítica        011 Gestionar a las personas          011 Informar a los interesados
+                                                                                                                    sobre resultados de cambios
+                                    012 Desarrollar el cronograma         012 Evaluar el desempeño del          012 Monitorear el involucramiento
+                                                                              equipo e individual                   de los interesados
+                                    013 Desarrollar el presupuesto        013 Realizar actividades de           013 Gestionar la configuración
+                                                                              desarrollo de equipo
+                                    014 Determinar estándares de          014 Dar reconocimiento y              014 Crear pronósticos
+                                        calidad, procesos y métricas          recompensas
+                                    015 Crear el plan de mejora           015 Utilizar registros de             015 Obtener aceptación de
+                                        de procesos                           incidentes                            entregables de clientes
+                                    016 Determinar roles y                016 Facilitar la resolución           016 Realizar el control de
+                                        responsabilidades                     de conflictos                         calidad
+                                    017 Planificar comunicaciones         017 Liberar recursos a medida         017 Realizar reevaluaciones de
+                                        y gestión de interesados              que se completa el trabajo            riesgos y auditorías
+                                    018 Identificar y analizar            018 Enviar y recibir información      018 Gestionar las reservas
+                                        riesgos y planear respuestas          y solicitar retroalimentación
+                                    019 Regresar - iteraciones            019 Informar sobre el desempeño       019 Controlar las adquisiciones
+                                                                              del proyecto
+                                    020 Finalizar documentos de           020 Gestionar expectativas e
+                                        adquisición                           involucramiento de interesados
+                                    021 Crear el plan de gestión          021 Realizar reuniones
+                                        de cambios
+                                    022 Finalizar las partes de           022 Seleccionar vendedores
+                                        ejecución y control de planes
+                                    023 Desarrollar el plan final
+                                        y líneas base de desempeño
+                                    024 Obtener la aprobación
+                                        formal del plan
+                                    025 Realizar reunión de inicio
