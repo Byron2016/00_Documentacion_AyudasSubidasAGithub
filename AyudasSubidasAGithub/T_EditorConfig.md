@@ -45,3 +45,149 @@ Crear un archivo **.editorconfig**
           - insert_final_newline
           - charset
           - root (only used by EditorConfig core)
+
+## Mensaje sobre LF y CRLF
+
+  Es muy común encontrarse con este "dolor de cabeza" al usar **GitHub**, y tiene que ver con cómo los diferentes sistemas operativos interpretan el final de una línea de texto.
+
+  Aquí te explico la diferencia y por qué GitHub siempre te advierte sobre ello:
+
+  **Los dos protagonistas: LF y CRLF**
+  
+  Históricamente, los sistemas operativos no se pusieron de acuerdo en cómo marcar que una línea termina y empieza la siguiente:
+
+    - **LF (Line Feed, \n):** Utilizado por **Linux y macOS**. Solo usa el carácter de "Salto de línea" (Decimal 10, ^J en tu tabla).
+
+    - **CRLF (Carriage Return + Line Feed, \r\n):** Utilizado por **Windows**. Usa dos caracteres: "Retorno de Carro" (Decimal 13, ^M) seguido del "Salto de línea".
+
+    **Nota:** El nombre viene de las antiguas máquinas de escribir: el **CR** movía el carro al inicio de la hoja y el **LF** bajaba el rodillo una línea.
+
+  ----
+
+  **¿Por qué GitHub te da avisos al subir archivos?**
+
+  GitHub utiliza Git, que nació en el mundo de Linux (donde se usa LF). Cuando trabajas en equipo y alguien usa Windows y otro usa Mac, ocurre lo siguiente:
+
+  1.- **Conflictos invisibles:** Git puede pensar que cambiaste todo el archivo solo porque los finales de línea son diferentes, aunque el código sea el mismo.
+
+  2.- **La solución automática:** Git tiene una función llamada autocrlf.
+
+    - **En Windows:** Git convierte los LF en CRLF cuando descargas el código para que tu editor lo vea bien.
+
+    * **Al subir (commit):** Git convierte tus CRLF de vuelta a LF para que en el servidor todo esté estandarizado.
+
+  **El mensaje: "LF will be replaced by CRLF"**
+
+    Si ves este mensaje, Git simplemente te está avisando que está normalizando los archivos para que no haya problemas de compatibilidad entre tus compañeros de proyecto.
+
+  ----
+
+  **¿Cómo configurarlo para evitar problemas?**
+
+    Si quieres que deje de darte avisos o quieres fijar un estándar, puedes ejecutar este comando en tu terminal:
+
+      - **Si estás en Windows:** <code>git config --global core.autocrlf true</code>
+
+      - **Si estás en Mac/Linux:** <code>git config --global core.autocrlf input</code>
+
+    ¿Te ha pasado que al abrir un archivo de Linux en el Bloc de Notas de Windows viejo se veía todo en una sola línea larga? Eso era exactamente por la falta del CR.
+
+    ¿Te gustaría saber cómo configurar un archivo <code>.gitattributes</code> para forzar que todos en tu proyecto usen el mismo formato?
+
+    Para asegurar que todos los colaboradores de un proyecto usen el mismo formato (ya sea **LF o CRLF**) y evitar que Git "se vuelva loco" con los cambios de línea, lo mejor es usar un archivo llamado <code>.gitattributes</code>.
+
+    Este archivo se guarda en la carpeta raíz de tu repositorio y funciona como un "manual de instrucciones" para Git sobre cómo tratar cada tipo de archivo.
+
+    **Cómo crear un archivo <code>.gitattributes</code>**
+
+      1.- Crea un archivo de texto plano en la raíz de tu proyecto y nómbralo exactamente .gitattributes.
+
+      2.- Añade las siguientes reglas (estas son las más recomendadas para la mayoría de proyectos):
+
+      ```Plaintext
+        # Forzar que todos los archivos de texto se normalicen a LF al subir al repo
+        * text=auto
+
+        # Asegurar que archivos específicos siempre usen LF (ideal para scripts de Linux)
+        *.sh text eol=lf
+
+        # Asegurar que archivos siempre usen CRLF (si tienes archivos específicos de Windows)
+        *.bat text eol=crlf
+
+        # Marcar archivos binarios (imágenes, PDFs) para que Git no intente tocarlos
+        *.png binary
+        *.jpg binary
+      ```
+  **¿Por qué es mejor esto que los comandos de terminal?**
+
+    - **Es compartido:** A diferencia del comando git config (que solo afecta a tu computadora), el archivo <code>.gitattributes</code> se sube al repositorio.
+
+    - **Consistencia automática:** Cuando un compañero de equipo clone el proyecto, Git configurará los finales de línea automáticamente basándose en este archivo, sin que ellos tengan que hacer nada.
+
+    - **Evita "ruido" en los Commits:** Evita que aparezcan cambios en 100 líneas cuando en realidad solo editaste una, pero tu editor cambió el formato de las demás.
+
+  **Un último detalle sobre el aviso de Git**
+
+    Si después de configurar esto sigues viendo avisos, puede que necesites "refrescar" el índice de Git para que aplique las nuevas reglas a los archivos que ya estaban ahí. Se hace con estos comandos (**¡asegúrate de haber guardado tus cambios primero!**):
+
+    <code>git add . -u</code>
+
+    <code>git commit -m "Normalizando finales de línea"</code>
+
+  **¿Te gustaría que te ayude a redactar un archivo .gitattributes específico para el lenguaje de programación que estás usando (como Python, JS o C++)?**
+
+
+    ¡Excelente! Para que tu proyecto esté bien organizado desde el principio, aquí tienes una configuración estándar de .gitattributes que funciona para casi cualquier lenguaje de programación moderno (Node.js, Python, Java, C++, etc.).
+
+    Plantilla recomendada para .gitattributes
+    Copia este contenido en un archivo llamado .gitattributes en la carpeta principal de tu proyecto:
+
+    ```Plaintext
+      # 1. Configuración por defecto: detectar archivos de texto y normalizarlos a LF
+      * text=auto
+
+      # 2. Asegurar que archivos de código siempre usen LF al subir al repo
+      # (Esto protege el código si alguien lo edita en Windows)
+      *.js    text eol=lf
+      *.py    text eol=lf
+      *.cpp   text eol=lf
+      *.h     text eol=lf
+      *.java  text eol=lf
+      *.html  text eol=lf
+      *.css   text eol=lf
+      *.json  text eol=lf
+
+      # 3. Scripts que DEBEN ser LF para correr en servidores Linux/Docker
+      *.sh    text eol=lf
+
+      # 4. Archivos específicos de Windows que deben mantener CRLF
+      *.bat   text eol=crlf
+      *.ps1   text eol=crlf
+
+      # 5. Marcar archivos binarios para que Git no intente "corregirlos"
+      *.png   binary
+      *.jpg   binary
+      *.jpeg  binary
+      *.gif   binary
+      *.pdf   binary
+      *.zip   binary
+
+    ```
+
+  **¿Cómo aplicar los cambios si ya tienes archivos subidos?**
+
+    Si ya tenías archivos con finales de línea "mezclados" en GitHub, simplemente crear el archivo no los arreglará mágicamente en el historial. Debes hacer una "renormalización":
+
+    1.- **Guarda todo:** Asegúrate de que no tienes cambios sin commitear.
+
+    2.- **Borra el índice de Git:** <code>git rm --cached -r .</code> (esto no borra tus archivos, solo los quita del seguimiento temporal de Git).
+
+    3.- **Vuelve a agregar todo:** git add . (aquí Git leerá tu nuevo <code>.gitattributes</code> y corregirá los finales de línea).
+
+    4.- **Commit:** <code>git commit -m "Fix: Normalizando finales de línea con .gitattributes"</code>
+
+  **Un pequeño truco extra**
+
+    Si usas **VS Code**, puedes ver qué final de línea tiene el archivo que estás editando en la esquina inferior derecha de la ventana (verás que dice LF o CRLF). Si haces clic ahí, puedes cambiarlo manualmente para ese archivo específico.
+
+    ¿Qué lenguaje de programación o entorno estás usando actualmente? Puedo darte reglas más específicas si es algo como Unity, .NET o aplicaciones móviles.
