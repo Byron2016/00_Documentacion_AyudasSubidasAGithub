@@ -1,0 +1,44 @@
+- **GitBash**
+  - **Configuración**
+    - *Options/text*
+      - Font: Consolas
+      - Show smoothing: default
+      - Show bold: as font & as colour
+      - Allow blinking: no selected
+      - Show dim as font: selected
+      - Locale: es_EC
+      - Character set: UTF-8
+      - Emojis
+        - Style: noto
+        - Placement: stretch
+    - **Comando ver despliegue letras**
+      - **Nota**
+        - Programa *wget* y *jp* se instalaron en gitbash
+      - <code>echo -e "\u2801 \u2802 \u2804 \u2808"</code>
+      - [Spinner.json: Conjunto de puntos para visualizar en github](https://raw.githubusercontent.com/sindresorhus/cli-spinners/refs/heads/main/spinners.json)
+        - <code>wget https://raw.githubusercontent.com/sindresorhus/cli-spinners/refs/heads/main/spinners.json</code>
+        - <code>cat spinners.json | jq -r '.dots.frames[]'</code>
+          - Debe desplegar puntos braile y que se vean bien.
+            - "⠋, ⠙, ⠹, ⠸, ⠼, ⠴, ⠦, ⠧, ⠇, ⠏"
+      - Asegurar letras se verán siempre bien
+        - Ejecutar: <code>nano ~/.bashrc</code>
+        - Agregar al final<code>#PARA obliga a la consola subyacente de Windows a entrar en modo UTF-8 puro.  chcp.com 65001 > /dev/null 2>&1 </code>
+        - [Ap_Git:AliasAgregar.txt](https://github.com/Byron2016/Ap_Git)
+    - **Instalación**
+      - **wget**
+        - Bajar *wget* *AMD64*: [Eternally Bored](https://eternallybored.org/misc/wget/)
+        - Localiza dónde tienes instalado Git. Por defecto suele ser: <code>C:\Program Files\Git\mingw64\bin</code>  y pégalo ahí con el nombre *wget*
+        - <code>wget --version</code>
+      - **curl**
+        - Ya trae instalado curl, así no se requeriría *wget*
+        - Para bajar archivo: <code>curl -L -O [URL_DEL_ARCHIVO]</code>
+        - <code>curl --version</code>
+          - -L: Esta opción le dice a curl que siga las redirecciones.
+          - -O: no un cero (0). Sirve para guardar el archivo con su nombre original.
+      - **jq**
+        - Bajar *jq* *AMD64*: [jqlang.github.io/jq](https://jqlang.org/download/) y descargar para *AMD64* <code>jq 1.8.1 executables</code>
+        - Localiza dónde tienes instalado Git. Por defecto suele ser: <code>C:\Program Files\Git\mingw64\bin</code> y pégalo ahí con el nombre *jq*
+        - <code>jq --version</code>
+        - <code>echo '{"menu": "ceviche", "precio": 25}' | jq '.menu'  # ceviche</code>
+
+

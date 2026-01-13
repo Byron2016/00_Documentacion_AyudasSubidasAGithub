@@ -22,6 +22,7 @@
   - T_Astro_Auth.md
   - T_Authentication.md
   - T_Bindings.md
+  - T_Consolas.md
   - T_Covariance_and_others.md
   - T_CSS_Tips.md
   - T_Curso_Midu_Js_2025.md
