@@ -1,6 +1,36 @@
 # .editorconfig
 
-Crear un archivo **.editorconfig**
+- El **.editorconfig (Universal / Multi-editor)** es un archivo único que sigue un estándar abierto. Su objetivo es mantener un estilo de código consistente sin importar qué editor use cada programador.
+
+
+  - **Alcance:** Universal. Casi todos los editores (VS Code, JetBrains, Vim, Atom, Visual Studio) lo soportan, ya sea de forma nativa o mediante un plugin.
+
+  - **Qué configura:** Reglas básicas de formato de texto:
+
+    - **indent_style:** ¿Usamos espacios o tabulaciones?
+
+    - **indent_size:** ¿2 o 4 espacios?
+
+    - **end_of_line:** ¿Formato Linux (LF) o Windows (CRLF)?
+
+    - **trim_trailing_whitespace:** Eliminar espacios vacíos al final de las líneas.
+
+    - **insert_final_newline:** Asegurar que el archivo termine con una línea en blanco.
+
+  - **Prioridad:** En VS Code, si tienes instalado el **plugin de EditorConfig**, este archivo manda sobre .vscode/settings.json en lo que respecta al formato básico de texto.
+
+    - 1. El Orden de Prioridad
+      - Cuando abres un archivo, VS Code busca configuraciones en este orden (de mayor a menor importancia):
+      - .editorconfig (Manda sobre todo lo demás si la extensión está activa).
+      - Configuración del Workspace (.vscode/settings.json).
+      - Configuración del Usuario (Tu settings.json global que editamos antes).
+      - Configuración por defecto de VS Code.
+
+    - 2. ¿Por qué el .editorconfig es el "Rey"?
+      - La filosofía de EditorConfig es permitir que un proyecto mantenga un estilo consistente independientemente de quién lo abra o qué editor use. Por eso, los desarrolladores de VS Code diseñaron la extensión para que "pise" (override) tus ajustes personales mientras estés dentro de ese proyecto.
+      - Si en tu .vscode/settings.json tienes: "files.eol": "\r\n" (CRLF)
+      - Pero en tu .editorconfig tienes: end_of_line = lf
+      - Resultado: VS Code usará LF.
 
 ```json
   root = true
@@ -18,7 +48,85 @@ Crear un archivo **.editorconfig**
   trim_trailing_whitespace = false
 ```
 
-- Nota: LF: Line Feed / CRLF: Carriage Return Line Feed
+- **Nota:** 
+  - LF: Line Feed / CRLF: Carriage Return Line Feed
+  - No me tomaba el **LF** pasos
+    - Ver lo que tiene el core.autocrlf
+      - <code>cat ~/.gitconfig</code>
+      - <code>git config --global core.autocrlf false</code>
+    - Si ya se tiene archivos con **CRCF** Git no los cambiará automáticamente solo por crear el archivo. Debes forzar una "normalización" siguiendo estos pasos en tu terminal. Con esto, VS Code debería dejar de mostrarte el aviso de CRLF y empezar a obedecer ciegamente a tu .editorconfig.
+      
+      - Guarda todo lo que tengas pendiente (<code>git add .</code> y <code>git commit</code>). 
+      - Borra el índice de Git (tranquilo, no borra tus archivos físicos):
+        - <code>git rm --cached -r .</code>
+      - Vuelve a agregar todo:
+        - <code>git add .</code>
+      - Haz el commit de normalización:
+        - <code>git commit -m "Fix: Normalizar finales de línea a LF"</code>
+        - Este commit no se realiza razón: 
+          - El proceso que seguiste fue el adecuado, pero Git es "inteligente": al hacer el git add ., él comparó los archivos que iba a subir con los que ya tenías en el último commit. Como el contenido del texto es idéntico (aunque cambie el final de línea), Git decidió que no había cambios reales que guardar, por lo que no generó un nuevo commit.
+          - Sin embargo, hay una señal de éxito muy importante en tu terminal:
+          - warning: in the working copy of 'borrar001/or.html', CRLF will be replaced by LF the next time Git touches it
+            - Ese mensaje confirma que tu archivo .gitattributes ya está funcionando. Git ha detectado que el archivo tiene CRLF y te avisa que lo va a normalizar a LF.
+    - Revisa el settings.json de VS Code
+      - Es muy probable que tengas una regla global que esté forzando CRLF.
+      - Presiona **Ctrl + Shift + P**.
+      - Escribe "Open User Settings (JSON)" y entra.
+      - Busca la propiedad "files.eol".
+      - Si dice "files.eol": "\r\n", cámbiala a: "files.eol": "\n"
+    - warning: in the working copy of 'borrar001/or.xml', LF will be replaced by CRLF the next time Git touches it
+      - ¡Cuidado! Ese mensaje de advertencia (LF will be replaced by CRLF) indica que Git está haciendo exactamente lo contrario de lo que queremos. 
+      - Ese aviso significa que Git va a convertir tus archivos a formato Windows (CRLF) al guardarlos, lo cual anula tu configuración de .editorconfig. Esto sucede porque la configuración global de tu Git tiene prioridad sobre lo que intentamos hacer.
+      - Buscar dónde está el true
+        - <code>git config --list --show-origin | grep crlf</code>
+          file:C:/Program Files/Git/etc/gitconfig core.autocrlf=true
+          file:C:/Users/Byron/.gitconfig  core.autocrlf=false
+        - Cambiar el de sistema
+          - <code>git config --global core.autocrlf false</code>
+          - <code>git config --system core.autocrlf false</code>
+
+# .gitAttributes
+
+```bash
+  # Forzar que Git detecte automáticamente los archivos de texto y los normalice
+  * text=auto eol=lf
+
+  # Declarar explícitamente que los archivos de código usen siempre LF al ser guardados en el repo
+  *.js text eol=lf
+  *.ts text eol=lf
+  *.json text eol=lf
+  *.md text eol=lf
+  *.yml text eol=lf
+  *.html text eol=lf
+  *.css text eol=lf
+
+  # Asegurar que los archivos binarios (imágenes, etc.) no sean modificados
+  *.png binary
+  *.jpg binary
+  *.gif binary
+```
+
+# settings.json 
+  - Presiona **Ctrl + Shift + P**.
+  - Escribe "Open User Settings (JSON)" y entra.
+  - Busca la propiedad "files.eol".
+  - Si dice "files.eol": "\r\n", cámbiala a: "files.eol": "\n", si no está agregarla en la llave principal grupo files.
+
+# .vscode 
+  
+  - **.vscode (Específico de Visual Studio Code)** Es una carpeta que contiene archivos JSON (principalmente **settings.json**). Sirve para configurar el comportamiento exclusivo de VS Code para ese proyecto.
+
+  - **Alcance:** Solo afecta a VS Code. Si un compañero usa IntelliJ, WebStorm o Sublime, estos archivos no harán nada por él.
+
+  - **Qué configura:** Extensiones recomendadas para el proyecto (extensions.json).
+
+    - Configuraciones de depuración y ejecución (launch.json).
+
+    - Tareas de automatización (tasks.json).
+
+    - Preferencias de la interfaz (ej. ocultar la barra lateral, temas específicos, reglas de linting exclusivas de VS Code).
+  
+  - **Prioridad:** Sobrescribe tus ajustes globales de VS Code, pero solo mientras estés dentro de esa carpeta de proyecto.
 
 ## VSC
 
