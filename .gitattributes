@@ -1,0 +1,16 @@
+# Forzar que Git detecte automáticamente los archivos de texto y los normalice
+* text=auto eol=lf
+
+# Declarar explícitamente que los archivos de código usen siempre LF al ser guardados en el repo
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+
+# Asegurar que los archivos binarios (imágenes, etc.) no sean modificados
+*.png binary
+*.jpg binary
+*.gif binary
