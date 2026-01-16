@@ -46,7 +46,34 @@
     - **type**
       - El comando type -a sleep sirve para identificar exactamente qué es y dónde se encuentra el comando sleep en tu sistema
         - -a: (de all) Le ordena que te muestre todas las ubicaciones y tipos que coincidan con ese nombre, no solo la primera que encuentre.
+    - **trash-cli**
+      - Instalación 
+        - Alternativa 1
+          - <code>npm install --global trash-cli</code>
+        - Alternativa 2 con python
+          - <code>python --version</code>
+          - <code>pip --version</code>
+          - <code>pip install trash-cli</code>
+        - **Un detalle importante sobre Windows**
+          - A diferencia de Linux, en **Windows trash-cli** a veces requiere una configuración adicional para encontrar la ruta exacta de la Papelera de Reciclaje del sistema. Si al ejecutarlo recibes un error de "Volume no encontrado", es porque la herramienta intenta usar el estándar de **Linux (.local/share/Trash)**. En Windows, la mayoría de los usuarios prefieren usar trash-put simplemente para mover archivos a una carpeta temporal o usar herramientas nativas de PowerShell desde Git Bash.
+      
+      - **Agregar a Alias**
+        ```bash
+          # Usar trash-cli
+          alias tp='trash-put'
+          alias tl='trash-list'
+          alias te='trash-empty'
+        ```
+        - Recarga la configuración: 
+          - <code>source ~/.bashrc</code> (C:\Users\Byron)
+        - Comandos principales que puedes usar ahora:
+          - <code>trash-put archivo.txt</code> : Envía el archivo a la papelera de reciclaje de Windows.
+          - <code>trash-list</code> : Lista los archivos que están en la papelera.
+          - <code>trash-restore</code> : Te permite elegir un archivo para restaurar.
+          - <code>trash-empty</code> : Vacía la papelera por completo.
 
+	
+	
   - **Bash**
 
 			
