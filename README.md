@@ -53,6 +53,7 @@
   - T_Node_env-vars.md
   - T_Node_ESM_CJS.md
   - T_Node_Template.md
+  - T_Office_instalation.md
   - T_PackageJson.md
   - T_paraCrack.md
   - T_Patrones_JS.md

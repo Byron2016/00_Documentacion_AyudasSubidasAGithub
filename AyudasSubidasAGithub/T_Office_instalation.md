@@ -1,0 +1,69 @@
+- **Instalación de Office LTSC 2024**
+	- [THE MAKER PC: Instala Office gratis en 2026](https://www.youtube.com/watch?v=lS8vpwZaUh0)
+	- Para desinstalar usar la herramienta 
+		- gEEK uNINSTALLER 1.5.3.170
+	- **Instalación** 
+		- Ir a página de office 
+			- [Implementación de Office LTSC 2024](https://learn.microsoft.com/es-es/office/ltsc/2024/deploy)
+			- Descargar la herramienta de implementación de Office desde el Centro de descarga de Microsoft 
+				- [herramienta de implementación de Office](https://www.microsoft.com/download/details.aspx?id=49117)
+				- Seleccionar Download 
+					- officedeploymenttool_19628-20046.exe
+					- Ejecutar como administrador
+					- Aceptar los términos
+					- Eso bajará un programa setup.exe en la carpeta que creamos al bajar la herramienta de descarga.
+			- Volver a la página 
+				- [Implementación de Office LTSC 2024](https://learn.microsoft.com/es-es/office/ltsc/2024/deploy)
+				- Bajamos a la sección Creación del archivo configuration.xml
+				- Dar click en Use la [Herramienta de personalización de Office (OCT)](https://config.office.com/deploymentsettingshttps://config.office.com/deploymentsettings) en lugar de un editor de texto para crear el archivo configuration.xml.
+					- Arquitectura 
+						- ¿Qué arquitectura quiere implementar?
+							- Arquitectura 64bits
+					- Productos
+						- ¿Qué productos y aplicaciones quiere implementar?
+							- Conjuntos de aplicaciones de Office 
+								- Office LTSC Profesional Plus 2024 - Volume License 
+							- Visio
+								- Visio LTSC Profesional 2024 - Volume License
+							- Project
+								- Project LTSC Profesional 2024 - Volume License
+							- Productos adicionales 
+								- Ninguno 
+					- Canal de actualización
+						- Seleccione el canal de actualización
+							- Dejar el que sale Office LTSC 2024 Perpetual Enterprise
+						- Seleccione la versión
+							- Más reciente
+					- Aplicaciones 
+						- Productos y versiones 
+							- Seleccionar según preferencias.
+								- Access, OneNote, PowerPoint, Word, Excel, Outlook, 
+						- Idioma
+							- Principal
+							- Adicional
+							- Herramientas de corrección adicionales
+						- Instalación 
+							- Dejarlo como está.
+								- Red de entrega de contenido (CDN) de Office 
+								- Mostrar instalación al usuario
+						- Actualizar 
+							- Desactivar la opción Desinstalar todas las versiones de MSI de Office, incluidos Visio y Project
+						- Licencias y activación
+							- Dejarlo todo como está
+						- General 
+							- Dejarlo todo como está
+						- Preferencias de aplicación
+							- Dejarlo todo como está
+							- Finalizar
+							- Exportar 
+								- Formatos de Office Open XML
+							- Aceptar
+							- Marcar casilla: Acepto los términos del contrato de licencia 
+							- Nombre de archivo de configuración
+								- Configuration
+							- Exportar 
+				- Abrir cmd como administrador 
+				- Ir a la carpeta donde está el setup y el archivo configuration
+				- ejecutar 
+					- NO ejecutar: setup /download configuration.xml
+					- setup /configure configuration.xml
