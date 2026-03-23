@@ -10,9 +10,42 @@
         - Pista de audio Hardware 
     - **Grabar**
       - Presionar en *Fuentes* botón *+* y escoger *
+      - **Fuentes**
+        - en obs studio luego de crear la fuente me sale propiedades de captura, y en método de captura tengo 3 opciones: automático, Duplicación de escritorio DXGI y Windows 10(1903 o superior) qué es cada una?
+          - **automático**: Es la opción "perezosa" pero segura. OBS analiza qué tipo de ventana o pantalla quieres capturar y decide por ti.
+            - Pros: Casi siempre funciona.
+            - Contras: A veces elige un método que consume más recursos de los necesarios o puede causar parpadeos si el contenido cambia (por ejemplo, al pasar de un juego a una web).
+          - **Duplicación de escritorio DXGI** : Este es el método de alto rendimiento para capturar el escritorio completo. Utiliza la API de DirectX para copiar la imagen directamente desde la tarjeta de video.
+            - Cuándo usarlo: Cuando quieres capturar toda la pantalla (monitores completos). Es extremadamente eficiente y tiene muy poca latencia.
+            - Limitación: Solo funciona para capturar el escritorio, no para ventanas individuales específicas. Si tienes una laptop con dos tarjetas de video (integrada y dedicada), a veces da problemas si OBS no está corriendo en la misma GPU que el escritorio.
+          - -->  **Windows 10 (1903 o superior)**: Este método utiliza una API moderna de Windows llamada WGC (Windows Graphics Capture). Es la joya de la corona para capturar ventanas específicas.
+            - Cuándo usarlo: * Para capturar ventanas de navegador (Chrome, Edge) que suelen dar "pantalla negra" con otros métodos.
+            - Para aplicaciones que usan aceleración de hardware.
+            - Lo mejor: No captura el cursor si no quieres, y no muestra los bordes amarillos en las versiones más recientes de Windows. Además, si mueves otra ventana encima de la que estás capturando, OBS seguirá grabando solo la ventana objetivo sin "ensuciar" el video.
+          - **Resumen**
+            - Método de captura: Windows 10 (1903 o superior)
+            - Pantalla: 1366x768 (Monitor Principal)
+            - NO
+              - Captura de Cursor
+              - Forzar SDR
+      - **Area A capturar**
+        - **Método 1: El "Recorte Manual" (Más rápido)**: Este es el método ideal si quieres ajustar el área visualmente con el ratón:
+          - En el lienzo de OBS (donde ves la vista previa), mantén presionada la tecla Alt de tu teclado.
+          - Haz clic y arrastra los puntos rojos de los bordes de la fuente.
+          - Verás que las líneas cambian de color verde. Esto indica que estás haciendo un recorte (crop) y no solo cambiando el tamaño.
+          - Ajusta los cuatro lados hasta que solo quede visible el recuadro del video de YouTube.
+        - **Método 2: Usar "Captura de Ventana" (Más preciso)**: Si estás capturando el "Monitor", siempre tendrás el riesgo de que se vea algo que no quieres si mueves el navegador. Lo más limpio para YouTube es esto:
+          - Cambia la fuente de "Captura de Pantalla" a Captura de Ventana.
+          - En Ventana, selecciona tu navegador (Chrome, Firefox, etc.) con el video de YouTube abierto.
+          - Usa el mismo truco de la tecla Alt + arrastrar puntos verdes para eliminar la barra de direcciones y las pestañas.
+          - Una vez recortado, suelta Alt y arrastra los puntos (ahora rojos) para estirar el video y que ocupe todo el lienzo negro de OBS.
     - **Alternativas**
       - **ShareX** (La alternativa más completa y similar)
       - **ScreenRec** (La más sencilla y rápida) solo requiere crear una cuenta gratuita para quitar el límite de tiempo
       - **OBS Studio** (Para grabaciones de alta calidad)
       - **Clipchamp** (Ya viene en tu Windows)
 	      - Tiene una opción de "Grabar pantalla" que te permite elegir una pestaña, una ventana o una región específica a través del navegador o la app de escritorio, incluyendo el audio del sistema.
+
+- **ShareX**
+  - [Germán Huertas: La Herramienta GRATIS que NO puede faltar en tu PC 🤯 (Tutorial ShareX)](https://www.youtube.com/watch?v=E0ghpsGelG8)
+    - Ir a *download/setup*
