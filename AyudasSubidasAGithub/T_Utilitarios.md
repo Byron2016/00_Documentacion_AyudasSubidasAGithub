@@ -1,0 +1,18 @@
+- **OBS Studio**
+  - [VideoMarketingViral: Como Usar OBS Studio para Grabar Pantalla 2026](https://www.youtube.com/watch?v=ZxXgm79oTSc)
+    - **Configuración inicial**
+      - Ir a *Controles/Ajustes/*
+      - Señeccomar *Salida* 
+      - Grabación
+        - Ruta de grabación
+        - Calidad de grabación: Tamaño de archivo grande, calidad indistinguible
+        - Formato de gravación mp4
+        - Pista de audio Hardware 
+    - **Grabar**
+      - Presionar en *Fuentes* botón *+* y escoger *
+    - **Alternativas**
+      - **ShareX** (La alternativa más completa y similar)
+      - **ScreenRec** (La más sencilla y rápida) solo requiere crear una cuenta gratuita para quitar el límite de tiempo
+      - **OBS Studio** (Para grabaciones de alta calidad)
+      - **Clipchamp** (Ya viene en tu Windows)
+	      - Tiene una opción de "Grabar pantalla" que te permite elegir una pestaña, una ventana o una región específica a través del navegador o la app de escritorio, incluyendo el audio del sistema.
