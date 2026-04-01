@@ -65,7 +65,7 @@
       - Creando la página Home y configurando ESLINT y PRETTIER en nuestro proyecto
 
         - MIDUDEV: https://www.youtube.com/watch?v=EEDRcolSHms&list=PLV8x_i1fqBw1VR86y4C72xMGJ8ifjBwJ6&index=4
-          Resumen - npm i -D eslint prettier eslint-config-prettier - Funcione con ver ant a 9 de eslint - npm i -D standard@17.1.0 eslint-config-prettier prettier - Esta ya instalará eslint@8.41.0
+          - Resumen - npm i -D eslint prettier eslint-config-prettier - Funcione con ver ant a 9 de eslint - npm i -D standard@17.1.0 eslint-config-prettier prettier - Esta ya instalará eslint@8.41.0
 
               - npm init @eslint/config
               - echo ".next" >> .prettierignore
@@ -73,122 +73,165 @@
               - echo ".next" >> .eslintignore
 
           - ESLINT
+            - **Instalación** 
+              - npm i -D eslint@^8.57.1
+            - **Inicializar toda la configuración de Slint**
+              - npx eslint --init o npm init @eslint/config /pnpx eslint --init
+                - **Configuración** (D:\dev\HTML_CS_JS\012_EslintPrettier\conf_eslint_prettier)
+                  - **How would you like to use ESLint?**
+                    - To check syntax, find problems, and enforce code style
+                  - **What type of mudules does your project use?**
+                    - JavaScript modules (import/export)
+                  - **Which framework does your project use?**
+                    - React
+                  - **Does your project use TypeScript?**
+                    - No
+                  - **Where does your code run?**
+                    - Presionar "a" para TODOS (Osea Brawser y Node)
+                  - **How would you like to define a style for your project?**
+                    - Use a popular style guide
+                      - Seleccionar: Standard: https://github.com/standard/standard
+                  - **What format do you want your config file to be in?**
+                    - JavaScript (Opciones son: JavaScript / YAML / JSON)
+                  - **Would you like to install them now with npm?**
+                    - Yes
+              - Ya a este punto nos ha creado el **.eslintrc.js**
 
-            - npm i -D eslint
-            - npx eslint --init o npm init @eslint/config /pnpx eslint --init
-            - Configuración
-
-              - D:\dev\HTML_CS_JS\012_EslintPrettier\conf_eslint_prettier
-
-                - How would you like to use ESLint?
-                  - To check syntax, find problems, and enforce code style
-                - What type of mudules does your project use?
-                  - JavaScript modules (import/export)
-                - Which framework does your project use?
-                  - React
-                - Does your project use TypeScript?
-                  - No
-                - Where does your code run?
-                  - Presionar "a" para TODOS.
-                - How would you like to define a style for your project?
-                  - Use a popular style guide
-                    - Standard: https://github.com/standard/standard
-                - What format do you want your config file to be in?
-                  - JavaScript
-                - Would you like to install them now with npm?
-                  - Yes
-
-              - NOTA:
+              - **NOTA**:
 
                 - .eslintrc.\*
                   - .js: and export an object containing your configuration.
                   - .cjs: in JavaScript packages that specify "type":"module" in their package.json Note that ESLint does not support ESM configuration at this time.
-                  -
-                - Original:
-                  module.exports = {
-                  root: true,
-                  env: { browser: true, es2020: true },
-                  extends: [
-                  "eslint:recommended",
-                  "plugin:react/recommended",
-                  "plugin:react/jsx-runtime",
-                  "plugin:react-hooks/recommended",
-                  "prettier",
-                  ],
-                  ignorePatterns: ["dist", ".eslintrc.cjs"],
-                  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-                  settings: { react: { version: "18.2" } },
-                  plugins: ["react-refresh"],
-                  rules: {
-                  "react-refresh/only-export-components": [
-                  "warn",
-                  { allowConstantExport: true },
-                  ],
-                  },
-                  }
 
                 - Original:
+                  ```javascript
                   module.exports = {
-                  env: {
-                  browser: true,
-                  es2021: true,
-                  "node": true
-                  },
-                  extends: [
-                  'standard',
-                  'plugin:react/recommended'
-                  ],
-                  overrides: [
-                  {
-                  env: {
-                  node: true
-                  },
-                  files: [
-                  '.eslintrc.{js,cjs}'
-                  ],
-                  parserOptions: {
-                  sourceType: 'script'
+                    root: true,
+                    env: { browser: true, es2020: true },
+                    extends: [
+                      "eslint:recommended",
+                      "plugin:react/recommended",
+                      "plugin:react/jsx-runtime",
+                      "plugin:react-hooks/recommended",
+                      "prettier",
+                    ],
+                    ignorePatterns: ["dist", ".eslintrc.cjs"],
+                    parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+                    settings: { react: { version: "18.2" } },
+                    plugins: ["react-refresh"],
+                    rules: {
+                      "react-refresh/only-export-components": [
+                        "warn",
+                        { allowConstantExport: true },
+                      ],
+                    },
                   }
-                  }
-                  ],
-                  parserOptions: {
-                  ecmaVersion: 'latest',
-                  sourceType: 'module'
-                  },
-                  plugins: [
-                  'react'
-                  ],
-                  rules: {
-                  }
-                  }
+                  ```
 
-                - Cambios a hacer
+                - Original:
+                  ```javascript
+                  module.exports = {
+                    "env": { 
+                      "browser": true, 
+                      "es2020": true,
+                      "node": true 
+                    },
+                    "extends": [
+                      "plugin:react/recommended"
+                      "standard",
+                    ],
+                    "parserOptions": { 
+                      "ecmaFeatures": {
+                        "jsx": true
+                      }, 
+                      "ecmaVersion": 11,
+                      "sourceType": "module" 
+                    },
+                    "plugins": [
+                      "react"
+                    ],
+                    "rules": {
+                    },
+                  }
+                  ```
+
+            - **Instalación Extensión** 
+              - Instalar en VSCode la extensión *ESLint de Dirk Baeumer*
+                
+            - **Configurar settings.json (17.50)** / **Guardar al formatear**
+
+              - Ir a *settings* Abrir con UI: Presionar "Crtl ," para abrirla.
+                - Eslint: Enable (DEBE ESTAR HABILITADO)
+                  - Controls whether eslint is enabled for JavaScript files or not.
+                - Eslint: Code Actions On Save: Mode "Specifies the code action mode. Possible values are "all" and "problemas" PONERLO EN ALL
+                - Eslint: Run
+                  - Decidir si dejar en onType o ponerlo en "onSave" **Poner onSave**
+                - **Abrir como archivo**:
+                  - Presionar "Crtl + shift + p"
+                  - Seleccionar Open Setting (json) (19.40)
+
+                  - C:\Users\xxxx\AppData\Roaming\Code\User\settings.json
+
+                    ```json
+                      {
+                        "[javascript]": {
+                        	// Original
+                        	// "editor.codeActionsOnSave": {
+                        	// "source.fixAll.eslint": true
+                        	// Utilizando CON prettier
+                        	"editor.defaultFormatter": "esbenp.prettier-vscode",
+                        	"editor.formatOnSave": true,
+                        	}
+                        }
+                        "editor.formatOnSave": true
+                      }
+                    ``` 
+                
+                
+                
+                - **Cambios a hacer en el .eslintrc**
 
                   - Verificar que este haciendo un lint de los .jsx-eslint/eslint-plugin-react#configuration
 
                     - npx eslint .
                       - Debería encontrar problemas en .jsx
                     - Si no los logra encontrar hay que agregar lo siguientes
-                      ....
-                      ],
-                      parserOptions: {
-                      ecmaFeatures: { jsx:true}, // <======
-                      ecmaVersion: 'latest',
-                      sourceType: 'module'
-                      },
-                      plugins: [
-                      ....
+                      ```javascript
+                        const RULES = {
+                          OFF: 'off',
+                          WARN: 'warn',
+                          ERROR: 'error'
+                        }
+                        module.exports = {
+                          ...
+                          "parserOptions": { 
+                            "ecmaFeatures": {
+                              "jsx": true // <======
+                            }, 
+                            "ecmaVersion": 'latest',
+                            "sourceType": "module" 
+                          },
+                          "plugins": [
+                            ....
+                          ],
+                          overrides: [
+                            ....
+                            files: [
+                            '.eslintrc.{js,cjs}',
+                            '*.jsx', // <======
+                            '*.js' // <======
+                            ],
+                            ....
+                          ],
+                          "rules": {
+                            'react/prop-types': RULES.OFF,
+                	          'react/react-in-jsx-scope': RULES.OFF,
+                	          'import/no-absolute-path': RULES.OFF
+                	          '@typescript-eslint/explicit-function-return-type': RULES.OFF,
+                          },
+                        }
+                      ```
 
-                      ],
-                      overrides: [
-                      ....
-                      files: [
-                      '.eslintrc.{js,cjs}',
-                      '*.jsx', // <======
-                      '*.js' // <======
-                      ],
-                      ....
-                      ],
 
                   - No especificada la versión de React
                     parserOptions: { .... },
@@ -204,46 +247,15 @@
 
             - Para TypeScript
               - Mirar un apartado especial (ref: eslint_TypeScript)
-            - Testear
+            - **Testear**
               - npx eslint .
               - npx eslint --fix
-            - Agregar en package.json
+            - **Agregar en package.json**
               "lint": "eslint .",
               "lintfix": "eslint --fix"
             - npx eslint src/js/main.js --color
             - Extension VSC Eslint verificada x Microsoft
-
               - ESLint v. 2.4.2 de microsoft.com
-
-            - Configurar settings.json (17.50)
-
-              - Abrir con UI: Presionar "Crtl ," para abrirla.
-              - Eslint: Enable
-              - Controls whether eslint is enabled for JavaScript files or not.
-              - Eslint: Run
-                - Decidir si dejar en onType o ponerlo en "onSave"
-              - Abrir como archivo:
-
-                - Presionar "Crtl + shift + p"
-                - Seleccionar Open Setting (json) (19.40)
-
-                - C:\Users\xxxx\AppData\Roaming\Code\User\settings.json
-
-                  ```json
-                  {
-                  "[javascript]": {
-                  	// Utilizando CON prettier
-                  	// "editor.defaultFormatter": "esbenp.prettier-vscode",
-                  	// "editor.formatOnSave": true,
-                  	// Original
-                  	"editor.codeActionsOnSave": {
-                  	"source.fixAll.eslint": true
-                  	}
-                  }
-
-                  "editor.formatOnSave": true
-                  }
-                  ```
 
               - 20240113: Configuración.
 
@@ -282,26 +294,6 @@
 
                 - Espera que en el archivos este: import React from "react";
 
-              - En archivo ".eslintrc.js" sección "Rules"
-
-                ```
-                const RULES = {
-                OFF: 'off',
-                WARN: 'warn',
-                ERROR: 'error'
-                }
-
-                module.exports = {
-                rules: {
-                	'react/prop-types': RULES.OFF,
-                	'react/react-in-jsx-scope': RULES.OFF,
-
-                	'import/no-absolute-path': RULES.OFF
-
-                	'@typescript-eslint/explicit-function-return-type': RULES.OFF,
-                },
-                }
-                ```
 
             - ERROR:
 
@@ -330,31 +322,37 @@
 
                     Caveat: Whenever you add a file to the project root which you want to be linted, you'll have to manually add that file to the include array in tsconfig.node.json. I tried editing the include and exclude fields in tsconfig.node.json to effectively make it include "all relevant files at the project root" but I couldn't get it to work as I intended and got the initial error again.
 
-          - PRETTIER - scripts:
-            "format": "prettier --write . --config .prettierrc --ignore-path .prettierignore",
-            "format:check": "prettier --check . --config .prettierrc --ignore-path .prettierignore",
+          - **PRETTIER - scripts**:
+            ```JSON
+              {
+                "scripts": {
+                  "format": "prettier --write . --config .prettierrc --ignore-path .prettierignore",
+                  "format:check": "prettier --check . --config .prettierrc --ignore-path .prettierignore",
+                },
+              }
+            ```
 
             - Mismo estilo de código en todo nuestro proyecto.
             - Sitio oficial [Prettier](https://prettier.io/).
-            - Evitar conflictos con eslint. (40.30)
-
-              - Ejecutar: npm i -D eslint-config-prettier / pnpm add -D eslint-config-prettier
+            - **Evitar conflictos con eslint. (40.30)**
+              - Agregar **eslint-config-prettier**
+                - Ejecutar: npm i -D eslint-config-prettier / pnpm add -D eslint-config-prettier
               - Ejecutar: npm i -D prettier / pnpm add -D prettier
               - En archivo ".eslintrc.js" desactivar todas las reglas de linter q pelean con prettier.
-              - Agregar com ÚLTIMA extensión la de prettier.
+              - Agregar com **ÚLTIMA** extensión la de prettier.
 
-                ```
-                extends: [
-                'plugin:react/recommended',
-                'standard',
-                'prettier'
-                ],
+                ```javascript
+                  extends: [
+                    'plugin:react/recommended',
+                    'standard',
+                    'prettier'
+                  ],
 
                 ```
 
                 - Con esto logramos desactivar todas las reglas que se pelean entre eslint y prettier
 
-            - Configuración prettier. (43.30)
+            - **Configuración prettier. (43.30)**
               - crear archivo .prettierignore (45.00)
                 - .next
               - crear archivo .prettierrc.json
@@ -378,7 +376,7 @@
               }
               ```
 
-            - Decirle a PRETTIER no usar ; (49.55)
+            - **Decirle a PRETTIER no usar ; (49.55)**
 
               - En ".prettierrc.json" Prettier de Code
 
@@ -389,7 +387,7 @@
                 }
                 ```
 
-            - Prettier para astrojs
+            - **Prettier para astrojs**
 
               - Referencias
 
@@ -422,13 +420,13 @@
                 }
                 }
 
-          - VERIFICAR ESLINT Y PRETTIER SE CUMPLEN (54.30)
+          - **VERIFICAR ESLINT Y PRETTIER SE CUMPLEN (54.30)**
 
             - Verificar antes de commitear que esté pasando el linter y el prettier.
               hay un montón de estrategias y casi todas utilizando "Husky" (Ver T_Test_Husky_Lint_Staged.txt) (incluso hay gente que lo hace a mano)
               "lint-staged" - solo hace lint y prettier de los archivos tocados - es bastante rápida - Configuración cero. - También utiliza Husky
 
-          - PARA HACER PRUEBAS
+          - **PARA HACER PRUEBAS**
 
             - Archivo Button.js
               ,,,
