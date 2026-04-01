@@ -44,6 +44,7 @@
   - T_JS_Versions.md
   - T_Linters.md
   - T_Linters_Eslint_08x.md
+  - T_Linters_Eslint_10x.md
   - T_Linters_Eslint_Rules.md
   - T_Linux_Commands.md
   - T_Monorepositorios.md
