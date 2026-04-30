@@ -95,3 +95,57 @@
       ```
 
       - Seguí los pasos para crear una nueva.
+
+  - **Explicación de SSH**
+    - [Veritasium: Internet Estaba A Semanas Del Desastre y Nadie Lo Sabia](https://www.youtube.com/watch?v=a62HpQpVBh8)
+      - Tiene una excelente explicación del funcionamiento, mirar a partir del minuto 12.12
+      - Hay que asegurar dos cosas
+        - Asegurar el canal
+        - Autenticar usuario
+        - **Asegurar el canal** 
+          - Si ambas computadoras pudieran asegurar un código secreto para codificar sus datos, entonces aún si fueran interceptados solo se vieran disparates. 
+          - Ejemplo del *frasco de pintura*
+            - Paso 1: 
+              - Acordar un color público y compartido 
+              - No es secreto todos pueden verlo
+              - Computador 1 y Computadora 2
+                - Eligen frasco de pintura *rojo*
+            - Paso 2
+              - Elegir un color *secreto*
+                - Computador 1 
+                  - Eligen frasco de pintura *amarillo*
+                - Computadora 2
+                  - Eligen frasco de pintura *verde*
+            - Paso 3
+              - Mezclar color  *público* y *secreto*
+                - Una vez mezclados no se pueden separar, así que conozca el *resultado* y el *rojo* no se puede deducir el tono exacto de amarillo *amarillo*
+                - Computador 1 
+                  - *rojo* + *amarillo* = *anaranjado*
+                  - Se lo pasa a Computador 2
+                - Computadora 2
+                  - *rojo* + *verde* = *verde oscuro*
+                  - Se lo pasa a Computador 1
+            - Paso 4
+              - Mezclar color  *resultado* con *secreto original*
+                - Computador 1 
+                  - *verde oscuro* + *amarillo* = *oliva*
+                - Computadora 2
+                  - *anaranjado* + *verde* = *oliva*
+            - Paso 5
+              - Ambos terminan con el color *oliva*
+              - Al final se tiene un color secreto compartido *oliva* y un color *secreto* original *amarillo* y el *verde* respectivamente para computador 1 y computador 2
+          - En un intercambio real se trabaja con números públicos grandes en lugar de colores pero el proceso es el mismo. Con un cálculo que si se intenta revertir da un problema de *logaritmo discreto*
+        - **Autenticar usuario** (15.52)
+          - Supongamos que un hacker intenta interponerse entre las 2 computadoras, podemos crear una conexión legítima entre Computador 1 y  Computador 2 y al final tenemos un código secreto compartido, ahora cada vez que computador 1 envía un mensaje el hacker puede reenviarle a computador 2 cambiándolo y hacer lo mismo desde computador 2 a computador 1. Para las computadoras la conexión parecerá legítima pero el hacker está en medio todo el rato.
+          - Se requiere una forma de autenticar que computadora 2 es realmente quien dice ser y viceversa para computadora 1.
+          - Paso 1
+            - Computadora 2 tomar dos números primos muy grandes que los mantendrá en *secreto*
+            - Multiplicarlos entre ellos y obtener un número primo más grande. Que será *público*
+            - Envía la clave *pública* a computador 1
+          - Paso 2
+            - Computador 1 para enviar un mensaje a computadora 2, tomo ese gran número *público* y lo codifica de una manera que solo computadora 2 que conoce los dos factores primos que los compone es capaz de decifrar. 
+          - Este proceso se llama *cifrado RSA*
+            - Aceptar conexión
+            - Validar certificado
+            - Si es válido ejecuta
+            - Si es inválido expulsa
