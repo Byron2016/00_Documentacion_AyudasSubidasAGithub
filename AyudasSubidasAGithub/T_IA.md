@@ -43,3 +43,21 @@
     * **Herramientas:** Acceso a código, navegadores web, bases de datos o APIs para interactuar con el entorno.
 * **Ejemplos:** Un sistema que monitorea el mercado de valores y ejecuta automáticamente órdenes de compra/venta, o un asistente virtual que investiga un tema en la web, resume los hallazgos y reserva una cita en un calendario por ti.
 
+### 🤵 IA Recomendada por Midu 
+
+  - Mi lista de modelos de IA favoritos a día de hoy 20260521
+    - Código → Opus 4.7
+    - Escritura → GPT-5.5
+    - Imagen → GPT Image 2
+    - Música → Suno 5.5
+    - Video → Seedance 2.0
+    - Noticias → Perplexity
+    - OCR → GLM-OCR
+    - Voz → ElevenLabs
+    - Transcripción → Fast Whisper
+    - Scraping → Firecrawl
+    - IA Local → Qwen3.6
+
+### 🤵 IA SKILLS
+  - Skills
+    - [Compila con la guía de la Web moderna](https://developer.chrome.com/docs/modern-web-guidance?hl=es-419)
