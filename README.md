@@ -67,6 +67,7 @@
   - T_Sha256_Verification.md
   - T_SOLID.md
   - T_SSH.md
+  - T_Stellarium.md
   - T_Streamer.md
   - T_Two_Factors_Auth.md
   - T_TypeScript_ESM_CJS.txt
