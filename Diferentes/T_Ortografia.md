@@ -1,4 +1,7 @@
-- Acentuación
+- **Uso B**
+  - Las palabras que terminan en el sufijo -be (o que forman parte de su familia léxica, como nublado, nuboso o anubarrado) se escriben con b.
+
+- **Acentuación**
 
   - [Linguriosa: Esto es SÚPER IMPORTANTE ⚠️ [Reglas de Acentuación] 📏](https://www.youtube.com/watch?v=5GEr6PaMc-g)
 
