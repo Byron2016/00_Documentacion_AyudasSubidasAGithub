@@ -59,6 +59,7 @@
   - T_paraCrack.md
   - T_Patrones_JS.md
   - T_Patrones_UML.md
+  - T_Programas.md
   - T_Puertos_Cables_Conectores.md
   - T_React_Router_Dom.md
   - T_ReactCurso_001.md

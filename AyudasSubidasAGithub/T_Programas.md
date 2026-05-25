@@ -1,0 +1,9 @@
+- **Programas útiles**
+  - **rg**
+    - Es un programa para hacer búsquedas más rápido de *find* o *greed*
+    - [Releases: ripgrep-15.1.0-x86_64-pc-windows-msvc.zip](https://github.com/BurntSushi/ripgrep/releases)
+    - Bajar, descomprimirlo y copiar el rg.exe a <code>C:\Program Files\Git\usr\bin</code>
+    - Ejemplo para ejecutarlo <code>rg "github"</code>
+  - **ag**
+    - Similar al *rg* pero más viejo.
+    - [Releases](https://github.com/k-takata/the_silver_searcher-win32/releases)
