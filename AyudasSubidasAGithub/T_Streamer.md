@@ -39,6 +39,7 @@
       - Ejecutar usando gawk ffmpeg
         - <code>gawk -F, '{cmd="ffmpeg -ss " $2 " -to " $3 " -i " $1 " -c copy " $4 ""; system(cmd)}' timecode.txt</code>
         - Reemplazará: ffmpeg -ss INICIO -to FINAL -i ENTRADA -c copy SALIDA
+        - *ejemplo timecode.txt* <code>av.mp4, 00:01:28.0, 00:01:36.0, cvv.mp4</code>
       - Generar el listado de archivos a ser concatenados en archivo montaje.txt
         - <code>ls -1 c*.mp4 | sed 's/^/file /' > montaje.txt</code>
           - queda:
