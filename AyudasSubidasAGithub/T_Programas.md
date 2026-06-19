@@ -7,3 +7,18 @@
   - **ag**
     - Similar al *rg* pero más viejo.
     - [Releases](https://github.com/k-takata/the_silver_searcher-win32/releases)
+  - **LazyGit**
+    - Es un programa que ya viene con atajos para hacer cosas con *GIT*
+    - [Gentleman Programming](https://www.youtube.com/watch?v=aO_Bd5_ZR4Y)
+      - Instalar: <code>winget install JesseDuffield.LazyGit</code>
+      - Llamar desde Git Bash: 
+        - Alternativa 1: <code>winpty lazygit</code>
+        - Creando un alias: <code>alias lazygit='winpty lazygit'</code>
+      - *Uso*
+        - Moverse entre los tabs 
+          - Poner directamente los números 
+          - Usar las teckas H y L (Izquierda y Derecha) como en Vim 
+        - Moverse entre el contenido 
+          - Usar las teckas J y K (arriba y abajo) como en Vim 
+        - Abrir el explorador en donde está el archivo 
+          - puesto sobre el archivo presionar o (oooo)
