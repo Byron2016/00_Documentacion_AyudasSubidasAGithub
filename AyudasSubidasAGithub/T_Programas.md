@@ -22,3 +22,8 @@
           - Usar las teckas J y K (arriba y abajo) como en Vim 
         - Abrir el explorador en donde está el archivo 
           - puesto sobre el archivo presionar o (oooo)
+  
+  - **Trash-cli**
+    - Para que funcione el path ejecutar este comando: 
+      - <code>echo 'export PATH="$HOME/AppData/Local/pnpm/bin:$PATH"' >> ~/.bashrc</code>
+      - Ver en *AliasAgregar.txt* como deben quedar los alias
