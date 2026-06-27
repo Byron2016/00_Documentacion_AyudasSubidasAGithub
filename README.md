@@ -84,6 +84,7 @@
   - Z_ToDoS.md
 
 - Diferentes
+  - MenuInicio.xml (T_Programas.md (Programas en Inicio Windows))
   - T_DesagueCasaVieja_CasaNueva.md
   - T_Ortografia.md
   - T_Stellarium.md

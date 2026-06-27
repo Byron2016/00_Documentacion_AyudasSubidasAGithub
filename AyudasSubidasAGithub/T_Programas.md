@@ -1,29 +1,56 @@
+- **Programas en Inicio Windows**
+  - Mirar el archivo \*\*\00_Documentacion\Diferentes\MenuInicio.xml
+    - Creado con **PowerShell**
+      - Exportar el diseño exacto mediante **PowerShell** (La más recomendada)
+        - <code>Export-StartLayout -Path "$env:USERPROFILE\Desktop\MenuInicio.xml"</code>
+      - Listar los accesos directos mediante scripts
+        - Si lo que buscas no es el diseño visual en bloques, sino simplemente saber qué programas tienes instalados que generan esos iconos, puedes escanear programáticamente las dos carpetas ocultas donde Windows guarda estos accesos directos.
+        - <code>Get-ChildItem -Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs", "$env:ALLUSERSPROFILE\Microsoft\Windows\Start Menu\Programs" -Recurse -Include _.lnk, _.url | Select-Object Name</code>
+        - NOTA
+          - Iconos como el de Xbox o OneNote (si es la versión moderna) que aparecen en tu captura son aplicaciones nativas de la Tienda de Windows. No siempre tienen un archivo .lnk tradicional en el disco. Por eso, la Opción 1 (Export-StartLayout) es la más infalible, ya que el sistema operativo las indexa directamente por su ID interno de Windows, sin importar si son programas clásicos (.exe) o apps modernas.
+      - rg "github"</code>
 - **Programas útiles**
   - **rg**
-    - Es un programa para hacer búsquedas más rápido de *find* o *greed*
+    - Es un programa para hacer búsquedas más rápido de _find_ o _greed_
     - [Releases: ripgrep-15.1.0-x86_64-pc-windows-msvc.zip](https://github.com/BurntSushi/ripgrep/releases)
     - Bajar, descomprimirlo y copiar el rg.exe a <code>C:\Program Files\Git\usr\bin</code>
     - Ejemplo para ejecutarlo <code>rg "github"</code>
   - **ag**
-    - Similar al *rg* pero más viejo.
+    - Similar al _rg_ pero más viejo.
     - [Releases](https://github.com/k-takata/the_silver_searcher-win32/releases)
   - **LazyGit**
-    - Es un programa que ya viene con atajos para hacer cosas con *GIT*
+    - Es un programa que ya viene con atajos para hacer cosas con _GIT_
     - [Gentleman Programming](https://www.youtube.com/watch?v=aO_Bd5_ZR4Y)
       - Instalar: <code>winget install JesseDuffield.LazyGit</code>
-      - Llamar desde Git Bash: 
+      - Llamar desde Git Bash:
         - Alternativa 1: <code>winpty lazygit</code>
         - Creando un alias: <code>alias lazygit='winpty lazygit'</code>
-      - *Uso*
-        - Moverse entre los tabs 
-          - Poner directamente los números 
-          - Usar las teckas H y L (Izquierda y Derecha) como en Vim 
-        - Moverse entre el contenido 
-          - Usar las teckas J y K (arriba y abajo) como en Vim 
-        - Abrir el explorador en donde está el archivo 
+      - _Uso_
+        - Moverse entre los tabs
+          - Poner directamente los números
+          - Usar las teckas H y L (Izquierda y Derecha) como en Vim
+        - Moverse entre el contenido
+          - Usar las teckas J y K (arriba y abajo) como en Vim
+        - Abrir el explorador en donde está el archivo
           - puesto sobre el archivo presionar o (oooo)
-  
+  - **eza**
+    - Un sustitulo a ls -al ya saca con tablas e íconos.
+      - Intalación
+        - <code>winget install eza-community.eza</code>
+        - <code>eza --long --header --icons --all</code>
+        - Agregar alias
+          - Ver D:\NuevosAPartir20241019\dev_20241019\Ap_Git_20230110/agregarAlias.txt
+          - <code>alias lle='eza --long --header --icons --all'</code>
+  - **lsd**
+    - Un sustitulo a ls -al ya saca con tablas e íconos.
+      - Intalación
+        - <code>winget install lsd-rs.lsd</code>
+        - <code>lsd -la --header</code>
+        - Agregar alias
+          - Ver D:\NuevosAPartir20241019\dev_20241019\Ap_Git_20230110/agregarAlias.txt
+          - <code>alias lld='lsd -la --header'</code>
+
   - **Trash-cli**
-    - Para que funcione el path ejecutar este comando: 
+    - Para que funcione el path ejecutar este comando:
       - <code>echo 'export PATH="$HOME/AppData/Local/pnpm/bin:$PATH"' >> ~/.bashrc</code>
-      - Ver en *AliasAgregar.txt* como deben quedar los alias
+      - Ver en _AliasAgregar.txt_ como deben quedar los alias
