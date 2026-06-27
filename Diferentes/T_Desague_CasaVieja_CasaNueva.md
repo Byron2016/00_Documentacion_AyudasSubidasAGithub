@@ -1,0 +1,11 @@
+- **Casa Vieja**
+  - _Herramienta_
+    - YA NO Hecho con [Vector Paint](https://vectorpaint.yaks.co.nz/)
+    - 20260627 Hecho con [inkscape.app](https://inkscape.app/es/descargar/#windows)
+  - _Imagen_
+    - ![Desagüe casa vieja](../images/desague/Des_Francia_TercerPatio_02.svg)
+
+- **Casa Nueva**
+  - _Herramienta_
+    - 20260627 Hecho con [inkscape.app](https://inkscape.app/es/descargar/#windows)
+  - _Imagen_ -![Desagüe casa nueva](../images/desague/Des_Morales_Piso02_001.svg)

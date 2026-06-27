@@ -13,7 +13,6 @@
 # Table of contents
 
 - AyudasSubidasAGithub
-
   - .editorconfig
   - C_Sharp_EF_IConfiguration_01.md
   - C_Sharp_EF_IConfiguration_02_IOptions.md
@@ -85,7 +84,7 @@
   - Z_ToDoS.md
 
 - Diferentes
-  - T_DesagueCasaVieja.md
+  - T_DesagueCasaVieja_CasaNueva.md
   - T_Ortografia.md
   - T_Stellarium.md
 
