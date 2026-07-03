@@ -1,0 +1,25 @@
+- Trabajo
+  - **FORTALEZAS**
+    - [Jaime Empleabilidad: FORTALEZAS](https://www.facebook.com/reel/1321273616136436)
+    - **Si son**
+      - Capacidad de adaptación
+      - Resolución de problemas
+      - Gestión del tiempo
+      - Comunicación efectiva
+      - Liderazgo (aunque no seas jefe)
+      - Pensamiento Critico
+      - Proactividad
+      - Capacidad de aprendizaje
+      - Colaboración y trabajo en equipo
+      - Orientación a resultados
+    - **No son**
+      - Perfeccionismo
+      - Ser muy exigente conmigo mismo
+      - Trabajar demasiado
+      - Ser multitarea
+      - Obediente
+      - Puntualidad
+      - Ser buena persona / simpático
+      - Ser introvertido o reservado
+      - Tener "muchas ganas de aprender
+      - "Soy muy responsable
