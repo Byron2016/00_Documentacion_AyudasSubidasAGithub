@@ -23,3 +23,27 @@
       - Ser introvertido o reservado
       - Tener "muchas ganas de aprender
       - "Soy muy responsable
+  - **PREGUNTAS A PREPARAR**
+    - **Háblame de ti**
+    - **Fortalezas**
+      - Siempre di la que ellos andan buscando
+    - **Debilidades**
+      - Nunca decir que eres impuntual, cosas que te contrarrestren
+      - Verlo como área de mejora que estás trabajando
+      - **Gemini**
+        - Autoexigencia o Perfeccionismo
+        - Dificultad para delegar
+        - Reservado o Introvertido al inicio
+        - Tendencia a la sobrecarga por exceso de compromiso
+    - **Proyección y ambición "Dónde te ves en 5 años"**
+      - Siempre decir: YO ME VEO DENTRO DE LA EMPRESA
+    - **Capacidad resolutiva "la más importante"**
+      - Háblame de un problema que hayas tenido con
+        - Tu Jefe
+        - Tus compañeros
+        - Funciones
+        - siempre ocupar el \*_método STAR_
+          - Situación
+          - Tarea o trabajo
+          - Acciones
+          - Resultados
