@@ -24,6 +24,7 @@
       - Tener "muchas ganas de aprender
       - "Soy muy responsable
   - **PREGUNTAS A PREPARAR**
+    - [Jaime Empleabilidad: 5 PREGUNTAS](https://www.facebook.com/reel/1693869751916917)
     - **Háblame de ti**
     - **Fortalezas**
       - Siempre di la que ellos andan buscando
