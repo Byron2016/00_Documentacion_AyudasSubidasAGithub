@@ -421,3 +421,12 @@
   - Error Lens code --install-extension usernamehw.errorlens
   - Console Ninja code --install-extension wallabyjs.console-ninja
   - Markdown All in One code --install-extension yzhang.markdown-all-in-one
+
+- **Perfil**:
+  - **Astro**
+    - **Para instalar**:
+      - Astro code --install-extension astro-build.astro-vscode
+      - Error Lens code --install-extension usernamehw.errorlens
+      - ESLint code --install-extension dbaeumer.vscode-eslint
+      - Prettier - Code formatter code --install-extension esbenp.prettier-vscode
+
