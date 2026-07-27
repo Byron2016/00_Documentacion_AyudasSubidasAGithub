@@ -62,7 +62,22 @@
   - **Prettier**
     - Ejecutar configuración inicial
       - <code>npm install --save-dev --save-exact prettier@3.9.6</code>
-      - <code>pnpm add --save-dev --save-exact prettier@3.9.6</code>
+      - <code>npm install --save-dev --save-exact prettier@3.9.6</code>
+      - En *.prettierrc* configurarlo
+        ```json
+          {
+            ....
+            "plugins": ["prettier-plugin-astro"],
+            "overrides": [
+              {
+                "files": "*.astro",
+                "options": {
+                  "parser": "astro"
+                }
+              }
+            ]
+          }
+        ```
     - Crear *.prettierrc*
       - <code>node --eval "fs.writeFileSync('.prettierrc','{}\n')"</code>
         ```json
