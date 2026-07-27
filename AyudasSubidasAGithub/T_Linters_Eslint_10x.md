@@ -1,3 +1,7 @@
+- **Para Tailwind**
+  - **Prettier**
+    - Mirar en la parte de *Astro* se agrega un plugin *prettier-plugin-tailwindcss* que ordena las clases de acuerdo a las recomendaciones
+
 - **Para Astro**
   - **Eslint**
     - Ejecutar configuración inicial
@@ -78,6 +82,50 @@
             ]
           }
         ```
+    - *prettier-plugin-tailwindcss*
+      - Ordena las clases de acuerdo a las recomendaciones de tailwind
+      - reorganiza automáticamente las clases en tu HTML para que coincidan con el orden real en que serán aplicadas por el CSS, ahorrándote dolores de cabeza
+      - <code>pnpm add -D prettier-plugin-tailwindcss</code>
+      - En *.prettierrc* configurarlo
+        ```json
+          {
+            ....
+            "plugins": [
+                "prettier-plugin-astro",
+                "prettier-plugin-tailwindcss" //<---
+              ],
+            "overrides": [
+              {
+                "files": "*.astro",
+                "options": {
+                  "parser": "astro"
+                }
+              }
+            ]
+          }
+        ```
+        - *Asegúrate de colocar* "prettier-plugin-astro" antes de "prettier-plugin-tailwindcss". Prettier ejecuta los plugins en el orden en que se listan, por lo que el archivo .astro primero debe entenderse como HTML/Astro y después procesar las clases de Tailwind.
+        - Testear que se ordenan las clases, una vez se haya actualizado el *settings.json* de VSC; agregar el siguiente código
+          - *Original*
+          ```html
+            <div class="p-4 flex text-center bg-blue-500 rounded-lg justify-between items-center shadow-md">
+              <h3 class="text-xl font-bold hover:text-yellow-300 text-white tracking-wide">
+                Prueba de Prettier con Tailwind
+              </h3>
+            </div>
+          ```
+          - *Orenado*
+          ```html
+            <div class="flex items-center justify-between rounded-lg bg-blue-500 p-4 text-center shadow-md">
+              <h3 class="text-xl font-bold tracking-wide text-white hover:text-yellow-300">
+                Prueba de Prettier con Tailwind
+              </h3>
+            </div>
+          ```
+          - *Cambios clave que verás al ordenarse:*
+            - En el <div>: flex y sus alineaciones (items-center, justify-between) se mueven al principio, mientras que el padding (p-4), el fondo y las sombras van hacia atrás.
+
+            - En el <h3>: La pseudoclase hover:text-yellow-300 se mueve automáticamente al final de la lista de clases.
     - Crear *.prettierrc*
       - <code>node --eval "fs.writeFileSync('.prettierrc','{}\n')"</code>
         ```json
@@ -91,24 +139,37 @@
         ```
     - Crear *.prettierignore*
       - <code>node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"</code>
-  - **Actualizar archivo eslint.config.js**  
-    - <code>pnpm add -D eslint-config-prettier</code>
-      - eslint-config-prettier (El imprescindible 🏆)
-        - Desactiva todas las reglas de ESLint que son innecesarias o que entran en conflicto directamente con Prettier (por ejemplo: comillas dobles vs. simples, punto y coma al final, sangría/espaciado, etc.).
-      - eslint-plugin-prettier (El opcional / *No recomendado hoy* ⚠️)
-        - Hace que Prettier corra DENTRO de ESLint. Es decir, convierte las reglas de formato de Prettier en reglas de linter, mostrándote errores visuales rojos en VS Code si algo no está formateado según Prettier.
+    - **Actualizar archivo eslint.config.js**  
+      - <code>pnpm add -D eslint-config-prettier</code>
+        - eslint-config-prettier (El imprescindible 🏆)
+          - Desactiva todas las reglas de ESLint que son innecesarias o que entran en conflicto directamente con Prettier (por ejemplo: comillas dobles vs. simples, punto y coma al final, sangría/espaciado, etc.).
+        - eslint-plugin-prettier (El opcional / *No recomendado hoy* ⚠️)
+          - Hace que Prettier corra DENTRO de ESLint. Es decir, convierte las reglas de formato de Prettier en reglas de linter, mostrándote errores visuales rojos en VS Code si algo no está formateado según Prettier.
 
-      ```javascript
-        ...
-        import eslintConfigPrettier from "eslint-config-prettier";
+        ```javascript
+          ...
+          import eslintConfigPrettier from "eslint-config-prettier";
 
-        export default defineConfig([
-          // ... resto de tus configuraciones (JS, TS, Astro, JSON, CSS)
-          
-          // SIEMPRE AL FINAL: apaga las reglas de formato de ESLint
-          eslintConfigPrettier
-        ]);
-      ```
+          export default defineConfig([
+            // ... resto de tus configuraciones (JS, TS, Astro, JSON, CSS)
+            
+            // SIEMPRE AL FINAL: apaga las reglas de formato de ESLint
+            eslintConfigPrettier
+          ]);
+        ```
+    - **Configuración de VS Code (settings.json)**
+      - Para que el auto-formateo funcione con la v10 y el Flat Config, asegúrate de tener esto en tu settings *settings.json* <code>Ctrl + Shift + P</code> <code>Preferences: Open User Settings (JSON)</code>.  
+      - **eslint.experimental.useFlatConfig**: Aunque en la v10 ya es el estándar, algunas versiones de la extensión de VS Code aún requieren este flag para asegurar que lea correctamente el archivo .js.  
+        ```json
+          {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "[astro]": {
+              "editor.defaultFormatter": "astro-build.astro-vscode"
+            }
+          }
+        ```
+
 - **Eslint**
   - Para versión 10 trabaja con **eslint.config.js**
     - **Características**
