@@ -429,4 +429,11 @@
       - Error Lens code --install-extension usernamehw.errorlens
       - ESLint code --install-extension dbaeumer.vscode-eslint
       - Prettier - Code formatter code --install-extension esbenp.prettier-vscode
+      - **Si usa Tailwind**
+        - Tailwind CSS IntelliSense code --install-extension bradlc.vscode-tailwindcss
+  - **Tailwind**
+    - **Para instalar**:
+      - ESLint code --install-extension dbaeumer.vscode-eslint
+      - Prettier - Code formatter code --install-extension esbenp.prettier-vscode
+      - Tailwind CSS IntelliSense code --install-extension bradlc.vscode-tailwindcss
 
