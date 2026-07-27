@@ -1,3 +1,99 @@
+- **Para Astro**
+  - **Eslint**
+    - Ejecutar configuración inicial
+      - <code>npm init @eslint/config@latest</code>
+      - <code>pnpm create @eslint/config@latest</code>
+    - [a community maintained plugin](https://ota-meshi.github.io/eslint-plugin-astro/user-guide/)
+      - Ejecutar configuración inicial
+        - <code>npm install --save-dev eslint eslint-plugin-astro</code>
+        - <code>pnpm add -D eslint eslint-plugin-astro</code>
+        - If you write TypeScript in Astro components, you also need to install the @typescript-eslint/parser:
+          - <code>npm install --save-dev @typescript-eslint/parser</code>
+          - <code>pnpm add -D @typescript-eslint/parser</code>
+    - **eslint.config.js**
+      - Crear en la raíz **eslint.config.js** A diferencia de la v8, este archivo exporta un array de objetos.
+        ```javascript
+          import js from "@eslint/js";
+          import globals from "globals";
+          import tseslint from "typescript-eslint";
+          import json from "@eslint/json";
+          import markdown from "@eslint/markdown";
+          import css from "@eslint/css";
+          import { defineConfig } from "eslint/config";
+          import eslintPluginAstro from "eslint-plugin-astro";
+
+          export default defineConfig([
+            // 1. Reglas de JavaScript
+            { files: ["**/*.{js,mjs,cjs,ts,mts,cts}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: {...globals.browser, ...globals.node} } },
+            
+            // 2. Reglas de TypeScript (usando ...)
+            tseslint.configs.recommended,// Este devuelve un array [] por eso va con spread
+
+            // 3. Configuración para JSON
+            { files: ["**/*.json"], plugins: { json }, language: "json/json", extends: ["json/recommended"] },
+            
+            // 4. Configuración para JSONC
+            { files: ["**/*.jsonc"], plugins: { json }, language: "json/jsonc", extends: ["json/recommended"] },
+            
+            // 5. Configuración para JSON5
+            { files: ["**/*.json5"], plugins: { json }, language: "json/json5", extends: ["json/recommended"] },
+            
+            // 6. Configuración para markdown
+            { files: ["**/*.md"], plugins: { markdown }, language: "markdown/commonmark", extends: ["markdown/recommended"] },
+            
+            // 7. Configuración para CSS
+            { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
+
+            // 8. Configuración para ASTRO
+            {
+              // Cargas el conjunto de reglas recomendadas de Astro usando 'extends'
+              extends: [eslintPluginAstro.configs.recommended],
+              
+              // Reglas personalizadas u opcionales para Astro
+              rules: {
+                // override/add rules settings here, such as:
+                // "astro/no-set-html-directive": "error"
+                "astro/no-set-html-directive": "error"
+              },
+            },
+
+          ]);
+        ```
+  - **Prettier**
+    - Ejecutar configuración inicial
+      - <code>npm install --save-dev --save-exact prettier@3.9.6</code>
+      - <code>pnpm add --save-dev --save-exact prettier@3.9.6</code>
+    - Crear *.prettierrc*
+      - <code>node --eval "fs.writeFileSync('.prettierrc','{}\n')"</code>
+        ```json
+          {
+            "semi": false,
+            "singleQuote": true,
+            "trailingComma": "es5",
+            "printWidth": 80,
+            "tabWidth": 2
+          }
+        ```
+    - Crear *.prettierignore*
+      - <code>node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"</code>
+  - **Actualizar archivo eslint.config.js**  
+    - <code>pnpm add -D eslint-config-prettier</code>
+      - eslint-config-prettier (El imprescindible 🏆)
+        - Desactiva todas las reglas de ESLint que son innecesarias o que entran en conflicto directamente con Prettier (por ejemplo: comillas dobles vs. simples, punto y coma al final, sangría/espaciado, etc.).
+      - eslint-plugin-prettier (El opcional / *No recomendado hoy* ⚠️)
+        - Hace que Prettier corra DENTRO de ESLint. Es decir, convierte las reglas de formato de Prettier en reglas de linter, mostrándote errores visuales rojos en VS Code si algo no está formateado según Prettier.
+
+      ```javascript
+        ...
+        import eslintConfigPrettier from "eslint-config-prettier";
+
+        export default defineConfig([
+          // ... resto de tus configuraciones (JS, TS, Astro, JSON, CSS)
+          
+          // SIEMPRE AL FINAL: apaga las reglas de formato de ESLint
+          eslintConfigPrettier
+        ]);
+      ```
 - **Eslint**
   - Para versión 10 trabaja con **eslint.config.js**
     - **Características**
@@ -299,6 +395,7 @@
   - **Instalación**
     - <code>pnpm add --save-dev --save-exact prettier</code>
     - <code>pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier</code>
+      - eslint-plugin-prettier (El opcional / *No recomendado hoy* ⚠️)
     - <code>node --eval "fs.writeFileSync('.prettierrc','{}\n')"</code>
     - <code>node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"</code>
   - **Actualizar archivo eslint.config.js**        
