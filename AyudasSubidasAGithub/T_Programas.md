@@ -49,8 +49,23 @@
         - Agregar alias
           - Ver D:\NuevosAPartir20241019\dev_20241019\Ap_Git_20230110/agregarAlias.txt
           - <code>alias lld='lsd -la --header'</code>
-
   - **Trash-cli**
     - Para que funcione el path ejecutar este comando:
       - <code>echo 'export PATH="$HOME/AppData/Local/pnpm/bin:$PATH"' >> ~/.bashrc</code>
       - Ver en _AliasAgregar.txt_ como deben quedar los alias
+  - **yt-dlp**
+    - Es un programa para bajar vídeos de youtube [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+    - *Instalación*
+      -   <code>winget install yt-dlp</code>
+    - *Uso*  
+      - Estos comandos descargan la mejor calidad de video y audio disponible **sin superar** la resolución especificada.
+        - *Descargar como máximo a 1080p (Full HD):*
+          -   <code>yt-dlp -f "bv*[height<=1080]+ba/b[height<=1080]" "URL_DEL_VIDEO"</code>
+        - *Descargar como máximo a 720p (HD):*
+          -   <code>yt-dlp -f "bv*[height<=720]+ba/b[height<=720]" "URL_DEL_VIDEO"</code>
+        - *Descargar como máximo a 4K (2160p):*
+          -   <code>yt-dlp -f "bv*[height<=2160]+ba/b[height<=2160]" "URL_DEL_VIDEO"</code>
+        - *Listar todos los formatos disponibles:*
+          -   <code>yt-dlp -F "URL_DEL_VIDEO"</code>
+        - *Forzar contenedor (MP4) al cambiar calidad*
+          -   <code>yt-dlp -f "bv*[height<=1080]+ba" --merge-output-format mp4 "URL_DEL_VIDEO"</code>
