@@ -69,3 +69,6 @@
           -   <code>yt-dlp -F "URL_DEL_VIDEO"</code>
         - *Forzar contenedor (MP4) al cambiar calidad*
           -   <code>yt-dlp -f "bv*[height<=1080]+ba" --merge-output-format mp4 "URL_DEL_VIDEO"</code>
+        - *Forzar contenedor (webm) y tamaño 720*
+          -   <code>yt-dlp -f "bv*[height<=720][ext=webm]+ba*[ext=webm]/b[height<=720][ext=webm]" "https://www.youtube.com/watch?v=U7RhffL6l_0"</code>
+  
