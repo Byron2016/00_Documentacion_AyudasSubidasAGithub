@@ -4,6 +4,8 @@
 
 - **Para Astro**
   - **Eslint**
+    - Interesante discusión sobre usar *defineConfig* o solo *export default [...]*
+      - [Clarification requested regarding 'extends' in defineConfig() vs raw Flat Config objects #21152](https://github.com/eslint/eslint/discussions/21152)
     - Ejecutar configuración inicial
       - <code>npm init @eslint/config@latest</code>
       - <code>pnpm create @eslint/config@latest</code>
