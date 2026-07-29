@@ -68,7 +68,9 @@
   - **Prettier**
     - Ejecutar configuración inicial
       - <code>npm install --save-dev --save-exact prettier@3.9.6</code>
-      - <code>npm install --save-dev --save-exact prettier@3.9.6</code>
+      - <code>pnpm add --save-dev --save-exact prettier@3.9.6</code>
+      - *prettier-plugin-astro*
+        - <code>pnpm add --save-dev --save-exact prettier-plugin-astro</code>
       - En *.prettierrc* configurarlo
         ```json
           {
