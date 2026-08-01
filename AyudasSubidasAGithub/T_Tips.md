@@ -1,0 +1,9 @@
+- **TIPS**
+	- **MIDU**
+		- **SEO**
+    	- **¿Tu web está lista para SEO y redes sociales?**
+      	- [Open Graph Verificador y OG Image Tester](https://www.opengraph.to/es)
+        - Este recurso analiza tu página, la puntúa en base a sus meta tags y te dice qué tienes que corregir. Además te da una preview de cómo se verá. Sin coste ni registros
+        - Verificador de Open Graph y OG image tester gratis. Analiza las meta tags OG y previsualiza cómo se ven tus enlaces en Twitter/X, Facebook, LinkedIn, Discord, WhatsApp y más. Puntuación instantánea con correcciones.
+          - *Open Graph (OG)* es un protocolo creado por Facebook en 2010 que permite a cualquier página web convertirse en un objeto enriquecido dentro de las redes sociales y plataformas de mensajería (como WhatsApp, LinkedIn, X/Twitter, Facebook, Slack o Discord). Sin etiquetas Open Graph, cuando compartes un enlace, la plataforma intenta adivinar el título, la descripción y la imagen, lo que suele resultar en previsualizaciones incompletas o desalineadas.
+          - *OG Image* es la meta etiqueta específica (<code>meta property="og:image" content="..."</code>) que define la imagen en miniatura principal que se mostrará en la tarjeta de previsualización al compartir la URL. Es uno de los elementos más críticos para el porcentaje de clics (CTR), ya que ocupa la mayor superficie visual en la vista previa del enlace.
