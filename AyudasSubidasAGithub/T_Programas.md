@@ -71,4 +71,10 @@
           -   <code>yt-dlp -f "bv*[height<=1080]+ba" --merge-output-format mp4 "URL_DEL_VIDEO"</code>
         - *Forzar contenedor (webm) y tamaño 720*
           -   <code>yt-dlp -f "bv*[height<=720][ext=webm]+ba*[ext=webm]/b[height<=720][ext=webm]" "https://www.youtube.com/watch?v=U7RhffL6l_0"</code>
-  
+  - **ImageMagick**
+    - ImageMagick (la utilidad de línea de comandos identify) para inspeccionar y listar el nombre, las dimensiones y la relación de aspecto (aspect ratio) de todas las imágenes 
+    - *Instalación*
+      -   <code>winget install ImageMagick.ImageMagick</code>
+    - *Uso*  
+      - Ejemplo [ImageMagick ejemplo](https://github.com/midudev/spiderman-brand-new-day/pull/10)
+      -   <code>magick identify -format '%f  %wx%h  (ratio %[fx:w/h])\n' public/images/poster-*.webp</code>
