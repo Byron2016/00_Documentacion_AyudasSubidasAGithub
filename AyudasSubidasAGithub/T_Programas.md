@@ -78,3 +78,18 @@
     - *Uso*  
       - Ejemplo [ImageMagick ejemplo](https://github.com/midudev/spiderman-brand-new-day/pull/10)
       -   <code>magick identify -format '%f  %wx%h  (ratio %[fx:w/h])\n' public/images/poster-*.webp</code>
+  - **pdf-inspector**
+    - ¡Qué pasada de proyecto! pdf-inspector parsea PDFs de más de 200 páginas en medio segundo. Lo transforma en un Markdown fácil de consumir. Es de código abierto y puede funcionar en el navegador. Transformar / convertir pdf a markdown 
+    - *Instalación*
+      - [firecrawl/pdf-inspector](https://github.com/firecrawl/pdf-inspector)
+      - Web
+        - [pdf-inspector](https://firecrawl.github.io/pdf-inspector/)
+    -  *Link en X*
+       -  [Midudev-X-pdf-inspector](https://x.com/midudev/status/2084279381208252631)
+    - *Uso*  
+      -  [Try it in your browser*](https://firecrawl.github.io/pdf-inspector/#demo)
+    - *Alternativa pithon*
+      - [Pesadilla en la Web 𝕏-X-marker-pdf](https://x.com/AlbertoTICote/status/2084296286023348536)
+        - <code>pip install marker-pdf</code>
+        - <code>pip show marker-pdf</code>
+        - <code>marker_single documento.pdf --output_dir salida</code>
