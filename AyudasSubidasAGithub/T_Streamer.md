@@ -10,6 +10,9 @@
     - Bajar el instalador zip y descomprimirlo 
     - Copiar el descomprimido en el C
     - Agregar variable de entorno a **Path** <code>C:\ffmpeg\bin</code>
+  - **Actualización**
+    - <code>winget search ffmpeg</code>
+    - <code>winget install Gyan.FFmpeg --force</code>
   - **Herramientas**
     - ffmplay para reproducir vídeo / audio
       - <code>ffmplay text.wav</code>
