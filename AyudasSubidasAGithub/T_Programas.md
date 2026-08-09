@@ -93,3 +93,5 @@
         - <code>pip install marker-pdf</code>
         - <code>pip show marker-pdf</code>
         - <code>marker_single documento.pdf --output_dir salida</code>
+  - **FFMPEG**
+    - Ver en T_Streamer.md
