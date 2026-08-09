@@ -56,8 +56,9 @@
   - **yt-dlp**
     - Es un programa para bajar vídeos de youtube [yt-dlp](https://github.com/yt-dlp/yt-dlp)
     - *Instalación*
-      -   <code>winget install yt-dlp</code>
     - *Uso*  
+      -   <code>winget install yt-dlp</code>
+      -   <code>yt-dlp --version</code>
       - Estos comandos descargan la mejor calidad de video y audio disponible **sin superar** la resolución especificada.
         - *Descargar como máximo a 1080p (Full HD):*
           -   <code>yt-dlp -f "bv*[height<=1080]+ba/b[height<=1080]" "URL_DEL_VIDEO"</code>
