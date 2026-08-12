@@ -520,6 +520,31 @@
       coverage/
     ``` 
 
+  - **Configuración de Prettier (eslint-config-prettier)**
+    - agregar en *eslint.config.js*
+      ```js
+        // otros imports
+        import eslintConfigPrettier from 'eslint-config-prettier';
+        export default defineConfig([
+
+          // Tus reglas personalizadas del proyecto
+          {
+            files: ['**/*.js', '**/*.ts'],
+            rules: {
+              'no-unused-vars': 'warn',
+              'no-console': 'off',
+            },
+          },
+
+          SIEMPRE AL FINAL: Desactiva las reglas de formato que chocan con Prettier
+          eslintConfigPrettier,
+        ]);
+      ```
+    - testear funcione
+      - <code>pnpm exec eslint-config-prettier backend/server.js</code>
+        - saldrá esto *No rules that are unnecessary or conflict with Prettier were found.*
+
+
 - **Scripts en package.json**
     ```json
       {
