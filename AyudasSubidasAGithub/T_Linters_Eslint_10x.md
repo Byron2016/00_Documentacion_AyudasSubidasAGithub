@@ -506,15 +506,28 @@
         "tabWidth": 2
       }
     ```
+  - **Configuración de Prettier (.prettierignore)**
+    ```text
+      # Carpetas de dependencias y compilación
+      node_modules/
+      dist/
+      build/
+      .pnpm-store/
+      .wrangler/
+
+      # Archivos autogenerados o de lock si no quieres darles formato
+      pnpm-lock.yaml
+      coverage/
+    ``` 
 
 - **Scripts en package.json**
     ```json
       {
         "scripts": {
-          "lint": "eslint .",
-          "lint:fix": "eslint . --fix",
+          "format:check": "prettier --check .",
           "format": "prettier --write .",
-          "format:check": "prettier --check ."
+          "lint": "eslint .",
+          "lint:fix": "eslint . --fix"
         }
       }
     ```
