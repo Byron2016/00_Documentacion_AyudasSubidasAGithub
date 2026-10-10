@@ -1,5 +1,18 @@
 - **Warp**
   - **Configuración**
+    - **Encontrar archivo de configuración de warp settings.toml**
+      - Presionar **Ctrl + Shift + P** y escribir *Open Settings File*
+      - En Widows está en *C:\Users\<TuUsuario>\AppData\Local\warp\Warp\config\settings.toml*
+    - **No funcionó**
+      - **Abrir una sola tab o ventana**
+        - **Tab**
+          - En el *regedit* ir a *HKEY_CLASSES_ROOT\Directory\background\shell*
+          - Escoger *WarpTab/command*
+          - Cambiar de *"C:\Program Files\Warp\warp.exe" "Warp://action/new_tab?path=%V"* a *"C:\Program Files\Warp\warp.exe" "warp://action/open_path?path=%V"*
+        - **Ventana**
+          - En el *regedit* ir a *HKEY_CLASSES_ROOT\Directory\background\shell*
+          - Escoger *WarpTab/command*
+          - Cambiar de *"C:\Program Files\Warp\warp.exe" "Warp://action/new_window?path=%V"* a *"C:\Program Files\Warp\warp.exe" "warp://action/open_window?path=%V"*
     - **Usar Git Bash como la Shell de warp**
       - You can add Git Bash as a shell option in Warp. Warp supports multiple shells including Git Bash on Windows. Here's how to set it up:
         - **Method 1**: Through Warp Settings (Recommended)
