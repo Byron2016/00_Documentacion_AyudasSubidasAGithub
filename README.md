@@ -21,6 +21,7 @@
   - T_Astro_Auth.md
   - T_Authentication.md
   - T_Bash_agregados.md
+  - T_Bash_Profile_agregados.md
   - T_Bindings.md
   - T_Consolas.md
   - T_Covariance_and_others.md
